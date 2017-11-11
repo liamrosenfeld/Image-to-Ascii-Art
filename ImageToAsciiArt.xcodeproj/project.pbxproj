@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.swiftmodule */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.swiftmodule; sourceTree = BUILT_PRODUCTS_DIR; };
+		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.swiftmodule */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ImageToAsciiArt.swiftmodule; path = ImageToAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0384D6CA1AEC4BB900242145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0384D6CB1AEC4BB900242145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0384D6CD1AEC4BB900242145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
