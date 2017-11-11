@@ -21,10 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.swiftmodule */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.swiftmodule; sourceTree = BUILT_PRODUCTS_DIR; };
+		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0384D6CA1AEC4BB900242145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0384D6CB1AEC4BB900242145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0384D6CD1AEC4BB900242145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0384D6CD1AEC4BB900242145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		0384D6D01AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0384D6D21AEC4BB900242145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0384D6D51AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		0384D6C71AEC4BB900242145 /* products */ = {
 			isa = PBXGroup;
 			children = (
-				0384D6C61AEC4BB900242145 /* ImageToAsciiArt.swiftmodule */,
+				0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */,
 			);
 			name = products;
 			sourceTree = "<group>";
@@ -116,7 +116,7 @@
 			);
 			name = ImageToAsciiArt;
 			productName = SwiftAsciiArt;
-			productReference = 0384D6C61AEC4BB900242145 /* ImageToAsciiArt.swiftmodule */;
+			productReference = 0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -313,6 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "liamrosenfeld.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,6 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "liamrosenfeld.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

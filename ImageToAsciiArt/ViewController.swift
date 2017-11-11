@@ -2,7 +2,8 @@
 //  ViewController.swift
 //  ImageToAsciiArt
 //
-//  By Liam Rosenfeld. All rights reserved.
+//  Created by Liam Rosenfeld on 11/1/17.
+//  Copyright © 2017 liamrosenfeld. All rights reserved.
 //
 
 import UIKit
@@ -21,35 +22,43 @@ class ViewController:
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    // MARK: - Setup
-    
+    // Setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.configureZoomSupport()
+        // self.configureZoomSupport()
     }
     
-    // MARK: - Actions
-    
-    @IBAction func handleKermitTapped(_ sender: AnyObject)
-    {
-        displayImageNamed("kermit")
-    }
-    
-    @IBAction func handleBatmanTapped(_ sender: AnyObject)
-    {
-        displayImageNamed("batman")
-    }
-    
-    @IBAction func handlePickImageTapped(_ sender: AnyObject)
-    {
+    // Actions
+    @IBAction func homePickImageTapped(_ sender: AnyObject) {
+        print("WORKED")
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         self.show(imagePicker, sender: self)
     }
     
-    // MARK: - UIImagePickerControllerDelegate
+    @IBAction func homeKermitTapped(_ sender: Any) {
+        print("WORKED")
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
+        print("WORKED2")
+        displayImageNamed("kermit")
+
+    }
     
+    
+    @IBAction func homeBatmanTapped(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
+        displayImageNamed("batman")
+    }
+    
+    @IBAction func handleNewImageTapped(_ sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        self.show(imagePicker, sender: self)
+    }
+
+    // UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         self.dismiss(animated: true, completion: nil)
@@ -66,7 +75,6 @@ class ViewController:
     }
     
     // MARK: - Rendering
-    
     fileprivate func displayImageNamed(_ imageName: String)
     {
         displayImage(UIImage(named: imageName)!)
@@ -89,6 +97,8 @@ class ViewController:
             }
             
             print(asciiArt)
+            UIPasteboard.general.string = asciiArt
+
         }
     }
     
@@ -109,10 +119,11 @@ class ViewController:
         
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
+        
+        
     }
     
-    // MARK: - Zooming support
-    
+    // Zooming support
     fileprivate func configureZoomSupport()
     {
         scrollView.delegate = self
@@ -131,8 +142,7 @@ class ViewController:
         scrollView.setZoomScale(scale, animated: animated)
     }
     
-    // MARK: - UIScrollViewDelegate
-    
+    // UIScrollViewDelegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
         return currentLabel
