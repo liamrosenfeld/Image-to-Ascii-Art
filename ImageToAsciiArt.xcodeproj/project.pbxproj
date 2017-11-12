@@ -18,6 +18,7 @@
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Util.swift"; path = "ImageToAsciiArt/UIImage+Util.swift"; sourceTree = "<group>"; };
 		03F080951AEDD29200A20334 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = batman.png; path = images/batman.png; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiPalette.swift; path = ImageToAsciiArt/AsciiPalette.swift; sourceTree = "<group>"; };
+		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +73,9 @@
 		0384D6C81AEC4BB900242145 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				0384D6CD1AEC4BB900242145 /* ViewController.swift */,
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
+				0384D6CD1AEC4BB900242145 /* ViewController.swift */,
+				AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */,
 				0384D6C91AEC4BB900242145 /* Supporting Files */,
 			);
 			name = app;
@@ -179,6 +182,7 @@
 				03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */,
 				0384D6EC1AEC4D6500242145 /* AsciiArtist.swift in Sources */,
 				0384D6CE1AEC4BB900242145 /* ViewController.swift in Sources */,
+				AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */,
 				03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */,
 				0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */,
 			);
