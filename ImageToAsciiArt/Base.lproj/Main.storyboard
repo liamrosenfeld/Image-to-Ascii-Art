@@ -54,8 +54,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Kermit"/>
                                 <connections>
-                                    <action selector="homeKermitTapped:" destination="obO-gq-mY7" eventType="touchUpInside" id="YAq-2N-nuJ"/>
-                                    <action selector="homeKermitTapped:" destination="bdA-yh-WMm" eventType="touchUpInside" id="qfK-VK-Mzv"/>
+                                    <action selector="kermit:" destination="bdA-yh-WMm" eventType="touchUpInside" id="3up-sn-JBa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phq-ub-nK6">
@@ -63,8 +62,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Batman"/>
                                 <connections>
-                                    <action selector="homeBatmanTapped:" destination="obO-gq-mY7" eventType="touchUpInside" id="2ke-zW-Ssb"/>
-                                    <action selector="homeBatmanTapped:" destination="bdA-yh-WMm" eventType="touchUpInside" id="8vP-Ic-daz"/>
+                                    <action selector="batman:" destination="bdA-yh-WMm" eventType="touchUpInside" id="d34-ER-PZn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axV-Kg-kGU">
@@ -75,7 +73,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="homePickImageTapped:" destination="obO-gq-mY7" eventType="touchUpInside" id="faM-Ub-sId"/>
+                                    <action selector="homePickImage:" destination="bdA-yh-WMm" eventType="touchUpInside" id="qWl-Bw-2UH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,7 +81,7 @@
                         <viewLayoutGuide key="safeArea" id="9Mi-Fz-mT7"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="homeToContent" id="EfQ-TH-SOo"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeToContent" id="EfQ-TH-SOo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q73-2H-auB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-Y0-ARL">
-                                <rect key="frame" x="0.0" y="50" width="414" height="686"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbB-8e-cuW" userLabel="Busy View">
@@ -130,18 +128,31 @@
                                 <items>
                                     <navigationItem id="Ggy-ah-yFp">
                                         <nil key="title"/>
-                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CWB-0X-ZAt">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="Xpr-ZP-EBr">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CGn-XL-KQs">
+                                                <rect key="frame" x="20" y="7" width="34" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backToHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgE-e5-1Bx"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zM0-WQ-asW">
                                             <rect key="frame" x="168.66666666666666" y="7" width="77" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="New Image">
-                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
+                                            <state key="normal" title="New Image"/>
                                             <connections>
-                                                <action selector="handleNewImageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Scx-8H-X5e"/>
-                                                <action selector="handlePickImageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EwW-kN-FOb"/>
+                                                <action selector="handleNewImageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbP-rA-4lF"/>
                                             </connections>
                                         </button>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="6GR-EK-Hbe"/>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="oB5-do-eNL">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4lE-08-4bN" userLabel="Share">
+                                                <rect key="frame" x="354" y="7" width="40" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Share"/>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -149,11 +160,11 @@
                         <color key="backgroundColor" red="0.75559091567993164" green="0.75556838512420654" blue="0.75558114051818848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t6K-BK-FcV" firstAttribute="bottom" secondItem="tbB-8e-cuW" secondAttribute="bottom" id="3ig-RK-KHP"/>
-                            <constraint firstItem="rwj-Y0-ARL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="7vV-lh-n1L"/>
+                            <constraint firstItem="rwj-Y0-ARL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="7vV-lh-n1L"/>
                             <constraint firstItem="rwj-Y0-ARL" firstAttribute="trailing" secondItem="hmw-Gf-Ad8" secondAttribute="trailing" id="9D0-Ps-EMH"/>
                             <constraint firstItem="rwj-Y0-ARL" firstAttribute="trailing" secondItem="tbB-8e-cuW" secondAttribute="trailing" id="Q4L-GZ-nl2"/>
                             <constraint firstItem="t6K-BK-FcV" firstAttribute="bottom" secondItem="rwj-Y0-ARL" secondAttribute="bottom" id="QEN-jP-elv"/>
-                            <constraint firstItem="rwj-Y0-ARL" firstAttribute="top" secondItem="hmw-Gf-Ad8" secondAttribute="bottom" constant="6" id="QnE-il-kEC"/>
+                            <constraint firstItem="rwj-Y0-ARL" firstAttribute="top" secondItem="hmw-Gf-Ad8" secondAttribute="bottom" id="QnE-il-kEC"/>
                             <constraint firstAttribute="trailing" secondItem="rwj-Y0-ARL" secondAttribute="trailing" id="XMu-Hu-WnH"/>
                             <constraint firstItem="rwj-Y0-ARL" firstAttribute="leading" secondItem="hmw-Gf-Ad8" secondAttribute="leading" id="cxK-RQ-aPt"/>
                             <constraint firstItem="rwj-Y0-ARL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gvf-we-Y2v"/>

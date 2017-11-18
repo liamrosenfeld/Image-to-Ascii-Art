@@ -24,27 +24,22 @@ class ViewController:
     }
     
     // Actions
-    @IBAction func homePickImageTapped(_ sender: AnyObject) {
-        print("WORKED")
+    @IBAction func homePickImage(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        self.show(imagePicker, sender: self)
+        //let imagePicker = UIImagePickerController()
+        //imagePicker.delegate = self
+        //self.show(imagePicker, sender: self)
     }
     
-    @IBAction func homeKermitTapped(_ sender: Any) {
-        print("WORKED")
+    @IBAction func kermit(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
-        print("WORKED2")
-        displayImageNamed("kermit")
+        //displayImageNamed("kermit")
+    }
 
-    }
-    
-    
-    @IBAction func homeBatmanTapped(_ sender: AnyObject) {
+    @IBAction func batman(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
-        displayImageNamed("batman")
-    }
+        //displayImageNamed("batman")
+    }    
 
     // UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -53,7 +48,7 @@ class ViewController:
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
-            displayImage(image)
+            //displayImage(image)
         }
     }
     

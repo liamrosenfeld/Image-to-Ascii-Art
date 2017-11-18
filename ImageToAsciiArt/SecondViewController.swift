@@ -19,18 +19,22 @@ class SecondViewController:
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureZoomSupport()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func handleNewImageTapped(_ sender: AnyObject) {
+    @IBAction func backToHome(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func handleNewImageTapped(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         self.show(imagePicker, sender: self)
@@ -125,5 +129,5 @@ class SecondViewController:
     {
         return currentLabel
     }
-
+    
 }
