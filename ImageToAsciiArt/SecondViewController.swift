@@ -12,13 +12,13 @@ class SecondViewController:
     UIViewController,
     UIScrollViewDelegate,
     UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate // required by image picker
+    UINavigationControllerDelegate
 {
     // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
-    
+
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -49,6 +49,7 @@ class SecondViewController:
     
     // MARK: - Translates whichButtonPressed String Into an Action
     var whichButtonPressed: String?
+    
     func triggerFromButton() {
         if whichButtonPressed! == "homePickImage" {
             pickImage()
@@ -62,7 +63,7 @@ class SecondViewController:
     
     
     // MARK: - UIImagePickerControllerDelegate
-    func pickImage(){
+    func pickImage() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         self.show(imagePicker, sender: self)

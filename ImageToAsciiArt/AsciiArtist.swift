@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 
 /** Transforms an image to ASCII art. */
-class AsciiArtist
-{
+class AsciiArtist {
     fileprivate let
     image:   UIImage,
     palette: AsciiPalette
-    
+
     init(_ image: UIImage, _ palette: AsciiPalette)
     {
         self.image   = image
@@ -65,4 +64,5 @@ class AsciiArtist
         index  = Int(value)
         return palette.symbols[index]
     }
+    
 }
