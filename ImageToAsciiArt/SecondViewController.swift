@@ -23,23 +23,19 @@ class SecondViewController:
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var whichButtonPressed: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureZoomSupport()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         triggerFromButton()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func pickImage(){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(imagePicker, sender: self)
     }
     
     // MARK: - Actions
@@ -52,9 +48,11 @@ class SecondViewController:
     }
     
     // MARK: - Translates whichButtonPressed String Into an Action
+    var whichButtonPressed: String?
     func triggerFromButton() {
         if whichButtonPressed! == "homePickImage" {
             pickImage()
+            whichButtonPressed = "done"
         } else if whichButtonPressed! == "kermit" {
             displayImageNamed("kermit")
         } else if whichButtonPressed! == "batman" {
@@ -64,6 +62,12 @@ class SecondViewController:
     
     
     // MARK: - UIImagePickerControllerDelegate
+    func pickImage(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(imagePicker, sender: self)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         self.dismiss(animated: true, completion: nil)
