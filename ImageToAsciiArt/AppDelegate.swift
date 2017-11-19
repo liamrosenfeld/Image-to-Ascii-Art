@@ -2,7 +2,8 @@
 //  AppDelegate.swift
 //  ImageToAsciiArt
 //
-//  By Liam Rosenfeld. All rights reserved.
+//  Created by Liam Rosenfeld on 11/1/17.
+//  Copyright © 2017 liamrosenfeld. All rights reserved.
 //
 
 import UIKit
