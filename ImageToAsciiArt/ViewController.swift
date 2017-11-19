@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController:
-    UIViewController
-{
+class ViewController: UIViewController {
     // MARK: - Setup
     var buttonPressed: String?
     
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         super.viewDidLoad()
     }
     
@@ -22,7 +20,7 @@ class ViewController:
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToContent" {
             let destination = segue.destination as! SecondViewController
@@ -44,5 +42,6 @@ class ViewController:
     @IBAction func batman(_ sender: Any) {
         buttonPressed = "batman"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
-    }    
+    }
+    
 }

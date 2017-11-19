@@ -18,7 +18,10 @@ struct Pixel
     static let bytesPerPixel = 4
     
     fileprivate let offset: Int
-    fileprivate init(_ offset: Int) { self.offset = offset }
+    
+    fileprivate init(_ offset: Int) {
+        self.offset = offset
+    }
     
     static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]]
     {

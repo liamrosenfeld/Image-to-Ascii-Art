@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 /** Provides a list of ASCII symbols sorted from darkest to brightest. */
-class AsciiPalette
-{
+class AsciiPalette {
     fileprivate let font: UIFont
-    
+
     init(font: UIFont) { self.font = font }
-    
+
     lazy var symbols: [String] = self.loadSymbols()
-    
+
     fileprivate func loadSymbols() -> [String]
     {
         return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
@@ -65,4 +64,5 @@ class AsciiPalette
         sortedSymbols = sortedCounts.map { mappings[$0] as! String }
         return sortedSymbols
     }
+
 }

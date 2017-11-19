@@ -10,10 +10,8 @@ import AVFoundation
 import Foundation
 import UIKit
 
-extension UIImage
-{
-    class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage
-    {
+extension UIImage {
+    class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage {
         let
         length = font.pointSize * 2,
         size   = CGSize(width: length, height: length),
@@ -125,4 +123,5 @@ extension UIImage
         default:     return   0
         }
     }
+    
 }
