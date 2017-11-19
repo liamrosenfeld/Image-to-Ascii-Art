@@ -10,8 +10,11 @@ import UIKit
 
 class SecondViewController:
     UIViewController,
-    UIScrollViewDelegate
+    UIScrollViewDelegate,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate // required by image picker
 {
+    // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
@@ -20,9 +23,12 @@ class SecondViewController:
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var whichButtonPressed: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureZoomSupport()
+        triggerFromButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,17 +36,34 @@ class SecondViewController:
         // Dispose of any resources that can be recreated.
     }
     
+    func pickImage(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(imagePicker, sender: self)
+    }
+    
+    // MARK: - Actions
     @IBAction func backToHome(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func handleNewImageTapped(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(imagePicker, sender: self)
+        pickImage()
     }
     
-    // UIImagePickerControllerDelegate
+    // MARK: - Translates whichButtonPressed String Into an Action
+    func triggerFromButton() {
+        if whichButtonPressed! == "homePickImage" {
+            pickImage()
+        } else if whichButtonPressed! == "kermit" {
+            displayImageNamed("kermit")
+        } else if whichButtonPressed! == "batman" {
+            displayImageNamed("batman")
+        }
+    }
+    
+    
+    // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         self.dismiss(animated: true, completion: nil)
@@ -56,7 +79,7 @@ class SecondViewController:
         self.dismiss(animated: true, completion: nil)
     }
     
-    // Rendering
+    // MARK: - Rendering
     fileprivate func displayImageNamed(_ imageName: String)
     {
         displayImage(UIImage(named: imageName)!)
@@ -105,7 +128,7 @@ class SecondViewController:
         
     }
     
-    // Zooming support
+    // MARK: - Zooming support
     fileprivate func configureZoomSupport()
     {
         scrollView.delegate = self
@@ -124,7 +147,7 @@ class SecondViewController:
         scrollView.setZoomScale(scale, animated: animated)
     }
     
-    // UIScrollViewDelegate
+    // MARK: - UIScrollViewDelegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
         return currentLabel

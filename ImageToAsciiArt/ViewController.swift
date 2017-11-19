@@ -9,51 +9,40 @@
 import UIKit
 
 class ViewController:
-    UIViewController,
-    UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate // required by image picker
+    UIViewController
 {
-    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
-    fileprivate let maxImageSize = CGSize(width: 310, height: 310)
-    fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    // MARK: - Setup
+    var buttonPressed: String?
     
-    // Setup
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
     }
     
-    // Actions
-    @IBAction func homePickImage(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeToContent", sender: self)
-        //let imagePicker = UIImagePickerController()
-        //imagePicker.delegate = self
-        //self.show(imagePicker, sender: self)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func kermit(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeToContent", sender: self)
-        //displayImageNamed("kermit")
-    }
-
-    @IBAction func batman(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeToContent", sender: self)
-        //displayImageNamed("batman")
-    }    
-
-    // UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
-        self.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            //displayImage(image)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeToContent" {
+            let destination = segue.destination as! SecondViewController
+            destination.whichButtonPressed = buttonPressed!
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
-        self.dismiss(animated: true, completion: nil)
+    // MARK: - Actions
+    @IBAction func homePickImage(_ sender: Any) {
+        buttonPressed = "homePickImage"
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
+    
+    @IBAction func kermit(_ sender: Any) {
+        buttonPressed = "kermit"
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
+    }
+
+    @IBAction func batman(_ sender: Any) {
+        buttonPressed = "batman"
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
+    }    
 }
