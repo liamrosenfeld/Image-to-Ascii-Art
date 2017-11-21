@@ -151,6 +151,9 @@
                                                 <rect key="frame" x="354" y="7" width="40" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Share"/>
+                                                <connections>
+                                                    <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="24e-Na-o2P"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>

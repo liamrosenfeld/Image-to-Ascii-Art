@@ -29,17 +29,17 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func homePickImage(_ sender: Any) {
+    @IBAction func homePickImage(_ sender: UIButton) {
         buttonPressed = "homePickImage"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
     
-    @IBAction func kermit(_ sender: Any) {
+    @IBAction func kermit(_ sender: UIButton) {
         buttonPressed = "kermit"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
 
-    @IBAction func batman(_ sender: Any) {
+    @IBAction func batman(_ sender: UIButton) {
         buttonPressed = "batman"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }

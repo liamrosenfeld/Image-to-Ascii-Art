@@ -39,12 +39,38 @@ class SecondViewController:
     }
     
     // MARK: - Actions
-    @IBAction func backToHome(_ sender: Any) {
+    @IBAction func backToHome(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func handleNewImageTapped(_ sender: UIButton) {
         pickImage()
+    }
+    
+    @IBAction func share(_ sender: UIButton) {
+        self.showShareMenu()
+    }
+    
+    // MARK: - Share Menu
+    var asciiArtFinished:String?
+    func showShareMenu() {
+        let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
+        
+        let copy = UIAlertAction(title: "Copy", style: .default) { action in
+            UIPasteboard.general.string = self.asciiArtFinished
+        }
+        
+        let image = UIAlertAction(title: "Image", style: .default) { action in
+            // TODO: - Add scrollView to image
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        share.addAction(copy)
+        share.addAction(image)
+        share.addAction(cancel)
+        
+        present(share, animated: true, completion: nil)
     }
     
     // MARK: - Translates whichButtonPressed String Into an Action
@@ -107,8 +133,7 @@ class SecondViewController:
             }
             
             print(asciiArt)
-            UIPasteboard.general.string = asciiArt
-            
+            self.asciiArtFinished = asciiArt
         }
     }
     
@@ -130,7 +155,7 @@ class SecondViewController:
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
         
-        
+        var finishedArt = asciiArt
     }
     
     // MARK: - Zooming support
