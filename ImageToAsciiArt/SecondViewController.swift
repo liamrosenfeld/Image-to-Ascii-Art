@@ -53,15 +53,18 @@ class SecondViewController:
     
     // MARK: - Share Menu
     var asciiArtFinished:String?
+    
     func showShareMenu() {
         let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
             UIPasteboard.general.string = self.asciiArtFinished
+            self.copiedAlert()
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
-            // TODO: - Add scrollView to image
+            UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
+            self.imageAlert()
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -73,7 +76,45 @@ class SecondViewController:
         present(share, animated: true, completion: nil)
     }
     
-    // MARK: - Translates whichButtonPressed String Into an Action
+    // For Image Option
+    func convertToImage() -> UIImage? {
+        UIGraphicsBeginImageContext(scrollView.contentSize)
+            
+        let savedContentOffset = scrollView.contentOffset
+        let savedFrame = scrollView.frame
+    
+        scrollView.contentOffset = CGPoint.zero
+        scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+
+        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+
+        scrollView.contentOffset = savedContentOffset
+        scrollView.frame = savedFrame
+
+        UIGraphicsEndImageContext()
+
+        return image
+    }
+    
+    // Alerts
+    func copiedAlert() {
+        let copiedAlert = UIAlertController(title: "Copied!", message:
+            nil, preferredStyle: UIAlertControllerStyle.alert)
+        copiedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(copiedAlert, animated: true, completion: nil)
+    }
+    
+    func imageAlert() {
+        let imageAlert = UIAlertController(title: "Saved!", message:
+            nil, preferredStyle: UIAlertControllerStyle.alert)
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(imageAlert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Translates Home String Into an Action
     var whichButtonPressed: String?
     
     func triggerFromButton() {
@@ -139,7 +180,8 @@ class SecondViewController:
     
     fileprivate func displayAsciiArt(_ asciiArt: String)
     {
-        let label = UILabel()
+        let
+        label = UILabel()
         label.font = self.labelFont
         label.lineBreakMode = NSLineBreakMode.byClipping
         label.numberOfLines = 0
