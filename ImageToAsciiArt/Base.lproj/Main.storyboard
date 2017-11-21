@@ -39,7 +39,6 @@
                                 </state>
                                 <connections>
                                     <action selector="homePickImageTapped:" destination="obO-gq-mY7" eventType="touchUpInside" id="Lbp-Zx-iqI"/>
-                                    <action selector="homePickImageTapped:" destination="bdA-yh-WMm" eventType="touchUpInside" id="vSP-4a-Cxr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Examples" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyQ-xB-KkO">
