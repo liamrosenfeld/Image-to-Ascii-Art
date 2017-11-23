@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExpandedDelegate {
-    func sendMessage(art:String)
+    func sendMessage(art:String, image:UIImage)
 }
 
 class ExpandedViewController:
@@ -46,8 +46,31 @@ class ExpandedViewController:
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
-        delegate?.sendMessage(art: asciiArtFinished!)
+        var asciiArtImage:UIImage = self.convertToImage()!
+        delegate?.sendMessage(art: asciiArtFinished!, image: asciiArtImage)
+    }
+    
+    // MARL: - Image Converter
+    func convertToImage() -> UIImage? {
+        UIGraphicsBeginImageContext(scrollView.contentSize)
+        
+        let savedContentOffset = scrollView.contentOffset
+        let savedFrame = scrollView.frame
+        
+        scrollView.contentOffset = CGPoint.zero
+        scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+        
+        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        scrollView.contentOffset = savedContentOffset
+        scrollView.frame = savedFrame
+        
+        UIGraphicsEndImageContext()
+        
+        return image
     }
     
     // MARK: - UIImagePickerControllerDelegate

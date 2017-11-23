@@ -111,9 +111,19 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         print("Pick Image")
     }
     
-    func sendMessage(art: String) {
-        print("Send Message")
-        print(art)
+    func sendMessage(art: String, image: UIImage) {
+        let session = MSSession()
+        let message = MSMessage(session: session)
+        let layout = MSMessageTemplateLayout()
+        layout.image = image
+        layout.caption = "Art"
+        layout.subcaption = "Ascii"
+        message.layout = layout
+        message.url = getMessageURL(art: art)
+        self.activeConversation?.insert(message, completionHandler: { (e:Error?) in
+            print("complete!")
+        })
+        self.dismiss()
     }
     
     func getMessageURL(art: String) -> URL {
