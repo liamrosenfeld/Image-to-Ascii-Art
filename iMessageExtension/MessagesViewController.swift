@@ -116,17 +116,16 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         let message = MSMessage(session: session)
         let layout = MSMessageTemplateLayout()
         layout.image = image
-        layout.caption = "Art"
-        layout.subcaption = "Ascii"
+        layout.caption = "Ascii Art"
         message.layout = layout
-        message.url = getMessageURL(art: art)
-        self.activeConversation?.insert(message, completionHandler: { (e:Error?) in
-            print("complete!")
+        message.url = getMessageURL(art: "Ascii Art", image: image)
+        self.activeConversation?.insert(message, completionHandler: { (err) in
+            print("INSERT-ERROR \(err.debugDescription)")
         })
         self.dismiss()
     }
     
-    func getMessageURL(art: String) -> URL {
+    func getMessageURL(art: String, image: UIImage) -> URL {
         var components = URLComponents()
         let qArt = URLQueryItem(name: "title", value: art)
         components.queryItems = [qArt]
