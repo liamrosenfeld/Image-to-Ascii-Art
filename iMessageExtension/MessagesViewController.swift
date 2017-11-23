@@ -9,7 +9,7 @@
 import UIKit
 import Messages
 
-class MessagesViewController: MSMessagesAppViewController {
+class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate {
     
     let compactID:String = "compact"
     let expandedID:String = "expanded"
@@ -74,6 +74,12 @@ class MessagesViewController: MSMessagesAppViewController {
         let identifier = (presentationStyle == .compact) ? compactID : expandedID
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
+        if let compact = controller as? CompactViewController {
+            compact.delegate = self
+        } else if let expanded = controller as? ExpandedViewController {
+            expanded.delegate = self
+        }
+        
         for child in childViewControllers {
             child.willMove(toParentViewController: nil)
             child.view.removeFromSuperview()
@@ -101,4 +107,19 @@ class MessagesViewController: MSMessagesAppViewController {
         presentVC(presentationStyle: presentationStyle)
     }
     
+    func pickImage(){
+        print("Pick Image")
+    }
+    
+    func sendMessage(art: String) {
+        print("Send Message")
+        print(art)
+    }
+    
+    func getMessageURL(art: String) -> URL {
+        var components = URLComponents()
+        let qArt = URLQueryItem(name: "title", value: art)
+        components.queryItems = [qArt]
+        return components.url!
+    }
 }

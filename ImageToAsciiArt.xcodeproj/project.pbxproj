@@ -18,12 +18,18 @@
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
+		AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
+		AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
 		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
 		ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
 		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
+		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,8 @@
 		ADBDE0421FC672FE004F00A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		ADBDE0441FC672FE004F00A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
+		ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */,
+				ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */,
+				ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */,
 				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
 				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
 				ADBDE0461FC672FE004F00A2 /* Info.plist */,
@@ -291,6 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */,
+				AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */,
+				ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */,
+				ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */,
+				AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */,
+				AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */,
 				ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
