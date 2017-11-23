@@ -19,7 +19,36 @@
 		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
+		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
+		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
+		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
+		ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
+		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADBDE0471FC672FE004F00A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0384D6BE1AEC4BB900242145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADBDE0391FC672FE004F00A2;
+			remoteInfo = iMessageExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +65,12 @@
 		03F080951AEDD29200A20334 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = batman.png; path = images/batman.png; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiPalette.swift; path = ImageToAsciiArt/AsciiPalette.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		ADBDE0421FC672FE004F00A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ADBDE0441FC672FE004F00A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +78,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBDE0371FC672FE004F00A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +102,8 @@
 				0384D6C81AEC4BB900242145 /* app */,
 				0384D6EF1AEC4D7B00242145 /* images */,
 				0384D6C71AEC4BB900242145 /* products */,
+				ADBDE03E1FC672FE004F00A2 /* iMessageExtension */,
+				ADBDE03B1FC672FE004F00A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */,
+				ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */,
 			);
 			name = products;
 			sourceTree = "<group>";
@@ -102,6 +148,25 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		ADBDE03B1FC672FE004F00A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADBDE03C1FC672FE004F00A2 /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADBDE03E1FC672FE004F00A2 /* iMessageExtension */ = {
+			isa = PBXGroup;
+			children = (
+				ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */,
+				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
+				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
+				ADBDE0461FC672FE004F00A2 /* Info.plist */,
+			);
+			path = iMessageExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,15 +177,34 @@
 				0384D6C21AEC4BB900242145 /* Sources */,
 				0384D6C31AEC4BB900242145 /* Frameworks */,
 				0384D6C41AEC4BB900242145 /* Resources */,
+				ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ADBDE0481FC672FE004F00A2 /* PBXTargetDependency */,
 			);
 			name = ImageToAsciiArt;
 			productName = SwiftAsciiArt;
 			productReference = 0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */;
 			productType = "com.apple.product-type.application";
+		};
+		ADBDE0391FC672FE004F00A2 /* iMessageExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADBDE04C1FC672FE004F00A2 /* Build configuration list for PBXNativeTarget "iMessageExtension" */;
+			buildPhases = (
+				ADBDE0361FC672FE004F00A2 /* Sources */,
+				ADBDE0371FC672FE004F00A2 /* Frameworks */,
+				ADBDE0381FC672FE004F00A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iMessageExtension;
+			productName = iMessageExtension;
+			productReference = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
 		};
 /* End PBXNativeTarget section */
 
@@ -129,7 +213,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = liamrosenfeld;
 				TargetAttributes = {
@@ -137,6 +221,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = DSGCBGBHJN;
 						LastSwiftMigration = 0910;
+					};
+					ADBDE0391FC672FE004F00A2 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = DSGCBGBHJN;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -154,6 +243,7 @@
 			projectRoot = "";
 			targets = (
 				0384D6C51AEC4BB900242145 /* ImageToAsciiArt */,
+				ADBDE0391FC672FE004F00A2 /* iMessageExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +258,15 @@
 				0384D6EE1AEC4D7700242145 /* kermit.png in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBDE0381FC672FE004F00A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
+				ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +287,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADBDE0361FC672FE004F00A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADBDE0481FC672FE004F00A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADBDE0391FC672FE004F00A2 /* iMessageExtension */;
+			targetProxy = ADBDE0471FC672FE004F00A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0384D6CF1AEC4BB900242145 /* Main.storyboard */ = {
@@ -205,6 +320,14 @@
 				0384D6D51AEC4BB900242145 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADBDE0421FC672FE004F00A2 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -314,7 +437,9 @@
 		0384D6E61AEC4BBA00242145 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -330,7 +455,9 @@
 		0384D6E71AEC4BBA00242145 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -339,6 +466,56 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		ADBDE04A1FC672FE004F00A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADBDE04B1FC672FE004F00A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -359,6 +536,15 @@
 			buildConfigurations = (
 				0384D6E61AEC4BBA00242145 /* Debug */,
 				0384D6E71AEC4BBA00242145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADBDE04C1FC672FE004F00A2 /* Build configuration list for PBXNativeTarget "iMessageExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADBDE04A1FC672FE004F00A2 /* Debug */,
+				ADBDE04B1FC672FE004F00A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

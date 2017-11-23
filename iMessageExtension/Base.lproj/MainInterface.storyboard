@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mrz-ws-XAz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Messages View Controller-->
+        <scene sceneID="Xne-7f-0V7">
+            <objects>
+                <viewController id="mrz-ws-XAz" customClass="MessagesViewController" customModule="Image_to_Ascii_Art_Extension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nj4-5e-Bxy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image to Ascii Art" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="On1-19-Wma">
+                                <rect key="frame" x="92.5" y="110" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="On1-19-Wma" secondAttribute="centerY" id="YPP-o5-ust"/>
+                            <constraint firstAttribute="centerX" secondItem="On1-19-Wma" secondAttribute="centerX" id="ib5-Ry-fPS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="s5x-89-QfI"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="240"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fD-EJ-zBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="R6a-su-X9W">
+            <objects>
+                <viewController storyboardIdentifier="compact" id="Pw0-8b-KHu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nyx-SI-ZfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image to Ascii Art" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-CN-gc0">
+                                <rect key="frame" x="93" y="77" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-Lp-zdb">
+                                <rect key="frame" x="123" y="119" width="75" height="30"/>
+                                <state key="normal" title="Pick Image"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5m5-CN-gc0" firstAttribute="centerX" secondItem="Nyx-SI-ZfJ" secondAttribute="centerX" id="94a-Vm-Eej"/>
+                            <constraint firstItem="9Rj-Lp-zdb" firstAttribute="top" secondItem="5m5-CN-gc0" secondAttribute="bottom" constant="21" id="I4t-OS-udc"/>
+                            <constraint firstItem="5m5-CN-gc0" firstAttribute="centerX" secondItem="9Rj-Lp-zdb" secondAttribute="centerX" id="UXU-gK-tCZ"/>
+                            <constraint firstItem="5m5-CN-gc0" firstAttribute="top" secondItem="Dso-YS-Pbb" secondAttribute="top" constant="77" id="ax8-ab-veR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dso-YS-Pbb"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="240"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0m-OI-FZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="739" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fqX-2F-AWH">
+            <objects>
+                <viewController storyboardIdentifier="expanded" id="emv-LC-vhJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MND-iI-EvB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFh-8j-8We">
+                                <rect key="frame" x="16" y="58" width="288" height="450"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converted Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dz-2s-qeB">
+                                <rect key="frame" x="94" y="20" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qq-qa-dqz">
+                                <rect key="frame" x="268" y="20" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uFh-8j-8We" firstAttribute="top" secondItem="1qq-qa-dqz" secondAttribute="bottom" constant="8" symbolic="YES" id="9hk-8Y-qqQ"/>
+                            <constraint firstItem="0dz-2s-qeB" firstAttribute="centerX" secondItem="uFh-8j-8We" secondAttribute="centerX" id="L7V-wL-8gI"/>
+                            <constraint firstItem="1qq-qa-dqz" firstAttribute="trailing" secondItem="uFh-8j-8We" secondAttribute="trailing" id="N39-hh-kcG"/>
+                            <constraint firstItem="1qq-qa-dqz" firstAttribute="top" secondItem="oXb-l7-8EW" secondAttribute="top" id="PaI-tr-uPL"/>
+                            <constraint firstItem="1qq-qa-dqz" firstAttribute="trailing" secondItem="MND-iI-EvB" secondAttribute="trailingMargin" id="YuC-Xc-p70"/>
+                            <constraint firstItem="uFh-8j-8We" firstAttribute="leading" secondItem="MND-iI-EvB" secondAttribute="leadingMargin" id="aj5-OV-S6e"/>
+                            <constraint firstAttribute="bottom" secondItem="uFh-8j-8We" secondAttribute="bottom" constant="20" symbolic="YES" id="cXD-CI-EsA"/>
+                            <constraint firstItem="1qq-qa-dqz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MND-iI-EvB" secondAttribute="leadingMargin" id="dv0-Cf-LsA"/>
+                            <constraint firstItem="0dz-2s-qeB" firstAttribute="top" secondItem="1qq-qa-dqz" secondAttribute="top" id="vga-da-CUg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oXb-l7-8EW"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qQc-V0-7Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1421" y="119"/>
+        </scene>
+    </scenes>
+</document>
