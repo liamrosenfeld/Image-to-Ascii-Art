@@ -152,7 +152,9 @@
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
                         <outlet property="busyView" destination="2LL-2b-TUr" id="rKb-r7-qCX"/>
+                        <outlet property="heading" destination="0dz-2s-qeB" id="lO8-zm-5L2"/>
                         <outlet property="scrollView" destination="uFh-8j-8We" id="czU-Rv-W0a"/>
+                        <outlet property="topButton" destination="1qq-qa-dqz" id="Pjh-J8-Od4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQc-V0-7Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>

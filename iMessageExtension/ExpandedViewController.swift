@@ -26,6 +26,8 @@ class ExpandedViewController:
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busyView: UIView!
+    @IBOutlet weak var heading: UILabel!
+    @IBOutlet weak var topButton: UIButton!
     
     var delegate:ExpandedDelegate?
     var asciiArtFinished:String?
@@ -50,6 +52,11 @@ class ExpandedViewController:
     @IBAction func sendMessage(_ sender: Any) {
         var asciiArtImage:UIImage = self.convertToImage()!
         delegate?.sendMessage(art: asciiArtFinished!, image: asciiArtImage)
+    }
+    
+    // MARK: - Opening
+    func didOpen() {
+        heading.text = "ASCII Art"
     }
     
     // MARL: - Image Converter

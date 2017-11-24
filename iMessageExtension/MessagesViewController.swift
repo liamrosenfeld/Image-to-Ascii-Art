@@ -74,17 +74,21 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         let identifier = (presentationStyle == .compact) ? compactID : expandedID
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
-        if let compact = controller as? CompactViewController {
-            compact.delegate = self
-        } else if let expanded = controller as? ExpandedViewController {
-            expanded.delegate = self
-        }
-        
         for child in childViewControllers {
             child.willMove(toParentViewController: nil)
             child.view.removeFromSuperview()
             child.removeFromParentViewController()
+        
+        if let compact = controller as? CompactViewController {
+            compact.delegate = self
         }
+        else if let expanded = controller as? ExpandedViewController {
+            expanded.delegate = self
+            if (self.activeConversation?.selectedMessage?.url) != nil {
+                expanded.didOpen()
+            }
+        }
+    }
         
         addChildViewController(controller)
         
@@ -127,7 +131,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     
     func getMessageURL(art: String, image: UIImage) -> URL {
         var components = URLComponents()
-        let qArt = URLQueryItem(name: "title", value: art)
+        let qArt = URLQueryItem(name: "art", value: art)
         components.queryItems = [qArt]
         return components.url!
     }
