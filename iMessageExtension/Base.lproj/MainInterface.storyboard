@@ -40,10 +40,13 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="240"/>
+                    <connections>
+                        <segue destination="IkI-EA-irb" kind="presentation" identifier="toContent" id="gbN-Tr-sKU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fD-EJ-zBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82" y="119"/>
+            <point key="canvasLocation" x="666" y="-398"/>
         </scene>
         <!--Compact View Controller-->
         <scene sceneID="R6a-su-X9W">

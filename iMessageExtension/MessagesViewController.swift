@@ -58,9 +58,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         }
         else if let expanded = controller as? ExpandedViewController {
             if (self.activeConversation?.selectedMessage?.url) != nil {
-                // bring up content view
-                let contentVC = ContentViewController()
-                self.present(contentVC, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "toContent", sender: self)
             } else {
                 expanded.delegate = self
             }
@@ -74,10 +72,10 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         presentVC(presentationStyle: presentationStyle)
     }
     
-    func pickImage(){
+    // MARK: - Delegate Stuff
+    func pickImage() {
         self.requestPresentationStyle(.expanded)
     }
-        
     
     func sendMessage(art: String, image: UIImage) {
         let session = MSSession()
@@ -86,14 +84,15 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         layout.image = image
         layout.caption = "Ascii Art"
         message.layout = layout
-        message.url = getMessageURL(art: "Ascii Art", image: image)
+        message.url = getMessageURL(art: "To large for URL")
         self.activeConversation?.insert(message, completionHandler: { (err) in
             print("INSERT-ERROR \(err.debugDescription)")
         })
         self.dismiss()
     }
     
-    func getMessageURL(art: String, image: UIImage) -> URL {
+    // MARK: - Create URL
+    func getMessageURL(art: String) -> URL {
         var components = URLComponents()
         let qArt = URLQueryItem(name: "art", value: art)
         components.queryItems = [qArt]

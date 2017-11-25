@@ -136,29 +136,24 @@ class SecondViewController:
         self.show(imagePicker, sender: self)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             displayImage(image)
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Rendering
-    fileprivate func displayImageNamed(_ imageName: String)
-    {
+    fileprivate func displayImageNamed(_ imageName: String) {
         displayImage(UIImage(named: imageName)!)
     }
     
-    fileprivate func displayImage(_ image: UIImage)
-    {
+    fileprivate func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -178,8 +173,7 @@ class SecondViewController:
         }
     }
     
-    fileprivate func displayAsciiArt(_ asciiArt: String)
-    {
+    fileprivate func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont
@@ -201,14 +195,12 @@ class SecondViewController:
     }
     
     // MARK: - Zooming support
-    fileprivate func configureZoomSupport()
-    {
+    fileprivate func configureZoomSupport() {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    fileprivate func updateZoomSettings(animated: Bool)
-    {
+    fileprivate func updateZoomSettings(animated: Bool) {
         let
         scrollSize  = scrollView.frame.size,
         contentSize = scrollView.contentSize,
@@ -220,8 +212,7 @@ class SecondViewController:
     }
     
     // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return currentLabel
     }
     

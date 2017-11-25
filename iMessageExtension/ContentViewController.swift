@@ -11,13 +11,21 @@ import UIKit
 class ContentViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Setup
+    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
+    
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var asciiArt:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.configureZoomSupport()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // displayAsciiArt(asciiArt!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,11 +33,11 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK - Actions
+    // MARK: - Actions
     @IBAction func save(_ sender: Any) {
         showShareMenu()
     }
-    
+
     // MARK: - Share Menu
     var asciiArtFinished:String?
     
@@ -51,6 +59,8 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         share.addAction(copy)
         share.addAction(image)
         share.addAction(cancel)
+        
+        share.view.transform = CGAffineTransform(translationX: 0, y: -40) // Removes overlap with bottom bar
         
         present(share, animated: true, completion: nil)
     }
@@ -91,6 +101,26 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(imageAlert, animated: true, completion: nil)
+    }
+    
+    // MARL: - Display the Passed String
+    fileprivate func displayAsciiArt(_ asciiArt: String) {
+        let
+        label = UILabel()
+        label.font = self.labelFont
+        label.lineBreakMode = NSLineBreakMode.byClipping
+        label.numberOfLines = 0
+        label.text = asciiArt
+        label.sizeToFit()
+        
+        currentLabel?.removeFromSuperview()
+        currentLabel = label
+        
+        scrollView.addSubview(label)
+        scrollView.contentSize = label.frame.size
+        
+        self.updateZoomSettings(animated: false)
+        scrollView.contentOffset = CGPoint.zero
     }
 
     // MARK: - Zooming support
