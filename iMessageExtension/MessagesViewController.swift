@@ -72,11 +72,26 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         presentVC(presentationStyle: presentationStyle)
     }
     
-    // MARK: - Delegate Stuff
-    func pickImage() {
-        self.requestPresentationStyle(.expanded)
+    // MARK: - Send to Content View
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toContent" {
+            let url = String(describing: self.activeConversation!.selectedMessage!.url)
+            let destination = segue.destination as! ContentViewController
+            var sheetRow = getQueryStringParameter(url: url, param: "sheetRow")
+            
+            // TODO - Get string from Google sheet
+            // TODO - Send string to "destination.asciiArt"
+        }
     }
     
+    func getQueryStringParameter(url: String, param: String) -> String? {
+        guard let url = URLComponents(string: url) else { return nil }
+        return url.queryItems?.first(where: { $0.name == param })?.value
+    }
+    
+    // TODO - Function to get string from google sheet
+    
+    // MARK: - Send Message + URL
     func sendMessage(art: String, image: UIImage) {
         let session = MSSession()
         let message = MSMessage(session: session)
@@ -84,18 +99,26 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         layout.image = image
         layout.caption = "Ascii Art"
         message.layout = layout
-        message.url = getMessageURL(art: "To large for URL")
+        // TODO - Add new row and upload param art to it
+        message.url = getMessageURL(sheetRow: "NEEDS FUNCTION FOR NEW ROW")
         self.activeConversation?.insert(message, completionHandler: { (err) in
             print("INSERT-ERROR \(err.debugDescription)")
         })
         self.dismiss()
     }
     
-    // MARK: - Create URL
-    func getMessageURL(art: String) -> URL {
+    // TODO - Func to upload string to new row of google sheet
+    
+    func getMessageURL(sheetRow: String) -> URL {
         var components = URLComponents()
-        let qArt = URLQueryItem(name: "art", value: art)
-        components.queryItems = [qArt]
+        let qRow = URLQueryItem(name: "sheetRow", value: sheetRow)
+        components.queryItems = [qRow]
         return components.url!
     }
+    
+    // MARK: - Delegate Stuff
+    func pickImage() {
+        self.requestPresentationStyle(.expanded)
+    }
+    
 }
