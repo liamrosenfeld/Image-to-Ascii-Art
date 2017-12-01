@@ -18,7 +18,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     
     var ref: DatabaseReference!
     
-    var dataID:String? = "KEEP THIS TEXT HERE UNTIL YOU FIGURE OUT ID SAVING"
+    var artID:String? = "KEEP THIS TEXT HERE UNTIL YOU FIGURE OUT ID SAVING"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +87,11 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         if segue.identifier == "toContent" {
             let url = String(describing: self.activeConversation!.selectedMessage!.url)
             let destination = segue.destination as! ContentViewController
-            var dataID = getQueryStringParameter(url: url, param: "databaseID")
+            var dataID = getQueryStringParameter(url: url, param: "artID")
             
             // TODO - Get string from firebase
-            // TODO - Send string to "destination.asciiArt"
+            
+            destination.asciiArt = "ART VARIABLE"
         }
     }
     
@@ -110,7 +111,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         layout.caption = "Ascii Art"
         message.layout = layout
         toFirebase(art: art)
-        message.url = getMessageURL(databaseID: dataID!)
+        message.url = getMessageURL(artID: artID!)
         self.activeConversation?.insert(message, completionHandler: { (err) in
             print("INSERT-ERROR \(err.debugDescription)")
         })
@@ -118,13 +119,15 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     func toFirebase(art: String) {
-        self.ref.child("asciiArt").setValue(art)
-        // TODO - GET ID
+        var postArt = self.ref.child("asciiArt").childByAutoId()
+        postArt.setValue(art)
+        
+        artID = postArt.key
     }
     
-    func getMessageURL(databaseID: String) -> URL {
+    func getMessageURL(artID: String) -> URL {
         var components = URLComponents()
-        let qID = URLQueryItem(name: "databaseID", value: databaseID)
+        let qID = URLQueryItem(name: "artID", value: artID)
         components.queryItems = [qID]
         return components.url!
     }
