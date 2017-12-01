@@ -8,6 +8,7 @@
 
 import UIKit
 import Messages
+import Firebase
 
 class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate {
     
@@ -17,7 +18,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,7 +80,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
             let destination = segue.destination as! ContentViewController
             var sheetRow = getQueryStringParameter(url: url, param: "sheetRow")
             
-            // TODO - Get string from Google sheet
+            // TODO - Get string from firebase
             // TODO - Send string to "destination.asciiArt"
         }
     }
@@ -89,7 +90,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
     
-    // TODO - Function to get string from google sheet
+    // TODO - Function to get string from firbase
     
     // MARK: - Send Message + URL
     func sendMessage(art: String, image: UIImage) {
@@ -107,7 +108,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         self.dismiss()
     }
     
-    // TODO - Func to upload string to new row of google sheet
+    // TODO - Func to upload string firebase
     
     func getMessageURL(sheetRow: String) -> URL {
         var components = URLComponents()
