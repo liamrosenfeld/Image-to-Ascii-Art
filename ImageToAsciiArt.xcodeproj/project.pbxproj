@@ -26,7 +26,6 @@
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
-		AD8CB5A21FD0AA1500C97659 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD8CB5A11FD0AA1500C97659 /* GoogleService-Info.plist */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
 		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
@@ -34,6 +33,7 @@
 		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
 		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
+		ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */; };
 		CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +84,6 @@
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD56A7F61FC8B8D100A92664 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		AD8CB5A11FD0AA1500C97659 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
 		ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
+		ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +205,7 @@
 				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
 				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
 				ADBDE0461FC672FE004F00A2 /* Info.plist */,
-				AD8CB5A11FD0AA1500C97659 /* GoogleService-Info.plist */,
+				ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 			files = (
 				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
 				ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */,
-				AD8CB5A21FD0AA1500C97659 /* GoogleService-Info.plist in Resources */,
+				ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

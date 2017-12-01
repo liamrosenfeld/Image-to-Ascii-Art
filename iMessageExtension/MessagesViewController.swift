@@ -16,9 +16,14 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     let compactID:String = "compact"
     let expandedID:String = "expanded"
     
+    var ref: DatabaseReference!
+    
+    var dataID:String? = "KEEP THIS TEXT HERE UNTIL YOU FIGURE OUT ID SAVING"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        FirebaseApp.configure()
+        ref = Database.database().reference()
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,12 +78,16 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         presentVC(presentationStyle: presentationStyle)
     }
     
-    // MARK: - Send to Content View
+    func pickImage() {
+        self.requestPresentationStyle(.expanded)
+    }
+    
+    // MARK: - Send ASCII Art to Content View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContent" {
             let url = String(describing: self.activeConversation!.selectedMessage!.url)
             let destination = segue.destination as! ContentViewController
-            var sheetRow = getQueryStringParameter(url: url, param: "sheetRow")
+            var dataID = getQueryStringParameter(url: url, param: "databaseID")
             
             // TODO - Get string from firebase
             // TODO - Send string to "destination.asciiArt"
@@ -100,26 +109,23 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         layout.image = image
         layout.caption = "Ascii Art"
         message.layout = layout
-        // TODO - Add new row and upload param art to it
-        message.url = getMessageURL(sheetRow: "NEEDS FUNCTION FOR NEW ROW")
+        toFirebase(art: art)
+        message.url = getMessageURL(databaseID: dataID!)
         self.activeConversation?.insert(message, completionHandler: { (err) in
             print("INSERT-ERROR \(err.debugDescription)")
         })
         self.dismiss()
     }
     
-    // TODO - Func to upload string firebase
+    func toFirebase(art: String) {
+        self.ref.child("asciiArt").setValue(art)
+        // TODO - GET ID
+    }
     
-    func getMessageURL(sheetRow: String) -> URL {
+    func getMessageURL(databaseID: String) -> URL {
         var components = URLComponents()
-        let qRow = URLQueryItem(name: "sheetRow", value: sheetRow)
-        components.queryItems = [qRow]
+        let qID = URLQueryItem(name: "databaseID", value: databaseID)
+        components.queryItems = [qID]
         return components.url!
     }
-    
-    // MARK: - Delegate Stuff
-    func pickImage() {
-        self.requestPresentationStyle(.expanded)
-    }
-    
 }
