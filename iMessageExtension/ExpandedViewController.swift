@@ -32,8 +32,7 @@ class ExpandedViewController:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.configureZoomSupport()
     }
     
     override func viewDidAppear(_ animated: Bool) {

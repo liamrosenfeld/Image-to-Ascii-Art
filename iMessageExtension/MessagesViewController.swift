@@ -18,12 +18,15 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     
     var ref: DatabaseReference!
     
-    var artID:String? = "KEEP THIS TEXT HERE UNTIL YOU FIGURE OUT ID SAVING"
+    var artID:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseApp.configure()
-        ref = Database.database().reference()
+        
+        if(FirebaseApp.app() == nil){
+            FirebaseApp.configure()
+            ref = Database.database().reference()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,11 +90,11 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         if segue.identifier == "toContent" {
             let url = String(describing: self.activeConversation!.selectedMessage!.url)
             let destination = segue.destination as! ContentViewController
+            
             var dataID = getQueryStringParameter(url: url, param: "artID")
+            getArtFromFirebase(dataID: dataID!)
             
-            // TODO - Get string from firebase
-            
-            destination.asciiArt = "ART VARIABLE"
+            destination.asciiArt = "IT LOADED"
         }
     }
     
@@ -100,7 +103,9 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
     
-    // TODO - Function to get string from firbase
+    func getArtFromFirebase(dataID: String) {
+        // TODO - Make it
+    }
     
     // MARK: - Send Message + URL
     func sendMessage(art: String, image: UIImage) {
