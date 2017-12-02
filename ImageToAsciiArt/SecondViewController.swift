@@ -76,7 +76,7 @@ class SecondViewController:
         present(share, animated: true, completion: nil)
     }
     
-    // For Image Option
+    // Save as Image
     func convertToImage() -> UIImage? {
         UIGraphicsBeginImageContext(scrollView.contentSize)
             

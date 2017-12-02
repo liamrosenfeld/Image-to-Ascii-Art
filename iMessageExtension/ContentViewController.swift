@@ -25,7 +25,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        // displayAsciiArt(asciiArt!)
+        displayAsciiArt(asciiArt!)
     }
 
     override func didReceiveMemoryWarning() {

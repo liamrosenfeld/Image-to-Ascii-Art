@@ -92,9 +92,13 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
             let destination = segue.destination as! ContentViewController
             
             var dataID = getQueryStringParameter(url: url, param: "artID")
-            getArtFromFirebase(dataID: dataID!)
+            var asciiArt:String? = getArtFromFirebase(dataID: dataID!)
             
-            destination.asciiArt = "IT LOADED"
+            if(asciiArt == nil){
+                asciiArt = "This ASCII art is no longer on the server"
+            }
+            
+            destination.asciiArt = asciiArt!
         }
     }
     
@@ -103,8 +107,8 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
     
-    func getArtFromFirebase(dataID: String) {
-        // TODO - Make it
+    func getArtFromFirebase(dataID: String) -> String {
+            return "worked"
     }
     
     // MARK: - Send Message + URL
@@ -118,7 +122,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         toFirebase(art: art)
         message.url = getMessageURL(artID: artID!)
         self.activeConversation?.insert(message, completionHandler: { (err) in
-            print("INSERT-ERROR \(err.debugDescription)")
+            print("Error? - \(err.debugDescription)")
         })
         self.dismiss()
     }
