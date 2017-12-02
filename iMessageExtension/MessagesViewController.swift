@@ -88,7 +88,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     // MARK: - Send ASCII Art to Content View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContent" {
-            let url = String(describing: self.activeConversation!.selectedMessage!.url)
+            let url = String(describing: self.activeConversation!.selectedMessage!.url!)
             let destination = segue.destination as! ContentViewController
             
             var dataID = getQueryStringParameter(url: url, param: "artID")
@@ -108,7 +108,8 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     func getArtFromFirebase(dataID: String) -> String {
-            return "worked"
+        Database.database().reference().child("asciiArt").child(dataID)
+        return "worked"
     }
     
     // MARK: - Send Message + URL
@@ -122,7 +123,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         toFirebase(art: art)
         message.url = getMessageURL(artID: artID!)
         self.activeConversation?.insert(message, completionHandler: { (err) in
-            print("Error? - \(err.debugDescription)")
+            print(err.debugDescription)
         })
         self.dismiss()
     }
@@ -136,7 +137,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     
     func getMessageURL(artID: String) -> URL {
         var components = URLComponents()
-        let qID = URLQueryItem(name: "artID", value: artID)
+        let qID = URLQueryItem(name: "artID", value: artID )
         components.queryItems = [qID]
         return components.url!
     }
