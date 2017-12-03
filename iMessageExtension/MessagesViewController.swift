@@ -93,7 +93,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
             let url = String(describing: self.activeConversation!.selectedMessage!.url!)
             let destination = segue.destination as! ContentViewController
             
-            var dataID = getQueryStringParameter(url: url, param: "artID")
+            let dataID = getQueryStringParameter(url: url, param: "artID")
             
             Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 print(snapshot)
@@ -130,7 +130,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     func toFirebase(art: String) {
-        var postArt = self.ref.child("asciiArt").childByAutoId()
+        let postArt = self.ref.child("asciiArt").childByAutoId()
         postArt.setValue(art)
         
         artID = postArt.key
