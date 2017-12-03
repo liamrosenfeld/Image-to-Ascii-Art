@@ -15,10 +15,12 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     // MARK: - Setup
     let compactID:String = "compact"
     let expandedID:String = "expanded"
+    var inContentVC: Bool = false
     
     var ref: DatabaseReference!
     
     var artID:String?
+    var asciiArt:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,24 +94,23 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
             let destination = segue.destination as! ContentViewController
             
             var dataID = getQueryStringParameter(url: url, param: "artID")
-            var asciiArt:String? = getArtFromFirebase(dataID: dataID!)
             
-            if(asciiArt == nil){
-                asciiArt = "This ASCII art is no longer on the server"
-            }
-            
-            destination.asciiArt = asciiArt!
+            Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                print(snapshot)
+                self.asciiArt = snapshot.value as? String
+                
+                if(self.asciiArt == nil){
+                    self.asciiArt = "This ASCII art is no longer on the server"
+                }
+                
+                destination.asciiArt = self.asciiArt!
+            })
         }
     }
     
     func getQueryStringParameter(url: String, param: String) -> String? {
         guard let url = URLComponents(string: url) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
-    }
-    
-    func getArtFromFirebase(dataID: String) -> String {
-        Database.database().reference().child("asciiArt").child(dataID)
-        return "worked"
     }
     
     // MARK: - Send Message + URL
