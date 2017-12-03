@@ -18,8 +18,48 @@
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
+		AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
+		AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
+		AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
+		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
+		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
+		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
+		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
+		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
+		ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
+		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
+		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
+		ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */; };
+		CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADBDE0471FC672FE004F00A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0384D6BE1AEC4BB900242145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADBDE0391FC672FE004F00A2;
+			remoteInfo = iMessageExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +75,24 @@
 		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Util.swift"; path = "ImageToAsciiArt/UIImage+Util.swift"; sourceTree = "<group>"; };
 		03F080951AEDD29200A20334 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = batman.png; path = images/batman.png; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiPalette.swift; path = ImageToAsciiArt/AsciiPalette.swift; sourceTree = "<group>"; };
+		0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageToAsciiArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessageExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
+		3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.release.xcconfig"; sourceTree = "<group>"; };
+		89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.release.xcconfig"; sourceTree = "<group>"; };
+		A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AD56A7F61FC8B8D100A92664 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		ADBDE0421FC672FE004F00A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ADBDE0441FC672FE004F00A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
+		ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
+		ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +100,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBDE0371FC672FE004F00A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */,
+				87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,13 +119,17 @@
 		0384D6BD1AEC4BB900242145 = {
 			isa = PBXGroup;
 			children = (
+				AD56A7F61FC8B8D100A92664 /* README.md */,
 				0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */,
 				03F080971AEDD7D000A20334 /* AsciiPalette.swift */,
 				0384D6F01AEC66C300242145 /* Pixel.swift */,
 				03F0808F1AED4F1600A20334 /* UIImage+Util.swift */,
 				0384D6C81AEC4BB900242145 /* app */,
 				0384D6EF1AEC4D7B00242145 /* images */,
+				ADBDE03E1FC672FE004F00A2 /* iMessageExtension */,
 				0384D6C71AEC4BB900242145 /* products */,
+				ADBDE03B1FC672FE004F00A2 /* Frameworks */,
+				70D804C0C749F0619EC5B709 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */,
+				ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */,
 			);
 			name = products;
 			sourceTree = "<group>";
@@ -102,6 +174,42 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		70D804C0C749F0619EC5B709 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */,
+				3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */,
+				A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */,
+				89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ADBDE03B1FC672FE004F00A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADBDE03C1FC672FE004F00A2 /* Messages.framework */,
+				0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */,
+				0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADBDE03E1FC672FE004F00A2 /* iMessageExtension */ = {
+			isa = PBXGroup;
+			children = (
+				ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */,
+				ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */,
+				ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */,
+				AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */,
+				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
+				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
+				ADBDE0461FC672FE004F00A2 /* Info.plist */,
+				ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */,
+			);
+			path = iMessageExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,18 +217,42 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0384D6E51AEC4BBA00242145 /* Build configuration list for PBXNativeTarget "ImageToAsciiArt" */;
 			buildPhases = (
+				117E14C9E2D4726A329506C0 /* [CP] Check Pods Manifest.lock */,
 				0384D6C21AEC4BB900242145 /* Sources */,
 				0384D6C31AEC4BB900242145 /* Frameworks */,
 				0384D6C41AEC4BB900242145 /* Resources */,
+				ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */,
+				E3CE2FA464D0BE29774CFA25 /* [CP] Embed Pods Frameworks */,
+				9B108C325CF266C324A0033E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ADBDE0481FC672FE004F00A2 /* PBXTargetDependency */,
 			);
 			name = ImageToAsciiArt;
 			productName = SwiftAsciiArt;
 			productReference = 0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */;
 			productType = "com.apple.product-type.application";
+		};
+		ADBDE0391FC672FE004F00A2 /* iMessageExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADBDE04C1FC672FE004F00A2 /* Build configuration list for PBXNativeTarget "iMessageExtension" */;
+			buildPhases = (
+				678776FC4E06D63CFF0B4D4E /* [CP] Check Pods Manifest.lock */,
+				ADBDE0361FC672FE004F00A2 /* Sources */,
+				ADBDE0371FC672FE004F00A2 /* Frameworks */,
+				ADBDE0381FC672FE004F00A2 /* Resources */,
+				F41056DF88206FDF1FC21DD4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iMessageExtension;
+			productName = iMessageExtension;
+			productReference = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
 		};
 /* End PBXNativeTarget section */
 
@@ -129,7 +261,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = liamrosenfeld;
 				TargetAttributes = {
@@ -137,6 +269,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = DSGCBGBHJN;
 						LastSwiftMigration = 0910;
+					};
+					ADBDE0391FC672FE004F00A2 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = DSGCBGBHJN;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -154,6 +291,7 @@
 			projectRoot = "";
 			targets = (
 				0384D6C51AEC4BB900242145 /* ImageToAsciiArt */,
+				ADBDE0391FC672FE004F00A2 /* iMessageExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -163,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
 				03F080961AEDD29200A20334 /* batman.png in Resources */,
 				0384D6EE1AEC4D7700242145 /* kermit.png in Resources */,
@@ -171,7 +310,95 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADBDE0381FC672FE004F00A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
+				ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */,
+				ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		117E14C9E2D4726A329506C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		678776FC4E06D63CFF0B4D4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B108C325CF266C324A0033E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3CE2FA464D0BE29774CFA25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F41056DF88206FDF1FC21DD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0384D6C21AEC4BB900242145 /* Sources */ = {
@@ -188,7 +415,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADBDE0361FC672FE004F00A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */,
+				AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */,
+				AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */,
+				ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */,
+				ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */,
+				AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */,
+				AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */,
+				ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADBDE0481FC672FE004F00A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADBDE0391FC672FE004F00A2 /* iMessageExtension */;
+			targetProxy = ADBDE0471FC672FE004F00A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0384D6CF1AEC4BB900242145 /* Main.storyboard */ = {
@@ -205,6 +455,14 @@
 				0384D6D51AEC4BB900242145 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADBDE0421FC672FE004F00A2 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -313,8 +571,11 @@
 		};
 		0384D6E61AEC4BBA00242145 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -329,8 +590,11 @@
 		};
 		0384D6E71AEC4BBA00242145 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -339,6 +603,58 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		ADBDE04A1FC672FE004F00A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADBDE04B1FC672FE004F00A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -359,6 +675,15 @@
 			buildConfigurations = (
 				0384D6E61AEC4BBA00242145 /* Debug */,
 				0384D6E71AEC4BBA00242145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADBDE04C1FC672FE004F00A2 /* Build configuration list for PBXNativeTarget "iMessageExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADBDE04A1FC672FE004F00A2 /* Debug */,
+				ADBDE04B1FC672FE004F00A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

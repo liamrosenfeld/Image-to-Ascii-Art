@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>979678249122-d5k23s2ujpv8fmkfpe0eb6dcedp0jp04.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.979678249122-d5k23s2ujpv8fmkfpe0eb6dcedp0jp04</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB0BnT6cH5GaBkQ7BseX9VaSN1hkEBETzs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>979678249122</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>liamrosenfeld.ImageToAsciiArt.iMessageExtension</string>
+	<key>PROJECT_ID</key>
+	<string>image-to-ascii-art</string>
+	<key>STORAGE_BUCKET</key>
+	<string>image-to-ascii-art.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<false/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<false/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:979678249122:ios:444c97ce4a99be42</string>
+	<key>DATABASE_URL</key>
+	<string>https://image-to-ascii-art.firebaseio.com</string>
+</dict>
+</plist>
