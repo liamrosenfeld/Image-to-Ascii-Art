@@ -12,12 +12,8 @@ protocol ExpandedDelegate {
     func sendMessage(art:String, image:UIImage)
 }
 
-class ExpandedViewController:
-    UIViewController,
-    UIScrollViewDelegate,
-    UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate
-{
+class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
@@ -28,7 +24,7 @@ class ExpandedViewController:
     @IBOutlet weak var busyView: UIView!
     
     var delegate:ExpandedDelegate?
-    var asciiArtFinished:String?
+    var asciiArt:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +35,7 @@ class ExpandedViewController:
         super.viewDidAppear(true)
         pickImage()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,8 +43,25 @@ class ExpandedViewController:
     
     // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
-        var asciiArtImage:UIImage = self.convertToImage()!
-        delegate?.sendMessage(art: asciiArtFinished!, image: asciiArtImage)
+        if  asciiArt != nil {
+            let asciiArtImage:UIImage = self.convertToImage()!
+            delegate?.sendMessage(art: asciiArt!, image: asciiArtImage)
+        } else {
+            emptyAlert()
+        }
+    }
+    
+    @IBAction func newImage(_ sender: Any) {
+        pickImage()
+    }
+    
+    // Alerts
+    func emptyAlert() {
+        let emptyAlert = UIAlertController(title: "Woah There!", message:
+            "Please pick an image first", preferredStyle: UIAlertControllerStyle.alert)
+        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(emptyAlert, animated: true, completion: nil)
     }
     
     // MARL: - Image Converter
@@ -112,7 +125,7 @@ class ExpandedViewController:
             }
             
             print(asciiArt)
-            self.asciiArtFinished = asciiArt
+            self.asciiArt = asciiArt
         }
     }
     
@@ -135,7 +148,7 @@ class ExpandedViewController:
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
         
-        var finishedArt = asciiArt
+        self.asciiArt = asciiArt
     }
     
     // MARK: - Zooming support
@@ -162,5 +175,5 @@ class ExpandedViewController:
     {
         return currentLabel
     }
-
+    
 }

@@ -8,20 +8,18 @@
 
 import UIKit
 
-class SecondViewController:
-    UIViewController,
-    UIScrollViewDelegate,
-    UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate
-{
+class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
-
+    
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    var asciiArt:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +46,19 @@ class SecondViewController:
     }
     
     @IBAction func share(_ sender: UIButton) {
-        self.showShareMenu()
+        if self.asciiArt != nil {
+            self.showShareMenu()
+        } else {
+            emptyAlert()
+        }
     }
     
     // MARK: - Share Menu
-    var asciiArtFinished:String?
-    
     func showShareMenu() {
         let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
-            UIPasteboard.general.string = self.asciiArtFinished
+            UIPasteboard.general.string = self.asciiArt
             self.copiedAlert()
         }
         
@@ -79,25 +79,25 @@ class SecondViewController:
     // Save as Image
     func convertToImage() -> UIImage? {
         UIGraphicsBeginImageContext(scrollView.contentSize)
-            
+        
         let savedContentOffset = scrollView.contentOffset
         let savedFrame = scrollView.frame
-    
+        
         scrollView.contentOffset = CGPoint.zero
         scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-
+        
         scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
-
+        
         scrollView.contentOffset = savedContentOffset
         scrollView.frame = savedFrame
-
+        
         UIGraphicsEndImageContext()
-
+        
         return image
     }
     
-    // Alerts
+    // MARK: - Alerts
     func copiedAlert() {
         let copiedAlert = UIAlertController(title: "Copied!", message:
             nil, preferredStyle: UIAlertControllerStyle.alert)
@@ -112,6 +112,13 @@ class SecondViewController:
         imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(imageAlert, animated: true, completion: nil)
+    }
+    func emptyAlert() {
+        let emptyAlert = UIAlertController(title: "Woah There!", message:
+            "Please pick an image first", preferredStyle: UIAlertControllerStyle.alert)
+        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(emptyAlert, animated: true, completion: nil)
     }
     
     // MARK: - Translates Home String Into an Action
@@ -169,7 +176,7 @@ class SecondViewController:
             }
             
             print(asciiArt)
-            self.asciiArtFinished = asciiArt
+            self.asciiArt = asciiArt
         }
     }
     
@@ -191,7 +198,7 @@ class SecondViewController:
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
         
-        var finishedArt = asciiArt
+        self.asciiArt = asciiArt
     }
     
     // MARK: - Zooming support
@@ -217,3 +224,4 @@ class SecondViewController:
     }
     
 }
+

@@ -27,7 +27,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidAppear(true)
         displayAsciiArt(asciiArt!)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,15 +37,13 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func save(_ sender: Any) {
         showShareMenu()
     }
-
-    // MARK: - Share Menu
-    var asciiArtFinished:String?
     
+    // MARK: - Share Menu
     func showShareMenu() {
         let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
-            UIPasteboard.general.string = self.asciiArtFinished
+            UIPasteboard.general.string = self.asciiArt
             self.copiedAlert()
         }
         
@@ -121,8 +119,10 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
+        
+        self.asciiArt = asciiArt
     }
-
+    
     // MARK: - Zooming support
     fileprivate func configureZoomSupport()
     {
@@ -147,5 +147,6 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     {
         return currentLabel
     }
-
+    
 }
+
