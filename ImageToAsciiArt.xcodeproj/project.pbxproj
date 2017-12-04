@@ -13,19 +13,19 @@
 		0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
 		0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D41AEC4BB900242145 /* LaunchScreen.xib */; };
 		0384D6EC1AEC4D6500242145 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
-		0384D6EE1AEC4D7700242145 /* kermit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6ED1AEC4D7700242145 /* kermit.png */; };
 		0384D6F11AEC66C300242145 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
-		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
 		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
-		AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
-		AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
-		AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
-		AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
+		AD67BABE1FD4DE400002A0E8 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
+		AD67BABF1FD4DE420002A0E8 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		AD67BAC01FD4DE440002A0E8 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
+		AD67BAC11FD4DE460002A0E8 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
+		AD67BAC51FD4DE890002A0E8 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = AD67BAC31FD4DE890002A0E8 /* batman.png */; };
+		AD67BAC61FD4DE890002A0E8 /* kermit.png in Resources */ = {isa = PBXBuildFile; fileRef = AD67BAC41FD4DE890002A0E8 /* kermit.png */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
 		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
@@ -69,12 +69,10 @@
 		0384D6D01AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0384D6D21AEC4BB900242145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0384D6D51AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiArtist.swift; path = ImageToAsciiArt/AsciiArtist.swift; sourceTree = "<group>"; };
-		0384D6ED1AEC4D7700242145 /* kermit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kermit.png; path = images/kermit.png; sourceTree = "<group>"; };
-		0384D6F01AEC66C300242145 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pixel.swift; path = ImageToAsciiArt/Pixel.swift; sourceTree = "<group>"; };
-		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Util.swift"; path = "ImageToAsciiArt/UIImage+Util.swift"; sourceTree = "<group>"; };
-		03F080951AEDD29200A20334 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = batman.png; path = images/batman.png; sourceTree = "<group>"; };
-		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiPalette.swift; path = ImageToAsciiArt/AsciiPalette.swift; sourceTree = "<group>"; };
+		0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiArtist.swift; sourceTree = "<group>"; };
+		0384D6F01AEC66C300242145 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
+		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
+		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
 		0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageToAsciiArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessageExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +82,8 @@
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD56A7F61FC8B8D100A92664 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD67BAC31FD4DE890002A0E8 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batman.png; sourceTree = "<group>"; };
+		AD67BAC41FD4DE890002A0E8 /* kermit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit.png; sourceTree = "<group>"; };
 		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -120,12 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				AD56A7F61FC8B8D100A92664 /* README.md */,
-				0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */,
-				03F080971AEDD7D000A20334 /* AsciiPalette.swift */,
-				0384D6F01AEC66C300242145 /* Pixel.swift */,
-				03F0808F1AED4F1600A20334 /* UIImage+Util.swift */,
+				AD67BABD1FD4DDF60002A0E8 /* shared */,
 				0384D6C81AEC4BB900242145 /* app */,
-				0384D6EF1AEC4D7B00242145 /* images */,
 				ADBDE03E1FC672FE004F00A2 /* iMessageExtension */,
 				0384D6C71AEC4BB900242145 /* products */,
 				ADBDE03B1FC672FE004F00A2 /* Frameworks */,
@@ -148,6 +144,7 @@
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
 				0384D6CD1AEC4BB900242145 /* ViewController.swift */,
 				AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */,
+				AD67BAC21FD4DE720002A0E8 /* Images */,
 				0384D6C91AEC4BB900242145 /* Supporting Files */,
 			);
 			name = app;
@@ -165,15 +162,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0384D6EF1AEC4D7B00242145 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				03F080951AEDD29200A20334 /* batman.png */,
-				0384D6ED1AEC4D7700242145 /* kermit.png */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
 		70D804C0C749F0619EC5B709 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +171,27 @@
 				89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD67BABD1FD4DDF60002A0E8 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */,
+				03F080971AEDD7D000A20334 /* AsciiPalette.swift */,
+				0384D6F01AEC66C300242145 /* Pixel.swift */,
+				03F0808F1AED4F1600A20334 /* UIImage+Util.swift */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		AD67BAC21FD4DE720002A0E8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AD67BAC31FD4DE890002A0E8 /* batman.png */,
+				AD67BAC41FD4DE890002A0E8 /* kermit.png */,
+			);
+			name = Images;
+			path = images;
 			sourceTree = "<group>";
 		};
 		ADBDE03B1FC672FE004F00A2 /* Frameworks */ = {
@@ -303,9 +312,9 @@
 			files = (
 				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
-				03F080961AEDD29200A20334 /* batman.png in Resources */,
-				0384D6EE1AEC4D7700242145 /* kermit.png in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
+				AD67BAC61FD4DE890002A0E8 /* kermit.png in Resources */,
+				AD67BAC51FD4DE890002A0E8 /* batman.png in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,14 +428,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD67BAC01FD4DE440002A0E8 /* Pixel.swift in Sources */,
 				AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */,
-				AD2B3E221FC6814B000F22DE /* AsciiPalette.swift in Sources */,
-				AD2B3E211FC68149000F22DE /* AsciiArtist.swift in Sources */,
+				AD67BABF1FD4DE420002A0E8 /* AsciiPalette.swift in Sources */,
 				ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */,
 				ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */,
-				AD2B3E231FC6814D000F22DE /* Pixel.swift in Sources */,
-				AD2B3E241FC6814F000F22DE /* UIImage+Util.swift in Sources */,
+				AD67BABE1FD4DE400002A0E8 /* AsciiArtist.swift in Sources */,
 				ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */,
+				AD67BAC11FD4DE460002A0E8 /* UIImage+Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
