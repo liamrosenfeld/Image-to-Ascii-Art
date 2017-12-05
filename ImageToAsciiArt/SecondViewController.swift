@@ -19,6 +19,8 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let ImagePickerController = UIImagePickerController()
+    
     var asciiArt:String?
     
     override func viewDidLoad() {
@@ -128,19 +130,23 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
         if whichButtonPressed! == "homePickImage" {
             pickImage()
             whichButtonPressed = "done"
+        } else if whichButtonPressed! == "homeTakePicture" {
+            takePicture()
+            whichButtonPressed = "done"
         } else if whichButtonPressed! == "kermit" {
             displayImageNamed("kermit")
+            whichButtonPressed = "done"
         } else if whichButtonPressed! == "batman" {
             displayImageNamed("batman")
+            whichButtonPressed = "done"
         }
     }
     
     
-    // MARK: - UIImagePickerControllerDelegate
+    // MARK: - Image Picker
     func pickImage() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(imagePicker, sender: self)
+        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(ImagePickerController, sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -153,6 +159,17 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Camera
+    func takePicture() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            ImagePickerController.delegate = self
+            ImagePickerController.sourceType = .camera
+            self.present(ImagePickerController, animated: true, completion: nil)
+        } else {
+            print("Camera not avaliable :(")
+        }
     }
     
     // MARK: - Rendering

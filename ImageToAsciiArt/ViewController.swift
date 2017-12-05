@@ -35,6 +35,11 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
     
+    @IBAction func homeTakePicture(_ sender: Any) {
+        buttonPressed = "homeTakePicture"
+        self.performSegue(withIdentifier: "homeToContent", sender: self)
+    }
+    
     @IBAction func kermit(_ sender: UIButton) {
         buttonPressed = "kermit"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
