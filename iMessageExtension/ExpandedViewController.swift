@@ -23,6 +23,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busyView: UIView!
     
+    let ImagePickerController = UIImagePickerController()
     var delegate:ExpandedDelegate?
     var asciiArt:String?
     
@@ -85,11 +86,10 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         return image
     }
     
-    // MARK: - UIImagePickerControllerDelegate
+    // MARK: - Image Picker
     func pickImage() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(imagePicker, sender: self)
+        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(ImagePickerController, sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -105,6 +105,18 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Camera
+    func takePicture() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            ImagePickerController.delegate = self
+            ImagePickerController.sourceType = .camera
+            self.present(ImagePickerController, animated: true, completion: nil)
+        } else {
+            print("Camera not avaliable :(")
+        }
     }
     
     // MARK: - Rendering
