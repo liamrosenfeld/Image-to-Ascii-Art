@@ -133,12 +133,6 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
         } else if whichButtonPressed! == "homeTakePicture" {
             takePicture()
             whichButtonPressed = "done"
-        } else if whichButtonPressed! == "kermit" {
-            displayImageNamed("kermit")
-            whichButtonPressed = "done"
-        } else if whichButtonPressed! == "batman" {
-            displayImageNamed("batman")
-            whichButtonPressed = "done"
         }
     }
     
