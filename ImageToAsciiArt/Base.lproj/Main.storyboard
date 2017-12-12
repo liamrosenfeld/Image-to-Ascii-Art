@@ -26,14 +26,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-White" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-kV-GUA">
                                 <rect key="frame" x="87" y="44" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="CYw-yE-fgb"/>
+                                    <constraint firstAttribute="height" constant="128" id="OKn-r0-2Pa"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj1-jU-tmG">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj1-jU-tmG" userLabel="Pick Image View">
                                 <rect key="frame" x="0.0" y="281" width="414" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axV-Kg-kGU">
-                                        <rect key="frame" x="160" y="33" width="95" height="36"/>
+                                        <rect key="frame" x="180" y="32" width="95" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Pick Image">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,18 +42,29 @@
                                             <action selector="homePickImage:" destination="bdA-yh-WMm" eventType="touchUpInside" id="qWl-Bw-2UH"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-Glyph" translatesAutoresizingMaskIntoConstraints="NO" id="qex-0j-Vs2">
+                                        <rect key="frame" x="122" y="30" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="GFz-J6-l2J"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.3367576003074646" green="0.55194240808486938" blue="0.63989001512527466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="axV-Kg-kGU" firstAttribute="centerY" secondItem="Dj1-jU-tmG" secondAttribute="centerY" id="V0P-bh-BVs"/>
-                                    <constraint firstItem="axV-Kg-kGU" firstAttribute="centerX" secondItem="Dj1-jU-tmG" secondAttribute="centerX" id="ybG-fC-Que"/>
+                                    <constraint firstItem="qex-0j-Vs2" firstAttribute="centerY" secondItem="Dj1-jU-tmG" secondAttribute="centerY" id="CrX-Jp-ZC2"/>
+                                    <constraint firstItem="axV-Kg-kGU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qex-0j-Vs2" secondAttribute="trailing" constant="8" symbolic="YES" id="cRO-sp-0wJ"/>
+                                    <constraint firstItem="qex-0j-Vs2" firstAttribute="top" secondItem="Dj1-jU-tmG" secondAttribute="top" constant="30" id="fzj-mR-9SW"/>
+                                    <constraint firstAttribute="trailing" secondItem="axV-Kg-kGU" secondAttribute="trailing" constant="139" id="iTH-Ta-k0X"/>
+                                    <constraint firstItem="axV-Kg-kGU" firstAttribute="top" secondItem="Dj1-jU-tmG" secondAttribute="top" constant="32" id="pgy-jq-fJN"/>
+                                    <constraint firstItem="qex-0j-Vs2" firstAttribute="centerY" secondItem="axV-Kg-kGU" secondAttribute="centerY" id="rPN-8j-0tM"/>
+                                    <constraint firstItem="qex-0j-Vs2" firstAttribute="leading" secondItem="Dj1-jU-tmG" secondAttribute="leading" constant="122" id="wCZ-aT-81C"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJh-GR-AQL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJh-GR-AQL" userLabel="Take Image View">
                                 <rect key="frame" x="0.0" y="441" width="414" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuV-VE-fhV">
-                                        <rect key="frame" x="157" y="32" width="100" height="36"/>
+                                        <rect key="frame" x="183" y="32" width="100" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Take Pictue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,27 +73,36 @@
                                             <action selector="homeTakePicture:" destination="bdA-yh-WMm" eventType="touchUpInside" id="xAD-KT-eDe"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Glyph" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-6K-i8I">
+                                        <rect key="frame" x="125" y="30" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="t1y-b3-q6a"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42665749788284302" green="0.73586887121200562" blue="0.85731029510498047" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="LuV-VE-fhV" firstAttribute="centerX" secondItem="RJh-GR-AQL" secondAttribute="centerX" id="Mj2-52-xkT"/>
-                                    <constraint firstItem="LuV-VE-fhV" firstAttribute="centerY" secondItem="RJh-GR-AQL" secondAttribute="centerY" id="yhS-NX-JST"/>
+                                    <constraint firstItem="hG6-6K-i8I" firstAttribute="centerY" secondItem="RJh-GR-AQL" secondAttribute="centerY" id="DT7-iB-anR"/>
+                                    <constraint firstItem="hG6-6K-i8I" firstAttribute="top" secondItem="RJh-GR-AQL" secondAttribute="top" constant="30" id="FUl-uJ-YCd"/>
+                                    <constraint firstItem="LuV-VE-fhV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hG6-6K-i8I" secondAttribute="trailing" constant="8" symbolic="YES" id="GYt-nd-COg"/>
+                                    <constraint firstItem="hG6-6K-i8I" firstAttribute="centerY" secondItem="LuV-VE-fhV" secondAttribute="centerY" id="a7K-b5-u47"/>
+                                    <constraint firstAttribute="trailing" secondItem="LuV-VE-fhV" secondAttribute="trailing" constant="131" id="dXO-KR-tFY"/>
+                                    <constraint firstItem="hG6-6K-i8I" firstAttribute="leading" secondItem="RJh-GR-AQL" secondAttribute="leading" constant="125" id="fNr-JL-jNj"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="trailing" secondItem="RJh-GR-AQL" secondAttribute="trailing" id="4Wp-Nx-dPX"/>
-                            <constraint firstItem="dFM-kV-GUA" firstAttribute="centerX" secondItem="Dj1-jU-tmG" secondAttribute="centerX" id="6Ns-Cc-dTG"/>
-                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="top" secondItem="n8J-lf-vKb" secondAttribute="top" constant="281" id="7q1-BY-e90"/>
-                            <constraint firstItem="dFM-kV-GUA" firstAttribute="leading" secondItem="9Mi-Fz-mT7" secondAttribute="leading" constant="87" id="Fmt-6g-tPO"/>
-                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="leading" secondItem="RJh-GR-AQL" secondAttribute="leading" id="HO8-SZ-CeG"/>
-                            <constraint firstItem="RJh-GR-AQL" firstAttribute="top" secondItem="n8J-lf-vKb" secondAttribute="top" constant="441" id="Vch-ck-anb"/>
-                            <constraint firstItem="dFM-kV-GUA" firstAttribute="top" secondItem="9Mi-Fz-mT7" secondAttribute="top" constant="24" id="WJE-B0-sfk"/>
-                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="leading" secondItem="n8J-lf-vKb" secondAttribute="leading" id="c4s-Ej-dK2"/>
-                            <constraint firstItem="9Mi-Fz-mT7" firstAttribute="bottom" secondItem="RJh-GR-AQL" secondAttribute="bottom" constant="195" id="fpT-7T-iRP"/>
-                            <constraint firstItem="RJh-GR-AQL" firstAttribute="top" secondItem="Dj1-jU-tmG" secondAttribute="bottom" constant="60" id="kF6-Ex-4p6"/>
-                            <constraint firstAttribute="trailing" secondItem="Dj1-jU-tmG" secondAttribute="trailing" id="zHd-Wr-ydi"/>
+                            <constraint firstItem="RJh-GR-AQL" firstAttribute="top" secondItem="Dj1-jU-tmG" secondAttribute="bottom" constant="60" id="1d7-P5-Ckr"/>
+                            <constraint firstAttribute="trailing" secondItem="Dj1-jU-tmG" secondAttribute="trailing" id="GDm-qx-wdc"/>
+                            <constraint firstItem="dFM-kV-GUA" firstAttribute="leading" secondItem="9Mi-Fz-mT7" secondAttribute="leading" constant="87" id="K5l-m6-Qpv"/>
+                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="leading" secondItem="RJh-GR-AQL" secondAttribute="leading" id="MIZ-BM-MtR"/>
+                            <constraint firstItem="dFM-kV-GUA" firstAttribute="top" secondItem="9Mi-Fz-mT7" secondAttribute="top" constant="24" id="U0Z-Mf-08a"/>
+                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="top" secondItem="n8J-lf-vKb" secondAttribute="top" constant="281" id="Wt0-Kz-JGb"/>
+                            <constraint firstItem="9Mi-Fz-mT7" firstAttribute="bottom" secondItem="RJh-GR-AQL" secondAttribute="bottom" constant="195" id="arH-Gv-TOZ"/>
+                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="trailing" secondItem="RJh-GR-AQL" secondAttribute="trailing" id="bCv-gG-QI4"/>
+                            <constraint firstItem="dFM-kV-GUA" firstAttribute="centerX" secondItem="Dj1-jU-tmG" secondAttribute="centerX" id="oro-I6-Qee"/>
+                            <constraint firstItem="Dj1-jU-tmG" firstAttribute="leading" secondItem="n8J-lf-vKb" secondAttribute="leading" id="tyc-qM-cPg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Mi-Fz-mT7"/>
                     </view>
@@ -192,6 +212,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera-Glyph" width="50" height="50"/>
+        <image name="Image-Glyph" width="50" height="50"/>
         <image name="Logo-White" width="848" height="410"/>
     </resources>
 </document>
