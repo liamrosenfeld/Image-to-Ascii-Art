@@ -184,6 +184,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
             DispatchQueue.main.async {
                 self.displayAsciiArt(asciiArt)
                 self.busyView.isHidden = true
+                self.scrollView.backgroundColor = UIColor.white
             }
             
             print(asciiArt)
