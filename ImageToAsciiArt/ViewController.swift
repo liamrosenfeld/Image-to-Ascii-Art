@@ -35,8 +35,14 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
     
-    @IBAction func homeTakePicture(_ sender: Any) {
+    @IBAction func homeTakePicture(_ sender: UIButton) {
         buttonPressed = "homeTakePicture"
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
+    
+    // MARK: - Info Scene
+    @IBAction func close(_ sender: UIButton) {
+        dismiss(animated: false, completion: nil)
+    }
+    
 }
