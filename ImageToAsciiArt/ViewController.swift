@@ -40,9 +40,4 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
     
-    // MARK: - Info Scene
-    @IBAction func close(_ sender: UIButton) {
-        dismiss(animated: false, completion: nil)
-    }
-    
 }
