@@ -21,7 +21,7 @@
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
 		AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461D1FE360C9003925E7 /* InfoViewController.swift */; };
-		AD5446201FE36275003925E7 /* iMessageInstructions.gif in Resources */ = {isa = PBXBuildFile; fileRef = AD54461F1FE36275003925E7 /* iMessageInstructions.gif */; };
+		AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */ = {isa = PBXBuildFile; fileRef = AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */; };
 		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
 		AD67BABE1FD4DE400002A0E8 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
 		AD67BABF1FD4DE420002A0E8 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
@@ -84,7 +84,7 @@
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		AD54461D1FE360C9003925E7 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		AD54461F1FE36275003925E7 /* iMessageInstructions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = iMessageInstructions.gif; sourceTree = "<group>"; };
+		AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = iMessageInstructions.gif; sourceTree = "<group>"; };
 		AD56A7F61FC8B8D100A92664 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -179,8 +179,8 @@
 		AD5446221FE36293003925E7 /* GIF */ = {
 			isa = PBXGroup;
 			children = (
+				AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */,
 				AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */,
-				AD54461F1FE36275003925E7 /* iMessageInstructions.gif */,
 			);
 			name = GIF;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5446201FE36275003925E7 /* iMessageInstructions.gif in Resources */,
+				AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */,
 				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
