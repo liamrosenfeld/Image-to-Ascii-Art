@@ -133,12 +133,6 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
         } else if whichButtonPressed! == "homeTakePicture" {
             takePicture()
             whichButtonPressed = "done"
-        } else if whichButtonPressed! == "kermit" {
-            displayImageNamed("kermit")
-            whichButtonPressed = "done"
-        } else if whichButtonPressed! == "batman" {
-            displayImageNamed("batman")
-            whichButtonPressed = "done"
         }
     }
     
@@ -190,6 +184,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
             DispatchQueue.main.async {
                 self.displayAsciiArt(asciiArt)
                 self.busyView.isHidden = true
+                self.scrollView.backgroundColor = UIColor.white
             }
             
             print(asciiArt)
