@@ -19,13 +19,14 @@
 		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
+		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
+		AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461D1FE360C9003925E7 /* InfoViewController.swift */; };
+		AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */ = {isa = PBXBuildFile; fileRef = AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */; };
 		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
 		AD67BABE1FD4DE400002A0E8 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
 		AD67BABF1FD4DE420002A0E8 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
 		AD67BAC01FD4DE440002A0E8 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
 		AD67BAC11FD4DE460002A0E8 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
-		AD67BAC51FD4DE890002A0E8 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = AD67BAC31FD4DE890002A0E8 /* batman.png */; };
-		AD67BAC61FD4DE890002A0E8 /* kermit.png in Resources */ = {isa = PBXBuildFile; fileRef = AD67BAC41FD4DE890002A0E8 /* kermit.png */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
 		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
@@ -81,9 +82,10 @@
 		A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		AD54461D1FE360C9003925E7 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = iMessageInstructions.gif; sourceTree = "<group>"; };
 		AD56A7F61FC8B8D100A92664 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		AD67BAC31FD4DE890002A0E8 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batman.png; sourceTree = "<group>"; };
-		AD67BAC41FD4DE890002A0E8 /* kermit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit.png; sourceTree = "<group>"; };
 		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
 				0384D6CD1AEC4BB900242145 /* ViewController.swift */,
 				AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */,
-				AD67BAC21FD4DE720002A0E8 /* Images */,
+				AD54461D1FE360C9003925E7 /* InfoViewController.swift */,
 				0384D6C91AEC4BB900242145 /* Supporting Files */,
 			);
 			name = app;
@@ -158,6 +160,7 @@
 				0384D6D21AEC4BB900242145 /* Images.xcassets */,
 				0384D6CA1AEC4BB900242145 /* Info.plist */,
 				0384D6D41AEC4BB900242145 /* LaunchScreen.xib */,
+				AD5446221FE36293003925E7 /* GIF */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -173,6 +176,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AD5446221FE36293003925E7 /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+				AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */,
+				AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */,
+			);
+			name = GIF;
+			sourceTree = "<group>";
+		};
 		AD67BABD1FD4DDF60002A0E8 /* shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,16 +194,6 @@
 				03F0808F1AED4F1600A20334 /* UIImage+Util.swift */,
 			);
 			path = shared;
-			sourceTree = "<group>";
-		};
-		AD67BAC21FD4DE720002A0E8 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				AD67BAC31FD4DE890002A0E8 /* batman.png */,
-				AD67BAC41FD4DE890002A0E8 /* kermit.png */,
-			);
-			name = Images;
-			path = images;
 			sourceTree = "<group>";
 		};
 		ADBDE03B1FC672FE004F00A2 /* Frameworks */ = {
@@ -310,11 +312,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */,
 				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
-				AD67BAC61FD4DE890002A0E8 /* kermit.png in Resources */,
-				AD67BAC51FD4DE890002A0E8 /* batman.png in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,8 +419,10 @@
 				03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */,
 				0384D6EC1AEC4D6500242145 /* AsciiArtist.swift in Sources */,
 				0384D6CE1AEC4BB900242145 /* ViewController.swift in Sources */,
+				AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */,
 				AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */,
 				03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */,
+				AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */,
 				0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
