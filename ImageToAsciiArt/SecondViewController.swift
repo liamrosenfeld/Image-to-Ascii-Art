@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -185,6 +186,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
                 self.displayAsciiArt(asciiArt)
                 self.busyView.isHidden = true
                 self.scrollView.backgroundColor = UIColor.white
+                Analytics.logEvent("convert", parameters: nil)
             }
             
             print(asciiArt)
