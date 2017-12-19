@@ -58,25 +58,27 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     
     // MARK: - Share Menu
     func showShareMenu() {
-        let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
+        let shareMenu = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
             UIPasteboard.general.string = self.asciiArt
             self.copiedAlert()
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
             UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
             self.imageAlert()
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        share.addAction(copy)
-        share.addAction(image)
-        share.addAction(cancel)
+        shareMenu.addAction(copy)
+        shareMenu.addAction(image)
+        shareMenu.addAction(cancel)
         
-        present(share, animated: true, completion: nil)
+        present(shareMenu, animated: true, completion: nil)
     }
     
     // Save as Image
