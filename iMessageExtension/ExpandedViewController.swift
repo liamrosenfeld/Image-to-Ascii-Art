@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol ExpandedDelegate {
     func sendMessage(art:String, image:UIImage)
@@ -46,6 +47,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     @IBAction func sendMessage(_ sender: Any) {
         if  asciiArt != nil {
             let asciiArtImage:UIImage = self.convertToImage()!
+            Analytics.logEvent("share", parameters: nil)
             delegate?.sendMessage(art: asciiArt!, image: asciiArtImage)
         } else {
             emptyAlert()
@@ -92,8 +94,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         self.show(ImagePickerController, sender: self)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -102,26 +103,12 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    // MARK: - Camera
-    func takePicture() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            ImagePickerController.delegate = self
-            ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true, completion: nil)
-        } else {
-            print("Camera not avaliable :(")
-        }
-    }
-    
     // MARK: - Rendering
-    fileprivate func displayImage(_ image: UIImage)
-    {
+    fileprivate func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -135,15 +122,15 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
                 self.displayAsciiArt(asciiArt)
                 self.busyView.isHidden = true
                 self.scrollView.backgroundColor = UIColor.white
+                Analytics.logEvent("convert", parameters: nil)
             }
             
-            print(asciiArt)
+            // print(asciiArt)
             self.asciiArt = asciiArt
         }
     }
     
-    fileprivate func displayAsciiArt(_ asciiArt: String)
-    {
+    fileprivate func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont
@@ -165,14 +152,12 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     }
     
     // MARK: - Zooming support
-    fileprivate func configureZoomSupport()
-    {
+    fileprivate func configureZoomSupport() {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    fileprivate func updateZoomSettings(animated: Bool)
-    {
+    fileprivate func updateZoomSettings(animated: Bool) {
         let
         scrollSize  = scrollView.frame.size,
         contentSize = scrollView.contentSize,
@@ -184,8 +169,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     }
     
     // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return currentLabel
     }
     
