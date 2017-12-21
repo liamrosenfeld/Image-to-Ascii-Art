@@ -25,7 +25,11 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        displayAsciiArt(asciiArt!)
+        if self.asciiArt != nil {
+            self.displayAsciiArt(asciiArt!)
+        } else {
+            serverErrorAlert()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,7 +88,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         return image
     }
     
-    // Alerts
+    // MARK: - Alerts
     func copiedAlert() {
         let copiedAlert = UIAlertController(title: "Copied!", message:
             nil, preferredStyle: UIAlertControllerStyle.alert)
@@ -96,7 +100,15 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     func imageAlert() {
         let imageAlert = UIAlertController(title: "Saved!", message:
             nil, preferredStyle: UIAlertControllerStyle.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(imageAlert, animated: true, completion: nil)
+    }
+    
+    func serverErrorAlert() {
+        let imageAlert = UIAlertController(title: "Error", message:
+            "This ASCII Art has been removed from the server", preferredStyle: UIAlertControllerStyle.alert)
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         
         self.present(imageAlert, animated: true, completion: nil)
     }

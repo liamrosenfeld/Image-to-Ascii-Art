@@ -99,10 +99,6 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
                 print(snapshot)
                 self.asciiArt = snapshot.value as? String
                 
-                if(self.asciiArt == nil){
-                    self.asciiArt = "This ASCII art is no longer on the server"
-                }
-                
                 destination.asciiArt = self.asciiArt!
             })
         }
