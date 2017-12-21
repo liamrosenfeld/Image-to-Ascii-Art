@@ -131,6 +131,9 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     func toFirebase(art: String) {
+        if ref == nil {
+            ref = Database.database().reference()
+        }
         let postArt = self.ref.child("asciiArt").childByAutoId()
         postArt.setValue(art)
         
