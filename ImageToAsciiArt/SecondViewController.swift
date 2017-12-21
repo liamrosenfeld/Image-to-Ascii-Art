@@ -170,10 +170,6 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     }
     
     // MARK: - Rendering
-    fileprivate func displayImageNamed(_ imageName: String) {
-        displayImage(UIImage(named: imageName)!)
-    }
-    
     fileprivate func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {

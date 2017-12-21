@@ -10,11 +10,12 @@ import UIKit
 import Messages
 import Firebase
 
-class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate {
+class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate, ContentDelegate {
     
     // MARK: - Setup
     let compactID:String = "compact"
     let expandedID:String = "expanded"
+    let contentID:String = "content"
     var inContentVC: Bool = false
     
     var ref: DatabaseReference!
@@ -87,18 +88,22 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         self.requestPresentationStyle(.expanded)
     }
     
+    func close() {
+        self.dismiss()
+    }
+    
     // MARK: - Send ASCII Art to Content View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContent" {
             let url = String(describing: self.activeConversation!.selectedMessage!.url!)
             let destination = segue.destination as! ContentViewController
-            
             let dataID = getQueryStringParameter(url: url, param: "artID")
+            
+            destination.delegate = self
             
             Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 print(snapshot)
                 self.asciiArt = snapshot.value as? String
-                
                 destination.asciiArt = self.asciiArt!
             })
         }

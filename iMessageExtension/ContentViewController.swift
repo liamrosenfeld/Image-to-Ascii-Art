@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ContentDelegate {
+    func close()
+}
+
 class ContentViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Setup
+    var delegate: ContentDelegate!
+    
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     
     fileprivate var currentLabel: UILabel?
@@ -108,7 +114,9 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     func serverErrorAlert() {
         let imageAlert = UIAlertController(title: "Error", message:
             "This ASCII Art has been removed from the server", preferredStyle: UIAlertControllerStyle.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+            self.delegate.close()
+        }))
         
         self.present(imageAlert, animated: true, completion: nil)
     }
@@ -136,14 +144,12 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Zooming support
-    fileprivate func configureZoomSupport()
-    {
+    fileprivate func configureZoomSupport() {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    fileprivate func updateZoomSettings(animated: Bool)
-    {
+    fileprivate func updateZoomSettings(animated: Bool) {
         let
         scrollSize  = scrollView.frame.size,
         contentSize = scrollView.contentSize,
@@ -155,8 +161,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return currentLabel
     }
     
