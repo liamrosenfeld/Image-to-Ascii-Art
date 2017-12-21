@@ -16,7 +16,6 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     let compactID:String = "compact"
     let expandedID:String = "expanded"
     let contentID:String = "content"
-    var inContentVC: Bool = false
     
     var ref: DatabaseReference!
     
@@ -78,18 +77,11 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        // Called after the extension transitions to a new presentation style.
-        
-        // Use this method to finalize any behaviors associated with the change in presentation style.
-        presentVC(presentationStyle: presentationStyle)
-    }
-    
-    func pickImage() {
-        self.requestPresentationStyle(.expanded)
-    }
-    
-    func close() {
-        self.dismiss()
+        if presentationStyle == .compact {
+            self.dismiss()
+        } else {
+            presentVC(presentationStyle: presentationStyle)
+        }
     }
     
     // MARK: - Send ASCII Art to Content View
@@ -145,5 +137,14 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         let qID = URLQueryItem(name: "artID", value: artID )
         components.queryItems = [qID]
         return components.url!
+    }
+    
+    // MARK: - Delegate Stuff
+    func pickImage() {
+        self.requestPresentationStyle(.expanded)
+    }
+    
+    func close() {
+        self.dismiss()
     }
 }
