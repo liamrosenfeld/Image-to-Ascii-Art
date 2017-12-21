@@ -17,13 +17,11 @@ class AsciiPalette {
 
     lazy var symbols: [String] = self.loadSymbols()
 
-    fileprivate func loadSymbols() -> [String]
-    {
+    fileprivate func loadSymbols() -> [String] {
         return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
     }
     
-    fileprivate func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String]
-    {
+    fileprivate func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String] {
         let
         symbols          = codes.map { self.symbolFromAsciiCode($0) },
         symbolImages     = symbols.map { UIImage.imageOfSymbol($0, self.font) },
@@ -32,13 +30,11 @@ class AsciiPalette {
         return sortedSymbols
     }
     
-    fileprivate func symbolFromAsciiCode(_ code: Int) -> String
-    {
+    fileprivate func symbolFromAsciiCode(_ code: Int) -> String {
         return String(Character(UnicodeScalar(code)!))
     }
     
-    fileprivate func countWhitePixelsInImage(_ image: UIImage) -> Int
-    {
+    fileprivate func countWhitePixelsInImage(_ image: UIImage) -> Int {
         let
         dataProvider = image.cgImage?.dataProvider,
         pixelData    = dataProvider?.data,
@@ -55,8 +51,7 @@ class AsciiPalette {
         }
     }
     
-    fileprivate func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String]
-    {
+    fileprivate func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String] {
         let
         mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts as [NSCopying]),
         uniqueCounts  = Set(whitePixelCounts),
