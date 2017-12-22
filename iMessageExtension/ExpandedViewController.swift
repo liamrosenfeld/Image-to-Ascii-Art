@@ -15,6 +15,8 @@ protocol ExpandedDelegate {
 class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Setup
+    var delegate:ExpandedDelegate?
+    
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
@@ -24,7 +26,6 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     @IBOutlet weak var busyView: UIView!
     
     let ImagePickerController = UIImagePickerController()
-    var delegate:ExpandedDelegate?
     var asciiArt:String?
     
     override func viewDidLoad() {
@@ -92,8 +93,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         self.show(ImagePickerController, sender: self)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -120,8 +120,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     }
     
     // MARK: - Rendering
-    fileprivate func displayImage(_ image: UIImage)
-    {
+    fileprivate func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -142,8 +141,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         }
     }
     
-    fileprivate func displayAsciiArt(_ asciiArt: String)
-    {
+    fileprivate func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont
@@ -165,14 +163,12 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     }
     
     // MARK: - Zooming support
-    fileprivate func configureZoomSupport()
-    {
+    fileprivate func configureZoomSupport() {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    fileprivate func updateZoomSettings(animated: Bool)
-    {
+    fileprivate func updateZoomSettings(animated: Bool) {
         let
         scrollSize  = scrollView.frame.size,
         contentSize = scrollView.contentSize,
@@ -184,8 +180,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     }
     
     // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return currentLabel
     }
     

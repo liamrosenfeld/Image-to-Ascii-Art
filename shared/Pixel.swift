@@ -23,8 +23,7 @@ struct Pixel
         self.offset = offset
     }
     
-    static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]]
-    {
+    static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]] {
         return (0..<height).map { row in
             (0..<width).map { col in
                 let offset = (width * row + col) * Pixel.bytesPerPixel
@@ -33,8 +32,7 @@ struct Pixel
         }
     }
     
-    func intensityFromPixelPointer(_ pointer: PixelPointer) -> Double
-    {
+    func intensityFromPixelPointer(_ pointer: PixelPointer) -> Double {
         let
         red   = pointer[offset + 0],
         green = pointer[offset + 1],
@@ -42,8 +40,7 @@ struct Pixel
         return Pixel.calculateIntensity(red, green, blue)
     }
     
-    fileprivate static func calculateIntensity(_ r: UInt8, _ g: UInt8, _ b: UInt8) -> Double
-    {
+    fileprivate static func calculateIntensity(_ r: UInt8, _ g: UInt8, _ b: UInt8) -> Double {
         // Normalize the pixel's grayscale value to between 0 and 1.
         // Weights from http://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems
         let
