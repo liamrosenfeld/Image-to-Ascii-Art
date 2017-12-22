@@ -10,12 +10,12 @@ import UIKit
 import Messages
 import Firebase
 
-class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate {
+class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate, ContentDelegate {
     
     // MARK: - Setup
     let compactID:String = "compact"
     let expandedID:String = "expanded"
-    var inContentVC: Bool = false
+    let contentID:String = "content"
     
     var ref: DatabaseReference!
     
@@ -77,14 +77,11 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        // Called after the extension transitions to a new presentation style.
-        
-        // Use this method to finalize any behaviors associated with the change in presentation style.
-        presentVC(presentationStyle: presentationStyle)
-    }
-    
-    func pickImage() {
-        self.requestPresentationStyle(.expanded)
+        if presentationStyle == .compact {
+            self.dismiss()
+        } else {
+            presentVC(presentationStyle: presentationStyle)
+        }
     }
     
     // MARK: - Send ASCII Art to Content View
@@ -92,17 +89,13 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         if segue.identifier == "toContent" {
             let url = String(describing: self.activeConversation!.selectedMessage!.url!)
             let destination = segue.destination as! ContentViewController
-            
             let dataID = getQueryStringParameter(url: url, param: "artID")
+            
+            destination.delegate = self
             
             Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 print(snapshot)
                 self.asciiArt = snapshot.value as? String
-                
-                if(self.asciiArt == nil){
-                    self.asciiArt = "This ASCII art is no longer on the server"
-                }
-                
                 destination.asciiArt = self.asciiArt!
             })
         }
@@ -130,6 +123,9 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     }
     
     func toFirebase(art: String) {
+        if ref == nil {
+            ref = Database.database().reference()
+        }
         let postArt = self.ref.child("asciiArt").childByAutoId()
         postArt.setValue(art)
         
@@ -141,5 +137,14 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         let qID = URLQueryItem(name: "artID", value: artID )
         components.queryItems = [qID]
         return components.url!
+    }
+    
+    // MARK: - Delegate Stuff
+    func pickImage() {
+        self.requestPresentationStyle(.expanded)
+    }
+    
+    func close() {
+        self.dismiss()
     }
 }

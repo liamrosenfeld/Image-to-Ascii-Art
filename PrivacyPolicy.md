@@ -10,7 +10,7 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 ## Information Collection and Use
 
-I do not collect any personally identifiable information. The only information stored off device is the ASCII art generated in the iMessage extension. That data stored on the database is critical for the functionality of the iMessage extension and does not contain any identifying information.
+This app does not collect or store any personally identifiable information. ASCII art generated in the iMessage extension is stored off device without any personally identifiable information. Thedata stored is critical for the functionality of the iMessage extension the text is to large to send solely within.
 
 The app does use third party services that may collect anonymous statistics to improve the app (ex. crash reporting).
 Link to privacy policy of third party service provider used by the app

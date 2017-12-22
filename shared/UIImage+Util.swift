@@ -36,13 +36,11 @@ extension UIImage {
         return image
     }
     
-    func imageConstrainedToMaxSize(_ maxSize: CGSize) -> UIImage
-    {
+    func imageConstrainedToMaxSize(_ maxSize: CGSize) -> UIImage {
         let isTooBig =
             size.width  > maxSize.width ||
             size.height > maxSize.height
-        if isTooBig
-        {
+        if isTooBig {
             let
             maxRect       = CGRect(origin: CGPoint.zero, size: maxSize),
             scaledRect    = AVMakeRect(aspectRatio: self.size, insideRect: maxRect),
@@ -65,12 +63,10 @@ extension UIImage {
                 space: colorSpace!,
                 bitmapInfo: (bitmapInfo?.rawValue)!)
         
-            if context != nil
-            {
+            if context != nil {
                 context!.interpolationQuality = CGInterpolationQuality.low
                 context?.draw(cgImage!, in: targetRect)
-                if let scaledCGImage = context?.makeImage()
-                {
+                if let scaledCGImage = context?.makeImage() {
                     return UIImage(cgImage: scaledCGImage)
                 }
             }
@@ -78,15 +74,12 @@ extension UIImage {
         return self
     }
     
-    func imageRotatedToPortraitOrientation() -> UIImage
-    {
+    func imageRotatedToPortraitOrientation() -> UIImage {
         let mustRotate = self.imageOrientation != .up
-        if mustRotate
-        {
+        if mustRotate {
             let rotatedSize = CGSize(width: size.height, height: size.width)
             UIGraphicsBeginImageContext(rotatedSize)
-            if let context = UIGraphicsGetCurrentContext()
-            {
+            if let context = UIGraphicsGetCurrentContext() {
                 // Perform the rotation and scale transforms around the image's center.
                 context.translateBy(x: rotatedSize.width/2, y: rotatedSize.height/2)
                 
@@ -113,14 +106,12 @@ extension UIImage {
         return self
     }
     
-    fileprivate func degreesToRotate() -> Double
-    {
-        switch self.imageOrientation
-        {
-        case .right: return  90
-        case .down:  return 180
-        case .left:  return -90
-        default:     return   0
+    fileprivate func degreesToRotate() -> Double {
+        switch self.imageOrientation {
+            case .right: return  90
+            case .down:  return 180
+            case .left:  return -90
+            default:     return   0
         }
     }
     

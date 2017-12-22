@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -57,25 +58,27 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     
     // MARK: - Share Menu
     func showShareMenu() {
-        let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
+        let shareMenu = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
             UIPasteboard.general.string = self.asciiArt
             self.copiedAlert()
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
             UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
             self.imageAlert()
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        share.addAction(copy)
-        share.addAction(image)
-        share.addAction(cancel)
+        shareMenu.addAction(copy)
+        shareMenu.addAction(image)
+        shareMenu.addAction(cancel)
         
-        present(share, animated: true, completion: nil)
+        present(shareMenu, animated: true, completion: nil)
     }
     
     // Save as Image
@@ -167,10 +170,6 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     }
     
     // MARK: - Rendering
-    fileprivate func displayImageNamed(_ imageName: String) {
-        displayImage(UIImage(named: imageName)!)
-    }
-    
     fileprivate func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
@@ -185,6 +184,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
                 self.displayAsciiArt(asciiArt)
                 self.busyView.isHidden = true
                 self.scrollView.backgroundColor = UIColor.white
+                Analytics.logEvent("convert", parameters: nil)
             }
             
             print(asciiArt)
