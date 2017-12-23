@@ -11,12 +11,13 @@ import Foundation
 import UIKit
 
 extension UIImage {
+    
     class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage {
         let
         length = font.pointSize * 2,
         size   = CGSize(width: length, height: length),
         rect   = CGRect(origin: CGPoint.zero, size: size)
-        
+
         UIGraphicsBeginImageContext(size)
         let context = UIGraphicsGetCurrentContext()
 

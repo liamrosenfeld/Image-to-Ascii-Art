@@ -13,7 +13,7 @@ protocol ContentDelegate {
 }
 
 class ContentViewController: UIViewController, UIScrollViewDelegate {
-    
+
     // MARK: - Setup
     var delegate: ContentDelegate!
     
@@ -121,7 +121,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         self.present(imageAlert, animated: true, completion: nil)
     }
     
-    // MARL: - Display the Passed String
+    // MARK: - Display the Passed String
     fileprivate func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
@@ -166,4 +166,3 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     }
     
 }
-

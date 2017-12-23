@@ -11,7 +11,7 @@ import UIKit
 class InfoViewController: UIViewController {
 
     @IBOutlet weak var gifView: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gifView.loadGif(name: "iMessageInstructions")

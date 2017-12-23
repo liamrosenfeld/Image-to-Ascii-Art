@@ -19,7 +19,7 @@ class AsciiArtist {
         self.image   = image
         self.palette = palette
     }
-    
+
     func createAsciiArt() -> String {
         let
         dataProvider = image.cgImage?.dataProvider,

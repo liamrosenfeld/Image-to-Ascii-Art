@@ -13,8 +13,8 @@ protocol CompactDelegate {
 }
 
 class CompactViewController: UIViewController {
-    
-    //MARK: - Setup
+
+    // MARK: - Setup
     var delegate:CompactDelegate?
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class CompactViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     @IBAction func pickImage(_ sender: Any) {
         delegate?.pickImage()
     }

@@ -12,8 +12,8 @@ import Foundation
 typealias PixelPointer = UnsafePointer<UInt8>
 
 /** A point in an image converted to an ASCII character. */
-struct Pixel
-{
+struct Pixel {
+    
     /** The number of bytes a pixel occupies. 1 byte per channel (RGBA). */
     static let bytesPerPixel = 4
     
@@ -55,4 +55,5 @@ struct Pixel
                       Double(b) * blueWeight
         return weightedSum / weightedMax
     }
+    
 }
