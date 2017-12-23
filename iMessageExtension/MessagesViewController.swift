@@ -11,7 +11,7 @@ import Messages
 import Firebase
 
 class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate, ContentDelegate {
-    
+
     // MARK: - Setup
     let compactID:String = "compact"
     let expandedID:String = "expanded"
@@ -25,7 +25,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(FirebaseApp.app() == nil){
+        if FirebaseApp.app() == nil {
             FirebaseApp.configure()
             ref = Database.database().reference()
         }
@@ -147,4 +147,5 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     func close() {
         self.dismiss()
     }
+    
 }

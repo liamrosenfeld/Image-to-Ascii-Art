@@ -13,14 +13,16 @@ import UIKit
 class AsciiPalette {
     fileprivate let font: UIFont
 
-    init(font: UIFont) { self.font = font }
+    init(font: UIFont) {
+        self.font = font
+    }
 
     lazy var symbols: [String] = self.loadSymbols()
 
     fileprivate func loadSymbols() -> [String] {
         return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
     }
-    
+
     fileprivate func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String] {
         let
         symbols          = codes.map { self.symbolFromAsciiCode($0) },

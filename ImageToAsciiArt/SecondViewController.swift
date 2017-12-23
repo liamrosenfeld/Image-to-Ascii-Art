@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
@@ -118,6 +118,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
         
         self.present(imageAlert, animated: true, completion: nil)
     }
+    
     func emptyAlert() {
         let emptyAlert = UIAlertController(title: "Woah There!", message:
             "Please pick an image first", preferredStyle: UIAlertControllerStyle.alert)
@@ -236,4 +237,3 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     }
     
 }
-

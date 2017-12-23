@@ -13,36 +13,36 @@ protocol ExpandedDelegate {
 }
 
 class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     // MARK: - Setup
     var delegate:ExpandedDelegate?
     
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
-    
+
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busyView: UIView!
-    
+
     let ImagePickerController = UIImagePickerController()
     var asciiArt:String?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureZoomSupport()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         pickImage()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
         if  asciiArt != nil {
@@ -52,11 +52,11 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
             emptyAlert()
         }
     }
-    
+
     @IBAction func newImage(_ sender: Any) {
         pickImage()
     }
-    
+
     // Alerts
     func emptyAlert() {
         let emptyAlert = UIAlertController(title: "Woah There!", message:
@@ -65,48 +65,45 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         
         self.present(emptyAlert, animated: true, completion: nil)
     }
-    
-    // MARL: - Image Converter
+
+    // MARK: - Image Converter
     func convertToImage() -> UIImage? {
         UIGraphicsBeginImageContext(scrollView.contentSize)
-        
+
         let savedContentOffset = scrollView.contentOffset
         let savedFrame = scrollView.frame
-        
+
         scrollView.contentOffset = CGPoint.zero
         scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-        
+
         scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
-        
+
         scrollView.contentOffset = savedContentOffset
         scrollView.frame = savedFrame
-        
+
         UIGraphicsEndImageContext()
-        
+
         return image
     }
-    
+
     // MARK: - Image Picker
     func pickImage() {
         ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         self.show(ImagePickerController, sender: self)
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             displayImage(image)
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     // MARK: - Camera
     func takePicture() {
