@@ -17,7 +17,6 @@
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
 		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
-		AD0EA6281FE873970044EAC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD0EA6271FE873970044EAC4 /* GoogleService-Info.plist */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
@@ -35,7 +34,8 @@
 		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
 		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
-		ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */; };
+		ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */; };
+		ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */; };
 		CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +81,6 @@
 		3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.release.xcconfig"; sourceTree = "<group>"; };
 		89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		AD0EA6271FE873970044EAC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
@@ -96,7 +95,8 @@
 		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
 		ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
-		ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,7 @@
 				0384D6CB1AEC4BB900242145 /* AppDelegate.swift */,
 				0384D6D21AEC4BB900242145 /* Images.xcassets */,
 				0384D6CA1AEC4BB900242145 /* Info.plist */,
-				AD0EA6271FE873970044EAC4 /* GoogleService-Info.plist */,
+				ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */,
 				0384D6D41AEC4BB900242145 /* LaunchScreen.xib */,
 				AD5446221FE36293003925E7 /* GIF */,
 			);
@@ -219,7 +219,7 @@
 				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
 				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
 				ADBDE0461FC672FE004F00A2 /* Info.plist */,
-				ADF4FB4D1FD1024B00F20430 /* GoogleService-Info.plist */,
+				ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -316,11 +316,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */,
-				AD0EA6281FE873970044EAC4 /* GoogleService-Info.plist in Resources */,
 				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
+				ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +330,7 @@
 			files = (
 				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
 				ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */,
-				ADF4FB4E1FD1024B00F20430 /* GoogleService-Info.plist in Resources */,
+				ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,7 +596,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "liamrosenfeld.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -615,7 +615,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "liamrosenfeld.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -640,7 +640,7 @@
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -666,7 +666,7 @@
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
