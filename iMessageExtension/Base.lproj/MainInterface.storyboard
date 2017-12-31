@@ -59,7 +59,7 @@
                                 <rect key="frame" x="117" y="154" width="86" height="36"/>
                                 <color key="backgroundColor" red="0.42665749788284302" green="0.73586887121200562" blue="0.85731029510498047" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="86" id="RQY-wD-rzf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="RQY-wD-rzf"/>
                                     <constraint firstAttribute="height" constant="36" id="csq-8R-6Xq"/>
                                 </constraints>
                                 <state key="normal" title="Pick Image">
@@ -143,7 +143,7 @@
                                 <rect key="frame" x="16" y="25" width="42" height="30"/>
                                 <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="el3-Yb-oVH"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="el3-Yb-oVH"/>
                                 </constraints>
                                 <state key="normal" title="New">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -162,7 +162,7 @@
                                 <rect key="frame" x="255" y="25" width="49" height="30"/>
                                 <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="49" id="rZk-Hx-Pzs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="rZk-Hx-Pzs"/>
                                 </constraints>
                                 <state key="normal" title="Send">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -184,11 +184,13 @@
                             <constraint firstAttribute="trailing" secondItem="2LL-2b-TUr" secondAttribute="trailing" id="3oM-Ou-U55"/>
                             <constraint firstItem="0dz-2s-qeB" firstAttribute="centerX" secondItem="MND-iI-EvB" secondAttribute="centerX" id="Bhr-hg-g8M"/>
                             <constraint firstItem="uFh-8j-8We" firstAttribute="leading" secondItem="MND-iI-EvB" secondAttribute="leading" id="EVp-mx-I9Y"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IHe-0s-LtA" secondAttribute="trailingMargin" id="FP8-lZ-0K2"/>
                             <constraint firstItem="0dz-2s-qeB" firstAttribute="centerX" secondItem="oXb-l7-8EW" secondAttribute="centerX" id="Fg3-7U-G7f"/>
                             <constraint firstItem="2LL-2b-TUr" firstAttribute="leading" secondItem="uFh-8j-8We" secondAttribute="leading" id="P7X-gp-U7V"/>
                             <constraint firstItem="IHe-0s-LtA" firstAttribute="leading" secondItem="MND-iI-EvB" secondAttribute="leadingMargin" id="SYq-Dc-JQ0"/>
                             <constraint firstItem="IHe-0s-LtA" firstAttribute="baseline" secondItem="0dz-2s-qeB" secondAttribute="baseline" id="UQS-ht-GGU"/>
                             <constraint firstItem="2LL-2b-TUr" firstAttribute="bottom" secondItem="uFh-8j-8We" secondAttribute="bottom" id="Vgf-pj-Q3m"/>
+                            <constraint firstItem="1qq-qa-dqz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MND-iI-EvB" secondAttribute="leadingMargin" id="acZ-l8-L2t"/>
                             <constraint firstItem="1qq-qa-dqz" firstAttribute="baseline" secondItem="0dz-2s-qeB" secondAttribute="baseline" id="g01-3s-Zac"/>
                             <constraint firstItem="uFh-8j-8We" firstAttribute="top" secondItem="0dz-2s-qeB" secondAttribute="bottom" constant="8" symbolic="YES" id="gf4-Go-Qgg"/>
                             <constraint firstItem="uFh-8j-8We" firstAttribute="top" secondItem="2LL-2b-TUr" secondAttribute="top" id="gvh-r5-ycw"/>
