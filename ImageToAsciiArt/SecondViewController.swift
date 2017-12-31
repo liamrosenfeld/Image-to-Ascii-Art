@@ -50,14 +50,14 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
     
     @IBAction func share(_ sender: UIButton) {
         if self.asciiArt != nil {
-            self.showShareMenu()
+            self.showShareMenu(sender)
         } else {
             emptyAlert()
         }
     }
     
     // MARK: - Share Menu
-    func showShareMenu() {
+    func showShareMenu(_ sender: UIButton) {
         let shareMenu = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
@@ -77,6 +77,11 @@ class SecondViewController: UIViewController, UIScrollViewDelegate, UIImagePicke
         shareMenu.addAction(copy)
         shareMenu.addAction(image)
         shareMenu.addAction(cancel)
+        
+        if let popoverController = shareMenu.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
         
         present(shareMenu, animated: true, completion: nil)
     }
