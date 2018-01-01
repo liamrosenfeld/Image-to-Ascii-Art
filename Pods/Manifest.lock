@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - Firebase/Core (4.6.0):
     - FirebaseAnalytics (= 4.0.5)
     - FirebaseCore (= 4.0.11)
@@ -28,10 +31,14 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.9.3)
+  - Fabric (~> 1.7.2)
   - Firebase/Core
   - Firebase/Database
 
 SPEC CHECKSUMS:
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Firebase: 27321a925aa85520618255a7c630859e0502ccbd
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseCore: 2a946ece8fbe3ce1fdeeb55324f273caade22df9
@@ -41,6 +48,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: fb106c810beb084368c472c1db2026113ff49988
+PODFILE CHECKSUM: ae82cf3160d761fc85a47acee2bd55129108d439
 
 COCOAPODS: 1.3.1

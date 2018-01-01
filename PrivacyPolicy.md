@@ -10,11 +10,12 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 ## Information Collection and Use
 
-This app does not collect or store any personally identifiable information. ASCII art generated in the iMessage extension is stored off device without any personally identifiable information. Thedata stored is critical for the functionality of the iMessage extension the text is to large to send solely within.
+This app does not collect or store any personally identifiable information. The only user data stored off the device is ASCII art generated in the iMessage extension. It is stored without without any personally identifiable information. The data stored is critical for the functionality of the iMessage extension because the text is to large to send solely within iMessage.
 
 The app does use third party services that may collect anonymous statistics to improve the app (ex. crash reporting).
-Link to privacy policy of third party service provider used by the app
+Links to privacy policy of third party service providers used by the app:
 - [Firebase Analytics](https://firebase.google.com/policies/analytics/)
+- [Crashlytics](https://try.crashlytics.com/terms/privacy-policy.pdf)
 
 ## Log Data
 
