@@ -238,6 +238,7 @@
 				ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */,
 				E3CE2FA464D0BE29774CFA25 /* [CP] Embed Pods Frameworks */,
 				9B108C325CF266C324A0033E /* [CP] Copy Pods Resources */,
+				0C8D672E1FF9DB260053AE53 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -258,6 +259,7 @@
 				ADBDE0371FC672FE004F00A2 /* Frameworks */,
 				ADBDE0381FC672FE004F00A2 /* Resources */,
 				F41056DF88206FDF1FC21DD4 /* [CP] Copy Pods Resources */,
+				0C8D672F1FF9DD720053AE53 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -337,6 +339,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C8D672E1FF9DB260053AE53 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
+		0C8D672F1FF9DD720053AE53 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
 		117E14C9E2D4726A329506C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -653,7 +681,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
