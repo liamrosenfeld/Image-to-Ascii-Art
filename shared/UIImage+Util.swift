@@ -107,7 +107,7 @@ extension UIImage {
         return self
     }
     
-    fileprivate func degreesToRotate() -> Double {
+    private func degreesToRotate() -> Double {
         switch self.imageOrientation {
             case .right: return  90
             case .down:  return 180

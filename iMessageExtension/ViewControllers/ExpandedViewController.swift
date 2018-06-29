@@ -12,16 +12,16 @@ protocol ExpandedDelegate {
     func sendMessage(art:String, image:UIImage)
 }
 
-class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigationControllerDelegate {
+class ExpandedViewController: UIViewController {
 
     // MARK: - Setup
     var delegate:ExpandedDelegate?
     
-    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
-    fileprivate let maxImageSize = CGSize(width: 310, height: 310)
-    fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    private let labelFont = UIFont(name: "Menlo", size: 7)!
+    private let maxImageSize = CGSize(width: 310, height: 310)
+    private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
 
-    fileprivate var currentLabel: UILabel?
+    private var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busyView: UIView!
 
@@ -49,7 +49,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigati
             let asciiArtImage:UIImage = self.convertToImage()!
             delegate?.sendMessage(art: asciiArt!, image: asciiArtImage)
         } else {
-            emptyAlert()
+            alert(title: "Woah there!", message: "Please pick an image first", dismissText: "Ok")
         }
     }
 
@@ -57,13 +57,13 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigati
         pickImage()
     }
 
-    // Alerts
-    func emptyAlert() {
-        let emptyAlert = UIAlertController(title: "Woah There!", message:
-            "Please pick an image first", preferredStyle: UIAlertController.Style.alert)
-        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
+    // MARK: - Alert
+    func alert(title: String, message: String?, dismissText: String) {
+        let alert = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: dismissText, style: UIAlertAction.Style.default,handler: nil))
         
-        self.present(emptyAlert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Image Converter
@@ -89,7 +89,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigati
 
     
     // MARK: - Rendering
-    fileprivate func displayImage(_ image: UIImage) {
+    private func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -110,7 +110,7 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigati
         }
     }
     
-    fileprivate func displayAsciiArt(_ asciiArt: String) {
+    private func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont
@@ -130,29 +130,6 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigati
         
         self.asciiArt = asciiArt
     }
-    
-    // MARK: - Zooming support
-    fileprivate func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
-    }
-    
-    fileprivate func updateZoomSettings(animated: Bool) {
-        let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
-        scaleWidth  = scrollSize.width / contentSize.width,
-        scaleHeight = scrollSize.height / contentSize.height,
-        scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
-    }
-    
-    // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return currentLabel
-    }
-    
 }
 
 // MARK: - Image Selection
@@ -182,5 +159,29 @@ extension ExpandedViewController: UIImagePickerControllerDelegate {
         } else {
             print("Camera not avaliable :(")
         }
+    }
+}
+
+
+// MARK: - Zooming Supoort
+extension ExpandedViewController: UIScrollViewDelegate, UINavigationControllerDelegate {
+    private func configureZoomSupport() {
+        scrollView.delegate = self
+        scrollView.maximumZoomScale = 5
+    }
+    
+    private func updateZoomSettings(animated: Bool) {
+        let
+        scrollSize  = scrollView.frame.size,
+        contentSize = scrollView.contentSize,
+        scaleWidth  = scrollSize.width / contentSize.width,
+        scaleHeight = scrollSize.height / contentSize.height,
+        scale       = max(scaleWidth, scaleHeight)
+        scrollView.minimumZoomScale = scale
+        scrollView.setZoomScale(scale, animated: animated)
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return currentLabel
     }
 }

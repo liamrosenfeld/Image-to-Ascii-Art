@@ -8,18 +8,17 @@
 
 import Foundation
 
-/** Represents the memory address of a pixel. */
+// Represents the memory address of a pixel.
 typealias PixelPointer = UnsafePointer<UInt8>
 
-/** A point in an image converted to an ASCII character. */
+// A point in an image converted to an ASCII character.
 struct Pixel {
     
-    /** The number of bytes a pixel occupies. 1 byte per channel (RGBA). */
     static let bytesPerPixel = 4
     
-    fileprivate let offset: Int
+    private let offset: Int
     
-    fileprivate init(_ offset: Int) {
+    private init(_ offset: Int) {
         self.offset = offset
     }
     
@@ -40,7 +39,7 @@ struct Pixel {
         return Pixel.calculateIntensity(red, green, blue)
     }
     
-    fileprivate static func calculateIntensity(_ r: UInt8, _ g: UInt8, _ b: UInt8) -> Double {
+    private static func calculateIntensity(_ r: UInt8, _ g: UInt8, _ b: UInt8) -> Double {
         // Normalize the pixel's grayscale value to between 0 and 1.
         // Weights from http://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems
         let
