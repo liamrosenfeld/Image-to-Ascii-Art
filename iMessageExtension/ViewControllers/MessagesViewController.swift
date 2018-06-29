@@ -10,17 +10,17 @@ import UIKit
 import Messages
 import Firebase
 
-class MessagesViewController: MSMessagesAppViewController, CompactDelegate, ExpandedDelegate, ContentDelegate {
+class MessagesViewController: MSMessagesAppViewController {
 
     // MARK: - Setup
-    let compactID:String = "compact"
-    let expandedID:String = "expanded"
-    let contentID:String = "content"
+    let compactID: String = "compact"
+    let expandedID: String = "expanded"
+    let contentID: String = "content"
     
     var ref: DatabaseReference!
     
-    var artID:String?
-    var asciiArt:String?
+    var artID: String?
+    var asciiArt: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,8 +138,11 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         components.queryItems = [qID]
         return components.url!
     }
-    
-    // MARK: - Delegate Stuff
+}
+
+
+// MARK: - Delegate Stuff
+extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDelegate {
     func pickImage() {
         self.requestPresentationStyle(.expanded)
     }
@@ -147,5 +150,4 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
     func close() {
         self.dismiss()
     }
-    
 }

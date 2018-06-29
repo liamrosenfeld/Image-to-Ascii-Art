@@ -12,14 +12,14 @@ protocol ContentDelegate {
     func close()
 }
 
-class ContentViewController: UIViewController, UIScrollViewDelegate {
+class ContentViewController: UIViewController {
 
     // MARK: - Setup
     var delegate: ContentDelegate!
     
-    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
+    private let labelFont = UIFont(name: "Menlo", size: 7)!
     
-    fileprivate var currentLabel: UILabel?
+    private var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     
     var asciiArt:String?
@@ -48,18 +48,18 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         showShareMenu()
     }
     
-    // MARK: - Share Menu
+    // MARK: - UIAlertController
     func showShareMenu() {
         let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
             UIPasteboard.general.string = self.asciiArt
-            self.copiedAlert()
+            self.alert(title: "Copied!", message: nil, dismissText: "Yay!")
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
             UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
-            self.imageAlert()
+            self.self.alert(title: "Saved!", message: nil, dismissText: "Yay!")
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -71,6 +71,23 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         share.view.transform = CGAffineTransform(translationX: 0, y: -40) // Removes overlap with bottom bar
         
         present(share, animated: true, completion: nil)
+    }
+    
+    func alert(title: String, message: String?, dismissText: String) {
+        let alert = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: dismissText, style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func serverErrorAlert() {
+        let imageAlert = UIAlertController(title: "ASCII Art Not Found", message:
+            "Your ASCII Art Could Not Be Located On The Server", preferredStyle: UIAlertController.Style.alert)
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
+            self.delegate.close()
+        }))
+        
+        self.present(imageAlert, animated: true, completion: nil)
     }
     
     // For Image Option
@@ -94,35 +111,9 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         return image
     }
     
-    // MARK: - Alerts
-    func copiedAlert() {
-        let copiedAlert = UIAlertController(title: "Copied!", message:
-            nil, preferredStyle: UIAlertController.Style.alert)
-        copiedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
-        
-        self.present(copiedAlert, animated: true, completion: nil)
-    }
-    
-    func imageAlert() {
-        let imageAlert = UIAlertController(title: "Saved!", message:
-            nil, preferredStyle: UIAlertController.Style.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        
-        self.present(imageAlert, animated: true, completion: nil)
-    }
-    
-    func serverErrorAlert() {
-        let imageAlert = UIAlertController(title: "Error", message:
-            "This ASCII Art has been removed from the server", preferredStyle: UIAlertController.Style.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
-            self.delegate.close()
-        }))
-        
-        self.present(imageAlert, animated: true, completion: nil)
-    }
     
     // MARK: - Display the Passed String
-    fileprivate func displayAsciiArt(_ asciiArt: String) {
+    private func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont
@@ -142,14 +133,17 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         
         self.asciiArt = asciiArt
     }
-    
-    // MARK: - Zooming support
-    fileprivate func configureZoomSupport() {
+}
+
+
+// MARK: - Zooming support
+extension ContentViewController: UIScrollViewDelegate {
+    private func configureZoomSupport() {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    fileprivate func updateZoomSettings(animated: Bool) {
+    private func updateZoomSettings(animated: Bool) {
         let
         scrollSize  = scrollView.frame.size,
         contentSize = scrollView.contentSize,
@@ -160,9 +154,7 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
         scrollView.setZoomScale(scale, animated: animated)
     }
     
-    // MARK: - UIScrollViewDelegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return currentLabel
     }
-    
 }

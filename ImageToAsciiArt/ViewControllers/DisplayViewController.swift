@@ -12,11 +12,11 @@ import Firebase
 class DisplayViewController: UIViewController {
 
     // MARK: - Setup
-    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
-    fileprivate let maxImageSize = CGSize(width: 310, height: 310)
-    fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    private let labelFont = UIFont(name: "Menlo", size: 7)!
+    private let maxImageSize = CGSize(width: 310, height: 310)
+    private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
-    fileprivate var currentLabel: UILabel?
+    private var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -87,7 +87,7 @@ class DisplayViewController: UIViewController {
 
     
     // MARK: - Rendering
-    fileprivate func displayImage(_ image: UIImage) {
+    private func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -108,7 +108,7 @@ class DisplayViewController: UIViewController {
         }
     }
     
-    fileprivate func displayAsciiArt(_ asciiArt: String) {
+    private func displayAsciiArt(_ asciiArt: String) {
         let
         label = UILabel()
         label.font = self.labelFont

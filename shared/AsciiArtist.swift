@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-/** Transforms an image to ASCII art. */
+// Transforms an image to ASCII art.
 class AsciiArtist {
-    fileprivate let
+    private let
     image:   UIImage,
     palette: AsciiPalette
 
@@ -30,7 +30,7 @@ class AsciiArtist {
         return symbolMatrix.joined(separator: "\n")
     }
     
-    fileprivate func intensityMatrixFromPixelPointer(_ pointer: PixelPointer) -> [[Double]] {
+    private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer) -> [[Double]] {
         let
         width  = Int(image.size.width),
         height = Int(image.size.height),
@@ -42,7 +42,7 @@ class AsciiArtist {
         }
     }
     
-    fileprivate func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]]) -> [String] {
+    private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]]) -> [String] {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
                 $0 + self.symbolFromIntensity($1)
@@ -50,7 +50,7 @@ class AsciiArtist {
         }
     }
     
-    fileprivate func symbolFromIntensity(_ intensity: Double) -> String {
+    private func symbolFromIntensity(_ intensity: Double) -> String {
         assert(0.0 <= intensity && intensity <= 1.0)
         
         let

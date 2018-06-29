@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mrz-ws-XAz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mrz-ws-XAz">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Menlo.ttc">
-            <string>Menlo-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Messages View Controller-->
         <scene sceneID="Xne-7f-0V7">
@@ -28,7 +23,7 @@
                                 <rect key="frame" x="40" y="-85" width="240" height="410"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.17394059896469116" green="0.24193984270095825" blue="0.31265199184417725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Dark Blue"/>
                         <constraints>
                             <constraint firstItem="6dw-xi-LWV" firstAttribute="centerY" secondItem="s5x-89-QfI" secondAttribute="centerY" id="Mza-46-4bD"/>
                             <constraint firstItem="6dw-xi-LWV" firstAttribute="leading" secondItem="s5x-89-QfI" secondAttribute="leading" constant="40" id="R7u-QA-8zK"/>
@@ -57,7 +52,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-Lp-zdb">
                                 <rect key="frame" x="117" y="154" width="86" height="36"/>
-                                <color key="backgroundColor" red="0.42665749788284302" green="0.73586887121200562" blue="0.85731029510498047" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Light Blue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="RQY-wD-rzf"/>
                                     <constraint firstAttribute="height" constant="36" id="csq-8R-6Xq"/>
@@ -79,7 +74,7 @@
                                 <rect key="frame" x="60" y="34" width="200" height="100"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="Dark Blue"/>
                         <constraints>
                             <constraint firstItem="n0i-Uj-AqN" firstAttribute="top" secondItem="Dso-YS-Pbb" secondAttribute="top" constant="34" id="5aJ-z5-Ne7"/>
                             <constraint firstItem="9Rj-Lp-zdb" firstAttribute="top" secondItem="n0i-Uj-AqN" secondAttribute="bottom" constant="20" id="7H4-be-7XM"/>
@@ -124,14 +119,14 @@
                                         <rect key="frame" x="150" y="192" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converting…" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDR-Q3-5rX">
-                                        <rect key="frame" x="114" y="216" width="93" height="18"/>
+                                        <rect key="frame" x="113.66666666666669" y="216" width="93" height="18"/>
                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.17016619443893433" green="0.23407834768295288" blue="0.30477240681648254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Dark Blue"/>
                                 <constraints>
                                     <constraint firstItem="kDR-Q3-5rX" firstAttribute="centerY" secondItem="2LL-2b-TUr" secondAttribute="centerY" id="HqV-Nm-LeQ"/>
                                     <constraint firstItem="JgR-pW-0i0" firstAttribute="centerX" secondItem="kDR-Q3-5rX" secondAttribute="centerX" id="WwM-pY-mv2"/>
@@ -140,8 +135,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-0s-LtA">
-                                <rect key="frame" x="16" y="25" width="42" height="30"/>
-                                <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="16" y="25.666666666666671" width="42" height="30"/>
+                                <color key="backgroundColor" name="Light Blue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="el3-Yb-oVH"/>
                                 </constraints>
@@ -159,8 +154,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qq-qa-dqz">
-                                <rect key="frame" x="255" y="25" width="49" height="30"/>
-                                <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="255" y="25.666666666666671" width="49" height="30"/>
+                                <color key="backgroundColor" name="Light Blue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="rZk-Hx-Pzs"/>
                                 </constraints>
@@ -178,7 +173,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.3367576003074646" green="0.55194240808486938" blue="0.63989001512527466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Medium Blue"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="uFh-8j-8We" secondAttribute="bottom" constant="20" symbolic="YES" id="0mh-ZT-ggZ"/>
                             <constraint firstAttribute="trailing" secondItem="2LL-2b-TUr" secondAttribute="trailing" id="3oM-Ou-U55"/>
@@ -243,13 +238,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascii Art" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB9-SV-ABj">
-                                <rect key="frame" x="128" y="30" width="64" height="21"/>
+                                <rect key="frame" x="128" y="29.666666666666671" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.33675760030000002" green="0.55194240809999995" blue="0.63989001509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Medium Blue"/>
                         <constraints>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="leading" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" constant="-16" id="1em-66-RJh"/>
                             <constraint firstItem="GB9-SV-ABj" firstAttribute="centerX" secondItem="4XV-36-LXB" secondAttribute="centerX" id="4YL-bV-Hfg"/>
@@ -276,5 +271,14 @@
     </scenes>
     <resources>
         <image name="Logo" width="848" height="410"/>
+        <namedColor name="Dark Blue">
+            <color red="0.17299999296665192" green="0.24300000071525574" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Light Blue">
+            <color red="0.42800000309944153" green="0.73500001430511475" blue="0.85600000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Medium Blue">
+            <color red="0.33799999952316284" green="0.55299997329711914" blue="0.63999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
