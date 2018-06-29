@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DisplayViewController: UIViewController {
 
     // MARK: - Setup
     fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
@@ -23,6 +23,7 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
     let ImagePickerController = UIImagePickerController()
     
     var asciiArt:String?
+    var whichButtonPressed: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +32,20 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        triggerFromButton()
+        if whichButtonPressed! == "homePickImage" {
+            pickImage()
+            whichButtonPressed = "done"
+        } else if whichButtonPressed! == "homeTakePicture" {
+            takePicture()
+            whichButtonPressed = "done"
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: - Actions
     @IBAction func backToHome(_ sender: UIButton) {
@@ -76,49 +84,7 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         
         return image
     }
-    
-    // MARK: - Translates Home String Into an Action
-    var whichButtonPressed: String?
-    
-    func triggerFromButton() {
-        if whichButtonPressed! == "homePickImage" {
-            pickImage()
-            whichButtonPressed = "done"
-        } else if whichButtonPressed! == "homeTakePicture" {
-            takePicture()
-            whichButtonPressed = "done"
-        }
-    }
-    
-    
-    // MARK: - Image Picker
-    func pickImage() {
-        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(ImagePickerController, sender: self)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            displayImage(image)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - Camera
-    func takePicture() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            ImagePickerController.delegate = self
-            ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true, completion: nil)
-        } else {
-            alert(title: "No Camera Available", message: nil, dismissText: "OK")
-        }
-    }
+
     
     // MARK: - Rendering
     fileprivate func displayImage(_ image: UIImage) {
@@ -162,28 +128,7 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         
         self.asciiArt = asciiArt
     }
-    
-    // MARK: - Zooming support
-    fileprivate func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
-    }
-    
-    fileprivate func updateZoomSettings(animated: Bool) {
-        let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
-        scaleWidth  = scrollSize.width / contentSize.width,
-        scaleHeight = scrollSize.height / contentSize.height,
-        scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
-    }
-    
-    // MARK: - UIScrollViewDelegate
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return currentLabel
-    }
+
     
     // MARK: - UIAlertController
     func showShareMenu(_ sender: UIButton) {
@@ -221,5 +166,60 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         alert.addAction(UIAlertAction(title: dismissText, style: UIAlertAction.Style.default,handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - Zooming support
+extension DisplayViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return currentLabel
+    }
+    
+    func configureZoomSupport() {
+        scrollView.delegate = self
+        scrollView.maximumZoomScale = 5
+    }
+    
+    func updateZoomSettings(animated: Bool) {
+        let
+        scrollSize  = scrollView.frame.size,
+        contentSize = scrollView.contentSize,
+        scaleWidth  = scrollSize.width / contentSize.width,
+        scaleHeight = scrollSize.height / contentSize.height,
+        scale       = max(scaleWidth, scaleHeight)
+        scrollView.minimumZoomScale = scale
+        scrollView.setZoomScale(scale, animated: animated)
+    }
+}
+
+
+// MARK: - Select Image
+extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func pickImage() {
+        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(ImagePickerController, sender: self)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            displayImage(image)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func takePicture() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            ImagePickerController.delegate = self
+            ImagePickerController.sourceType = .camera
+            self.present(ImagePickerController, animated: true, completion: nil)
+        } else {
+            alert(title: "No Camera Available", message: nil, dismissText: "OK")
+        }
     }
 }

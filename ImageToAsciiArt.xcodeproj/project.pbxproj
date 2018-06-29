@@ -35,6 +35,8 @@
 		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
 		ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */; };
 		ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */; };
+		C7A5B20F562DCA55C2ABB57E /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA35C0830D0DF60A0B50549 /* Pods_iMessageExtension.framework */; };
+		FB6002EE5445FC1221520E79 /* Pods_ImageToAsciiArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8128A0A1D007CFE1CD8A40A /* Pods_ImageToAsciiArt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,7 @@
 		0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.release.xcconfig"; sourceTree = "<group>"; };
+		3EA35C0830D0DF60A0B50549 /* Pods_iMessageExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessageExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
 		ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E8128A0A1D007CFE1CD8A40A /* Pods_ImageToAsciiArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageToAsciiArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6002EE5445FC1221520E79 /* Pods_ImageToAsciiArt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */,
+				C7A5B20F562DCA55C2ABB57E /* Pods_iMessageExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				ADBDE03C1FC672FE004F00A2 /* Messages.framework */,
+				E8128A0A1D007CFE1CD8A40A /* Pods_ImageToAsciiArt.framework */,
+				3EA35C0830D0DF60A0B50549 /* Pods_iMessageExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
