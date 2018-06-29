@@ -52,38 +52,8 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         if self.asciiArt != nil {
             self.showShareMenu(sender)
         } else {
-            emptyAlert()
+            alert(title: "Woah There!", message: "Please pick an image first", dismissText: "OK")
         }
-    }
-    
-    // MARK: - Share Menu
-    func showShareMenu(_ sender: UIButton) {
-        let shareMenu = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
-        
-        let copy = UIAlertAction(title: "Copy", style: .default) { action in
-            UIPasteboard.general.string = self.asciiArt
-            self.copiedAlert()
-            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
-        }
-        
-        let image = UIAlertAction(title: "Image", style: .default) { action in
-            UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
-            self.imageAlert()
-            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        shareMenu.addAction(copy)
-        shareMenu.addAction(image)
-        shareMenu.addAction(cancel)
-        
-        if let popoverController = shareMenu.popoverPresentationController {
-            popoverController.sourceView = sender
-            popoverController.sourceRect = sender.bounds
-        }
-        
-        present(shareMenu, animated: true, completion: nil)
     }
     
     // Save as Image
@@ -105,31 +75,6 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         UIGraphicsEndImageContext()
         
         return image
-    }
-    
-    // MARK: - Alerts
-    func copiedAlert() {
-        let copiedAlert = UIAlertController(title: "Copied!", message:
-            nil, preferredStyle: UIAlertController.Style.alert)
-        copiedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
-        
-        self.present(copiedAlert, animated: true, completion: nil)
-    }
-    
-    func imageAlert() {
-        let imageAlert = UIAlertController(title: "Saved!", message:
-            nil, preferredStyle: UIAlertController.Style.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
-        
-        self.present(imageAlert, animated: true, completion: nil)
-    }
-    
-    func emptyAlert() {
-        let emptyAlert = UIAlertController(title: "Woah There!", message:
-            "Please pick an image first", preferredStyle: UIAlertController.Style.alert)
-        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
-        
-        self.present(emptyAlert, animated: true, completion: nil)
     }
     
     // MARK: - Translates Home String Into an Action
@@ -171,7 +116,7 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
             ImagePickerController.sourceType = .camera
             self.present(ImagePickerController, animated: true, completion: nil)
         } else {
-            print("Camera not avaliable :(")
+            alert(title: "No Camera Available", message: nil, dismissText: "OK")
         }
     }
     
@@ -240,4 +185,41 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
         return currentLabel
     }
     
+    // MARK: - UIAlertController
+    func showShareMenu(_ sender: UIButton) {
+        let shareMenu = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
+        
+        let copy = UIAlertAction(title: "Copy", style: .default) { action in
+            UIPasteboard.general.string = self.asciiArt
+            self.alert(title: "Copied!", message: nil, dismissText: "Yay!")
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
+        }
+        
+        let image = UIAlertAction(title: "Image", style: .default) { action in
+            UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
+            self.alert(title: "Saved!", message: nil, dismissText: "Yay!")
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        shareMenu.addAction(copy)
+        shareMenu.addAction(image)
+        shareMenu.addAction(cancel)
+        
+        if let popoverController = shareMenu.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
+        present(shareMenu, animated: true, completion: nil)
+    }
+    
+    func alert(title: String, message: String?, dismissText: String) {
+        let alert = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: dismissText, style: UIAlertAction.Style.default,handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
