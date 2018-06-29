@@ -28,8 +28,8 @@ extension UIImage {
         // Draw the character with black.
         let nsString = NSString(string: symbol)
         nsString.draw(at: rect.origin, withAttributes: [
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: UIColor.black
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
             ])
         
         let image = UIGraphicsGetImageFromCurrentImageContext()!

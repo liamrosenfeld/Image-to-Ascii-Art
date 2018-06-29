@@ -97,24 +97,24 @@ class ContentViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Alerts
     func copiedAlert() {
         let copiedAlert = UIAlertController(title: "Copied!", message:
-            nil, preferredStyle: UIAlertControllerStyle.alert)
-        copiedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+            nil, preferredStyle: UIAlertController.Style.alert)
+        copiedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
         
         self.present(copiedAlert, animated: true, completion: nil)
     }
     
     func imageAlert() {
         let imageAlert = UIAlertController(title: "Saved!", message:
-            nil, preferredStyle: UIAlertControllerStyle.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            nil, preferredStyle: UIAlertController.Style.alert)
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         
         self.present(imageAlert, animated: true, completion: nil)
     }
     
     func serverErrorAlert() {
         let imageAlert = UIAlertController(title: "Error", message:
-            "This ASCII Art has been removed from the server", preferredStyle: UIAlertControllerStyle.alert)
-        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+            "This ASCII Art has been removed from the server", preferredStyle: UIAlertController.Style.alert)
+        imageAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
             self.delegate.close()
         }))
         
