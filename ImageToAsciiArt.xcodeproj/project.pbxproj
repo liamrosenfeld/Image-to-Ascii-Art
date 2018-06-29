@@ -11,12 +11,11 @@
 		0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CD1AEC4BB900242145 /* HomeViewController.swift */; };
 		0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6CF1AEC4BB900242145 /* Main.storyboard */; };
 		0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
-		0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D41AEC4BB900242145 /* LaunchScreen.xib */; };
 		0384D6EC1AEC4D6500242145 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
 		0384D6F11AEC66C300242145 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
-		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
+		0C51C06F20E6A86B0029C514 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
@@ -36,7 +35,6 @@
 		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
 		ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */; };
 		ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */; };
-		CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,13 +68,11 @@
 		0384D6CD1AEC4BB900242145 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		0384D6D01AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0384D6D21AEC4BB900242145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0384D6D51AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiArtist.swift; sourceTree = "<group>"; };
 		0384D6F01AEC66C300242145 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
 		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
-		0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageToAsciiArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessageExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.release.xcconfig"; sourceTree = "<group>"; };
 		89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBAC9D1A33FAFF31E1A3639 /* Pods_ImageToAsciiArt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */,
-				87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +144,7 @@
 				AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */,
 				AD54461D1FE360C9003925E7 /* InfoViewController.swift */,
 				0384D6C91AEC4BB900242145 /* Supporting Files */,
+				AD5446221FE36293003925E7 /* GIF */,
 			);
 			name = app;
 			path = ImageToAsciiArt;
@@ -158,12 +153,11 @@
 		0384D6C91AEC4BB900242145 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0384D6CB1AEC4BB900242145 /* AppDelegate.swift */,
 				0384D6D21AEC4BB900242145 /* Images.xcassets */,
+				0384D6CB1AEC4BB900242145 /* AppDelegate.swift */,
+				0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */,
 				0384D6CA1AEC4BB900242145 /* Info.plist */,
 				ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */,
-				0384D6D41AEC4BB900242145 /* LaunchScreen.xib */,
-				AD5446221FE36293003925E7 /* GIF */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -203,8 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				ADBDE03C1FC672FE004F00A2 /* Messages.framework */,
-				0D71B29A14F683DDC9492C0A /* Pods_ImageToAsciiArt.framework */,
-				0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,9 +311,9 @@
 				AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */,
 				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
-				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
 				ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */,
+				0C51C06F20E6A86B0029C514 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,14 +469,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		0384D6D41AEC4BB900242145 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0384D6D51AEC4BB900242145 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 		ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -543,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -592,7 +576,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -610,7 +594,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -629,7 +613,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -654,7 +638,7 @@
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,7 +665,7 @@
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

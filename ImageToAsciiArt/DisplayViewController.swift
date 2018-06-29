@@ -193,7 +193,6 @@ class DisplayViewController: UIViewController, UIScrollViewDelegate, UIImagePick
                 Analytics.logEvent("convert", parameters: nil)
             }
             
-            print(asciiArt)
             self.asciiArt = asciiArt
         }
     }
