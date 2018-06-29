@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,7 @@
 		0384D6F11AEC66C300242145 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
 		03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
-		0C51C06F20E6A86B0029C514 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */; };
+		0C51C06F20E6A86B0029C514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
 		AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
@@ -28,7 +28,7 @@
 		AD67BAC11FD4DE460002A0E8 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
-		ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */; };
+		ADBDE0431FC672FE004F00A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* Main.storyboard */; };
 		ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
 		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
@@ -74,7 +74,7 @@
 		0384D6F01AEC66C300242145 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
 		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
-		0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9556C2ABE982EDE7D08350 /* Pods-ImageToAsciiArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.release.xcconfig"; sourceTree = "<group>"; };
 		3EA35C0830D0DF60A0B50549 /* Pods_iMessageExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessageExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +89,7 @@
 		ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDE03C1FC672FE004F00A2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		ADBDE0421FC672FE004F00A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ADBDE0421FC672FE004F00A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADBDE0441FC672FE004F00A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADBDE0461FC672FE004F00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			children = (
 				AD56A7F61FC8B8D100A92664 /* README.md */,
 				AD67BABD1FD4DDF60002A0E8 /* shared */,
-				0384D6C81AEC4BB900242145 /* app */,
+				0384D6C81AEC4BB900242145 /* ImageToAsciiArt */,
 				ADBDE03E1FC672FE004F00A2 /* iMessageExtension */,
 				0384D6C71AEC4BB900242145 /* products */,
 				ADBDE03B1FC672FE004F00A2 /* Frameworks */,
@@ -142,30 +142,67 @@
 			name = products;
 			sourceTree = "<group>";
 		};
-		0384D6C81AEC4BB900242145 /* app */ = {
+		0384D6C81AEC4BB900242145 /* ImageToAsciiArt */ = {
 			isa = PBXGroup;
 			children = (
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
-				0384D6CD1AEC4BB900242145 /* HomeViewController.swift */,
-				AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */,
-				AD54461D1FE360C9003925E7 /* InfoViewController.swift */,
-				0384D6C91AEC4BB900242145 /* Supporting Files */,
-				AD5446221FE36293003925E7 /* GIF */,
+				0CD00FBE20E6CE6600B07B5F /* ViewControllers */,
+				0CD00FBD20E6CE5700B07B5F /* GIF */,
+				0CD00FBC20E6CE4600B07B5F /* SupportFiles */,
 			);
-			name = app;
 			path = ImageToAsciiArt;
 			sourceTree = "<group>";
 		};
-		0384D6C91AEC4BB900242145 /* Supporting Files */ = {
+		0CA89B6520E6CD88009591AA /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0384D6D21AEC4BB900242145 /* Images.xcassets */,
+				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
+				ADBDE0461FC672FE004F00A2 /* Info.plist */,
+				ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		0CD00FBC20E6CE4600B07B5F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
 				0384D6CB1AEC4BB900242145 /* AppDelegate.swift */,
-				0C51C06E20E6A86B0029C514 /* Launch Screen.storyboard */,
+				0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */,
 				0384D6CA1AEC4BB900242145 /* Info.plist */,
 				ADDC8ABD1FF16FE70004D08E /* GoogleService-Info.plist */,
+				0384D6D21AEC4BB900242145 /* Images.xcassets */,
 			);
-			name = "Supporting Files";
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		0CD00FBD20E6CE5700B07B5F /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+				AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */,
+				AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */,
+			);
+			path = GIF;
+			sourceTree = "<group>";
+		};
+		0CD00FBE20E6CE6600B07B5F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0384D6CD1AEC4BB900242145 /* HomeViewController.swift */,
+				AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */,
+				AD54461D1FE360C9003925E7 /* InfoViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0CD00FBF20E6CF5600B07B5F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */,
+				ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */,
+				ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */,
+				AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		70D804C0C749F0619EC5B709 /* Pods */ = {
@@ -177,15 +214,6 @@
 				89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		AD5446221FE36293003925E7 /* GIF */ = {
-			isa = PBXGroup;
-			children = (
-				AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */,
-				AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */,
-			);
-			name = GIF;
 			sourceTree = "<group>";
 		};
 		AD67BABD1FD4DDF60002A0E8 /* shared */ = {
@@ -212,14 +240,9 @@
 		ADBDE03E1FC672FE004F00A2 /* iMessageExtension */ = {
 			isa = PBXGroup;
 			children = (
-				ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */,
-				ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */,
-				ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */,
-				AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */,
-				ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */,
-				ADBDE0441FC672FE004F00A2 /* Assets.xcassets */,
-				ADBDE0461FC672FE004F00A2 /* Info.plist */,
-				ADDC8ABF1FF1702E0004D08E /* GoogleService-Info.plist */,
+				ADBDE0411FC672FE004F00A2 /* Main.storyboard */,
+				0CD00FBF20E6CF5600B07B5F /* ViewControllers */,
+				0CA89B6520E6CD88009591AA /* SupportFiles */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -277,7 +300,7 @@
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = liamrosenfeld;
+				ORGANIZATIONNAME = "Liam Rosenfeld";
 				TargetAttributes = {
 					0384D6C51AEC4BB900242145 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -293,7 +316,7 @@
 				};
 			};
 			buildConfigurationList = 0384D6C11AEC4BB900242145 /* Build configuration list for PBXProject "ImageToAsciiArt" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -321,7 +344,7 @@
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
 				ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */,
-				0C51C06F20E6A86B0029C514 /* Launch Screen.storyboard in Resources */,
+				0C51C06F20E6A86B0029C514 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
-				ADBDE0431FC672FE004F00A2 /* MainInterface.storyboard in Resources */,
+				ADBDE0431FC672FE004F00A2 /* Main.storyboard in Resources */,
 				ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,12 +500,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		ADBDE0411FC672FE004F00A2 /* MainInterface.storyboard */ = {
+		ADBDE0411FC672FE004F00A2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ADBDE0421FC672FE004F00A2 /* Base */,
 			);
-			name = MainInterface.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -539,6 +562,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -587,7 +611,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -601,11 +626,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -620,9 +649,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ImageToAsciiArt/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -645,9 +677,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				INFOPLIST_FILE = iMessageExtension/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -672,9 +708,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				INFOPLIST_FILE = iMessageExtension/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -12,7 +12,7 @@ protocol ExpandedDelegate {
     func sendMessage(art:String, image:UIImage)
 }
 
-class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ExpandedViewController: UIViewController, UIScrollViewDelegate, UINavigationControllerDelegate {
 
     // MARK: - Setup
     var delegate:ExpandedDelegate?
@@ -87,34 +87,6 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         return image
     }
 
-    // MARK: - Image Picker
-    func pickImage() {
-        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(ImagePickerController, sender: self)
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            displayImage(image)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - Camera
-    func takePicture() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            ImagePickerController.delegate = self
-            ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true, completion: nil)
-        } else {
-            print("Camera not avaliable :(")
-        }
-    }
     
     // MARK: - Rendering
     fileprivate func displayImage(_ image: UIImage) {
@@ -181,4 +153,34 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         return currentLabel
     }
     
+}
+
+// MARK: - Image Selection
+extension ExpandedViewController: UIImagePickerControllerDelegate {
+    func pickImage() {
+        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.show(ImagePickerController, sender: self)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            displayImage(image)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func takePicture() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            ImagePickerController.delegate = self
+            ImagePickerController.sourceType = .camera
+            self.present(ImagePickerController, animated: true, completion: nil)
+        } else {
+            print("Camera not avaliable :(")
+        }
+    }
 }
