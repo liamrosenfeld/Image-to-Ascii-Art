@@ -60,8 +60,8 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
     // Alerts
     func emptyAlert() {
         let emptyAlert = UIAlertController(title: "Woah There!", message:
-            "Please pick an image first", preferredStyle: UIAlertControllerStyle.alert)
-        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+            "Please pick an image first", preferredStyle: UIAlertController.Style.alert)
+        emptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
         
         self.present(emptyAlert, animated: true, completion: nil)
     }
@@ -93,10 +93,10 @@ class ExpandedViewController: UIViewController, UIScrollViewDelegate, UIImagePic
         self.show(ImagePickerController, sender: self)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true, completion: nil)
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             displayImage(image)
         }
     }

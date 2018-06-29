@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CB1AEC4BB900242145 /* AppDelegate.swift */; };
-		0384D6CE1AEC4BB900242145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CD1AEC4BB900242145 /* ViewController.swift */; };
+		0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CD1AEC4BB900242145 /* HomeViewController.swift */; };
 		0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6CF1AEC4BB900242145 /* Main.storyboard */; };
 		0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
 		0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D41AEC4BB900242145 /* LaunchScreen.xib */; };
@@ -18,7 +18,7 @@
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
 		87F476DDEF65A08BDE4DEDA1 /* Pods_iMessageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEACB127ECE349C18773B0B /* Pods_iMessageExtension.framework */; };
 		AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */; };
-		AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */; };
+		AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
 		AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461D1FE360C9003925E7 /* InfoViewController.swift */; };
 		AD5446241FE37AE6003925E7 /* iMessageInstructions.gif in Resources */ = {isa = PBXBuildFile; fileRef = AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */; };
@@ -67,7 +67,7 @@
 		0384D6C61AEC4BB900242145 /* ImageToAsciiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0384D6CA1AEC4BB900242145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0384D6CB1AEC4BB900242145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0384D6CD1AEC4BB900242145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		0384D6CD1AEC4BB900242145 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		0384D6D01AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0384D6D21AEC4BB900242145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0384D6D51AEC4BB900242145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		89B51964E996C996B45F0DBB /* Pods-iMessageExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A254485A9F4F5E4777B1542F /* Pods-iMessageExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessageExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2C7C5D1FC8A6D700EF78AA /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
-		AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		AD54461D1FE360C9003925E7 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AD5446231FE37AE6003925E7 /* iMessageInstructions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = iMessageInstructions.gif; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
-				0384D6CD1AEC4BB900242145 /* ViewController.swift */,
-				AD35D9F71FB760C6006B0D77 /* SecondViewController.swift */,
+				0384D6CD1AEC4BB900242145 /* HomeViewController.swift */,
+				AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */,
 				AD54461D1FE360C9003925E7 /* InfoViewController.swift */,
 				0384D6C91AEC4BB900242145 /* Supporting Files */,
 			);
@@ -237,7 +237,6 @@
 				0384D6C41AEC4BB900242145 /* Resources */,
 				ADBDE04D1FC672FE004F00A2 /* Embed App Extensions */,
 				E3CE2FA464D0BE29774CFA25 /* [CP] Embed Pods Frameworks */,
-				9B108C325CF266C324A0033E /* [CP] Copy Pods Resources */,
 				0C8D672E1FF9DB260053AE53 /* ShellScript */,
 			);
 			buildRules = (
@@ -258,7 +257,6 @@
 				ADBDE0361FC672FE004F00A2 /* Sources */,
 				ADBDE0371FC672FE004F00A2 /* Frameworks */,
 				ADBDE0381FC672FE004F00A2 /* Resources */,
-				F41056DF88206FDF1FC21DD4 /* [CP] Copy Pods Resources */,
 				0C8D672F1FF9DD720053AE53 /* ShellScript */,
 			);
 			buildRules = (
@@ -278,17 +276,18 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = liamrosenfeld;
 				TargetAttributes = {
 					0384D6C51AEC4BB900242145 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = DSGCBGBHJN;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 					ADBDE0391FC672FE004F00A2 = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = DSGCBGBHJN;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -401,21 +400,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B108C325CF266C324A0033E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E3CE2FA464D0BE29774CFA25 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,28 +417,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F41056DF88206FDF1FC21DD4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iMessageExtension/Pods-iMessageExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -467,9 +434,9 @@
 				0384D6F11AEC66C300242145 /* Pixel.swift in Sources */,
 				03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */,
 				0384D6EC1AEC4D6500242145 /* AsciiArtist.swift in Sources */,
-				0384D6CE1AEC4BB900242145 /* ViewController.swift in Sources */,
+				0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */,
 				AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */,
-				AD35D9F81FB760C6006B0D77 /* SecondViewController.swift in Sources */,
+				AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */,
 				03F080901AED4F1600A20334 /* UIImage+Util.swift in Sources */,
 				AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */,
 				0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */,
@@ -541,12 +508,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -595,12 +564,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -644,8 +615,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -663,8 +633,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -691,7 +660,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -717,7 +686,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

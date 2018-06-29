@@ -45,13 +45,13 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         let identifier = (presentationStyle == .compact) ? compactID : expandedID
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
-        for child in childViewControllers {
-            child.willMove(toParentViewController: nil)
+        for child in children {
+            child.willMove(toParent: nil)
             child.view.removeFromSuperview()
-            child.removeFromParentViewController()
+            child.removeFromParent()
         }
         
-        addChildViewController(controller)
+        addChild(controller)
         
         controller.view.frame = view.bounds
         controller.view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,7 @@ class MessagesViewController: MSMessagesAppViewController, CompactDelegate, Expa
         controller.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        controller.didMove(toParentViewController: self)
+        controller.didMove(toParent: self)
         
         if let compact = controller as? CompactViewController {
             compact.delegate = self
