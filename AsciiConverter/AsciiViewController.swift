@@ -16,10 +16,13 @@ open class AsciiViewController: UIViewController {
     open lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
     open var currentLabel: UILabel?
-    @IBOutlet open weak var busyView: UIView!
-    @IBOutlet open weak var scrollView: UIScrollView!
+    var asciiView: UIScrollView!
     
-    open var asciiArt:String?
+    open var asciiArt: String?
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     // MARK: - Save as Image
     open func image(from view: UIScrollView) -> UIImage? {
@@ -44,8 +47,8 @@ open class AsciiViewController: UIViewController {
     
     
     // MARK: - Rendering
-    open func displayImage(_ image: UIImage) {
-        self.busyView.isHidden = false
+    open func displayImage(_ image: UIImage, busyView: UIView) {
+        busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
             let // Rotate first because the orientation is lost when resizing.
@@ -56,8 +59,8 @@ open class AsciiViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.displayAsciiArt(asciiArt)
-                self.busyView.isHidden = true
-                self.scrollView.backgroundColor = UIColor.white
+                busyView.isHidden = true
+                self.asciiView.backgroundColor = UIColor.white
             }
             
             self.asciiArt = asciiArt
@@ -76,11 +79,11 @@ open class AsciiViewController: UIViewController {
         currentLabel?.removeFromSuperview()
         currentLabel = label
         
-        scrollView.addSubview(label)
-        scrollView.contentSize = label.frame.size
+        asciiView.addSubview(label)
+        asciiView.contentSize = label.frame.size
         
         self.updateZoomSettings(animated: false)
-        scrollView.contentOffset = CGPoint.zero
+        asciiView.contentOffset = CGPoint.zero
         
         self.asciiArt = asciiArt
     }
@@ -93,19 +96,20 @@ extension AsciiViewController: UIScrollViewDelegate {
         return currentLabel
     }
     
-    public func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
+    public func configureZoomSupport(for view: UIScrollView) {
+        asciiView = view
+        asciiView.delegate = self
+        asciiView.maximumZoomScale = 5
     }
     
     public func updateZoomSettings(animated: Bool) {
         let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
+        scrollSize  = asciiView.frame.size,
+        contentSize = asciiView.contentSize,
         scaleWidth  = scrollSize.width / contentSize.width,
         scaleHeight = scrollSize.height / contentSize.height,
         scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
+        asciiView.minimumZoomScale = scale
+        asciiView.setZoomScale(scale, animated: animated)
     }
 }

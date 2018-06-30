@@ -17,13 +17,7 @@ class InfoViewController: UIViewController {
         gifView.loadGif(name: "iMessageInstructions")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func close(_ sender: UIButton) {
         dismiss(animated: false, completion: nil)
     }
-
 }

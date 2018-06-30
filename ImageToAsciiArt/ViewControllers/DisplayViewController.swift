@@ -16,12 +16,15 @@ class DisplayViewController: AsciiViewController {
     // MARK: - Setup
     let ImagePickerController = UIImagePickerController()
     
+    @IBOutlet open weak var busyView: UIView!
+    @IBOutlet open weak var scrollView: UIScrollView!
+    
     var picSelectMethod: String?
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureZoomSupport()
+        self.configureZoomSupport(for: scrollView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,12 +37,7 @@ class DisplayViewController: AsciiViewController {
             picSelectMethod = "done"
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     
     // MARK: - Actions
     @IBAction func backToHome(_ sender: UIButton) {
