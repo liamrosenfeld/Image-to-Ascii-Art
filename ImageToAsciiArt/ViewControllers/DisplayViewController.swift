@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AsciiConverter
 import Firebase
 
 class DisplayViewController: UIViewController {

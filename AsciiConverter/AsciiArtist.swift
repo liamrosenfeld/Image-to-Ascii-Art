@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 
 // Transforms an image to ASCII art.
-class AsciiArtist {
+public class AsciiArtist {
     private let
     image:   UIImage,
     palette: AsciiPalette
 
-    init(_ image: UIImage, _ palette: AsciiPalette) {
+    public init(_ image: UIImage, _ palette: AsciiPalette) {
         self.image   = image
         self.palette = palette
     }
 
-    func createAsciiArt() -> String {
+    public func createAsciiArt() -> String {
         let
         dataProvider = image.cgImage?.dataProvider,
         pixelData    = dataProvider?.data,

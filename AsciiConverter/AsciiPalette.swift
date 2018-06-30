@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 // Provides a list of ASCII symbols sorted from darkest to brightest.
-class AsciiPalette {
+public class AsciiPalette {
     private let font: UIFont
 
-    init(font: UIFont) {
+    public init(font: UIFont) {
         self.font = font
     }
 

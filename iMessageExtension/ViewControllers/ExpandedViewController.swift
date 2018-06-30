@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AsciiConverter
 
 protocol ExpandedDelegate {
     func sendMessage(art:String, image:UIImage)
