@@ -3,7 +3,7 @@
 //  ImageToAsciiArt
 //
 //  Created by Liam Rosenfeld on 11/11/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
@@ -23,7 +23,7 @@ class DisplayViewController: UIViewController {
     let ImagePickerController = UIImagePickerController()
     
     var asciiArt:String?
-    var whichButtonPressed: String?
+    var picSelectMethod: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,12 @@ class DisplayViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if whichButtonPressed! == "homePickImage" {
+        if picSelectMethod! == "homePickImage" {
             pickImage()
-            whichButtonPressed = "done"
-        } else if whichButtonPressed! == "homeTakePicture" {
+            picSelectMethod = "done"
+        } else if picSelectMethod! == "homeTakePicture" {
             takePicture()
-            whichButtonPressed = "done"
+            picSelectMethod = "done"
         }
     }
     
@@ -220,6 +220,7 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.present(ImagePickerController, animated: true, completion: nil)
         } else {
             alert(title: "No Camera Available", message: nil, dismissText: "OK")
+            print("Camera not avaliable :(")
         }
     }
 }

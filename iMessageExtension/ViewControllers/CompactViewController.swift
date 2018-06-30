@@ -3,13 +3,13 @@
 //  iMessageExtension
 //
 //  Created by Liam Rosenfeld on 11/22/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
 
 protocol CompactDelegate {
-    func pickImage()
+    func selectImage(via: String)
 }
 
 class CompactViewController: UIViewController {
@@ -29,7 +29,10 @@ class CompactViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pickImage(_ sender: Any) {
-        delegate?.pickImage()
+        delegate?.selectImage(via: "pick")
     }
     
+    @IBAction func takePhoto(_ sender: Any) {
+        delegate?.selectImage(via: "take")
+    }
 }

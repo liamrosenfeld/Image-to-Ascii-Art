@@ -3,7 +3,7 @@
 //  iMessageExtension
 //
 //  Created by Liam Rosenfeld on 11/22/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
@@ -21,6 +21,7 @@ class MessagesViewController: MSMessagesAppViewController {
     
     var artID: String?
     var asciiArt: String?
+    var picSelectMethod: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class MessagesViewController: MSMessagesAppViewController {
         presentVC(presentationStyle: self.presentationStyle)
     }
     
-    func presentVC(presentationStyle:MSMessagesAppPresentationStyle) {
+    func presentVC(presentationStyle: MSMessagesAppPresentationStyle) {
         let identifier = (presentationStyle == .compact) ? compactID : expandedID
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
@@ -72,6 +73,7 @@ class MessagesViewController: MSMessagesAppViewController {
                 self.performSegue(withIdentifier: "toContent", sender: self)
             } else {
                 expanded.delegate = self
+                expanded.picSelectMethod = picSelectMethod
             }
         }
     }
@@ -143,8 +145,9 @@ class MessagesViewController: MSMessagesAppViewController {
 
 // MARK: - Delegate Stuff
 extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDelegate {
-    func pickImage() {
+    func selectImage(via method: String) {
         self.requestPresentationStyle(.expanded)
+        picSelectMethod = method
     }
     
     func close() {

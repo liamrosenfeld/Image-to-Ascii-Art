@@ -3,7 +3,7 @@
 //  ImageToAsciiArt
 //
 //  Created by Liam Rosenfeld on 11/1/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToContent" {
             let destination = segue.destination as! DisplayViewController
-            destination.whichButtonPressed = buttonPressed!
+            destination.picSelectMethod = buttonPressed!
         }
     }
 

@@ -3,7 +3,7 @@
 //  ImageToAsciiArt
 //
 //  Created by Liam Rosenfeld on 12/14/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
