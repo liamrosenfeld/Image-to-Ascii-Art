@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFh-8j-8We">
-                                <rect key="frame" x="0.0" y="58" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="470"/>
                                 <color key="backgroundColor" red="0.17394059896469116" green="0.24193984270095825" blue="0.31265199184417725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converted Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dz-2s-qeB">
@@ -137,13 +137,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LL-2b-TUr" userLabel="Busy View">
-                                <rect key="frame" x="0.0" y="58" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="470"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-pW-0i0">
-                                        <rect key="frame" x="150" y="192" width="20" height="20"/>
+                                        <rect key="frame" x="150" y="182" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converting…" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDR-Q3-5rX">
-                                        <rect key="frame" x="113.66666666666669" y="216" width="93" height="18"/>
+                                        <rect key="frame" x="113.66666666666669" y="206" width="93" height="18"/>
                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="Dark Blue"/>
                                 <constraints>
-                                    <constraint firstItem="kDR-Q3-5rX" firstAttribute="centerY" secondItem="2LL-2b-TUr" secondAttribute="centerY" id="HqV-Nm-LeQ"/>
+                                    <constraint firstItem="kDR-Q3-5rX" firstAttribute="centerY" secondItem="2LL-2b-TUr" secondAttribute="centerY" constant="-20" id="HqV-Nm-LeQ"/>
                                     <constraint firstItem="JgR-pW-0i0" firstAttribute="centerX" secondItem="kDR-Q3-5rX" secondAttribute="centerX" id="WwM-pY-mv2"/>
                                     <constraint firstItem="JgR-pW-0i0" firstAttribute="centerX" secondItem="2LL-2b-TUr" secondAttribute="centerX" id="aUE-1t-Mc9"/>
                                     <constraint firstItem="kDR-Q3-5rX" firstAttribute="top" secondItem="JgR-pW-0i0" secondAttribute="bottom" constant="4" id="hcp-0n-LFu"/>
@@ -199,7 +199,7 @@
                         </subviews>
                         <color key="backgroundColor" name="Medium Blue"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="uFh-8j-8We" secondAttribute="bottom" constant="20" symbolic="YES" id="0mh-ZT-ggZ"/>
+                            <constraint firstAttribute="bottom" secondItem="uFh-8j-8We" secondAttribute="bottom" id="0mh-ZT-ggZ"/>
                             <constraint firstAttribute="trailing" secondItem="2LL-2b-TUr" secondAttribute="trailing" id="3oM-Ou-U55"/>
                             <constraint firstItem="0dz-2s-qeB" firstAttribute="centerX" secondItem="MND-iI-EvB" secondAttribute="centerX" id="Bhr-hg-g8M"/>
                             <constraint firstItem="uFh-8j-8We" firstAttribute="leading" secondItem="MND-iI-EvB" secondAttribute="leading" id="EVp-mx-I9Y"/>
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQc-V0-7Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420.8" y="118.74062968515743"/>
+            <point key="canvasLocation" x="1420.289855072464" y="118.20652173913044"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="fMU-af-clS">
@@ -239,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Irv-lZ-S2w">
-                                <rect key="frame" x="0.0" y="58" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfI-Tk-PvV">
@@ -272,7 +272,7 @@
                         <constraints>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="leading" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" constant="-16" id="1em-66-RJh"/>
                             <constraint firstItem="GB9-SV-ABj" firstAttribute="centerX" secondItem="4XV-36-LXB" secondAttribute="centerX" id="4YL-bV-Hfg"/>
-                            <constraint firstAttribute="bottom" secondItem="Irv-lZ-S2w" secondAttribute="bottom" constant="20" symbolic="YES" id="8R4-eP-Sfu"/>
+                            <constraint firstAttribute="bottom" secondItem="Irv-lZ-S2w" secondAttribute="bottom" constant="-4" id="8R4-eP-Sfu"/>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="top" secondItem="GfI-Tk-PvV" secondAttribute="bottom" constant="3" id="MSh-Ss-U16"/>
                             <constraint firstItem="GfI-Tk-PvV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" id="Pf1-e9-9ge"/>
                             <constraint firstItem="GfI-Tk-PvV" firstAttribute="top" secondItem="v1B-VJ-XMR" secondAttribute="top" constant="5" id="YPA-Xo-XP7"/>
@@ -290,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vd-P1-MfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060.8000000000002" y="118.74062968515743"/>
+            <point key="canvasLocation" x="2059.4202898550725" y="118.20652173913044"/>
         </scene>
     </scenes>
     <resources>

@@ -52,8 +52,8 @@ class DisplayViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func handleNewImageTapped(_ sender: UIButton) {
-        pickImage()
+    @IBAction func newImage(_ sender: UIButton) {
+        selectAnother()
     }
     
     @IBAction func share(_ sender: UIButton) {
@@ -217,10 +217,14 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             ImagePickerController.delegate = self
             ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true, completion: nil)
+            self.show(ImagePickerController, sender: self)
         } else {
             alert(title: "No Camera Available", message: nil, dismissText: "OK")
             print("Camera not avaliable :(")
         }
+    }
+    
+    func selectAnother() {
+        self.show(ImagePickerController, sender: self)
     }
 }
