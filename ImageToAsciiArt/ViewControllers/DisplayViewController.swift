@@ -9,6 +9,8 @@
 import UIKit
 import AsciiConverter
 import Firebase
+import MessageUI
+import Messages
 
 class DisplayViewController: UIViewController {
 
@@ -25,6 +27,7 @@ class DisplayViewController: UIViewController {
     
     var asciiArt:String?
     var picSelectMethod: String?
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,20 +69,20 @@ class DisplayViewController: UIViewController {
     }
     
     // Save as Image
-    func convertToImage() -> UIImage? {
-        UIGraphicsBeginImageContext(scrollView.contentSize)
+    func image(from view: UIScrollView) -> UIImage? {
+        UIGraphicsBeginImageContext(view.contentSize)
         
-        let savedContentOffset = scrollView.contentOffset
-        let savedFrame = scrollView.frame
+        let savedContentOffset = view.contentOffset
+        let savedFrame = view.frame
         
-        scrollView.contentOffset = CGPoint.zero
-        scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+        view.contentOffset = CGPoint.zero
+        view.frame = CGRect(x: 0, y: 0, width: view.contentSize.width, height: view.contentSize.height)
         
-        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
-        scrollView.contentOffset = savedContentOffset
-        scrollView.frame = savedFrame
+        view.contentOffset = savedContentOffset
+        view.frame = savedFrame
         
         UIGraphicsEndImageContext()
         
@@ -142,8 +145,13 @@ class DisplayViewController: UIViewController {
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
-            UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(self.image(from: self.scrollView)!, nil, nil, nil)
             self.alert(title: "Saved!", message: nil, dismissText: "Yay!")
+            Analytics.logEvent(AnalyticsEventShare, parameters: nil)
+        }
+        
+        let send = UIAlertAction(title: "iMessage", style: .default) { action in
+            self.sendMessage(with: self.asciiArt!)
             Analytics.logEvent(AnalyticsEventShare, parameters: nil)
         }
         
@@ -151,6 +159,11 @@ class DisplayViewController: UIViewController {
         
         shareMenu.addAction(copy)
         shareMenu.addAction(image)
+        if MFMessageComposeViewController.canSendText() {
+            shareMenu.addAction(send)
+        } else {
+            print("SMS services are not available")
+        }
         shareMenu.addAction(cancel)
         
         if let popoverController = shareMenu.popoverPresentationController {
@@ -199,7 +212,7 @@ extension DisplayViewController: UIScrollViewDelegate {
 extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func pickImage() {
         ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(ImagePickerController, sender: self)
+        self.present(ImagePickerController, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -218,7 +231,7 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             ImagePickerController.delegate = self
             ImagePickerController.sourceType = .camera
-            self.show(ImagePickerController, sender: self)
+            self.present(ImagePickerController, animated: true)
         } else {
             alert(title: "No Camera Available", message: nil, dismissText: "OK")
             print("Camera not avaliable :(")
@@ -226,6 +239,65 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func selectAnother() {
-        self.show(ImagePickerController, sender: self)
+        self.present(ImagePickerController, animated: true)
+    }
+}
+
+
+// MARK: - Send iMessage
+extension DisplayViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        // Check the result or perform other tasks.
+        if result == .sent {
+            self.alert(title: "Sent!", message: nil, dismissText: "Yay!")
+        }
+        
+        // Dismiss the message compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendMessage(with ascii: String) {
+        setupFirebase()
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
+        
+        // Create Message
+        composeVC.message = MSMessage()
+        composeVC.message?.layout = layout(image: image(from: scrollView)!)
+        composeVC.message?.url = getURL(ascii: ascii)
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
+    
+    func layout(image: UIImage) -> MSMessageLayout {
+        let layout = MSMessageTemplateLayout()
+        layout.image = image
+        layout.caption = "Ascii Art"
+        return layout
+    }
+    
+    func setupFirebase() {
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+            ref = Database.database().reference()
+        }
+    }
+    
+    func getURL(ascii: String) -> URL {
+        // Send to Firebase
+        if ref == nil {
+            ref = Database.database().reference()
+        }
+        let postArt = self.ref.child("asciiArt").childByAutoId()
+        postArt.setValue(ascii)
+        let artID = postArt.key
+        
+        // Get Message URL
+        var components = URLComponents()
+        let qID = URLQueryItem(name: "artID", value: artID )
+        components.queryItems = [qID]
+        return components.url!
     }
 }
