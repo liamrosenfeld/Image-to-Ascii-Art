@@ -10,7 +10,6 @@ import UIKit
 import AsciiConverter
 import Firebase
 import MessageUI
-import Messages
 
 class DisplayViewController: UIViewController {
 
@@ -19,7 +18,7 @@ class DisplayViewController: UIViewController {
     private let maxImageSize = CGSize(width: 310, height: 310)
     private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
-    private var currentLabel: UILabel?
+    var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -91,7 +90,7 @@ class DisplayViewController: UIViewController {
 
     
     // MARK: - Rendering
-    private func displayImage(_ image: UIImage) {
+    func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -180,124 +179,5 @@ class DisplayViewController: UIViewController {
         alert.addAction(UIAlertAction(title: dismissText, style: UIAlertAction.Style.default,handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-
-// MARK: - Zooming support
-extension DisplayViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return currentLabel
-    }
-    
-    func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
-    }
-    
-    func updateZoomSettings(animated: Bool) {
-        let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
-        scaleWidth  = scrollSize.width / contentSize.width,
-        scaleHeight = scrollSize.height / contentSize.height,
-        scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
-    }
-}
-
-
-// MARK: - Select Image
-extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func pickImage() {
-        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.present(ImagePickerController, animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            displayImage(image)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func takePicture() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            ImagePickerController.delegate = self
-            ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true)
-        } else {
-            alert(title: "No Camera Available", message: nil, dismissText: "OK")
-            print("Camera not avaliable :(")
-        }
-    }
-    
-    func selectAnother() {
-        self.present(ImagePickerController, animated: true)
-    }
-}
-
-
-// MARK: - Send iMessage
-extension DisplayViewController: MFMessageComposeViewControllerDelegate {
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        // Check the result or perform other tasks.
-        if result == .sent {
-            self.alert(title: "Sent!", message: nil, dismissText: "Yay!")
-        }
-        
-        // Dismiss the message compose view controller.
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendMessage(with ascii: String) {
-        setupFirebase()
-        
-        let composeVC = MFMessageComposeViewController()
-        composeVC.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
-        
-        // Create Message
-        composeVC.message = MSMessage()
-        composeVC.message?.layout = layout(image: image(from: scrollView)!)
-        composeVC.message?.url = getURL(ascii: ascii)
-        
-        // Present the view controller modally.
-        self.present(composeVC, animated: true, completion: nil)
-    }
-    
-    func layout(image: UIImage) -> MSMessageLayout {
-        let layout = MSMessageTemplateLayout()
-        layout.image = image
-        layout.caption = "Ascii Art"
-        return layout
-    }
-    
-    func setupFirebase() {
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-            ref = Database.database().reference()
-        }
-    }
-    
-    func getURL(ascii: String) -> URL {
-        // Send to Firebase
-        if ref == nil {
-            ref = Database.database().reference()
-        }
-        let postArt = self.ref.child("asciiArt").childByAutoId()
-        postArt.setValue(ascii)
-        let artID = postArt.key
-        
-        // Get Message URL
-        var components = URLComponents()
-        let qID = URLQueryItem(name: "artID", value: artID )
-        components.queryItems = [qID]
-        return components.url!
     }
 }
