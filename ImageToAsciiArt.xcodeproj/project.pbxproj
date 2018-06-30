@@ -11,11 +11,10 @@
 		0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CD1AEC4BB900242145 /* HomeViewController.swift */; };
 		0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6CF1AEC4BB900242145 /* Main.storyboard */; };
 		0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
+		0C13AD0420E83C1000676ED3 /* AsciiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AD0220E83C1000676ED3 /* AsciiViewController.swift */; };
 		0C51C06F20E6A86B0029C514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */; };
-		0CB4CEEA20E833B7001F3292 /* ZoomSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEE920E833B7001F3292 /* ZoomSupport.swift */; };
 		0CB4CEEC20E8340A001F3292 /* SelectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEEB20E8340A001F3292 /* SelectImage.swift */; };
 		0CB4CEEE20E83461001F3292 /* iMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEED20E83461001F3292 /* iMessage.swift */; };
-		0CB4CEF120E83536001F3292 /* ZoomSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEF020E83536001F3292 /* ZoomSupport.swift */; };
 		0CB4CEF320E835DF001F3292 /* SelectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEF220E835DF001F3292 /* SelectImage.swift */; };
 		0CD00FCC20E7FC8A00B07B5F /* AsciiConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */; };
 		0CD00FCD20E7FC8A00B07B5F /* AsciiConverter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -96,11 +95,10 @@
 		0384D6F01AEC66C300242145 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
 		03F0808F1AED4F1600A20334 /* UIImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
+		0C13AD0220E83C1000676ED3 /* AsciiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsciiViewController.swift; sourceTree = "<group>"; };
 		0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0CB4CEE920E833B7001F3292 /* ZoomSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSupport.swift; sourceTree = "<group>"; };
 		0CB4CEEB20E8340A001F3292 /* SelectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImage.swift; sourceTree = "<group>"; };
 		0CB4CEED20E83461001F3292 /* iMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMessage.swift; sourceTree = "<group>"; };
-		0CB4CEF020E83536001F3292 /* ZoomSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSupport.swift; sourceTree = "<group>"; };
 		0CB4CEF220E835DF001F3292 /* SelectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImage.swift; sourceTree = "<group>"; };
 		0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsciiConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD00FC820E7FC8A00B07B5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		0CB4CEE820E83398001F3292 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0CB4CEE920E833B7001F3292 /* ZoomSupport.swift */,
 				0CB4CEEB20E8340A001F3292 /* SelectImage.swift */,
 				0CB4CEED20E83461001F3292 /* iMessage.swift */,
 			);
@@ -224,7 +221,6 @@
 		0CB4CEEF20E83504001F3292 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0CB4CEF020E83536001F3292 /* ZoomSupport.swift */,
 				0CB4CEF220E835DF001F3292 /* SelectImage.swift */,
 			);
 			path = Extensions;
@@ -275,6 +271,7 @@
 		0CD00FC620E7FC8A00B07B5F /* AsciiConverter */ = {
 			isa = PBXGroup;
 			children = (
+				0C13AD0220E83C1000676ED3 /* AsciiViewController.swift */,
 				0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */,
 				03F080971AEDD7D000A20334 /* AsciiPalette.swift */,
 				0384D6F01AEC66C300242145 /* Pixel.swift */,
@@ -562,7 +559,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CB4CEEA20E833B7001F3292 /* ZoomSupport.swift in Sources */,
 				0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */,
 				AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */,
 				AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */,
@@ -579,6 +575,7 @@
 			files = (
 				0CD00FD220E7FCC300B07B5F /* AsciiArtist.swift in Sources */,
 				0CD00FD420E7FCC300B07B5F /* Pixel.swift in Sources */,
+				0C13AD0420E83C1000676ED3 /* AsciiViewController.swift in Sources */,
 				0CD00FD320E7FCC300B07B5F /* AsciiPalette.swift in Sources */,
 				0CD00FD520E7FCC300B07B5F /* UIImage+Util.swift in Sources */,
 			);
@@ -593,7 +590,6 @@
 				ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */,
 				ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */,
 				ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */,
-				0CB4CEF120E83536001F3292 /* ZoomSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

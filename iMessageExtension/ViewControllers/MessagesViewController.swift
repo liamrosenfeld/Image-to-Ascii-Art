@@ -143,7 +143,7 @@ class MessagesViewController: MSMessagesAppViewController {
 }
 
 
-// MARK: - Delegate Stuff
+// MARK: - Manage Pres Style Requests
 extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDelegate {
     func selectImage(via method: String) {
         self.requestPresentationStyle(.expanded)

@@ -7,22 +7,16 @@
 //
 
 import UIKit
+import AsciiConverter
 
 protocol ContentDelegate {
     func close()
 }
 
-class ContentViewController: UIViewController {
+class ContentViewController: AsciiViewController {
 
     // MARK: - Setup
     var delegate: ContentDelegate!
-    
-    private let labelFont = UIFont(name: "Menlo", size: 7)!
-    
-    var currentLabel: UILabel?
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    var asciiArt:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,28 +103,5 @@ class ContentViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         return image
-    }
-    
-    
-    // MARK: - Display the Passed String
-    private func displayAsciiArt(_ asciiArt: String) {
-        let
-        label = UILabel()
-        label.font = self.labelFont
-        label.lineBreakMode = NSLineBreakMode.byClipping
-        label.numberOfLines = 0
-        label.text = asciiArt
-        label.sizeToFit()
-        
-        currentLabel?.removeFromSuperview()
-        currentLabel = label
-        
-        scrollView.addSubview(label)
-        scrollView.contentSize = label.frame.size
-        
-        self.updateZoomSettings(animated: false)
-        scrollView.contentOffset = CGPoint.zero
-        
-        self.asciiArt = asciiArt
     }
 }
