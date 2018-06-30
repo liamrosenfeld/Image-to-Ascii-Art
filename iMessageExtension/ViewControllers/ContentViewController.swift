@@ -19,7 +19,7 @@ class ContentViewController: UIViewController {
     
     private let labelFont = UIFont(name: "Menlo", size: 7)!
     
-    private var currentLabel: UILabel?
+    var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     
     var asciiArt:String?
@@ -132,29 +132,5 @@ class ContentViewController: UIViewController {
         scrollView.contentOffset = CGPoint.zero
         
         self.asciiArt = asciiArt
-    }
-}
-
-
-// MARK: - Zooming support
-extension ContentViewController: UIScrollViewDelegate {
-    private func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
-    }
-    
-    private func updateZoomSettings(animated: Bool) {
-        let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
-        scaleWidth  = scrollSize.width / contentSize.width,
-        scaleHeight = scrollSize.height / contentSize.height,
-        scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return currentLabel
     }
 }

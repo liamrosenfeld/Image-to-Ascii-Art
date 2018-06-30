@@ -22,7 +22,7 @@ class ExpandedViewController: UIViewController {
     private let maxImageSize = CGSize(width: 310, height: 310)
     private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
 
-    private var currentLabel: UILabel?
+    var currentLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busyView: UIView!
 
@@ -100,7 +100,7 @@ class ExpandedViewController: UIViewController {
 
     
     // MARK: - Rendering
-    private func displayImage(_ image: UIImage) {
+    func displayImage(_ image: UIImage) {
         self.busyView.isHidden = false
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -139,64 +139,5 @@ class ExpandedViewController: UIViewController {
         scrollView.contentOffset = CGPoint.zero
         
         self.asciiArt = asciiArt
-    }
-}
-
-// MARK: - Image Selection
-extension ExpandedViewController: UIImagePickerControllerDelegate {
-    func pickImage() {
-        ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(ImagePickerController, sender: self)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            displayImage(image)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func takePicture() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            ImagePickerController.delegate = self
-            ImagePickerController.sourceType = .camera
-            self.show(ImagePickerController, sender: self)
-        } else {
-            alert(title: "No Camera Available", message: nil, dismissText: "OK")
-            print("Camera not avaliable :(")
-        }
-    }
-    
-    func selectAnother() {
-        self.show(ImagePickerController, sender: self)
-    }
-}
-
-
-// MARK: - Zooming Supoort
-extension ExpandedViewController: UIScrollViewDelegate, UINavigationControllerDelegate {
-    private func configureZoomSupport() {
-        scrollView.delegate = self
-        scrollView.maximumZoomScale = 5
-    }
-    
-    private func updateZoomSettings(animated: Bool) {
-        let
-        scrollSize  = scrollView.frame.size,
-        contentSize = scrollView.contentSize,
-        scaleWidth  = scrollSize.width / contentSize.width,
-        scaleHeight = scrollSize.height / contentSize.height,
-        scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: animated)
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return currentLabel
     }
 }
