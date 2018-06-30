@@ -10,7 +10,7 @@ import AVFoundation
 import Foundation
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     
     class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage {
         let
