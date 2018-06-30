@@ -8,10 +8,12 @@
 
 import UIKit
 
-extension ExpandedViewController: UIImagePickerControllerDelegate {
+import UIKit
+
+extension ExpandedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func pickImage() {
         ImagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        self.show(ImagePickerController, sender: self)
+        self.present(ImagePickerController, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -30,7 +32,7 @@ extension ExpandedViewController: UIImagePickerControllerDelegate {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             ImagePickerController.delegate = self
             ImagePickerController.sourceType = .camera
-            self.show(ImagePickerController, sender: self)
+            self.present(ImagePickerController, animated: true)
         } else {
             alert(title: "No Camera Available", message: nil, dismissText: "OK")
             print("Camera not avaliable :(")
@@ -38,6 +40,6 @@ extension ExpandedViewController: UIImagePickerControllerDelegate {
     }
     
     func selectAnother() {
-        self.show(ImagePickerController, sender: self)
+        self.present(ImagePickerController, animated: true)
     }
 }

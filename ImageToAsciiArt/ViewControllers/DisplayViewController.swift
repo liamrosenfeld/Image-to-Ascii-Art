@@ -11,20 +11,11 @@ import AsciiConverter
 import Firebase
 import MessageUI
 
-class DisplayViewController: UIViewController {
+class DisplayViewController: AsciiViewController {
 
     // MARK: - Setup
-    private let labelFont = UIFont(name: "Menlo", size: 7)!
-    private let maxImageSize = CGSize(width: 310, height: 310)
-    private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
-    
-    var currentLabel: UILabel?
-    @IBOutlet weak var busyView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     let ImagePickerController = UIImagePickerController()
     
-    var asciiArt:String?
     var picSelectMethod: String?
     var ref: DatabaseReference!
     
@@ -65,71 +56,6 @@ class DisplayViewController: UIViewController {
         } else {
             alert(title: "Woah There!", message: "Please pick an image first", dismissText: "OK")
         }
-    }
-    
-    // Save as Image
-    func image(from view: UIScrollView) -> UIImage? {
-        UIGraphicsBeginImageContext(view.contentSize)
-        
-        let savedContentOffset = view.contentOffset
-        let savedFrame = view.frame
-        
-        view.contentOffset = CGPoint.zero
-        view.frame = CGRect(x: 0, y: 0, width: view.contentSize.width, height: view.contentSize.height)
-        
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        view.contentOffset = savedContentOffset
-        view.frame = savedFrame
-        
-        UIGraphicsEndImageContext()
-        
-        return image
-    }
-
-    
-    // MARK: - Rendering
-    func displayImage(_ image: UIImage) {
-        self.busyView.isHidden = false
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            
-            let // Rotate first because the orientation is lost when resizing.
-            rotatedImage = image.imageRotatedToPortraitOrientation(),
-            resizedImage = rotatedImage.imageConstrainedToMaxSize(self.maxImageSize),
-            asciiArtist  = AsciiArtist(resizedImage, self.palette),
-            asciiArt     = asciiArtist.createAsciiArt()
-            
-            DispatchQueue.main.async {
-                self.displayAsciiArt(asciiArt)
-                self.busyView.isHidden = true
-                self.scrollView.backgroundColor = UIColor.white
-                Analytics.logEvent("convert", parameters: nil)
-            }
-            
-            self.asciiArt = asciiArt
-        }
-    }
-    
-    private func displayAsciiArt(_ asciiArt: String) {
-        let
-        label = UILabel()
-        label.font = self.labelFont
-        label.lineBreakMode = NSLineBreakMode.byClipping
-        label.numberOfLines = 0
-        label.text = asciiArt
-        label.sizeToFit()
-        
-        currentLabel?.removeFromSuperview()
-        currentLabel = label
-        
-        scrollView.addSubview(label)
-        scrollView.contentSize = label.frame.size
-        
-        self.updateZoomSettings(animated: false)
-        scrollView.contentOffset = CGPoint.zero
-        
-        self.asciiArt = asciiArt
     }
 
     
