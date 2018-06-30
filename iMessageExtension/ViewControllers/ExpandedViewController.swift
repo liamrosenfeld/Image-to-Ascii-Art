@@ -64,7 +64,7 @@ class ExpandedViewController: UIViewController {
     }
 
     @IBAction func newImage(_ sender: Any) {
-        pickImage()
+        selectAnother()
     }
 
     // MARK: - Alert
@@ -164,11 +164,15 @@ extension ExpandedViewController: UIImagePickerControllerDelegate {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             ImagePickerController.delegate = self
             ImagePickerController.sourceType = .camera
-            self.present(ImagePickerController, animated: true, completion: nil)
+            self.show(ImagePickerController, sender: self)
         } else {
             alert(title: "No Camera Available", message: nil, dismissText: "OK")
             print("Camera not avaliable :(")
         }
+    }
+    
+    func selectAnother() {
+        self.show(ImagePickerController, sender: self)
     }
 }
 
