@@ -3,7 +3,7 @@
 //  iMessageExtension
 //
 //  Created by Liam Rosenfeld on 11/24/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit

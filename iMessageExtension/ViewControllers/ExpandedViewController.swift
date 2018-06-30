@@ -3,7 +3,7 @@
 //  iMessageExtension
 //
 //  Created by Liam Rosenfeld on 11/22/17.
-//  Copyright © 2017 liamrosenfeld. All rights reserved.
+//  Copyright © 2017 Liam Rosenfeld. All rights reserved.
 //
 
 import UIKit
@@ -26,7 +26,9 @@ class ExpandedViewController: UIViewController {
     @IBOutlet weak var busyView: UIView!
 
     let ImagePickerController = UIImagePickerController()
+    
     var asciiArt:String?
+    var picSelectMethod: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,15 @@ class ExpandedViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        pickImage()
+        if picSelectMethod == "pick" {
+            pickImage()
+        } else if picSelectMethod == "take" {
+            takePicture()
+        } else {
+            // User Swiped Up Instead of Clicking Button
+            pickImage()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +115,6 @@ class ExpandedViewController: UIViewController {
                 self.scrollView.backgroundColor = UIColor.white
             }
             
-            print(asciiArt)
             self.asciiArt = asciiArt
         }
     }
@@ -157,6 +166,7 @@ extension ExpandedViewController: UIImagePickerControllerDelegate {
             ImagePickerController.sourceType = .camera
             self.present(ImagePickerController, animated: true, completion: nil)
         } else {
+            alert(title: "No Camera Available", message: nil, dismissText: "OK")
             print("Camera not avaliable :(")
         }
     }
