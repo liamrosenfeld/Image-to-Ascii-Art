@@ -17,11 +17,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToContent" {
             let destination = segue.destination as! DisplayViewController
@@ -29,6 +24,7 @@ class HomeViewController: UIViewController {
         }
     }
 
+    
     // MARK: - Actions
     @IBAction func homePickImage(_ sender: UIButton) {
         buttonPressed = "homePickImage"

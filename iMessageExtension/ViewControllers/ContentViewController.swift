@@ -18,9 +18,11 @@ class ContentViewController: AsciiViewController {
     // MARK: - Setup
     var delegate: ContentDelegate!
     
+    @IBOutlet open weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureZoomSupport()
+        self.configureZoomSupport(for: scrollView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,16 +33,13 @@ class ContentViewController: AsciiViewController {
             serverErrorAlert()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - Actions
     @IBAction func save(_ sender: Any) {
         showShareMenu()
     }
+    
     
     // MARK: - UIAlertController
     func showShareMenu() {
@@ -52,7 +51,7 @@ class ContentViewController: AsciiViewController {
         }
         
         let image = UIAlertAction(title: "Image", style: .default) { action in
-            UIImageWriteToSavedPhotosAlbum(self.convertToImage()!, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(self.image(from: self.scrollView)!, nil, nil, nil)
             self.self.alert(title: "Saved!", message: nil, dismissText: "Yay!")
         }
         
@@ -61,8 +60,6 @@ class ContentViewController: AsciiViewController {
         share.addAction(copy)
         share.addAction(image)
         share.addAction(cancel)
-        
-        share.view.transform = CGAffineTransform(translationX: 0, y: -40) // Removes overlap with bottom bar
         
         present(share, animated: true, completion: nil)
     }
@@ -82,26 +79,5 @@ class ContentViewController: AsciiViewController {
         }))
         
         self.present(imageAlert, animated: true, completion: nil)
-    }
-    
-    // For Image Option
-    func convertToImage() -> UIImage? {
-        UIGraphicsBeginImageContext(scrollView.contentSize)
-        
-        let savedContentOffset = scrollView.contentOffset
-        let savedFrame = scrollView.frame
-        
-        scrollView.contentOffset = CGPoint.zero
-        scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-        
-        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        scrollView.contentOffset = savedContentOffset
-        scrollView.frame = savedFrame
-        
-        UIGraphicsEndImageContext()
-        
-        return image
     }
 }

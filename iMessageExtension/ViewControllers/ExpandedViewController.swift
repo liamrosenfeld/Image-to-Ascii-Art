@@ -20,11 +20,14 @@ class ExpandedViewController: AsciiViewController {
 
     let ImagePickerController = UIImagePickerController()
     
+    @IBOutlet open weak var busyView: UIView!
+    @IBOutlet open weak var scrollView: UIScrollView!
+    
     var picSelectMethod: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureZoomSupport()
+        self.configureZoomSupport(for: scrollView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,11 +43,7 @@ class ExpandedViewController: AsciiViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
         if  asciiArt != nil {
@@ -59,6 +58,7 @@ class ExpandedViewController: AsciiViewController {
         selectAnother()
     }
 
+    
     // MARK: - Alert
     func alert(title: String, message: String?, dismissText: String) {
         let alert = UIAlertController(title: title, message:

@@ -18,7 +18,7 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
         self.dismiss(animated: true, completion: nil)
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            displayImage(image)
+            displayImage(image, busyView: busyView)
         }
     }
     

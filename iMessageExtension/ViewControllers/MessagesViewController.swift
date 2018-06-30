@@ -31,11 +31,7 @@ class MessagesViewController: MSMessagesAppViewController {
             ref = Database.database().reference()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - Conversation Handling
     override func didBecomeActive(with conversation: MSConversation) {
