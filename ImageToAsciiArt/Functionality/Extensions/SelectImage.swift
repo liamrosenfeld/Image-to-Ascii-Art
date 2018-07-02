@@ -38,6 +38,11 @@ extension DisplayViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func selectAnother() {
-        self.present(ImagePickerController, animated: true)
+        if ImagePickerController.delegate != nil {
+            self.present(ImagePickerController, animated: true)
+        } else {
+            print("Warning: 'ImagePickerController.delegate' not set up - Switching to pickImage()")
+            pickImage()
+        }
     }
 }
