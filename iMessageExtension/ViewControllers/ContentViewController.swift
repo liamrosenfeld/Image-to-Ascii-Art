@@ -36,13 +36,13 @@ class ContentViewController: AsciiViewController {
 
     
     // MARK: - Actions
-    @IBAction func save(_ sender: Any) {
-        showShareMenu()
+    @IBAction func save(_ sender: UIButton) {
+        showShareMenu(sender)
     }
     
     
     // MARK: - UIAlertController
-    func showShareMenu() {
+    func showShareMenu(_ sender: UIButton) {
         let share = UIAlertController(title: "Share", message: nil, preferredStyle: .actionSheet)
         
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
@@ -60,6 +60,18 @@ class ContentViewController: AsciiViewController {
         share.addAction(copy)
         share.addAction(image)
         share.addAction(cancel)
+        
+        if let popoverController = share.popoverPresentationController {
+            // Keep From Crashing On iPad
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        } else {
+            // Stop Bottom Bar Overlap on < 12 iPhone
+            if #available(iOS 12, *) {
+            } else {
+                share.view.transform = CGAffineTransform(translationX: 0, y: -40)
+            }
+        }
         
         present(share, animated: true, completion: nil)
     }

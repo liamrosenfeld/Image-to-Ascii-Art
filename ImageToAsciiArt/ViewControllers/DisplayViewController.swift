@@ -89,6 +89,7 @@ class DisplayViewController: AsciiViewController {
         }
         shareMenu.addAction(cancel)
         
+        // Keep From Crashing On iPad
         if let popoverController = shareMenu.popoverPresentationController {
             popoverController.sourceView = sender
             popoverController.sourceRect = sender.bounds
