@@ -19,19 +19,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="© 2017 By Liam Rosenfeld" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 By Liam Rosenfeld" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
                                 <rect key="frame" x="87" y="626" width="201" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo-White" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-WS-EV0">
-                                <rect key="frame" x="35" y="68" width="305" height="152.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-White" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-WS-EV0">
+                                <rect key="frame" x="35" y="68" width="305" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="153" id="H9n-tD-lDC"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="Dark Blue"/>
+                        <constraints>
+                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="88l-vE-hdE"/>
+                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="35" id="8eC-t0-68I"/>
+                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fzR-G3-V1x"/>
+                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" symbolic="YES" id="pLd-mb-Wh1"/>
+                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="48" id="tje-t1-guJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
