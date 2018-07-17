@@ -8,6 +8,7 @@
 
 import UIKit
 import AsciiConverter
+import  Firebase
 
 protocol ContentDelegate {
     func close()
@@ -17,8 +18,10 @@ class ContentViewController: AsciiViewController {
 
     // MARK: - Setup
     var delegate: ContentDelegate!
+    var dataID: String?
     
     @IBOutlet open weak var scrollView: UIScrollView!
+    @IBOutlet weak var busyView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +30,28 @@ class ContentViewController: AsciiViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if self.asciiArt != nil {
-            self.displayAsciiArt(asciiArt!)
+        getAscii()
+    }
+    
+    func getAscii() {
+        if dataID != nil {
+            busyView.isHidden = false
+            Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                self.asciiArt = snapshot.value as? String
+                
+                DispatchQueue.main.async {
+                    self.busyView.isHidden = true
+                    if self.asciiArt != nil {
+                        self.displayAsciiArt(self.asciiArt!)
+                    } else {
+                        self.serverErrorAlert()
+                    }
+                }
+            })
         } else {
             serverErrorAlert()
         }
     }
-
     
     // MARK: - Actions
     @IBAction func save(_ sender: UIButton) {

@@ -13,15 +13,10 @@ import Firebase
 class MessagesViewController: MSMessagesAppViewController {
 
     // MARK: - Setup
-    let compactID: String = "compact"
-    let expandedID: String = "expanded"
-    let contentID: String = "content"
+    var artID: String?
+    var picSelectMethod: String!
     
     var ref: DatabaseReference!
-    
-    var artID: String?
-    var asciiArt: String?
-    var picSelectMethod: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +32,17 @@ class MessagesViewController: MSMessagesAppViewController {
     }
 
     
-    // MARK: - Conversation Handling
+    // MARK: - Resizing
     override func didBecomeActive(with conversation: MSConversation) {
-        presentVC(presentationStyle: self.presentationStyle)
+        // Keeps it from calling content controller twice
+        if self.presentationStyle == .compact {
+            presentVC(presentationStyle: self.presentationStyle)
+        }
     }
     
     func presentVC(presentationStyle: MSMessagesAppPresentationStyle) {
-        let identifier = (presentationStyle == .compact) ? compactID : expandedID
+        
+        let identifier = getDesiredSizeID().rawValue
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
         for child in children {
@@ -69,12 +68,12 @@ class MessagesViewController: MSMessagesAppViewController {
             compact.delegate = self
         }
         else if let expanded = controller as? ExpandedViewController {
-            if (self.activeConversation?.selectedMessage?.url) != nil {
-                self.performSegue(withIdentifier: "toContent", sender: self)
-            } else {
-                expanded.delegate = self
-                expanded.picSelectMethod = picSelectMethod
-            }
+            expanded.delegate = self
+            expanded.picSelectMethod = picSelectMethod
+        }
+        else if let content = controller as? ContentViewController {
+            content.dataID = getDataID()
+            content.delegate = self
         }
     }
     
@@ -86,21 +85,28 @@ class MessagesViewController: MSMessagesAppViewController {
         }
     }
     
-    // MARK: - Send ASCII Art to Content View
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toContent" {
-            let url = String(describing: self.activeConversation!.selectedMessage!.url!)
-            let destination = segue.destination as! ContentViewController
-            let dataID = getQueryStringParameter(url: url, param: "artID")
-            
-            destination.delegate = self
-            
-            Database.database().reference().child("asciiArt").child(dataID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                print(snapshot)
-                self.asciiArt = snapshot.value as? String
-                destination.asciiArt = self.asciiArt!
-            })
+    func getDesiredSizeID() -> sizeID {
+        if presentationStyle == .compact {
+            return .compactID
+        } else {
+            if self.activeConversation?.selectedMessage?.url != nil {
+                return .contentID
+            } else {
+                return .expandedID
+            }
         }
+    }
+    
+    enum sizeID: String {
+        case compactID = "compact"
+        case expandedID = "expanded"
+        case contentID = "content"
+    }
+    
+    // MARK: - Get DataID For Content View
+    func getDataID() -> String? {
+        let url = String(describing: self.activeConversation!.selectedMessage!.url!)
+        return getQueryStringParameter(url: url, param: "artID")
     }
     
     func getQueryStringParameter(url: String, param: String) -> String? {
