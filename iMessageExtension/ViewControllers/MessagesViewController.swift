@@ -41,7 +41,6 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     func presentVC(presentationStyle: MSMessagesAppPresentationStyle) {
-        
         let identifier = getDesiredSizeID().rawValue
         let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
         
@@ -78,11 +77,7 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        if presentationStyle == .compact {
-            self.dismiss()
-        } else {
-            presentVC(presentationStyle: presentationStyle)
-        }
+        presentVC(presentationStyle: presentationStyle)
     }
     
     func getDesiredSizeID() -> sizeID {
@@ -159,4 +154,9 @@ extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDele
     func close() {
         self.dismiss()
     }
+    
+    func new() {
+        requestPresentationStyle(.compact)
+    }
+    
 }

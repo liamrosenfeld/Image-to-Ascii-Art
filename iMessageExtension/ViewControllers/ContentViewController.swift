@@ -12,6 +12,7 @@ import  Firebase
 
 protocol ContentDelegate {
     func close()
+    func new()
 }
 
 class ContentViewController: AsciiViewController {
@@ -58,6 +59,9 @@ class ContentViewController: AsciiViewController {
         showShareMenu(sender)
     }
     
+    @IBAction func new(_ sender: UIButton) {
+        self.delegate.new()
+    }
     
     // MARK: - UIAlertController
     func showShareMenu(_ sender: UIButton) {
