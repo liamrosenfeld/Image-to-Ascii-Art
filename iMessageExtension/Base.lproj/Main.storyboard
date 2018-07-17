@@ -286,18 +286,40 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nv-nV-ISU">
+                                <rect key="frame" x="16" y="25" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="KpC-ZI-4j4"/>
+                                </constraints>
+                                <state key="normal" title="New">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.makeToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="new:" destination="IkI-EA-irb" eventType="touchUpInside" id="Xpv-3c-5HG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Medium Blue"/>
                         <constraints>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="leading" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" constant="-16" id="1em-66-RJh"/>
                             <constraint firstItem="GB9-SV-ABj" firstAttribute="centerX" secondItem="4XV-36-LXB" secondAttribute="centerX" id="4YL-bV-Hfg"/>
                             <constraint firstItem="Ph3-G1-Z1j" firstAttribute="leading" secondItem="Irv-lZ-S2w" secondAttribute="leading" id="9cl-f6-cez"/>
+                            <constraint firstItem="GB9-SV-ABj" firstAttribute="leading" secondItem="3nv-nV-ISU" secondAttribute="trailing" constant="66" id="ARp-Z0-nHN"/>
                             <constraint firstItem="Ph3-G1-Z1j" firstAttribute="width" secondItem="Irv-lZ-S2w" secondAttribute="width" id="FQ3-oh-wHr"/>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="top" secondItem="GfI-Tk-PvV" secondAttribute="bottom" constant="3" id="MSh-Ss-U16"/>
                             <constraint firstItem="Ph3-G1-Z1j" firstAttribute="height" secondItem="Irv-lZ-S2w" secondAttribute="height" id="Oj9-M5-OE5"/>
                             <constraint firstItem="GfI-Tk-PvV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" id="Pf1-e9-9ge"/>
                             <constraint firstItem="Irv-lZ-S2w" firstAttribute="width" secondItem="4XV-36-LXB" secondAttribute="width" id="Wpe-RQ-frh"/>
                             <constraint firstItem="GfI-Tk-PvV" firstAttribute="top" secondItem="v1B-VJ-XMR" secondAttribute="top" constant="5" id="YPA-Xo-XP7"/>
+                            <constraint firstItem="3nv-nV-ISU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4XV-36-LXB" secondAttribute="leadingMargin" symbolic="YES" id="Zgc-wt-50X"/>
+                            <constraint firstItem="3nv-nV-ISU" firstAttribute="baseline" secondItem="GfI-Tk-PvV" secondAttribute="baseline" id="bSc-vF-Efo"/>
                             <constraint firstItem="GB9-SV-ABj" firstAttribute="centerY" secondItem="GfI-Tk-PvV" secondAttribute="centerY" id="goN-yn-iV1"/>
                             <constraint firstItem="Ph3-G1-Z1j" firstAttribute="top" secondItem="Irv-lZ-S2w" secondAttribute="top" id="hjb-FP-qTb"/>
                             <constraint firstItem="GB9-SV-ABj" firstAttribute="centerX" secondItem="Irv-lZ-S2w" secondAttribute="centerX" id="je0-sx-kqZ"/>
