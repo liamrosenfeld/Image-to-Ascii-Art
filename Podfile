@@ -23,6 +23,7 @@ target 'iMessageExtension' do
   # Pods for iMessageExtension
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
   pod 'Fabric', '~> 1.7.2'
   pod 'Crashlytics', '~> 3.9.3'
 
