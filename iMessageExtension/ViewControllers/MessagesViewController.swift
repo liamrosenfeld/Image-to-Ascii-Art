@@ -30,6 +30,10 @@ class MessagesViewController: MSMessagesAppViewController {
             FirebaseApp.configure()
             ref = Database.database().reference()
         }
+        
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            // TODO: Check Success
+        }
     }
 
     
