@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CompactDelegate {
-    func selectImage(via: String)
+    func selectImage(via: PicMethod)
 }
 
 class CompactViewController: UIViewController {
@@ -25,10 +25,10 @@ class CompactViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pickImage(_ sender: Any) {
-        delegate?.selectImage(via: "pick")
+        delegate?.selectImage(via: .pick)
     }
     
     @IBAction func takePhoto(_ sender: Any) {
-        delegate?.selectImage(via: "take")
+        delegate?.selectImage(via: .take)
     }
 }

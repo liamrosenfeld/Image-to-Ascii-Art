@@ -23,7 +23,7 @@ class ExpandedViewController: AsciiViewController {
     @IBOutlet open weak var busyView: UIView!
     @IBOutlet open weak var scrollView: UIScrollView!
     
-    var picSelectMethod: String!
+    var picSelectMethod: PicMethod!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +32,9 @@ class ExpandedViewController: AsciiViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if picSelectMethod == "pick" {
+        if picSelectMethod == .pick {
             pickImage()
-        } else if picSelectMethod == "take" {
+        } else if picSelectMethod == .take {
             takePicture()
         } else {
             // User Swiped Up Instead of Clicking Button
@@ -67,6 +67,10 @@ class ExpandedViewController: AsciiViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-
     
+}
+
+enum PicMethod {
+    case pick
+    case take
 }

@@ -14,7 +14,7 @@ class MessagesViewController: MSMessagesAppViewController {
 
     // MARK: - Setup
     var artID: String?
-    var picSelectMethod: String!
+    var picSelectMethod: PicMethod!
     
     var ref: DatabaseReference!
     
@@ -146,7 +146,7 @@ class MessagesViewController: MSMessagesAppViewController {
 
 // MARK: - Manage Pres Style Requests
 extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDelegate {
-    func selectImage(via method: String) {
+    func selectImage(via method: PicMethod) {
         self.requestPresentationStyle(.expanded)
         picSelectMethod = method
     }
