@@ -17,6 +17,8 @@
 		0CB4CEEC20E8340A001F3292 /* SelectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEEB20E8340A001F3292 /* SelectImage.swift */; };
 		0CB4CEEE20E83461001F3292 /* iMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEED20E83461001F3292 /* iMessage.swift */; };
 		0CB4CEF320E835DF001F3292 /* SelectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4CEF220E835DF001F3292 /* SelectImage.swift */; };
+		0CC03D10214D9E94009EC5AC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC03D0F214D9E94009EC5AC /* RoundedButton.swift */; };
+		0CC03D16214DA6A5009EC5AC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC03D15214DA6A5009EC5AC /* RoundedButton.swift */; };
 		0CD00FCC20E7FC8A00B07B5F /* AsciiConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */; };
 		0CD00FCD20E7FC8A00B07B5F /* AsciiConverter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0CD00FD220E7FCC300B07B5F /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
@@ -101,6 +103,8 @@
 		0CB4CEEB20E8340A001F3292 /* SelectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImage.swift; sourceTree = "<group>"; };
 		0CB4CEED20E83461001F3292 /* iMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMessage.swift; sourceTree = "<group>"; };
 		0CB4CEF220E835DF001F3292 /* SelectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImage.swift; sourceTree = "<group>"; };
+		0CC03D0F214D9E94009EC5AC /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		0CC03D15214DA6A5009EC5AC /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		0CD00FC520E7FC8A00B07B5F /* AsciiConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsciiConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD00FC820E7FC8A00B07B5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A345B28DFF9AE64AA556E1A /* Pods-ImageToAsciiArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageToAsciiArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageToAsciiArt/Pods-ImageToAsciiArt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,7 +188,7 @@
 			children = (
 				0384D6CF1AEC4BB900242145 /* Main.storyboard */,
 				0CD00FBE20E6CE6600B07B5F /* ViewControllers */,
-				0CB4CEE820E83398001F3292 /* Extensions */,
+				0CC03D12214DA63D009EC5AC /* Helpers */,
 				0CD00FBC20E6CE4600B07B5F /* SupportFiles */,
 			);
 			path = ImageToAsciiArt;
@@ -216,6 +220,40 @@
 				0CB4CEF220E835DF001F3292 /* SelectImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CC03D11214DA625009EC5AC /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0CC03D0F214D9E94009EC5AC /* RoundedButton.swift */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		0CC03D12214DA63D009EC5AC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CB4CEE820E83398001F3292 /* Extensions */,
+				0CC03D11214DA625009EC5AC /* CustomClasses */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0CC03D13214DA675009EC5AC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CB4CEEF20E83504001F3292 /* Extensions */,
+				0CC03D14214DA67C009EC5AC /* CustomClasses */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0CC03D14214DA67C009EC5AC /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0CC03D15214DA6A5009EC5AC /* RoundedButton.swift */,
+			);
+			path = CustomClasses;
 			sourceTree = "<group>";
 		};
 		0CD00FBC20E6CE4600B07B5F /* SupportFiles */ = {
@@ -291,7 +329,7 @@
 			children = (
 				ADBDE0411FC672FE004F00A2 /* Main.storyboard */,
 				0CD00FBF20E6CF5600B07B5F /* ViewControllers */,
-				0CB4CEEF20E83504001F3292 /* Extensions */,
+				0CC03D13214DA675009EC5AC /* Helpers */,
 				0CA89B6520E6CD88009591AA /* SupportFiles */,
 			);
 			path = iMessageExtension;
@@ -548,6 +586,7 @@
 				0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */,
 				AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */,
 				AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */,
+				0CC03D10214D9E94009EC5AC /* RoundedButton.swift in Sources */,
 				0CB4CEEC20E8340A001F3292 /* SelectImage.swift in Sources */,
 				AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */,
 				0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */,
@@ -572,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2C7C5E1FC8A6D700EF78AA /* ContentViewController.swift in Sources */,
+				0CC03D16214DA6A5009EC5AC /* RoundedButton.swift in Sources */,
 				0CB4CEF320E835DF001F3292 /* SelectImage.swift in Sources */,
 				ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */,
 				ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */,
