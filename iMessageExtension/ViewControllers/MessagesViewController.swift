@@ -144,7 +144,7 @@ class MessagesViewController: MSMessagesAppViewController {
 }
 
 
-// MARK: - Manage Pres Style Requests
+// MARK: - Manage Presentaion Style Requests
 extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDelegate {
     func selectImage(via method: PicMethod) {
         self.requestPresentationStyle(.expanded)
@@ -156,6 +156,7 @@ extension MessagesViewController: CompactDelegate, ExpandedDelegate, ContentDele
     }
     
     func new() {
+        activeConversation?.selectedMessage?.url = nil
         requestPresentationStyle(.compact)
     }
     
