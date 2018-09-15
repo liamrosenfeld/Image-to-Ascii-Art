@@ -19,7 +19,7 @@ class DisplayViewController: AsciiViewController {
     @IBOutlet open weak var busyView: UIView!
     @IBOutlet open weak var scrollView: UIScrollView!
     
-    var picSelectMethod: String?
+    var picSelectMethod: PicMethod?
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
@@ -29,12 +29,12 @@ class DisplayViewController: AsciiViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if picSelectMethod! == "homePickImage" {
+        if picSelectMethod! == .homePick {
             pickImage()
-            picSelectMethod = "done"
-        } else if picSelectMethod! == "homeTakePicture" {
+            picSelectMethod = .done
+        } else if picSelectMethod! == .homeTake {
             takePicture()
-            picSelectMethod = "done"
+            picSelectMethod = .done
         }
     }
 
@@ -105,4 +105,10 @@ class DisplayViewController: AsciiViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+enum PicMethod {
+    case homePick
+    case homeTake
+    case done
 }

@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     // MARK: - Setup
-    var buttonPressed: String?
+    var buttonPressed: PicMethod?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +27,12 @@ class HomeViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func homePickImage(_ sender: UIButton) {
-        buttonPressed = "homePickImage"
+        buttonPressed = .homePick
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
 
     @IBAction func homeTakePicture(_ sender: UIButton) {
-        buttonPressed = "homeTakePicture"
+        buttonPressed = .homeTake
         self.performSegue(withIdentifier: "homeToContent", sender: self)
     }
 
