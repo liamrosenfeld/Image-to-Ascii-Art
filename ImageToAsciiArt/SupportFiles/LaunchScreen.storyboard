@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,9 +26,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-White" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-WS-EV0">
-                                <rect key="frame" x="35" y="68" width="305" height="153"/>
+                                <rect key="frame" x="35" y="55" width="305" height="152.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="153" id="H9n-tD-lDC"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="220" id="5be-GA-OAa"/>
+                                    <constraint firstAttribute="width" secondItem="Qqy-WS-EV0" secondAttribute="height" multiplier="2:1" id="6d8-td-bjl"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -36,9 +37,9 @@
                         <constraints>
                             <constraint firstItem="Qqy-WS-EV0" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="88l-vE-hdE"/>
                             <constraint firstItem="Qqy-WS-EV0" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="35" id="8eC-t0-68I"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="GgO-Ia-LHx"/>
                             <constraint firstItem="Qqy-WS-EV0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fzR-G3-V1x"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" symbolic="YES" id="pLd-mb-Wh1"/>
-                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="48" id="tje-t1-guJ"/>
+                            <constraint firstItem="Qqy-WS-EV0" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="35" id="tje-t1-guJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
