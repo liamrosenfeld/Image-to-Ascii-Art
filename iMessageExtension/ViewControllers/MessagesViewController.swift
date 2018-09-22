@@ -27,6 +27,7 @@ class MessagesViewController: MSMessagesAppViewController {
         }
         
         Auth.auth().signInAnonymously() { (authResult, error) in
+            print("Result: \(String(describing: authResult)), Error: \(String(describing: error))")
             // TODO: Check Success
         }
     }
