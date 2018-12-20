@@ -348,7 +348,7 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeWebNetworkRequestFailed =
       FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeWebNetworkRequestFailed,
 
-  /** Indicates that an internal error occured within a SFSafariViewController or UIWebview.
+  /** Indicates that an internal error occurred within a SFSafariViewController or UIWebview.
    */
   FIRAuthInternalErrorCodeWebInternalError =
       FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeWebInternalError,
@@ -370,11 +370,25 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeAppNotVerified =
       FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeAppNotVerified,
 
+  /** Indicates that the Game Center local player was not authenticated.
+   */
+  FIRAuthInternalErrorCodeLocalPlayerNotAuthenticated =
+      FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeLocalPlayerNotAuthenticated,
+
   /** Indicates that a non-null user was expected as an argmument to the operation but a null
         user was provided.
    */
   FIRAuthInternalErrorCodeNullUser =
       FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeNullUser,
+
+  /** Indicates that the Firebase Dynamic Link domain used is either not configured or is unauthorized
+      for the current project.
+   */
+  FIRAuthInternalErrorCodeInvalidDynamicLinkDomain =
+    FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeInvalidDynamicLinkDomain,
+
+  FIRAuthInternalErrorCodeMalformedJWT =
+      FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeMalformedJWT,
 
   /** @var FIRAuthInternalErrorCodeRPCRequestEncodingError
       @brief Indicates an error encoding the RPC request.

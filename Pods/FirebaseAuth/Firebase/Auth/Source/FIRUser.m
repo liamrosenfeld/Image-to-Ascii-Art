@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
-
 #import "FIRUser_Internal.h"
+
+#import <FirebaseCore/FIRLogger.h>
 
 #import "FIRAdditionalUserInfo_Internal.h"
 #import "FIRAuth.h"
@@ -34,14 +34,16 @@
 #import "FIRDeleteAccountResponse.h"
 #import "FIREmailAuthProvider.h"
 #import "FIREmailPasswordAuthCredential.h"
+#import "FIRGameCenterAuthCredential.h"
 #import "FIRGetAccountInfoRequest.h"
 #import "FIRGetAccountInfoResponse.h"
 #import "FIRGetOOBConfirmationCodeRequest.h"
 #import "FIRGetOOBConfirmationCodeResponse.h"
-#import <FirebaseCore/FIRLogger.h>
 #import "FIRSecureTokenService.h"
 #import "FIRSetAccountInfoRequest.h"
 #import "FIRSetAccountInfoResponse.h"
+#import "FIRSignInWithGameCenterRequest.h"
+#import "FIRSignInWithGameCenterResponse.h"
 #import "FIRUserInfoImpl.h"
 #import "FIRUserMetadata_Internal.h"
 #import "FIRVerifyAssertionRequest.h"
@@ -204,6 +206,15 @@ static void callInMainThreadWithAuthDataResultAndError(
 
 @end
 
+@interface FIRUser ()
+
+/** @property anonymous
+ @brief Whether the current user is anonymous.
+ */
+@property(nonatomic, readwrite) BOOL anonymous;
+
+@end
+
 @implementation FIRUser {
   /** @var _hasEmailPasswordCredential
       @brief Whether or not the user can be authenticated by using Firebase email and password.
@@ -239,9 +250,9 @@ static void callInMainThreadWithAuthDataResultAndError(
 #pragma mark -
 
 + (void)retrieveUserWithAuth:(FIRAuth *)auth
-                 accessToken:(NSString *)accessToken
-   accessTokenExpirationDate:(NSDate *)accessTokenExpirationDate
-                refreshToken:(NSString *)refreshToken
+                 accessToken:(nullable NSString *)accessToken
+   accessTokenExpirationDate:(nullable NSDate *)accessTokenExpirationDate
+                refreshToken:(nullable NSString *)refreshToken
                    anonymous:(BOOL)anonymous
                     callback:(FIRRetrieveUserCallback)callback {
   FIRSecureTokenService *tokenService =
@@ -268,7 +279,7 @@ static void callInMainThreadWithAuthDataResultAndError(
         callback(nil, error);
         return;
       }
-      user->_anonymous = anonymous;
+      user.anonymous = anonymous;
       [user updateWithGetAccountInfoResponse:response];
       callback(user, nil);
     }];
@@ -344,7 +355,7 @@ static void callInMainThreadWithAuthDataResultAndError(
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
   [aCoder encodeObject:_userID forKey:kUserIDCodingKey];
-  [aCoder encodeBool:_anonymous forKey:kAnonymousCodingKey];
+  [aCoder encodeBool:self.anonymous forKey:kAnonymousCodingKey];
   [aCoder encodeBool:_hasEmailPasswordCredential forKey:kHasEmailPasswordCredentialCodingKey];
   [aCoder encodeObject:_providerData forKey:kProviderDataKey];
   [aCoder encodeObject:_email forKey:kEmailCodingKey];
@@ -588,7 +599,7 @@ static void callInMainThreadWithAuthDataResultAndError(
               // Set the account to non-anonymous if there are any providers, even if
               // they're not email/password ones.
               if (userAccountInfo.providerUserInfo.count > 0) {
-                self->_anonymous = NO;
+                self.anonymous = NO;
               }
               for (FIRGetAccountInfoResponseProviderUserInfo *providerUserInfo in
                    userAccountInfo.providerUserInfo) {
@@ -679,7 +690,7 @@ static void callInMainThreadWithAuthDataResultAndError(
           completion(error);
           return;
         }
-        self->_anonymous = NO;
+        self.anonymous = NO;
         if (![self updateKeychain:&error]) {
           completion(error);
           return;
@@ -766,7 +777,7 @@ static void callInMainThreadWithAuthDataResultAndError(
         callInMainThreadWithAuthDataResultAndError(completion, authResult, error);
         return;
       }
-      if (![authResult.user.uid isEqual:[self->_auth getUID]]) {
+      if (![authResult.user.uid isEqual:[self->_auth getUserID]]) {
         callInMainThreadWithAuthDataResultAndError(completion, authResult,
                                                    [FIRAuthErrorUtils userMismatchError]);
         return;
@@ -850,9 +861,21 @@ static void callInMainThreadWithAuthDataResultAndError(
         then attempts to parse the token. If the token cannot be parsed an error is returned via the
         "error" out parameter.
  */
-- (FIRAuthTokenResult *)parseIDToken:(NSString *)token error:(NSError **)error {
-  *error = nil;
+- (nullable FIRAuthTokenResult *)parseIDToken:(NSString *)token error:(NSError **)error {
+  // Though this is an internal method, errors returned here are surfaced in user-visible
+  // callbacks.
+  if (error) {
+    *error = nil;
+  }
   NSArray *tokenStringArray = [token componentsSeparatedByString:@"."];
+
+  // The JWT should have three parts, though we only use the second in this method.
+  if (tokenStringArray.count != 3) {
+    if (error) {
+      *error = [FIRAuthErrorUtils malformedJWTErrorWithToken:token underlyingError:nil];
+    }
+    return nil;
+  }
 
   // The token payload is always the second index of the array.
   NSString *idToken = tokenStringArray[1];
@@ -863,8 +886,10 @@ static void callInMainThreadWithAuthDataResultAndError(
       [[idToken stringByReplacingOccurrencesOfString:@"_" withString:@"/"] mutableCopy];
 
   // Replace "-" with "+"
-  tokenPayload =
-      [[tokenPayload stringByReplacingOccurrencesOfString:@"-" withString:@"+"] mutableCopy];
+  [tokenPayload replaceOccurrencesOfString:@"-"
+                                withString:@"+"
+                                   options:kNilOptions
+                                     range:NSMakeRange(0, tokenPayload.length)];
 
   // Pad the token payload with "=" signs if the payload's length is not a multiple of 4.
   while ((tokenPayload.length % 4) != 0) {
@@ -874,19 +899,28 @@ static void callInMainThreadWithAuthDataResultAndError(
       [[NSData alloc] initWithBase64EncodedString:tokenPayload
                                           options:NSDataBase64DecodingIgnoreUnknownCharacters];
   if (!decodedTokenPayloadData) {
-    *error = [FIRAuthErrorUtils unexpectedResponseWithDeserializedResponse:token];
+    if (error) {
+      *error = [FIRAuthErrorUtils malformedJWTErrorWithToken:token underlyingError:nil];
+    }
     return nil;
   }
+  NSError *jsonError = nil;
+  NSJSONReadingOptions options = NSJSONReadingMutableContainers|NSJSONReadingAllowFragments;
   NSDictionary *tokenPayloadDictionary =
       [NSJSONSerialization JSONObjectWithData:decodedTokenPayloadData
-                                      options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments
-                                        error:error];
-  if (*error) {
+                                      options:options
+                                        error:&jsonError];
+  if (jsonError != nil) {
+    if (error) {
+      *error = [FIRAuthErrorUtils malformedJWTErrorWithToken:token underlyingError:jsonError];
+    }
     return nil;
   }
 
   if (!tokenPayloadDictionary) {
-    *error = [FIRAuthErrorUtils unexpectedResponseWithDeserializedResponse:token];
+    if (error) {
+      *error = [FIRAuthErrorUtils malformedJWTErrorWithToken:token underlyingError:nil];
+    }
     return nil;
   }
 
@@ -979,6 +1013,60 @@ static void callInMainThreadWithAuthDataResultAndError(
       return;
     }
 
+    if ([credential isKindOfClass:[FIRGameCenterAuthCredential class]]) {
+      FIRGameCenterAuthCredential *gameCenterCredential = (FIRGameCenterAuthCredential *)credential;
+      [self internalGetTokenWithCallback:^(NSString *_Nullable accessToken,
+                                           NSError *_Nullable error) {
+        FIRAuthRequestConfiguration *requestConfiguration = self.auth.requestConfiguration;
+        FIRSignInWithGameCenterRequest *gameCenterRequest =
+        [[FIRSignInWithGameCenterRequest alloc] initWithPlayerID:gameCenterCredential.playerID
+                                                    publicKeyURL:gameCenterCredential.publicKeyURL
+                                                       signature:gameCenterCredential.signature
+                                                            salt:gameCenterCredential.salt
+                                                       timestamp:gameCenterCredential.timestamp
+                                                     displayName:gameCenterCredential.displayName
+                                            requestConfiguration:requestConfiguration];
+        gameCenterRequest.accessToken = accessToken;
+
+        [FIRAuthBackend signInWithGameCenter:gameCenterRequest
+                                    callback:^(FIRSignInWithGameCenterResponse *_Nullable response,
+                                               NSError *_Nullable error) {
+          if (error){
+            callInMainThreadWithAuthDataResultAndError(completion, nil, error);
+          } else {
+            [self internalGetTokenWithCallback:^(NSString *_Nullable accessToken,
+                                                 NSError *_Nullable error) {
+              if (error) {
+                callInMainThreadWithAuthDataResultAndError(completion, nil, error);
+                return;
+              }
+
+              FIRGetAccountInfoRequest *getAccountInfoRequest =
+              [[FIRGetAccountInfoRequest alloc] initWithAccessToken:accessToken
+                                               requestConfiguration:requestConfiguration];
+              [FIRAuthBackend getAccountInfo:getAccountInfoRequest
+                                    callback:^(FIRGetAccountInfoResponse *_Nullable response,
+                                               NSError *_Nullable error) {
+                                      if (error) {
+                                        [self signOutIfTokenIsInvalidWithError:error];
+                                        callInMainThreadWithAuthDataResultAndError(completion, nil, error);
+                                        return;
+                                      }
+                                      self.anonymous = NO;
+                                      [self updateWithGetAccountInfoResponse:response];
+                                      if (![self updateKeychain:&error]) {
+                                        callInMainThreadWithAuthDataResultAndError(completion, nil, error);
+                                        return;
+                                      }
+                                      callInMainThreadWithAuthDataResultAndError(completion, result, nil);
+                                    }];
+            }];
+          }
+        }];
+      }];
+      return;
+    }
+
     #if TARGET_OS_IOS
     if ([credential isKindOfClass:[FIRPhoneAuthCredential class]]) {
       FIRPhoneAuthCredential *phoneAuthCredential = (FIRPhoneAuthCredential *)credential;
@@ -1047,7 +1135,7 @@ static void callInMainThreadWithAuthDataResultAndError(
                 completeWithError(nil, error);
                 return;
               }
-              self->_anonymous = NO;
+              self.anonymous = NO;
               [self updateWithGetAccountInfoResponse:response];
               if (![self updateKeychain:&error]) {
                 completeWithError(nil, error);

@@ -18,6 +18,8 @@
 
 #import "FIRAuth.h"
 
+#import <FirebaseAuthInterop/FIRAuthInterop.h>
+
 @class FIRAuthRequestConfiguration;
 
 #if TARGET_OS_IOS
@@ -29,7 +31,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FIRAuth ()
+@interface FIRAuth () <FIRAuthInterop>
 
 /** @property requestConfiguration
     @brief The configuration object comprising of paramters needed to make a request to Firebase
@@ -69,11 +71,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)initWithAPIKey:(NSString *)APIKey
                                 appName:(NSString *)appName NS_DESIGNATED_INITIALIZER;
 
-/** @fn getUID
+/** @fn getUserID
     @brief Gets the identifier of the current user, if any.
     @return The identifier of the current user, or nil if there is no current user.
  */
-- (nullable NSString *)getUID;
+- (nullable NSString *)getUserID;
 
 /** @fn updateKeychainWithUser:error:
     @brief Updates the keychain for the given user.
