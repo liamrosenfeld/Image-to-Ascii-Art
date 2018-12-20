@@ -10,7 +10,8 @@
 		0384D6CC1AEC4BB900242145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CB1AEC4BB900242145 /* AppDelegate.swift */; };
 		0384D6CE1AEC4BB900242145 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6CD1AEC4BB900242145 /* HomeViewController.swift */; };
 		0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6CF1AEC4BB900242145 /* Main.storyboard */; };
-		0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
+		0C0142E521CC54FE001F98BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0384D6D21AEC4BB900242145 /* Images.xcassets */; };
+		0C0142E621CC5501001F98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
 		0C13AD0420E83C1000676ED3 /* AsciiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AD0220E83C1000676ED3 /* AsciiViewController.swift */; };
 		0C3CDA03214D72EB00060DDC /* iMessageInstructions.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0C3CDA02214D72EB00060DDC /* iMessageInstructions.gif */; };
 		0C51C06F20E6A86B0029C514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51C06E20E6A86B0029C514 /* LaunchScreen.storyboard */; };
@@ -30,11 +31,9 @@
 		AD35D9F81FB760C6006B0D77 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD35D9F71FB760C6006B0D77 /* DisplayViewController.swift */; };
 		AD54461C1FE35EE5003925E7 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461B1FE35EE5003925E7 /* UIImage+Gif.swift */; };
 		AD54461E1FE360C9003925E7 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54461D1FE360C9003925E7 /* InfoViewController.swift */; };
-		AD56A7F71FC8B8D100A92664 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD56A7F61FC8B8D100A92664 /* README.md */; };
 		ADBDE03D1FC672FE004F00A2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDE03C1FC672FE004F00A2 /* Messages.framework */; };
 		ADBDE0401FC672FE004F00A2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE03F1FC672FE004F00A2 /* MessagesViewController.swift */; };
 		ADBDE0431FC672FE004F00A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0411FC672FE004F00A2 /* Main.storyboard */; };
-		ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE0441FC672FE004F00A2 /* Assets.xcassets */; };
 		ADBDE0491FC672FE004F00A2 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBDE03A1FC672FE004F00A2 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADBDE04F1FC676A2004F00A2 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE04E1FC676A2004F00A2 /* CompactViewController.swift */; };
 		ADBDE0511FC676BA004F00A2 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE0501FC676BA004F00A2 /* ExpandedViewController.swift */; };
@@ -461,9 +460,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD56A7F71FC8B8D100A92664 /* README.md in Resources */,
 				0384D6D11AEC4BB900242145 /* Main.storyboard in Resources */,
-				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
+				0C0142E521CC54FE001F98BC /* Images.xcassets in Resources */,
 				ADDC8ABE1FF16FE70004D08E /* GoogleService-Info.plist in Resources */,
 				0C51C06F20E6A86B0029C514 /* LaunchScreen.storyboard in Resources */,
 				0C3CDA03214D72EB00060DDC /* iMessageInstructions.gif in Resources */,
@@ -481,8 +479,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADBDE0451FC672FE004F00A2 /* Assets.xcassets in Resources */,
 				ADBDE0431FC672FE004F00A2 /* Main.storyboard in Resources */,
+				0C0142E621CC5501001F98BC /* Assets.xcassets in Resources */,
 				ADDC8AC01FF1702E0004D08E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,7 +512,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		117E14C9E2D4726A329506C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
