@@ -16,7 +16,7 @@
 
 #import "FIRAuthDefaultUIDelegate.h"
 
-#import <FirebaseCore/FIRAppEnvironmentUtil.h>
+#import <GoogleUtilities/GULAppEnvironmentUtil.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
         FIRAuthUIDelegate.
     @return The initialized instance.
  */
-- (instancetype)initWithViewController:(UIViewController *)viewController NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithViewController:(nullable UIViewController *)viewController NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
   UIViewController *_viewController;
 }
 
-- (instancetype)initWithViewController:(UIViewController *)viewController {
+- (instancetype)initWithViewController:(nullable UIViewController *)viewController {
   self = [super init];
   if (self) {
     _viewController = viewController;
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
   // iOS App extensions should not call [UIApplication sharedApplication], even if UIApplication
   // responds to it.
   static Class applicationClass = nil;
-  if (![FIRAppEnvironmentUtil isAppExtension]) {
+  if (![GULAppEnvironmentUtil isAppExtension]) {
     Class cls = NSClassFromString(@"UIApplication");
     if (cls && [cls respondsToSelector:NSSelectorFromString(@"sharedApplication")]) {
       applicationClass = cls;
