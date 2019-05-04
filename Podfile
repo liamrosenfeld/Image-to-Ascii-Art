@@ -8,8 +8,8 @@ target 'ImageToAsciiArt' do
   # Pods for ImageToAsciiArt
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'Fabric', '~> 1.7.2'
-  pod 'Crashlytics', '~> 3.9.3'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
 end
 
@@ -24,7 +24,7 @@ target 'iMessageExtension' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'Fabric', '~> 1.7.2'
-  pod 'Crashlytics', '~> 3.9.3'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
 end
