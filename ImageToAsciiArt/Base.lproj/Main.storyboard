@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bdA-yh-WMm">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bdA-yh-WMm">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +12,7 @@
         <!--Home-->
         <scene sceneID="1du-fi-isM">
             <objects>
-                <viewController title="Home" id="bdA-yh-WMm" customClass="HomeViewController" customModule="ImageToAsciiArt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="bdA-yh-WMm" customClass="HomeViewController" customModule="ASCII_Art" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n8J-lf-vKb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +25,7 @@
                                 </constraints>
                                 <state key="normal" image="Info"/>
                                 <connections>
-                                    <segue destination="pX9-58-Fot" kind="presentation" animates="NO" id="o9e-PF-gTa"/>
+                                    <segue destination="pX9-58-Fot" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="o9e-PF-gTa"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Kmi-DF-sat">
@@ -47,7 +45,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axV-Kg-kGU">
-                                                        <rect key="frame" x="133" y="25" width="148" height="50"/>
+                                                        <rect key="frame" x="108" y="0.0" width="198" height="100"/>
                                                         <state key="normal" title="  Pick Image" image="Image-Glyph">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -80,8 +78,8 @@
                                                 <rect key="frame" x="0.0" y="150" width="414" height="100"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuV-VE-fhV">
-                                                        <rect key="frame" x="135.5" y="25" width="143" height="50"/>
-                                                        <state key="normal" title="Take Pictue" image="Camera-Glyph">
+                                                        <rect key="frame" x="107" y="0.0" width="200" height="100"/>
+                                                        <state key="normal" title="Take Picture" image="Camera-Glyph">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -121,7 +119,7 @@
                         <viewLayoutGuide key="safeArea" id="9Mi-Fz-mT7"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeToContent" id="EfQ-TH-SOo"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeToContent" modalPresentationStyle="fullScreen" id="EfQ-TH-SOo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q73-2H-auB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,7 +129,7 @@
         <!--Content-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Content" id="BYZ-38-t0r" customClass="DisplayViewController" customModule="ImageToAsciiArt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Content" id="BYZ-38-t0r" customClass="DisplayViewController" customModule="ASCII_Art" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +162,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-dK-Cy8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4v-Ig-LpJ" customClass="RoundedButton" customModule="ImageToAsciiArt" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4v-Ig-LpJ" customClass="RoundedButton" customModule="ASCII_Art" customModuleProvider="target">
                                         <rect key="frame" x="10" y="5" width="64" height="30"/>
                                         <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -186,7 +184,7 @@
                                             <action selector="backToHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f7t-BN-9eP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-WQ-asW" customClass="RoundedButton" customModule="ImageToAsciiArt" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-WQ-asW" customClass="RoundedButton" customModule="ASCII_Art" customModuleProvider="target">
                                         <rect key="frame" x="147" y="5" width="120" height="30"/>
                                         <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -208,7 +206,7 @@
                                             <action selector="newImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbP-rA-4lF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiD-2T-DKE" userLabel="Share" customClass="RoundedButton" customModule="ImageToAsciiArt" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiD-2T-DKE" userLabel="Share" customClass="RoundedButton" customModule="ASCII_Art" customModuleProvider="target">
                                         <rect key="frame" x="340" y="5" width="64" height="30"/>
                                         <color key="backgroundColor" red="0.42665749790000002" green="0.7358688712" blue="0.85731029510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -253,6 +251,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t6K-BK-FcV"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oeA-qk-HnC"/>
                     <connections>
                         <outlet property="busyView" destination="tbB-8e-cuW" id="fjN-3U-0y1"/>
                         <outlet property="scrollView" destination="rwj-Y0-ARL" id="gVb-3Z-LWa"/>
@@ -265,7 +264,7 @@
         <!--Info-->
         <scene sceneID="E3z-bd-AtO">
             <objects>
-                <viewController title="Info" id="pX9-58-Fot" customClass="InfoViewController" customModule="ImageToAsciiArt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Info" id="pX9-58-Fot" customClass="InfoViewController" customModule="ASCII_Art" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atP-9J-bci">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +293,7 @@
                                                             </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="widthClass=regular">
                                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -306,7 +305,7 @@
                                                             <constraint firstAttribute="height" constant="17" id="mp6-S1-mKE"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-ab-djm">
@@ -317,9 +316,9 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="‹ › with ♥ by Liam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwg-YG-3Ao">
-                                                        <rect key="frame" x="139" y="224.5" width="136.5" height="20.5"/>
+                                                        <rect key="frame" x="138" y="224.5" width="138.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -345,7 +344,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Bcd-Q1-P5r" secondAttribute="trailing" id="Yfe-uu-Gg6"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWj-HI-Yyg" customClass="RoundedButton" customModule="ImageToAsciiArt" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWj-HI-Yyg" customClass="RoundedButton" customModule="ASCII_Art" customModuleProvider="target">
                                 <rect key="frame" x="337" y="791" width="61" height="51"/>
                                 <color key="backgroundColor" name="Light Blue"/>
                                 <constraints>

@@ -74,6 +74,7 @@ open class AsciiViewController: UIViewController {
         label.lineBreakMode = NSLineBreakMode.byClipping
         label.numberOfLines = 0
         label.text = asciiArt
+        label.textColor = .black
         label.sizeToFit()
         
         currentLabel?.removeFromSuperview()

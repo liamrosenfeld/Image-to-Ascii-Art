@@ -8,6 +8,7 @@ target 'ImageToAsciiArt' do
   # Pods for ImageToAsciiArt
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
   pod 'Fabric'
   pod 'Crashlytics'
 
