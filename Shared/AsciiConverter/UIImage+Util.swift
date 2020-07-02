@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 public extension UIImage {
-    
+
     class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage {
         let
         length = font.pointSize * 2,
@@ -24,19 +24,19 @@ public extension UIImage {
         // Fill the background with white.
         context?.setFillColor(UIColor.white.cgColor)
         context?.fill(rect)
-        
+
         // Draw the character with black.
         let nsString = NSString(string: symbol)
         nsString.draw(at: rect.origin, withAttributes: [
             NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: UIColor.black
             ])
-        
+
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
-    
+
     func imageConstrainedToMaxSize(_ maxSize: CGSize) -> UIImage {
         let isTooBig =
             size.width  > maxSize.width ||
@@ -64,7 +64,7 @@ public extension UIImage {
                 space: colorSpace!,
                 bitmapInfo: (bitmapInfo?.rawValue)!
             )
-        
+
             if context != nil {
                 context!.interpolationQuality = CGInterpolationQuality.low
                 context?.draw(cgImage!, in: targetRect)
@@ -75,7 +75,7 @@ public extension UIImage {
         }
         return self
     }
-    
+
     func imageRotatedToPortraitOrientation() -> UIImage {
         let mustRotate = self.imageOrientation != .up
         if mustRotate {
@@ -84,30 +84,30 @@ public extension UIImage {
             if let context = UIGraphicsGetCurrentContext() {
                 // Perform the rotation and scale transforms around the image's center.
                 context.translateBy(x: rotatedSize.width/2, y: rotatedSize.height/2)
-                
+
                 // Rotate the image upright.
                 let
                 degrees = self.degreesToRotate(),
                 radians = degrees * .pi / 180.0
                 context.rotate(by: CGFloat(radians))
-                
+
                 // Flip the image on the Y axis.
                 context.scaleBy(x: 1.0, y: -1.0)
-                
+
                 let
                 targetOrigin = CGPoint(x: -size.width/2, y: -size.height/2),
                 targetRect   = CGRect(origin: targetOrigin, size: self.size)
-                
+
                 context.draw(self.cgImage!, in: targetRect)
                 let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
-                
+
                 return rotatedImage
             }
         }
         return self
     }
-    
+
     private func degreesToRotate() -> Double {
         switch self.imageOrientation {
             case .right: return  90
@@ -116,5 +116,5 @@ public extension UIImage {
             default:     return   0
         }
     }
-    
+
 }

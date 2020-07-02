@@ -28,7 +28,7 @@ struct AsciiArtist {
         symbolMatrix = symbolMatrixFromIntensityMatrix(intensities)
         return symbolMatrix.joined(separator: "\n")
     }
-    
+
     private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer) -> [[Double]] {
         let
         width  = Int(image.size.width),
@@ -40,7 +40,7 @@ struct AsciiArtist {
             }
         }
     }
-    
+
     private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]]) -> [String] {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
@@ -48,15 +48,15 @@ struct AsciiArtist {
             }
         }
     }
-    
+
     private func symbolFromIntensity(_ intensity: Double) -> String {
         assert(0.0 <= intensity && intensity <= 1.0)
-        
+
         let
         factor = palette.symbols.count - 1,
         value  = round(intensity * Double(factor)),
         index  = Int(value)
         return palette.symbols[index]
     }
-    
+
 }

@@ -16,7 +16,7 @@ struct HomeView: View {
     @State private var showingInfoSheet = false
     @State private var showingAlert = false
     @State private var inputImage: UIImage?
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,15 +27,15 @@ struct HomeView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding(.all, 20)
-                    
+
                     Spacer()
                     Spacer()
-                    
+
                     ZStack {
                         Rectangle()
                             .fill(Color("LightBlue"))
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90)
-                        
+
                         Button(action: {
                             showingPickerSheet = true
                         }, label: {
@@ -48,21 +48,21 @@ struct HomeView: View {
                             PhotoPickerView(image: $inputImage)
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     ZStack {
                         Rectangle()
                             .fill(Color("LightBlue"))
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90)
-                        
+
                         Button(action: {
                             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                                 showingCameraSheet = true
                             } else {
                                 showingAlert = true
                             }
-                            
+
                         }, label: {
                             Image(systemName: "camera")
                             Text("Take Picture")
@@ -74,12 +74,11 @@ struct HomeView: View {
                                 .edgesIgnoringSafeArea(.all)
                         }
                     }
-                    
-                    
+
                     Spacer()
                     Spacer()
                     Spacer()
-                    
+
                     HStack {
                         Spacer()
                         Button(action: {
@@ -94,7 +93,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                
+
                 // link to next view
                 NavigationLink(destination: AsciiView(image: $inputImage), isActive: $pushed) { EmptyView() }
             }.navigationBarHidden(true)
@@ -102,9 +101,9 @@ struct HomeView: View {
             Alert(title: Text("No Camera Available"))
         }
     }
-    
+
     func loadImage() {
-        guard (inputImage != nil) else { return }
+        guard inputImage != nil else { return }
         pushed = true
     }
 }
