@@ -63,7 +63,7 @@ struct AsciiView: View {
                             UIPasteboard.general.string = ascii
                         },
                         .default(Text("Save as Image")) {
-                            print("image")
+                            UIImageWriteToSavedPhotosAlbum(ascii!.toImage(withFont: labelFont), nil, nil, nil)
                         },
                         .cancel()
                     ])
