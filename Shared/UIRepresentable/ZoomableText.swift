@@ -13,14 +13,14 @@ struct ZoomableText: UIViewRepresentable {
     var text: String
     var frame: CGRect
     private let zoomLabel = UILabel()
-    
+
     func makeUIView(context: Context) -> UIScrollView {
         // configure scroll view
         let scrollView = UIScrollView()
         scrollView.maximumZoomScale = 5
         scrollView.delegate = context.coordinator
         scrollView.backgroundColor = .white
-        
+
         // configure scroll view content
         zoomLabel.font = UIFont(name: "Menlo", size: 7)!
         zoomLabel.lineBreakMode = NSLineBreakMode.byClipping
@@ -28,15 +28,15 @@ struct ZoomableText: UIViewRepresentable {
         zoomLabel.text = text
         zoomLabel.textColor = .black
         zoomLabel.sizeToFit()
-        
+
         // add content to scroll view
         scrollView.addSubview(zoomLabel)
         scrollView.contentSize = zoomLabel.frame.size
         setMinZoom(scrollView: scrollView) // must be after so it knows content size
-        
+
         return scrollView
     }
-    
+
     private func setMinZoom(scrollView: UIScrollView) {
         let scrollSize  = frame.size
         let contentSize = scrollView.contentSize
@@ -46,20 +46,20 @@ struct ZoomableText: UIViewRepresentable {
         scrollView.minimumZoomScale = scale
         scrollView.setZoomScale(scale, animated: false)
     }
-    
+
     func updateUIView(_ uiView: UIScrollView, context: Context) { }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
+
     class Coordinator: NSObject, UIScrollViewDelegate {
         let parent: ZoomableText
 
         init(_ parent: ZoomableText) {
             self.parent = parent
         }
-        
+
         func viewForZooming(in scrollView: UIScrollView) -> UIView? {
             return parent.zoomLabel
         }

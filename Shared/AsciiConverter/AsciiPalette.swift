@@ -31,11 +31,11 @@ public class AsciiPalette {
         sortedSymbols    = sortByIntensity(symbols, whitePixelCounts)
         return sortedSymbols
     }
-    
+
     private func symbolFromAsciiCode(_ code: Int) -> String {
         return String(Character(UnicodeScalar(code)!))
     }
-    
+
     private func countWhitePixelsInImage(_ image: UIImage) -> Int {
         let
         dataProvider = image.cgImage?.dataProvider,
@@ -52,7 +52,7 @@ public class AsciiPalette {
             return isWhite ? count + 1 : count
         }
     }
-    
+
     private func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String] {
         let
         mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts as [NSCopying]),
