@@ -26,54 +26,16 @@ struct HomeView: View {
                     Image("Logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(.all, 20)
-
-                    Spacer()
-                    Spacer()
-
-                    ZStack {
-                        Rectangle()
-                            .fill(Color("LightBlue"))
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90)
-
-                        Button(action: {
-                            showingPickerSheet = true
-                        }, label: {
-                            Image(systemName: "photo")
-                            Text("Pick Image")
-                        })
-                        .font(.system(size: 20))
-                        .foregroundColor(.white)
-                        .sheet(isPresented: $showingPickerSheet) {
-                            PhotoPickerView(image: $inputImage)
-                        }
-                    }
+                        .padding(.all, 10)
+                        .padding(.top, 15)
 
                     Spacer()
 
-                    ZStack {
-                        Rectangle()
-                            .fill(Color("LightBlue"))
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90)
+                    GetImageButton(camera: false, image: $inputImage)
 
-                        Button(action: {
-                            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                                showingCameraSheet = true
-                            } else {
-                                showingAlert = true
-                            }
+                    Spacer()
 
-                        }, label: {
-                            Image(systemName: "camera")
-                            Text("Take Picture")
-                        })
-                        .font(.system(size: 20))
-                        .foregroundColor(.white)
-                        .sheet(isPresented: $showingCameraSheet) {
-                            CameraView(image: $inputImage)
-                                .edgesIgnoringSafeArea(.all)
-                        }
-                    }
+                    GetImageButton(camera: true, image: $inputImage)
 
                     Spacer()
                     Spacer()
@@ -97,11 +59,45 @@ struct HomeView: View {
                 // link to next view
                 NavigationLink(destination: AsciiView(image: $inputImage), isActive: $pushed) { EmptyView() }
             }.navigationBarHidden(true)
-        }.alert(isPresented: $showingAlert) {
-            Alert(title: Text("No Camera Available"))
         }.onChange(of: inputImage) { image in
             guard image != nil else { return }
             pushed = true
+        }
+    }
+}
+
+struct GetImageButton: View {
+    let camera: Bool
+    @Binding var image: UIImage?
+    
+    @State private var showingSheet = false
+    @State private var showingCameraAlert = false
+    
+    var body: some View {
+        Button(action: {
+            if !camera || UIImagePickerController.isSourceTypeAvailable(.camera) {
+                showingSheet = true
+            } else {
+                showingCameraAlert = true
+            }
+        }, label: {
+            Image(systemName: camera ? "camera" : "photo")
+            Text(camera ? "Take Picture" : "Pick Image")
+        })
+        .font(.system(size: 25))
+        .foregroundColor(.white)
+        .padding(40)
+        .frame(maxWidth: .infinity)
+        .background(Color("LightBlue"))
+        .sheet(isPresented: $showingSheet) {
+            if camera {
+                CameraView(image: $image)
+                    .edgesIgnoringSafeArea(.all)
+            } else {
+                PhotoPickerView(image: $image)
+            }
+        }.alert(isPresented: $showingCameraAlert) {
+            Alert(title: Text("No Camera Available"))
         }
     }
 }
