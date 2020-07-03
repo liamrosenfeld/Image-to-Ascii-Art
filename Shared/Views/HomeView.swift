@@ -44,7 +44,7 @@ struct HomeView: View {
                         })
                         .font(.system(size: 20))
                         .foregroundColor(.white)
-                        .sheet(isPresented: $showingPickerSheet, onDismiss: loadImage) {
+                        .sheet(isPresented: $showingPickerSheet) {
                             PhotoPickerView(image: $inputImage)
                         }
                     }
@@ -69,7 +69,7 @@ struct HomeView: View {
                         })
                         .font(.system(size: 20))
                         .foregroundColor(.white)
-                        .sheet(isPresented: $showingCameraSheet, onDismiss: loadImage) {
+                        .sheet(isPresented: $showingCameraSheet) {
                             CameraView(image: $inputImage)
                                 .edgesIgnoringSafeArea(.all)
                         }
@@ -99,12 +99,10 @@ struct HomeView: View {
             }.navigationBarHidden(true)
         }.alert(isPresented: $showingAlert) {
             Alert(title: Text("No Camera Available"))
+        }.onChange(of: inputImage) { image in
+            guard image != nil else { return }
+            pushed = true
         }
-    }
-
-    func loadImage() {
-        guard inputImage != nil else { return }
-        pushed = true
     }
 }
 

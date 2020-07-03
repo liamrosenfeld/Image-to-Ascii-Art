@@ -58,12 +58,12 @@ struct AsciiView: View {
                 }, label: {
                     Image(systemName: "square.and.arrow.up")
                 }).actionSheet(isPresented: $showingShareActionSheet) {
-                    ActionSheet(title: Text("Share"), buttons: [
-                        .default(Text("Copy as Text")) {
-                            UIPasteboard.general.string = ascii
+                    ActionSheet(title: Text("Share as"), buttons: [
+                        .default(Text("Text")) {
+                            showShareSheet(content: ascii)
                         },
-                        .default(Text("Save as Image")) {
-                            UIImageWriteToSavedPhotosAlbum(ascii!.toImage(withFont: labelFont), nil, nil, nil)
+                        .default(Text("Image")) {
+                            showShareSheet(content: ascii!.toImage(withFont: labelFont))
                         },
                         .cancel()
                     ])
@@ -72,6 +72,12 @@ struct AsciiView: View {
                 }
             }
         }
+    }
+    
+    func showShareSheet<Content>(content: Content) {
+        let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(shareSheet, animated: true, completion: nil)
     }
 }
 
