@@ -17,6 +17,13 @@ struct AsciiView: View {
 
     let labelFont = UIFont(name: "Menlo", size: 7)!
     let maxImageSize = CGSize(width: 310, height: 310)
+    
+    init(image: Binding<UIImage?>) {
+        _image = image
+        
+        UINavigationBar.appearance().barTintColor = UIColor(named: "DarkBlue")
+        UINavigationBar.appearance().tintColor = .white
+    }
 
     var body: some View {
         ZStack {
@@ -47,6 +54,7 @@ struct AsciiView: View {
             }
         }
         .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(false)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -57,6 +65,7 @@ struct AsciiView: View {
                     }
                 }, label: {
                     Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.white)
                 }).actionSheet(isPresented: $showingShareActionSheet) {
                     ActionSheet(title: Text("Share as"), buttons: [
                         .default(Text("Text")) {
