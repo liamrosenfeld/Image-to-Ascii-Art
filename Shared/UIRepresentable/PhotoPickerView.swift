@@ -37,6 +37,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
         }
 
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            parent.presentationMode.wrappedValue.dismiss()
             if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
                     DispatchQueue.main.async {
@@ -45,7 +46,6 @@ struct PhotoPickerView: UIViewControllerRepresentable {
                     }
                 }
             }
-            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }
