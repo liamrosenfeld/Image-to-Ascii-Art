@@ -58,7 +58,9 @@ struct HomeView: View {
 
                 // link to next view
                 NavigationLink(destination: AsciiView(image: $inputImage), isActive: $pushed) { EmptyView() }
-            }.navigationBarHidden(true)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarHidden(true)
         }.onChange(of: inputImage) { image in
             guard image != nil else { return }
             pushed = true
