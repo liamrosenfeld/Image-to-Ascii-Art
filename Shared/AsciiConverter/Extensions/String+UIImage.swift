@@ -21,13 +21,13 @@ extension String {
         let context = UIGraphicsGetCurrentContext()!
 
 
-        UIColor.white.setFill()
+        context.setFillColor(UIColor.white.cgColor)
         context.fill(CGRect(origin: .zero, size: textSize))
 
         self.draw(at: CGPoint.zero, withAttributes: attributes)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        return image!
+        return image
     }
 }

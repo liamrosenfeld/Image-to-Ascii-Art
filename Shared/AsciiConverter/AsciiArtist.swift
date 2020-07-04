@@ -11,29 +11,35 @@ import UIKit
 
 // Transforms an image to ASCII art.
 struct AsciiArtist {
-    private let image: UIImage
-    private let palette: AsciiPalette
 
-    public init(_ image: UIImage, _ palette: AsciiPalette) {
-        self.image   = image
-        self.palette = palette
-    }
-
-    public func createAsciiArt() -> String {
-        let
-        dataProvider = image.cgImage?.dataProvider,
-        pixelData    = dataProvider?.data,
-        pixelPointer = CFDataGetBytePtr(pixelData),
-        intensities  = intensityMatrixFromPixelPointer(pixelPointer!),
-        symbolMatrix = symbolMatrixFromIntensityMatrix(intensities)
+    static func createAsciiArt(image: UIImage, font: UIFont) -> String {
+        let palette      = AsciiPalette(font: font)
+        let preppedImage = prepImage(image: image, font: font)
+        let dataProvider = preppedImage.cgImage?.dataProvider
+        let pixelData    = dataProvider?.data
+        let pixelPointer = CFDataGetBytePtr(pixelData)
+        let intensities  = intensityMatrixFromPixelPointer(pixelPointer!, imgSize: preppedImage.size)
+        let symbolMatrix = symbolMatrixFromIntensityMatrix(intensities, palette: palette)
         return symbolMatrix.joined(separator: "\n")
     }
+    
+    static private func prepImage(image: UIImage, font: UIFont) -> UIImage {
+        // Squash the image vertically so the added height of the non square characters doesn't stretch it vertically
+        let squashRatio    = font.monoRatio()
+        let squashedHeight = image.size.height * squashRatio
+        let squashedSize   = CGSize(width: image.size.width, height: squashedHeight)
+        let squashedImage  = image.resize(to: squashedSize)
+        
+        // constrain the image down 
+        let maxImageSize = CGSize(width: 310, height: 310)
+        let rotatedImage = squashedImage.imageRotatedToPortraitOrientation() // Rotate first because the orientation is lost when resizing.
+        let constrainedImage = rotatedImage.imageConstrainedToMaxSize(maxImageSize)
+        
+        return constrainedImage
+    }
 
-    private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer) -> [[Double]] {
-        let
-        width  = Int(image.size.width),
-        height = Int(image.size.height),
-        matrix = Pixel.createPixelMatrix(width, height)
+    static private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer, imgSize: CGSize) -> [[Double]] {
+        let matrix = Pixel.createPixelMatrix(Int(imgSize.width), Int(imgSize.height))
         return matrix.map { pixelRow in
             pixelRow.map { pixel in
                 pixel.intensityFromPixelPointer(pointer)
@@ -41,21 +47,20 @@ struct AsciiArtist {
         }
     }
 
-    private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]]) -> [String] {
+    static private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]], palette: AsciiPalette) -> [String] {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
-                $0 + self.symbolFromIntensity($1)
+                $0 + self.symbolFromIntensity($1, palette: palette)
             }
         }
     }
 
-    private func symbolFromIntensity(_ intensity: Double) -> String {
+    static private func symbolFromIntensity(_ intensity: Double, palette: AsciiPalette) -> String {
         assert(0.0 <= intensity && intensity <= 1.0)
 
-        let
-        factor = palette.symbols.count - 1,
-        value  = round(intensity * Double(factor)),
-        index  = Int(value)
+        let factor = palette.symbols.count - 1
+        let value  = round(intensity * Double(factor))
+        let index  = Int(value)
         return palette.symbols[index]
     }
 

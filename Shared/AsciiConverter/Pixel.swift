@@ -12,7 +12,7 @@ import Foundation
 typealias PixelPointer = UnsafePointer<UInt8>
 
 // A point in an image converted to an ASCII character.
-public struct Pixel {
+struct Pixel {
 
     static let bytesPerPixel = 4
 
