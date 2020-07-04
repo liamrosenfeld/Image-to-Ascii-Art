@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1640F324AE64F400279F8F /* String+UIImage.swift */; };
+		0C4CA77624AFFAD4002D6301 /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CA77524AFFAD4002D6301 /* UIFont+Size.swift */; };
 		0C703BFE24ABA750005AE478 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703BEB24ABA74F005AE478 /* App.swift */; };
 		0C703C0024ABA750005AE478 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703BEC24ABA74F005AE478 /* HomeView.swift */; };
 		0C703C0224ABA750005AE478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703BED24ABA750005AE478 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0C1640F324AE64F400279F8F /* String+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UIImage.swift"; sourceTree = "<group>"; };
+		0C4CA77524AFFAD4002D6301 /* UIFont+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Size.swift"; sourceTree = "<group>"; };
 		0C703BEB24ABA74F005AE478 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0C703BEC24ABA74F005AE478 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0C703BED24ABA750005AE478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				0C1640F324AE64F400279F8F /* String+UIImage.swift */,
+				0C703C2C24AC4AF2005AE478 /* UIImage+Util.swift */,
+				0C4CA77524AFFAD4002D6301 /* UIFont+Size.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -88,7 +92,6 @@
 		0C703BEA24ABA74F005AE478 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				0C1640F224AE64E200279F8F /* Extensions */,
 				0C703C2A24AC4AF2005AE478 /* AsciiConverter */,
 				0C703C3D24AC65F0005AE478 /* UIRepresentable */,
 				0C703C4024AC6681005AE478 /* Views */,
@@ -126,8 +129,8 @@
 		0C703C2A24AC4AF2005AE478 /* AsciiConverter */ = {
 			isa = PBXGroup;
 			children = (
+				0C1640F224AE64E200279F8F /* Extensions */,
 				0C703C2B24AC4AF2005AE478 /* AsciiPalette.swift */,
-				0C703C2C24AC4AF2005AE478 /* UIImage+Util.swift */,
 				0C703C2E24AC4AF2005AE478 /* Pixel.swift */,
 				0C703C3024AC4AF2005AE478 /* AsciiArtist.swift */,
 			);
@@ -233,6 +236,7 @@
 				0C703C3F24AC661F005AE478 /* ZoomableText.swift in Sources */,
 				0C703C0024ABA750005AE478 /* HomeView.swift in Sources */,
 				0C703BFE24ABA750005AE478 /* App.swift in Sources */,
+				0C4CA77624AFFAD4002D6301 /* UIFont+Size.swift in Sources */,
 				0C703C2824ABAFFD005AE478 /* PhotoPickerView.swift in Sources */,
 				0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */,
 				0C703C3324AC4AF2005AE478 /* UIImage+Util.swift in Sources */,

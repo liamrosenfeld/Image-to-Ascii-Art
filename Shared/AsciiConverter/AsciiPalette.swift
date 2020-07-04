@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 // Provides a list of ASCII symbols sorted from darkest to brightest.
-public class AsciiPalette {
+class AsciiPalette {
     private let font: UIFont
 
-    public init(font: UIFont) {
+    init(font: UIFont) {
         self.font = font
     }
 
@@ -24,11 +24,10 @@ public class AsciiPalette {
     }
 
     private func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String] {
-        let
-        symbols          = codes.map { self.symbolFromAsciiCode($0) },
-        symbolImages     = symbols.map { UIImage.imageOfSymbol($0, self.font) },
-        whitePixelCounts = symbolImages.map { self.countWhitePixelsInImage($0) },
-        sortedSymbols    = sortByIntensity(symbols, whitePixelCounts)
+        let symbols          = codes.map { self.symbolFromAsciiCode($0) }
+        let symbolImages     = symbols.map { $0.toImage(withFont: self.font) }
+        let whitePixelCounts = symbolImages.map { self.countWhitePixelsInImage($0) }
+        let sortedSymbols    = sortByIntensity(symbols, whitePixelCounts)
         return sortedSymbols
     }
 

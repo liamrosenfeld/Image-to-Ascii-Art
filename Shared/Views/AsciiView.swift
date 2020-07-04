@@ -15,8 +15,8 @@ struct AsciiView: View {
     @State private var showingShareActionSheet = false
     @State private var showingNoAsciiAlert = false
 
-    let labelFont = UIFont(name: "Menlo", size: 7)!
-    let maxImageSize = CGSize(width: 310, height: 310)
+    let asciiFont = UIFont(name: "Menlo", size: 7)!
+    
     
     init(image: Binding<UIImage?>) {
         _image = image
@@ -39,15 +39,8 @@ struct AsciiView: View {
                 ProgressView("Converting")
             }
         }.onAppear {
-            let palette = AsciiPalette(font: self.labelFont)
-
             DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                // Rotate first because the orientation is lost when resizing.
-                let rotatedImage = image!.imageRotatedToPortraitOrientation()
-                let resizedImage = rotatedImage.imageConstrainedToMaxSize(maxImageSize)
-                let asciiArtist  = AsciiArtist(resizedImage, palette)
-                let asciiArt     = asciiArtist.createAsciiArt()
-
+                let asciiArt = AsciiArtist.createAsciiArt(image: image!, font: asciiFont)
                 DispatchQueue.main.async {
                     ascii = asciiArt
                 }
@@ -72,7 +65,7 @@ struct AsciiView: View {
                             showShareSheet(content: ascii)
                         },
                         .default(Text("Image")) {
-                            showShareSheet(content: ascii!.toImage(withFont: labelFont))
+                            showShareSheet(content: ascii!.toImage(withFont: asciiFont))
                         },
                         .cancel()
                     ])

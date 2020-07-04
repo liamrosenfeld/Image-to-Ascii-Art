@@ -10,31 +10,17 @@ import AVFoundation
 import Foundation
 import UIKit
 
-public extension UIImage {
+extension UIImage {
+    func resize(to destSize: CGSize) -> UIImage {
+        let rect = CGRect(origin: .zero, size: destSize)
 
-    class func imageOfSymbol(_ symbol: String, _ font: UIFont) -> UIImage {
-        let
-        length = font.pointSize * 2,
-        size   = CGSize(width: length, height: length),
-        rect   = CGRect(origin: CGPoint.zero, size: size)
-
-        UIGraphicsBeginImageContext(size)
-        let context = UIGraphicsGetCurrentContext()
-
-        // Fill the background with white.
-        context?.setFillColor(UIColor.white.cgColor)
-        context?.fill(rect)
-
-        // Draw the character with black.
-        let nsString = NSString(string: symbol)
-        nsString.draw(at: rect.origin, withAttributes: [
-            NSAttributedString.Key.font: font,
-            NSAttributedString.Key.foregroundColor: UIColor.black
-            ])
-
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(destSize, false, 1.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+
+        return newImage!
     }
 
     func imageConstrainedToMaxSize(_ maxSize: CGSize) -> UIImage {
