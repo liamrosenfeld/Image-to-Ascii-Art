@@ -11,14 +11,11 @@ import UIKit
 
 // Transforms an image to ASCII art.
 struct AsciiArtist {
-
+    
     static func createAsciiArt(image: UIImage, font: UIFont) -> String {
         let palette      = AsciiPalette(font: font)
         let preppedImage = prepImage(image: image, font: font)
-        let dataProvider = preppedImage.cgImage?.dataProvider
-        let pixelData    = dataProvider?.data
-        let pixelPointer = CFDataGetBytePtr(pixelData)
-        let intensities  = intensityMatrixFromPixelPointer(pixelPointer!, imgSize: preppedImage.size)
+        let intensities  = getIntensities(of: preppedImage)
         let symbolMatrix = symbolMatrixFromIntensityMatrix(intensities, palette: palette)
         return symbolMatrix.joined(separator: "\n")
     }
@@ -30,14 +27,20 @@ struct AsciiArtist {
         let squashedSize   = CGSize(width: image.size.width, height: squashedHeight)
         let squashedImage  = image.resize(to: squashedSize)
         
-        // constrain the image down 
+        // constrain the image down
         let maxImageSize = CGSize(width: 310, height: 310)
-        let rotatedImage = squashedImage.imageRotatedToPortraitOrientation() // Rotate first because the orientation is lost when resizing.
-        let constrainedImage = rotatedImage.imageConstrainedToMaxSize(maxImageSize)
+        let constrainedImage = squashedImage.imageConstrainedToMaxSize(maxImageSize)
         
         return constrainedImage
     }
-
+    
+    static private func getIntensities(of image: UIImage) -> [[Double]] {
+        let dataProvider = image.cgImage?.dataProvider
+        let pixelData    = dataProvider?.data
+        let pixelPointer = CFDataGetBytePtr(pixelData)
+        return intensityMatrixFromPixelPointer(pixelPointer!, imgSize: image.size)
+    }
+    
     static private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer, imgSize: CGSize) -> [[Double]] {
         let matrix = Pixel.createPixelMatrix(Int(imgSize.width), Int(imgSize.height))
         return matrix.map { pixelRow in
@@ -46,7 +49,7 @@ struct AsciiArtist {
             }
         }
     }
-
+    
     static private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]], palette: AsciiPalette) -> [String] {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
@@ -54,14 +57,14 @@ struct AsciiArtist {
             }
         }
     }
-
+    
     static private func symbolFromIntensity(_ intensity: Double, palette: AsciiPalette) -> String {
         assert(0.0 <= intensity && intensity <= 1.0)
-
+        
         let factor = palette.symbols.count - 1
         let value  = round(intensity * Double(factor))
         let index  = Int(value)
         return palette.symbols[index]
     }
-
+    
 }

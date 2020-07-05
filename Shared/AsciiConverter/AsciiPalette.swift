@@ -53,12 +53,26 @@ class AsciiPalette {
     }
 
     private func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String] {
-        let
-        mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts as [NSCopying]),
-        uniqueCounts  = Set(whitePixelCounts),
-        sortedCounts  = uniqueCounts.sorted(),
-        sortedSymbols = sortedCounts.map { mappings[$0] as! String }
+        let mappings = Array(zip(whitePixelCounts, symbols))
+        let unique   = mappings.removingDuplicates()
+        let sorted   = unique.sorted { $0.0 < $1.0 }
+        let sortedSymbols = sorted.map { $0.1 }
+        
         return sortedSymbols
     }
 
+}
+
+extension Array where Element == (Int, String) {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Int: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0.0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }
