@@ -21,7 +21,7 @@ struct InfoView: View {
                     Text("For best results, it should be used to display the ascii in external applications.")
                         .font(.footnote)
                 }.foregroundColor(.white).multilineTextAlignment(.center).padding(20)
-                
+
                 Spacer()
                 HStack {
                     Image(systemName: "chevron.left.slash.chevron.right")
