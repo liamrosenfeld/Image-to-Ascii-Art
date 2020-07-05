@@ -71,10 +71,10 @@ struct HomeView: View {
 struct GetImageButton: View {
     let camera: Bool
     @Binding var image: UIImage?
-    
+
     @State private var showingSheet = false
     @State private var showingCameraAlert = false
-    
+
     var body: some View {
         Button(action: {
             if !camera || UIImagePickerController.isSourceTypeAvailable(.camera) {

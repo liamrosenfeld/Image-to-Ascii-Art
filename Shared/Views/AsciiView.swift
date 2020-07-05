@@ -16,11 +16,10 @@ struct AsciiView: View {
     @State private var showingNoAsciiAlert = false
 
     let asciiFont = UIFont(name: "Menlo", size: 7)!
-    
-    
+
     init(image: Binding<UIImage?>) {
         _image = image
-        
+
         UINavigationBar.appearance().barTintColor = UIColor(named: "DarkBlue")
         UINavigationBar.appearance().tintColor = .white
     }
@@ -75,10 +74,10 @@ struct AsciiView: View {
             }
         }
     }
-    
+
     func showShareSheet<Content>(content: Content) {
         let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
-        
+
         UIApplication.shared.windows.first?.rootViewController?.present(shareSheet, animated: true, completion: nil)
     }
 }
@@ -89,4 +88,3 @@ struct AsciiView_Previews: PreviewProvider {
             .previewDevice("iPhone 11")
     }
 }
-

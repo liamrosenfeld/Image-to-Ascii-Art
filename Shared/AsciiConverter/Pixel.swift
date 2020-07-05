@@ -33,9 +33,9 @@ struct Pixel {
 
     func intensityFromPixelPointer(_ pointer: PixelPointer) -> Double {
         let
-        red   = pointer[offset + 0],
-        green = pointer[offset + 1],
-        blue  = pointer[offset + 2]
+            red   = pointer[offset + 0],
+            green = pointer[offset + 1],
+            blue  = pointer[offset + 2]
         return Pixel.calculateIntensity(red, green, blue)
     }
 
@@ -43,15 +43,15 @@ struct Pixel {
         // Normalize the pixel's grayscale value to between 0 and 1.
         // Weights from http://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems
         let
-        redWeight   = 0.229,
-        greenWeight = 0.587,
-        blueWeight  = 0.114,
-        weightedMax = 255.0 * redWeight   +
-                      255.0 * greenWeight +
-                      255.0 * blueWeight,
-        weightedSum = Double(r) * redWeight   +
-                      Double(g) * greenWeight +
-                      Double(b) * blueWeight
+            redWeight   = 0.229,
+            greenWeight = 0.587,
+            blueWeight  = 0.114,
+            weightedMax = 255.0 * redWeight   +
+                255.0 * greenWeight +
+                255.0 * blueWeight,
+            weightedSum = Double(r) * redWeight   +
+                Double(g) * greenWeight +
+                Double(b) * blueWeight
         return weightedSum / weightedMax
     }
 

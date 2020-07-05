@@ -12,15 +12,21 @@ import UIKit
 
 extension UIImage {
     func resize(to destSize: CGSize) -> UIImage {
+        let image = self.cgImage!
         let rect = CGRect(origin: .zero, size: destSize)
 
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(destSize, false, 1.0)
-        self.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let context = CGContext(data: nil,
+                                width: Int(destSize.width),
+                                height: Int(destSize.height),
+                                bitsPerComponent: image.bitsPerComponent,
+                                bytesPerRow: Int(destSize.width) * 4, // RGBA
+                                space: image.colorSpace ?? CGColorSpace(name: CGColorSpace.sRGB)!,
+                                bitmapInfo: image.bitmapInfo.rawValue)
+        context?.draw(image, in: rect)
 
-        return newImage!
+        let scaledImage = context!.makeImage()!
+
+        return UIImage(cgImage: scaledImage)
     }
 
     func imageConstrainedToMaxSize(_ maxSize: CGSize) -> UIImage {
@@ -28,35 +34,10 @@ extension UIImage {
             size.width  > maxSize.width ||
             size.height > maxSize.height
         if isTooBig {
-            let
-            maxRect       = CGRect(origin: CGPoint.zero, size: maxSize),
-            scaledRect    = AVMakeRect(aspectRatio: self.size, insideRect: maxRect),
-            scaledSize    = scaledRect.size,
-            targetRect    = CGRect(origin: CGPoint.zero, size: scaledSize),
-            width         = Int(scaledSize.width),
-            height        = Int(scaledSize.height),
-            cgImage       = self.cgImage,
-            bitsPerComp   = cgImage?.bitsPerComponent,
-            compsPerPixel = 4, // RGBA
-            bytesPerRow   = width * compsPerPixel,
-            colorSpace    = cgImage?.colorSpace,
-            bitmapInfo    = cgImage?.bitmapInfo,
-            context       = CGContext(
-                data: nil,
-                width: width,
-                height: height,
-                bitsPerComponent: bitsPerComp!,
-                bytesPerRow: bytesPerRow,
-                space: colorSpace!,
-                bitmapInfo: (bitmapInfo?.rawValue)!
-            )
-
-            if context != nil {
-                context?.draw(cgImage!, in: targetRect)
-                if let scaledCGImage = context?.makeImage() {
-                    return UIImage(cgImage: scaledCGImage)
-                }
-            }
+            let maxRect       = CGRect(origin: CGPoint.zero, size: maxSize)
+            let scaledRect    = AVMakeRect(aspectRatio: self.size, insideRect: maxRect)
+            let scaledSize    = scaledRect.size
+            return self.resize(to: scaledSize)
         }
         return self
     }
