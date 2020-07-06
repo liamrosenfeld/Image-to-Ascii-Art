@@ -1,6 +1,6 @@
 //
 //  String+UIImage.swift
-//  Image To Ascii Art
+//  ImageToAsciiArt
 //
 //  Created by Liam Rosenfeld on 7/2/20.
 //  Copyright © 2020 liamrosenfeld. All rights reserved.

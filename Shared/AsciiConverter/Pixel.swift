@@ -14,7 +14,7 @@ typealias PixelPointer = UnsafePointer<UInt8>
 // A point in an image converted to an ASCII character.
 struct Pixel {
 
-    static let bytesPerPixel = 4
+    static let bytesPerPixel = 3 // RGB
 
     private let offset: Int
 
@@ -25,7 +25,7 @@ struct Pixel {
     static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]] {
         return (0..<height).map { row in
             (0..<width).map { col in
-                let offset = (width * row + col) * Pixel.bytesPerPixel
+                let offset = ((width * row) + col) * Pixel.bytesPerPixel
                 return Pixel(offset)
             }
         }
@@ -46,10 +46,12 @@ struct Pixel {
             redWeight   = 0.229,
             greenWeight = 0.587,
             blueWeight  = 0.114,
-            weightedMax = 255.0 * redWeight   +
+            weightedMax =
+                255.0 * redWeight   +
                 255.0 * greenWeight +
                 255.0 * blueWeight,
-            weightedSum = Double(r) * redWeight   +
+            weightedSum =
+                Double(r) * redWeight   +
                 Double(g) * greenWeight +
                 Double(b) * blueWeight
         return weightedSum / weightedMax
