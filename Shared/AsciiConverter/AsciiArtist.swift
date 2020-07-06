@@ -14,35 +14,45 @@ struct AsciiArtist {
 
     static func createAsciiArt(image: UIImage, font: UIFont) -> String {
         let palette      = AsciiPalette(font: font)
-        let preppedImage = prepImage(image: image, font: font)
+        let preppedImage = prepImage(image: image, font: font) // RBGA UIImage -> Shrunk RBG CGImage
         let intensities  = getIntensities(of: preppedImage)
         let symbolMatrix = symbolMatrixFromIntensityMatrix(intensities, palette: palette)
         return symbolMatrix.joined(separator: "\n")
     }
 
-    static private func prepImage(image: UIImage, font: UIFont) -> UIImage {
+    static private func prepImage(image: UIImage, font: UIFont) -> CGImage {
+        // Put the image right way up
+        // Must be first because resizing makes the UIImage lose it's orientation
+        let rotatedImage = image.fixedOrientation()
+        
         // Squash the image vertically so the added height of the non square characters doesn't stretch it vertically
         let squashRatio    = font.monoRatio()
-        let squashedHeight = image.size.height * squashRatio
-        let squashedSize   = CGSize(width: image.size.width, height: squashedHeight)
-        let squashedImage  = image.resize(to: squashedSize)
+        let squashedHeight = rotatedImage.size.height * squashRatio
+        let squashedSize   = CGSize(width: rotatedImage.size.width, height: squashedHeight)
+        let squashedImage  = rotatedImage.resize(to: squashedSize)
 
-        // constrain the image down
+        // Constrain the image down
         let maxImageSize = CGSize(width: 310, height: 310)
         let constrainedImage = squashedImage.imageConstrainedToMaxSize(maxImageSize)
+        
+        // Increase contrast and brightness of image to make ascii art more defined
+        let imageBuffer = constrainedImage.cgImage!.toRGBBuffer()
+        imageBuffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
+        imageBuffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
+        let editedImage = imageBuffer.toImage()!
 
-        return constrainedImage
+        return editedImage
     }
 
-    static private func getIntensities(of image: UIImage) -> [[Double]] {
-        let dataProvider = image.cgImage?.dataProvider
+    static private func getIntensities(of image: CGImage) -> [[Double]] {
+        let dataProvider = image.dataProvider
         let pixelData    = dataProvider?.data
         let pixelPointer = CFDataGetBytePtr(pixelData)
-        return intensityMatrixFromPixelPointer(pixelPointer!, imgSize: image.size)
+        return intensityMatrixFromPixelPointer(pixelPointer!, w: image.width, h: image.height)
     }
 
-    static private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer, imgSize: CGSize) -> [[Double]] {
-        let matrix = Pixel.createPixelMatrix(Int(imgSize.width), Int(imgSize.height))
+    static private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer, w width: Int, h height: Int) -> [[Double]] {
+        let matrix = Pixel.createPixelMatrix(width, height)
         return matrix.map { pixelRow in
             pixelRow.map { pixel in
                 pixel.intensityFromPixelPointer(pointer)
