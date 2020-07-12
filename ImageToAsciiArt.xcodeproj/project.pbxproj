@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C14DF2924BAC70B00E66116 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C703C1224ABA78E005AE478 /* Messages.framework */; };
+		0C14DF2C24BAC70B00E66116 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14DF2B24BAC70B00E66116 /* MessagesViewController.swift */; };
+		0C14DF3124BAC70C00E66116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C14DF3024BAC70C00E66116 /* Assets.xcassets */; };
+		0C14DF3524BAC70C00E66116 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C14DF2824BAC70B00E66116 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0C14DF3F24BACB4700E66116 /* CompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14DF3C24BACB4700E66116 /* CompactView.swift */; };
+		0C14DF4224BAD6BF00E66116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703BED24ABA750005AE478 /* Assets.xcassets */; };
+		0C14DF4424BB618300E66116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C14DF4324BB618300E66116 /* Assets.xcassets */; };
+		0C14DF4624BB61CB00E66116 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C2724ABAFFD005AE478 /* PhotoPickerView.swift */; };
+		0C14DF4724BB61CB00E66116 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4B24AC6CB6005AE478 /* CameraView.swift */; };
+		0C14DF4824BB61CB00E66116 /* ZoomableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C3E24AC661F005AE478 /* ZoomableText.swift */; };
+		0C14DF4924BB61CE00E66116 /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CA77524AFFAD4002D6301 /* UIFont+Size.swift */; };
+		0C14DF4A24BB61CE00E66116 /* String+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1640F324AE64F400279F8F /* String+UIImage.swift */; };
+		0C14DF4B24BB61CE00E66116 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73C24B272500089F218 /* UIImage+Util.swift */; };
+		0C14DF4C24BB61CE00E66116 /* vImage+Gamma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74424B278A80089F218 /* vImage+Gamma.swift */; };
+		0C14DF4D24BB61CE00E66116 /* CGImage+vImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74624B2E5FA0089F218 /* CGImage+vImage.swift */; };
+		0C14DF4E24BB61D200E66116 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74024B272E20089F218 /* Pixel.swift */; };
+		0C14DF4F24BB61D200E66116 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74224B273040089F218 /* AsciiArtist.swift */; };
+		0C14DF5024BB61D200E66116 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
+		0C14DF5124BB81D900E66116 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C14DF3A24BAC71E00E66116 /* CloudKit.framework */; };
 		0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1640F324AE64F400279F8F /* String+UIImage.swift */; };
 		0C32B73D24B272500089F218 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73C24B272500089F218 /* UIImage+Util.swift */; };
 		0C32B73F24B272B00089F218 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
@@ -26,6 +45,16 @@
 		0C703C4F24ACFBB6005AE478 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4E24ACFBB6005AE478 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0C14DF3324BAC70C00E66116 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C703BE624ABA74F005AE478 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C14DF2724BAC70B00E66116;
+			remoteInfo = iMessageExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		0C703C2324ABA78E005AE478 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -33,6 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0C14DF3524BAC70C00E66116 /* iMessageExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +70,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C14DF2824BAC70B00E66116 /* iMessageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C14DF2B24BAC70B00E66116 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		0C14DF3024BAC70C00E66116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C14DF3224BAC70C00E66116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C14DF3924BAC71B00E66116 /* iMessageExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageExtension.entitlements; sourceTree = "<group>"; };
+		0C14DF3A24BAC71E00E66116 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		0C14DF3C24BACB4700E66116 /* CompactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactView.swift; sourceTree = "<group>"; };
+		0C14DF4324BB618300E66116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C1640F324AE64F400279F8F /* String+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UIImage.swift"; sourceTree = "<group>"; };
 		0C32B73C24B272500089F218 /* UIImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		0C32B73E24B272B00089F218 /* AsciiPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
@@ -63,6 +101,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0C14DF2524BAC70B00E66116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C14DF2924BAC70B00E66116 /* Messages.framework in Frameworks */,
+				0C14DF5124BB81D900E66116 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0C703BEF24ABA750005AE478 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +120,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C14DF2A24BAC70B00E66116 /* iMessageExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0C14DF3924BAC71B00E66116 /* iMessageExtension.entitlements */,
+				0C14DF2B24BAC70B00E66116 /* MessagesViewController.swift */,
+				0C14DF3C24BACB4700E66116 /* CompactView.swift */,
+				0C14DF3024BAC70C00E66116 /* Assets.xcassets */,
+				0C14DF3224BAC70C00E66116 /* Info.plist */,
+			);
+			path = iMessageExtension;
+			sourceTree = "<group>";
+		};
 		0C1640F224AE64E200279F8F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +149,7 @@
 			children = (
 				0C703BEA24ABA74F005AE478 /* Shared */,
 				0C703BF424ABA750005AE478 /* iOS */,
+				0C14DF2A24BAC70B00E66116 /* iMessageExtension */,
 				0C703C1124ABA78E005AE478 /* Frameworks */,
 				0C703BF324ABA750005AE478 /* Products */,
 			);
@@ -100,7 +160,6 @@
 			children = (
 				0C703C2A24AC4AF2005AE478 /* AsciiConverter */,
 				0C703C3D24AC65F0005AE478 /* UIRepresentable */,
-				0C703C4024AC6681005AE478 /* Views */,
 				0C703BED24ABA750005AE478 /* Assets.xcassets */,
 				0C703C4924AC6763005AE478 /* Preview Assets.xcassets */,
 			);
@@ -111,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				0C703BF224ABA750005AE478 /* Image To Ascii Art.app */,
+				0C14DF2824BAC70B00E66116 /* iMessageExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,8 +178,10 @@
 		0C703BF424ABA750005AE478 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0C703C4024AC6681005AE478 /* Views */,
 				0C703BEB24ABA74F005AE478 /* App.swift */,
 				0C703BF524ABA750005AE478 /* Info.plist */,
+				0C14DF4324BB618300E66116 /* Assets.xcassets */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -127,6 +189,7 @@
 		0C703C1124ABA78E005AE478 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C14DF3A24BAC71E00E66116 /* CloudKit.framework */,
 				0C703C1224ABA78E005AE478 /* Messages.framework */,
 			);
 			name = Frameworks;
@@ -166,6 +229,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0C14DF2724BAC70B00E66116 /* iMessageExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C14DF3824BAC70C00E66116 /* Build configuration list for PBXNativeTarget "iMessageExtension" */;
+			buildPhases = (
+				0C14DF2424BAC70B00E66116 /* Sources */,
+				0C14DF2524BAC70B00E66116 /* Frameworks */,
+				0C14DF2624BAC70B00E66116 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iMessageExtension;
+			productName = iMessageExtension;
+			productReference = 0C14DF2824BAC70B00E66116 /* iMessageExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		0C703BF124ABA750005AE478 /* iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C703C0624ABA750005AE478 /* Build configuration list for PBXNativeTarget "iOS" */;
@@ -178,6 +258,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0C14DF3424BAC70C00E66116 /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = iOS;
@@ -193,6 +274,9 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					0C14DF2724BAC70B00E66116 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					0C703BF124ABA750005AE478 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -212,16 +296,27 @@
 			projectRoot = "";
 			targets = (
 				0C703BF124ABA750005AE478 /* iOS */,
+				0C14DF2724BAC70B00E66116 /* iMessageExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0C14DF2624BAC70B00E66116 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C14DF4224BAD6BF00E66116 /* Assets.xcassets in Resources */,
+				0C14DF3124BAC70C00E66116 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0C703BF024ABA750005AE478 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0C703C4A24AC6763005AE478 /* Preview Assets.xcassets in Resources */,
+				0C14DF4424BB618300E66116 /* Assets.xcassets in Resources */,
 				0C703C0224ABA750005AE478 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +324,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0C14DF2424BAC70B00E66116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C14DF4D24BB61CE00E66116 /* CGImage+vImage.swift in Sources */,
+				0C14DF4C24BB61CE00E66116 /* vImage+Gamma.swift in Sources */,
+				0C14DF4B24BB61CE00E66116 /* UIImage+Util.swift in Sources */,
+				0C14DF4E24BB61D200E66116 /* Pixel.swift in Sources */,
+				0C14DF4F24BB61D200E66116 /* AsciiArtist.swift in Sources */,
+				0C14DF4824BB61CB00E66116 /* ZoomableText.swift in Sources */,
+				0C14DF3F24BACB4700E66116 /* CompactView.swift in Sources */,
+				0C14DF4A24BB61CE00E66116 /* String+UIImage.swift in Sources */,
+				0C14DF5024BB61D200E66116 /* AsciiPalette.swift in Sources */,
+				0C14DF4724BB61CB00E66116 /* CameraView.swift in Sources */,
+				0C14DF4624BB61CB00E66116 /* PhotoPickerView.swift in Sources */,
+				0C14DF2C24BAC70B00E66116 /* MessagesViewController.swift in Sources */,
+				0C14DF4924BB61CE00E66116 /* UIFont+Size.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0C703BEE24ABA750005AE478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,7 +368,66 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0C14DF3424BAC70C00E66116 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C14DF2724BAC70B00E66116 /* iMessageExtension */;
+			targetProxy = 0C14DF3324BAC70C00E66116 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0C14DF3624BAC70C00E66116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C14DF3724BAC70C00E66116 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImageToAsciiArt.iMessageExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0C703C0424ABA750005AE478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -419,6 +593,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0C14DF3824BAC70C00E66116 /* Build configuration list for PBXNativeTarget "iMessageExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C14DF3624BAC70C00E66116 /* Debug */,
+				0C14DF3724BAC70C00E66116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0C703BE924ABA74F005AE478 /* Build configuration list for PBXProject "ImageToAsciiArt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
