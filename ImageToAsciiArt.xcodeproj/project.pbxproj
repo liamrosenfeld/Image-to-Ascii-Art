@@ -26,6 +26,7 @@
 		0C14DF4F24BB61D200E66116 /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74224B273040089F218 /* AsciiArtist.swift */; };
 		0C14DF5024BB61D200E66116 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
 		0C14DF5124BB81D900E66116 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C14DF3A24BAC71E00E66116 /* CloudKit.framework */; };
+		0C14DF5424BB840000E66116 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14DF5324BB840000E66116 /* SendView.swift */; };
 		0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1640F324AE64F400279F8F /* String+UIImage.swift */; };
 		0C32B73D24B272500089F218 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73C24B272500089F218 /* UIImage+Util.swift */; };
 		0C32B73F24B272B00089F218 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
@@ -78,6 +79,7 @@
 		0C14DF3A24BAC71E00E66116 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		0C14DF3C24BACB4700E66116 /* CompactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactView.swift; sourceTree = "<group>"; };
 		0C14DF4324BB618300E66116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C14DF5324BB840000E66116 /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		0C1640F324AE64F400279F8F /* String+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UIImage.swift"; sourceTree = "<group>"; };
 		0C32B73C24B272500089F218 /* UIImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		0C32B73E24B272B00089F218 /* AsciiPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
@@ -123,11 +125,12 @@
 		0C14DF2A24BAC70B00E66116 /* iMessageExtension */ = {
 			isa = PBXGroup;
 			children = (
-				0C14DF3924BAC71B00E66116 /* iMessageExtension.entitlements */,
 				0C14DF2B24BAC70B00E66116 /* MessagesViewController.swift */,
 				0C14DF3C24BACB4700E66116 /* CompactView.swift */,
+				0C14DF5324BB840000E66116 /* SendView.swift */,
 				0C14DF3024BAC70C00E66116 /* Assets.xcassets */,
 				0C14DF3224BAC70C00E66116 /* Info.plist */,
+				0C14DF3924BAC71B00E66116 /* iMessageExtension.entitlements */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				0C14DF4724BB61CB00E66116 /* CameraView.swift in Sources */,
 				0C14DF4624BB61CB00E66116 /* PhotoPickerView.swift in Sources */,
 				0C14DF2C24BAC70B00E66116 /* MessagesViewController.swift in Sources */,
+				0C14DF5424BB840000E66116 /* SendView.swift in Sources */,
 				0C14DF4924BB61CE00E66116 /* UIFont+Size.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

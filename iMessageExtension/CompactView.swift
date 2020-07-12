@@ -76,14 +76,16 @@ struct GetImageButton: View {
         Button(action: {
             set = setTo
         }, label: {
-            Image(systemName: setTo == InputMode.take ? "camera" : "photo")
-            Text(setTo == InputMode.take ? "Take Picture" : "Pick Image")
+            HStack {
+                Image(systemName: setTo == InputMode.take ? "camera" : "photo")
+                Text(setTo == InputMode.take ? "Take Picture" : "Pick Image")
+            }
+            .font(.body)
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("LightBlue"))
+            .cornerRadius(10)
         })
-        .font(.body)
-        .foregroundColor(.white)
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color("LightBlue"))
-        .cornerRadius(10)
     }
 }

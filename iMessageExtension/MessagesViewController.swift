@@ -44,6 +44,7 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     var sub: AnyCancellable?
+    var inputMode: InputMode = .none
     
     // MARK: - Conversation Handling
     
@@ -64,14 +65,19 @@ class MessagesViewController: MSMessagesAppViewController {
         switch activeMode {
         case .compact:
             let delegate = CompactDelegate()
-            let compactView = CompactView(delegate: delegate)
+            let view = CompactView(delegate: delegate)
             sub = delegate.modeSelected.sink { delegate in
                 self.requestPresentationStyle(.expanded)
-                print("selected method: \(delegate.mode)")
+                self.inputMode = delegate.mode
             }
-            setView(to: compactView)
+            setView(to: view)
         case .send:
-            print("send view")
+            let delegate = SendDelegate()
+            let view = SendView(mode: inputMode, delegate: delegate)
+            sub = delegate.sendAscii.sink { delegate in
+                print("send message")
+            }
+            setView(to: view)
         case .received:
             print("received view")
         }
