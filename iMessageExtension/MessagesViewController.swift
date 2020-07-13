@@ -163,10 +163,9 @@ class MessagesViewController: MSMessagesAppViewController {
         case .received:
             guard let dbID = dbID else {
                 preconditionFailure("dbID is not present in the message")
-                return
             }
             let delegate = ReceivedDelegate()
-            let view = ReceivedView(dbID: dbID, delegate: delegate)
+            let view = ReceivedView(dbID: dbID, delegate: delegate, parent: self)
             sub = delegate.makeNew.sink { _ in
                 self.activeConversation?.selectedMessage?.url = nil // get out of current message so it doesn't pop back up
                 self.requestPresentationStyle(.compact)
