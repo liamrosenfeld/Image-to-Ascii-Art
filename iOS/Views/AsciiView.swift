@@ -77,7 +77,6 @@ struct AsciiView: View {
 
     func showShareSheet<Content>(content: Content) {
         let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
-
         UIApplication.shared.windows.first?.rootViewController?.present(shareSheet, animated: true, completion: nil)
     }
 }

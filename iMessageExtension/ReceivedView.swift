@@ -19,14 +19,17 @@ struct ReceivedView: View {
     // Connection to the outside
     let dbID: String
     let delegate: ReceivedDelegate
+    var parent: MessagesViewController
     
     // Internal ascii stuff
     private let database = CKContainer(identifier: "iCloud.com.liamrosenfeld.ImageToAsciiArt").publicCloudDatabase
+    private let asciiFont = UIFont(name: "Menlo", size: 7)!
     @State private var ascii: String?
     
     // Showing UI State
     @State private var showingNotDownloadedAlert = false
     @State private var showingNotFoundAlert = false
+    @State private var showingShareActionSheet = false
     
     var body: some View {
         ZStack {
@@ -48,8 +51,8 @@ struct ReceivedView: View {
                     Spacer()
                     
                     Button(action: {
-                        if let ascii = ascii {
-                            print("save")
+                        if ascii != nil {
+                            showingShareActionSheet = true
                         } else {
                             showingNotDownloadedAlert = true
                         }
@@ -60,6 +63,17 @@ struct ReceivedView: View {
                             .background(Color("LightBlue"))
                             .cornerRadius(10)
                     }).padding(.trailing, 10)
+                    .actionSheet(isPresented: $showingShareActionSheet) {
+                        ActionSheet(title: Text("Share as"), buttons: [
+                            .default(Text("Text")) {
+                                showShareSheet(content: ascii)
+                            },
+                            .default(Text("Image")) {
+                                showShareSheet(content: ascii!.toImage(withFont: asciiFont))
+                            },
+                            .cancel()
+                        ])
+                    }
                     .alert(isPresented: $showingNotDownloadedAlert) {
                         Alert(title: Text("Whoah There!"), message: Text("The ASCII Art must download before it can be shared."))
                     }
@@ -99,5 +113,10 @@ struct ReceivedView: View {
                 }
             }
         }
+    }
+    
+    func showShareSheet<Content>(content: Content) {
+        let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        parent.present(shareSheet, animated: true, completion: nil)
     }
 }
