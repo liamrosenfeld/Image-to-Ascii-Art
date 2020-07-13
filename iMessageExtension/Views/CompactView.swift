@@ -33,7 +33,7 @@ struct CompactView: View {
     
     var body: some View {
         ZStack {
-            Color("DarkBlue")
+            Color.background
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 
@@ -84,7 +84,7 @@ struct GetImageButton: View {
             .foregroundColor(.white)
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color("LightBlue"))
+            .background(Color.button)
             .cornerRadius(10)
         })
     }
