@@ -20,7 +20,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("DarkBlue")
+                Color.background
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     Image("Logo")
@@ -90,7 +90,7 @@ struct GetImageButton: View {
         .foregroundColor(.white)
         .padding(40)
         .frame(maxWidth: .infinity)
-        .background(Color("LightBlue"))
+        .background(Color.button)
         .sheet(isPresented: $showingSheet) {
             if camera {
                 CameraView(image: $image)

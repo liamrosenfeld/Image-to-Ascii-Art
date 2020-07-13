@@ -33,7 +33,7 @@ struct ReceivedView: View {
     
     var body: some View {
         ZStack {
-            Color("DarkBlue")
+            Color.background
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
@@ -42,11 +42,9 @@ struct ReceivedView: View {
                         delegate.makeNew.send()
                     }, label: {
                         Text("New")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color("LightBlue"))
-                            .cornerRadius(10)
-                    }).padding(.leading, 10)
+                    })
+                    .buttonStyle(NavBarStyle())
+                    .padding(.leading, 10)
                     
                     Spacer()
                     
@@ -58,11 +56,9 @@ struct ReceivedView: View {
                         }
                     }, label: {
                         Text("Share")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color("LightBlue"))
-                            .cornerRadius(10)
-                    }).padding(.trailing, 10)
+                    })
+                    .buttonStyle(NavBarStyle())
+                    .padding(.trailing, 10)
                     .actionSheet(isPresented: $showingShareActionSheet) {
                         ActionSheet(title: Text("Share as"), buttons: [
                             .default(Text("Text")) {
@@ -77,7 +73,7 @@ struct ReceivedView: View {
                     .alert(isPresented: $showingNotDownloadedAlert) {
                         Alert(title: Text("Whoah There!"), message: Text("The ASCII Art must download before it can be shared."))
                     }
-                }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color("MediumBlue"))
+                }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.background)
                 
                 
                 if let ascii = ascii {

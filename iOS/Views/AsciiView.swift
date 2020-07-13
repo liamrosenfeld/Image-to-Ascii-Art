@@ -20,13 +20,13 @@ struct AsciiView: View {
     init(image: Binding<UIImage?>) {
         _image = image
 
-        UINavigationBar.appearance().barTintColor = UIColor(named: "DarkBlue")
+        UINavigationBar.appearance().barTintColor = UIColor(named: "Background")
         UINavigationBar.appearance().tintColor = .white
     }
 
     var body: some View {
         ZStack {
-            Color("DarkBlue")
+            Color.background
                 .edgesIgnoringSafeArea(.all)
 
             if let ascii = ascii {

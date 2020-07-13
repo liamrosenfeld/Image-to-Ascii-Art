@@ -11,7 +11,7 @@ import SwiftUI
 struct InfoView: View {
     var body: some View {
         ZStack {
-            Color("DarkBlue")
+            Color.background
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
