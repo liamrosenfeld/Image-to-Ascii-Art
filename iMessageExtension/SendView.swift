@@ -51,7 +51,7 @@ struct SendView: View {
                             .padding(10)
                             .background(Color("LightBlue"))
                             .cornerRadius(10)
-                    }).padding(.leading)
+                    }).padding(.leading, 10)
                     
                     Spacer()
                     
@@ -67,7 +67,7 @@ struct SendView: View {
                             .padding(10)
                             .background(Color("LightBlue"))
                             .cornerRadius(10)
-                    }).padding(.trailing)
+                    }).padding(.trailing, 10)
                     .alert(isPresented: $showingNoAsciiAlert) {
                         Alert(title: Text("Whoah There!"), message: Text("You have to create some ascii art before you can share it."))
                     }
