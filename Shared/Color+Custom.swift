@@ -9,8 +9,9 @@
 import SwiftUI
 
 extension Color {
-    static let background = Color("Background")
-    static let button = Color("Button")
+    static let background    = Color("Background")
+    static let button        = Color("Button")
+    static let grayText      = Color("GrayText")
+    static let navBar        = Color("NavBar")
     static let pressedButton = Color("PressedButton")
-    static let grayText = Color("GrayText")
 }

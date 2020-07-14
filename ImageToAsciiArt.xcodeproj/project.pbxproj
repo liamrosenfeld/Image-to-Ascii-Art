@@ -29,9 +29,10 @@
 		0C14DF5424BB840000E66116 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14DF5324BB840000E66116 /* SendView.swift */; };
 		0C14DF5824BBD38400E66116 /* ReceivedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14DF5724BBD38400E66116 /* ReceivedView.swift */; };
 		0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1640F324AE64F400279F8F /* String+UIImage.swift */; };
-		0C1D374724BCF6D400D8635F /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D374624BCF6D400D8635F /* NavBarButton.swift */; };
+		0C1D374724BCF6D400D8635F /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D374624BCF6D400D8635F /* ButtonStyles.swift */; };
 		0C1D374924BCF74200D8635F /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D374824BCF74200D8635F /* Color+Custom.swift */; };
 		0C1D374A24BCF74F00D8635F /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D374824BCF74200D8635F /* Color+Custom.swift */; };
+		0C1D374C24BD6AD500D8635F /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D374624BCF6D400D8635F /* ButtonStyles.swift */; };
 		0C32B73D24B272500089F218 /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73C24B272500089F218 /* UIImage+Util.swift */; };
 		0C32B73F24B272B00089F218 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
 		0C32B74124B272E20089F218 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74024B272E20089F218 /* Pixel.swift */; };
@@ -86,7 +87,7 @@
 		0C14DF5324BB840000E66116 /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		0C14DF5724BBD38400E66116 /* ReceivedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedView.swift; sourceTree = "<group>"; };
 		0C1640F324AE64F400279F8F /* String+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UIImage.swift"; sourceTree = "<group>"; };
-		0C1D374624BCF6D400D8635F /* NavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
+		0C1D374624BCF6D400D8635F /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		0C1D374824BCF74200D8635F /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 		0C32B73C24B272500089F218 /* UIImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
 		0C32B73E24B272B00089F218 /* AsciiPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiPalette.swift; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 			children = (
 				0C14DF2B24BAC70B00E66116 /* MessagesViewController.swift */,
 				0C1D374424BCF6A200D8635F /* Views */,
-				0C1D374524BCF6C100D8635F /* Styles */,
 				0C14DF3024BAC70C00E66116 /* Assets.xcassets */,
 				0C14DF3224BAC70C00E66116 /* Info.plist */,
 				0C14DF3924BAC71B00E66116 /* iMessageExtension.entitlements */,
@@ -167,7 +167,7 @@
 		0C1D374524BCF6C100D8635F /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				0C1D374624BCF6D400D8635F /* NavBarButton.swift */,
+				0C1D374624BCF6D400D8635F /* ButtonStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -188,6 +188,7 @@
 			children = (
 				0C703C2A24AC4AF2005AE478 /* AsciiConverter */,
 				0C703C3D24AC65F0005AE478 /* UIRepresentable */,
+				0C1D374524BCF6C100D8635F /* Styles */,
 				0C1D374824BCF74200D8635F /* Color+Custom.swift */,
 				0C703BED24ABA750005AE478 /* Assets.xcassets */,
 				0C703C4924AC6763005AE478 /* Preview Assets.xcassets */,
@@ -360,7 +361,7 @@
 				0C14DF4D24BB61CE00E66116 /* CGImage+vImage.swift in Sources */,
 				0C14DF4C24BB61CE00E66116 /* vImage+Gamma.swift in Sources */,
 				0C14DF4B24BB61CE00E66116 /* UIImage+Util.swift in Sources */,
-				0C1D374724BCF6D400D8635F /* NavBarButton.swift in Sources */,
+				0C1D374724BCF6D400D8635F /* ButtonStyles.swift in Sources */,
 				0C14DF4E24BB61D200E66116 /* Pixel.swift in Sources */,
 				0C1D374924BCF74200D8635F /* Color+Custom.swift in Sources */,
 				0C14DF4F24BB61D200E66116 /* AsciiArtist.swift in Sources */,
@@ -390,6 +391,7 @@
 				0C703C0024ABA750005AE478 /* HomeView.swift in Sources */,
 				0C32B74524B278A80089F218 /* vImage+Gamma.swift in Sources */,
 				0C703BFE24ABA750005AE478 /* App.swift in Sources */,
+				0C1D374C24BD6AD500D8635F /* ButtonStyles.swift in Sources */,
 				0C32B73D24B272500089F218 /* UIImage+Util.swift in Sources */,
 				0C4CA77624AFFAD4002D6301 /* UIFont+Size.swift in Sources */,
 				0C32B73F24B272B00089F218 /* AsciiPalette.swift in Sources */,
