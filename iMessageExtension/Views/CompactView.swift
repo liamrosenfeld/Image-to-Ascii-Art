@@ -51,11 +51,25 @@ struct CompactView: View {
                 HStack {
                     Spacer()
                     
-                    GetImageButton(set: $delegate.mode, setTo: .pick)
+                    Button(action: {
+                        delegate.mode = .pick
+                    }, label: {
+                        HStack {
+                            Image(systemName: "photo")
+                            Text("Pick Image")
+                        }
+                    }).buttonStyle(RoundStyle())
                     
                     Spacer()
                     
-                    GetImageButton(set: $delegate.mode, setTo: .take)
+                    Button(action: {
+                        delegate.mode = .take
+                    }, label: {
+                        HStack {
+                            Image(systemName: "camera")
+                            Text("Take Picture")
+                        }
+                    }).buttonStyle(RoundStyle())
                     
                     Spacer()
                 }
@@ -65,27 +79,5 @@ struct CompactView: View {
                 Spacer()
             }
         }
-    }
-}
-
-struct GetImageButton: View {
-    @Binding var set: InputMode
-    let setTo: InputMode
-    
-    var body: some View {
-        Button(action: {
-            set = setTo
-        }, label: {
-            HStack {
-                Image(systemName: setTo == InputMode.take ? "camera" : "photo")
-                Text(setTo == InputMode.take ? "Take Picture" : "Pick Image")
-            }
-            .font(.body)
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.button)
-            .cornerRadius(10)
-        })
     }
 }

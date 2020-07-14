@@ -19,9 +19,16 @@ struct AsciiView: View {
 
     init(image: Binding<UIImage?>) {
         _image = image
-
-        UINavigationBar.appearance().barTintColor = UIColor(named: "Background")
-        UINavigationBar.appearance().tintColor = .white
+        
+        let appearance = UINavigationBar.appearance()
+        
+        // set colors
+        appearance.barTintColor = UIColor(named: "NavBar")
+        appearance.tintColor = .white
+        
+        // turn off the default behavior that messes up the colors
+        appearance.isTranslucent = false
+        appearance.shadowImage = nil
     }
 
     var body: some View {

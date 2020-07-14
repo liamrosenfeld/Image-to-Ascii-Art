@@ -15,14 +15,44 @@ struct InfoView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
+                Spacer()
+                Spacer()
+                
+                VStack(alignment: .center) {
+                    Text("This app is open source, so you can find the complete source code here:")
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                    
+                    Button("Source Code") {
+                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art")!)
+                    }.buttonStyle(RoundStyle()).padding()
+                    
+                }.padding(20)
+                
+                Spacer()
+                
+                VStack(alignment: .center) {
+                    Text("If you have any issues to report or suggestions, submit them here:")
+                    
+                    Button("Issue Tracker") {
+                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!)
+                    }.buttonStyle(RoundStyle()).padding()
+                    
+                    Text("I use GitHub issues as my issue tracker, which requires a GitHub account to file an issue")
+                        .font(.callout)
+                }.foregroundColor(.white).multilineTextAlignment(.center).padding(20)
+                
+                
+                Spacer()
+                
                 VStack(alignment: .center) {
                     Text("The font used to display the ASCII art is Menlo 7pt.")
-                        .font(.callout)
                     Text("For best results, it should be used to display the ascii in external applications.")
-                        .font(.footnote)
+                        
                 }.foregroundColor(.white).multilineTextAlignment(.center).padding(20)
 
                 Spacer()
+                
                 HStack {
                     Image(systemName: "chevron.left.slash.chevron.right")
                     Text("with")

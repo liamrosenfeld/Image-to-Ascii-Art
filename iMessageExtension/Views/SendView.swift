@@ -46,9 +46,13 @@ struct SendView: View {
                     Button(action: {
                         showingImageGetter = true
                     }, label: {
-                        Text("New")
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise")
+                            Text("New")
+                        }
+                        .foregroundColor(.white)
+                        .padding(5)
                     })
-                    .buttonStyle(NavBarStyle())
                     .padding(.leading, 10)
                     
                     Spacer()
@@ -60,14 +64,18 @@ struct SendView: View {
                             showingNoAsciiAlert = true
                         }
                     }, label: {
-                        Text("Send")
+                        HStack {
+                            Image(systemName: "paperplane")
+                            Text("Send")
+                        }
+                        .foregroundColor(.white)
+                        .padding(5)
                     })
-                    .buttonStyle(NavBarStyle())
                     .padding(.trailing, 10)
                     .alert(isPresented: $showingNoAsciiAlert) {
                         Alert(title: Text("Whoah There!"), message: Text("You have to create some ascii art before you can share it."))
                     }
-                }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.background)
+                }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
                 
                 if let ascii = ascii {
