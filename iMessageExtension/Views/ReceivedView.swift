@@ -41,13 +41,12 @@ struct ReceivedView: View {
                     Button(action: {
                         delegate.makeNew.send()
                     }, label: {
-                        HStack {
-                            Image(systemName: "arrowshape.turn.up.left")
-                            Text("Reply")
-                        }
-                        .foregroundColor(.white)
-                        .padding(5)
+                        Image(systemName: "arrowshape.turn.up.left")
+                            .font(Font.title3.bold())
+                            .foregroundColor(.white)
+                            .padding(5)
                     })
+                    .accessibility(value: Text("Reply with ASCII Art"))
                     .padding(.leading, 10)
                     
                     Spacer()
@@ -59,13 +58,12 @@ struct ReceivedView: View {
                             showingNotDownloadedAlert = true
                         }
                     }, label: {
-                        HStack {
-                            Image(systemName: "square.and.arrow.up")
-                            Text("Share")
-                        }
-                        .foregroundColor(.white)
-                        .padding(5)
+                        Image(systemName: "square.and.arrow.up")
+                            .font(Font.title3.bold())
+                            .foregroundColor(.white)
+                            .padding(5)
                     })
+                    .accessibility(value: Text("Share"))
                     .padding(.trailing, 10)
                     .actionSheet(isPresented: $showingShareActionSheet) {
                         ActionSheet(title: Text("Share as"), buttons: [

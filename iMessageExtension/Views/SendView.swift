@@ -46,13 +46,12 @@ struct SendView: View {
                     Button(action: {
                         showingImageGetter = true
                     }, label: {
-                        HStack {
-                            Image(systemName: "arrow.counterclockwise")
-                            Text("New")
-                        }
-                        .foregroundColor(.white)
-                        .padding(5)
+                        Image(systemName: "arrow.counterclockwise")
+                            .font(Font.title3.bold())
+                            .foregroundColor(.white)
+                            .padding(5)
                     })
+                    .accessibility(value: Text("New Image"))
                     .padding(.leading, 10)
                     
                     Spacer()
@@ -64,13 +63,12 @@ struct SendView: View {
                             showingNoAsciiAlert = true
                         }
                     }, label: {
-                        HStack {
-                            Image(systemName: "paperplane")
-                            Text("Send")
-                        }
-                        .foregroundColor(.white)
-                        .padding(5)
+                        Image(systemName: "paperplane")
+                            .font(Font.title3.bold())
+                            .foregroundColor(.white)
+                            .padding(5)
                     })
+                    .accessibility(value: Text("Send"))
                     .padding(.trailing, 10)
                     .alert(isPresented: $showingNoAsciiAlert) {
                         Alert(title: Text("Whoah There!"), message: Text("You have to create some ascii art before you can share it."))
