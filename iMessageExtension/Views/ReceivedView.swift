@@ -16,6 +16,15 @@ class ReceivedDelegate {
 }
 
 struct ReceivedView: View {
+    enum AlertType: Identifiable {
+        case notFound
+        case notDownloaded
+        case shared
+        case shareFailed
+        
+        var id: AlertType { self }
+    }
+    
     // Connection to the outside
     let dbID: String
     let delegate: ReceivedDelegate
@@ -27,8 +36,7 @@ struct ReceivedView: View {
     @State private var ascii: String?
     
     // Showing UI State
-    @State private var showingNotDownloadedAlert = false
-    @State private var showingNotFoundAlert = false
+    @State private var alert: AlertType? = nil
     @State private var showingShareActionSheet = false
     
     var body: some View {
@@ -55,7 +63,7 @@ struct ReceivedView: View {
                         if ascii != nil {
                             showingShareActionSheet = true
                         } else {
-                            showingNotDownloadedAlert = true
+                            alert = .notDownloaded
                         }
                     }, label: {
                         Image(systemName: "square.and.arrow.up")
@@ -76,9 +84,6 @@ struct ReceivedView: View {
                             .cancel()
                         ])
                     }
-                    .alert(isPresented: $showingNotDownloadedAlert) {
-                        Alert(title: Text("Whoah There!"), message: Text("The ASCII Art must download before it can be shared."))
-                    }
                 }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
                 
@@ -94,15 +99,36 @@ struct ReceivedView: View {
                     }
                 }
             }
-        }.alert(isPresented: $showingNotFoundAlert) {
-            Alert(title: Text("ASCII Art Not Found"), message: Text("Your ASCII Art Could Not Be Located On The Server."))
+        }.alert(item: $alert) { alert in
+            switch alert {
+            case .notDownloaded:
+                return Alert(
+                    title: Text("Whoah There!"),
+                    message: Text("The ASCII Art must download before it can be shared.")
+                )
+            case .notFound:
+                return Alert(
+                    title: Text("ASCII Art Not Found"),
+                    message: Text("Your ASCII Art Could Not Be Located On The Server.")
+                )
+            case .shared:
+                return Alert(
+                    title: Text("Shared"),
+                    dismissButton: .default(Text("Yay!"))
+                )
+            case .shareFailed:
+                return Alert(
+                    title: Text("Share Failed"),
+                    message: Text("An error occurred.")
+                )
+            }
         }.onAppear {
             ascii = nil
             
             database.fetch(withRecordID: .init(recordName: dbID)) { (record, error) in
                 if error != nil {
                     DispatchQueue.main.async {
-                        showingNotFoundAlert = true
+                        alert = .notFound
                     }
                 } else {
                     if let record = record {
@@ -119,6 +145,16 @@ struct ReceivedView: View {
     
     func showShareSheet<Content>(content: Content) {
         let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        shareSheet.completionWithItemsHandler = { (_, completed, _, err) in
+            if completed {
+                if let err = err {
+                    print(err.localizedDescription)
+                    alert = .shareFailed
+                } else {
+                    alert = .shared
+                }
+            }
+        }
         parent.present(shareSheet, animated: true, completion: nil)
     }
 }
