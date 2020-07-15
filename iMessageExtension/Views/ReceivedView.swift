@@ -16,14 +16,6 @@ class ReceivedDelegate {
 }
 
 struct ReceivedView: View {
-    enum AlertType: Identifiable {
-        case notFound
-        case notDownloaded
-        case shared
-        case shareFailed
-        
-        var id: AlertType { self }
-    }
     
     // Connection to the outside
     let dbID: String
@@ -63,7 +55,7 @@ struct ReceivedView: View {
                         if ascii != nil {
                             showingShareActionSheet = true
                         } else {
-                            alert = .notDownloaded
+                            alert = .notDownloadedYet
                         }
                     }, label: {
                         Image(systemName: "square.and.arrow.up")
@@ -99,43 +91,58 @@ struct ReceivedView: View {
                     }
                 }
             }
-        }.alert(item: $alert) { alert in
-            switch alert {
-            case .notDownloaded:
-                return Alert(
-                    title: Text("Whoah There!"),
-                    message: Text("The ASCII Art must download before it can be shared.")
-                )
-            case .notFound:
-                return Alert(
-                    title: Text("ASCII Art Not Found"),
-                    message: Text("Your ASCII Art Could Not Be Located On The Server.")
-                )
-            case .shared:
-                return Alert(
-                    title: Text("Shared"),
-                    dismissButton: .default(Text("Yay!"))
-                )
-            case .shareFailed:
-                return Alert(
-                    title: Text("Share Failed"),
-                    message: Text("An error occurred.")
-                )
-            }
-        }.onAppear {
-            ascii = nil
-            
-            database.fetch(withRecordID: .init(recordName: dbID)) { (record, error) in
-                if error != nil {
-                    DispatchQueue.main.async {
-                        alert = .notFound
-                    }
-                } else {
-                    if let record = record {
-                        if let fetchedAscii = record["text"] as? NSString {
-                            DispatchQueue.main.async {
-                                ascii = fetchedAscii as String
-                            }
+        }
+        .alert(item: $alert, content: matchAlert)
+        .onAppear(perform: fetchAscii)
+    }
+    
+    enum AlertType: Identifiable {
+        case downloadFailed
+        case notDownloadedYet
+        case shared
+        case shareFailed
+        
+        var id: AlertType { self }
+    }
+    
+    func matchAlert(alert: AlertType) -> Alert {
+        switch alert {
+        case .notDownloadedYet:
+            return Alert(
+                title: Text("Whoah There!"),
+                message: Text("The ASCII Art must download before it can be shared.")
+            )
+        case .downloadFailed:
+            return Alert(
+                title: Text("ASCII Art Could Not Be Downloaded"),
+                message: Text("Please check your internet connection.")
+            )
+        case .shared:
+            return Alert(
+                title: Text("Shared"),
+                dismissButton: .default(Text("Yay!"))
+            )
+        case .shareFailed:
+            return Alert(
+                title: Text("Share Failed"),
+                message: Text("An error occurred.")
+            )
+        }
+    }
+    
+    func fetchAscii() {
+        ascii = nil
+        
+        database.fetch(withRecordID: .init(recordName: dbID)) { (record, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    alert = .downloadFailed
+                }
+            } else {
+                if let record = record {
+                    if let fetchedAscii = record["text"] as? NSString {
+                        DispatchQueue.main.async {
+                            ascii = fetchedAscii as String
                         }
                     }
                 }
@@ -148,7 +155,7 @@ struct ReceivedView: View {
         shareSheet.completionWithItemsHandler = { (_, completed, _, err) in
             if completed {
                 if let err = err {
-                    print(err.localizedDescription)
+                    print("Share failed \(err)")
                     alert = .shareFailed
                 } else {
                     alert = .shared

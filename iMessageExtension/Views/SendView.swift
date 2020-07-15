@@ -9,19 +9,29 @@
 import SwiftUI
 import Combine
 import UIKit
+import Messages
+import CloudKit
 
 class SendDelegate: ObservableObject {
     
-    var sendAscii = PassthroughSubject<SendDelegate, Never>()
+    var sendMessage = PassthroughSubject<SendDelegate, Never>()
     
-    var asciiToSend: String = "" {
+    var message: MSMessage = MSMessage() {
         didSet {
-            sendAscii.send(self)
+            sendMessage.send(self)
         }
     }
 }
 
 struct SendView: View {
+    
+    enum AlertType: Identifiable {
+        case noAscii
+        case uploadError
+        
+        var id: AlertType { self }
+    }
+    
     // Connection to the outside
     let mode: InputMode
     @ObservedObject var delegate: SendDelegate
@@ -31,7 +41,7 @@ struct SendView: View {
     @State private var ascii: String?
     
     // Showing UI State
-    @State private var showingNoAsciiAlert = false
+    @State private var alert: AlertType? = nil
     @State private var showingImageGetter  = true
     
     let asciiFont = UIFont(name: "Menlo", size: 7)!
@@ -58,9 +68,9 @@ struct SendView: View {
                     
                     Button(action: {
                         if let ascii = ascii {
-                            delegate.asciiToSend = ascii
+                            sendMessage(asciiArt: ascii)
                         } else {
-                            showingNoAsciiAlert = true
+                            alert = .noAscii
                         }
                     }, label: {
                         Image(systemName: "paperplane")
@@ -70,9 +80,6 @@ struct SendView: View {
                     })
                     .accessibility(value: Text("Send"))
                     .padding(.trailing, 10)
-                    .alert(isPresented: $showingNoAsciiAlert) {
-                        Alert(title: Text("Whoah There!"), message: Text("You have to create some ascii art before you can share it."))
-                    }
                 }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
                 
@@ -117,6 +124,77 @@ struct SendView: View {
             case .none: // on just swipe up, default to pick
                 PhotoPickerView(image: $image)
             }
+        }.alert(item: $alert) { alert in
+            switch alert {
+            case .noAscii:
+                return Alert(
+                    title: Text("Whoah There!"),
+                    message: Text("The ASCII Art must download before it can be shared.")
+                )
+            case .uploadError:
+                return Alert(
+                    title: Text("ASCII Art Could Not Be Uploaded"),
+                    message: Text("Please check your internet connection.")
+                )
+            }
         }
+    }
+    
+    // MARK: - Send Message
+    
+    let database = CKContainer(identifier: "iCloud.com.liamrosenfeld.ImageToAsciiArt").publicCloudDatabase
+    
+    func sendMessage(asciiArt: String) {
+        // generate preview image
+        let maxImageSize = CGSize(width: 500, height: 500)
+        let image = asciiArt.toImage(withFont: asciiFont).imageConstrainedToMaxSize(maxImageSize)
+        
+        let message = makeMessage(asciiArt: asciiArt, image: image)
+        
+        saveToDatabase(asciiArt: asciiArt) { result in
+            switch result {
+            case .success(let id):
+                message.url = self.makeMessageURL(dbID: id)
+                
+                delegate.message = message
+                
+            case .failure(let err):
+                alert = .uploadError
+                print("Upload error: \(err)")
+            }
+        }
+    }
+    
+    func saveToDatabase(asciiArt: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let asciiRecord = CKRecord(recordType: "AsciiArt")
+        asciiRecord["text"] = asciiArt as NSString
+        
+        database.save(asciiRecord) { (record, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                if let record = record {
+                    completion(.success(record.recordID.recordName))
+                }
+            }
+        }
+        
+    }
+    
+    func makeMessage(asciiArt: String, image: UIImage) -> MSMessage {
+        let session = MSSession()
+        let message = MSMessage(session: session)
+        let layout = MSMessageTemplateLayout()
+        layout.image = image
+        layout.caption = "Ascii Art"
+        message.layout = layout
+        return message
+    }
+    
+    func makeMessageURL(dbID: String) -> URL {
+        var components = URLComponents()
+        let qID = URLQueryItem(name: "dbID", value: dbID )
+        components.queryItems = [qID]
+        return components.url!
     }
 }

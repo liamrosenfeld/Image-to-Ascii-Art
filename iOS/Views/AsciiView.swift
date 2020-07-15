@@ -109,7 +109,7 @@ struct AsciiView: View {
         shareSheet.completionWithItemsHandler = { (_, completed, _, err) in
             if completed {
                 if let err = err {
-                    print(err.localizedDescription)
+                    print("Share failed: \(err)")
                     alert = .shareFailed
                 } else {
                     alert = .shared
