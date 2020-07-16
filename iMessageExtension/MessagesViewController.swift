@@ -16,7 +16,6 @@ import CloudKit
 class MessagesViewController: MSMessagesAppViewController {
 
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -37,26 +36,9 @@ class MessagesViewController: MSMessagesAppViewController {
         sub?.cancel()
     }
     
-    override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
-        // Called when the user taps the send button.
-    }
-    
-    override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
-        // Called when the user deletes the message without sending it.
-    
-        // Use this to clean up state related to the deleted message.
-    }
-    
     // MARK: - Displaying
-    
     var sub: AnyCancellable?
     var inputMode: InputMode = .none
-    
-    var dbID: String? {
-        let url = String(describing: self.activeConversation!.selectedMessage!.url!)
-        guard let components = URLComponents(string: url) else { return nil }
-        return components.queryItems?.first(where: { $0.name == "dbID" })?.value
-    }
     
     enum Mode {
         case compact
@@ -103,11 +85,9 @@ class MessagesViewController: MSMessagesAppViewController {
             }
             setView(to: view)
         case .received:
-            guard let dbID = dbID else {
-                preconditionFailure("dbID is not present in the message")
-            }
             let delegate = ReceivedDelegate()
-            let view = ReceivedView(dbID: dbID, delegate: delegate, parent: self)
+            let message = self.activeConversation!.selectedMessage!
+            let view = ReceivedView(message: message, delegate: delegate, parent: self)
             sub = delegate.makeNew.sink { _ in
                 self.activeConversation?.selectedMessage?.url = nil // get out of current message so it doesn't pop back up
                 self.requestPresentationStyle(.compact)

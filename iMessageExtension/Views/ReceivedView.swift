@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 import UIKit
-import CloudKit
+import Messages
 
 class ReceivedDelegate {
     var makeNew = PassthroughSubject<Void, Never>()
@@ -18,12 +18,11 @@ class ReceivedDelegate {
 struct ReceivedView: View {
     
     // Connection to the outside
-    let dbID: String
+    let message: MSMessage
     let delegate: ReceivedDelegate
     var parent: MessagesViewController
     
     // Internal ascii stuff
-    private let database = CKContainer(identifier: "iCloud.com.liamrosenfeld.ImageToAsciiArt").publicCloudDatabase
     private let asciiFont = UIFont(name: "Menlo", size: 7)!
     @State private var ascii: String?
     
@@ -132,20 +131,11 @@ struct ReceivedView: View {
     
     func fetchAscii() {
         ascii = nil
-        
-        database.fetch(withRecordID: .init(recordName: dbID)) { (record, error) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    alert = .downloadFailed
-                }
+        message.toAscii { fetchedAscii in
+            if let fetchedAscii = fetchedAscii {
+                ascii = fetchedAscii
             } else {
-                if let record = record {
-                    if let fetchedAscii = record["text"] as? NSString {
-                        DispatchQueue.main.async {
-                            ascii = fetchedAscii as String
-                        }
-                    }
-                }
+                alert = .downloadFailed
             }
         }
     }

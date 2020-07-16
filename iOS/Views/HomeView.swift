@@ -16,6 +16,19 @@ struct HomeView: View {
     @State private var showingInfoSheet = false
     @State private var showingAlert = false
     @State private var inputImage: UIImage?
+    
+    init() {
+        // Set global NavBar style
+        let appearance = UINavigationBar.appearance()
+        
+        // set colors
+        appearance.barTintColor = UIColor(named: "NavBar")
+        appearance.tintColor = .white
+        
+        // turn off the default behavior that messes up the colors
+        appearance.isTranslucent = false
+        appearance.shadowImage = nil
+    }
 
     var body: some View {
         NavigationView {
