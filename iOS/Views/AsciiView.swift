@@ -8,37 +8,20 @@
 
 import SwiftUI
 import UIKit
+import Messages
+import MessageUI
+import Combine
 
 struct AsciiView: View {
-    enum AlertType: Identifiable {
-        case noAscii
-        case shared
-        case shareFailed
-        
-        var id: AlertType { self }
-    }
-    
     @Binding var image: UIImage?
     @State private var ascii: String?
     
     @State private var alert: AlertType? = nil
     @State private var showingShareActionSheet = false
+    @State private var messageToSend: MSMessage? = nil
+    @State private var messageSent = false
 
     let asciiFont = UIFont(name: "Menlo", size: 7)!
-
-    init(image: Binding<UIImage?>) {
-        _image = image
-        
-        let appearance = UINavigationBar.appearance()
-        
-        // set colors
-        appearance.barTintColor = UIColor(named: "NavBar")
-        appearance.tintColor = .white
-        
-        // turn off the default behavior that messes up the colors
-        appearance.isTranslucent = false
-        appearance.shadowImage = nil
-    }
 
     var body: some View {
         ZStack {
@@ -48,16 +31,10 @@ struct AsciiView: View {
             if let ascii = ascii {
                 GeometryReader { proxy in
                     ZoomableText(text: ascii, frame: proxy.frame(in: .local))
+                        .edgesIgnoringSafeArea(.horizontal)
                 }
             } else {
                 ProgressView("Converting")
-            }
-        }.onAppear {
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                let asciiArt = AsciiArtist.createAsciiArt(image: image!, font: asciiFont)
-                DispatchQueue.main.async {
-                    ascii = asciiArt
-                }
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -73,35 +50,98 @@ struct AsciiView: View {
                 }, label: {
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(.white)
-                }).actionSheet(isPresented: $showingShareActionSheet) {
-                    ActionSheet(title: Text("Share as"), buttons: [
-                        .default(Text("Text")) {
-                            showShareSheet(content: ascii)
-                        },
-                        .default(Text("Image")) {
-                            showShareSheet(content: ascii!.toImage(withFont: asciiFont))
-                        },
-                        .cancel()
-                    ])
-                }
-            }
-        }.alert(item: $alert) { alert in
-            switch alert {
-            case .noAscii:
-                return Alert(
-                    title: Text("Whoah There!"),
-                    message: Text("You have to create some ascii art before you can share it.")
-                )
-            case .shared:
-                return Alert(title: Text("Shared"), dismissButton: .default(Text("Yay!")))
-            case .shareFailed:
-                return Alert(
-                    title: Text("Share Failed"),
-                    message: Text("An error occurred.")
-                )
+                })
             }
         }
-
+        .onAppear(perform: generateAscii)
+        .alert(item: $alert, content: matchAlert)
+        .actionSheet(isPresented: $showingShareActionSheet, content: makeActionSheet)
+        .sheet(item: $messageToSend, onDismiss: {
+            if messageSent {
+                alert = .shared
+                messageSent = false
+            }
+        }, content: { message in
+            MessageComposeView(message: message, sent: $messageSent)
+        })
+    }
+    
+    func generateAscii() {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            let asciiArt = AsciiArtist.createAsciiArt(image: image!, font: asciiFont)
+            DispatchQueue.main.async {
+                ascii = asciiArt
+            }
+        }
+    }
+    
+    // MARK: - Alerts
+    enum AlertType: Identifiable {
+        case noAscii
+        case shared
+        case shareFailed
+        case uploadFailed
+        
+        var id: AlertType { self }
+    }
+    
+    func matchAlert(alert: AlertType) -> Alert {
+        switch alert {
+        case .noAscii:
+            return Alert(
+                title: Text("Whoah There!"),
+                message: Text("You have to create some ascii art before you can share it.")
+            )
+        case .shared:
+            return Alert(title: Text("Shared"), dismissButton: .default(Text("Yay!")))
+        case .shareFailed:
+            return Alert(
+                title: Text("Share Failed"),
+                message: Text("An error occurred.")
+            )
+        case .uploadFailed:
+            return Alert(
+                title: Text("ASCII Art Could Not Be Uploaded"),
+                message: Text("Please check your internet connection.")
+            )
+        }
+    }
+    
+    // MARK: - Sharing
+    func makeActionSheet() -> ActionSheet {
+        var buttons: [ActionSheet.Button] = [
+            .default(Text("Text")) {
+                showShareSheet(content: ascii)
+            },
+            .default(Text("Image")) {
+                showShareSheet(content: ascii!.toImage(withFont: asciiFont))
+            },
+        ]
+        
+        if MFMessageComposeViewController.canSendText() {
+            buttons += [
+                .default(Text("iMessage")) {
+                    sendMessageExtension()
+                },
+                .cancel()
+            ]
+        } else {
+            print("SMS services are not available")
+            buttons.append(.cancel())
+        }
+        
+        return ActionSheet(title: Text("Share as"), buttons: buttons)
+    }
+    
+    func sendMessageExtension() {
+        MSMessage.messageFromAscii(ascii!, font: asciiFont) { result in
+            switch result {
+            case .success(let message):
+                messageToSend = message
+            case .failure(_):
+                alert = .uploadFailed
+            }
+        }
     }
 
     func showShareSheet<Content>(content: Content) {

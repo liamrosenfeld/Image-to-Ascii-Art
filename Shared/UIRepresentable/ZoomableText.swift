@@ -28,6 +28,7 @@ struct ZoomableText: UIViewRepresentable {
         zoomLabel.text = text
         zoomLabel.textColor = .black
         zoomLabel.sizeToFit()
+        zoomLabel.accessibilityLabel = "ASCII Art"
 
         // add content to scroll view
         scrollView.addSubview(zoomLabel)
