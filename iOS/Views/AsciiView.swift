@@ -17,7 +17,6 @@ struct AsciiView: View {
     @State private var ascii: String?
     
     @State private var alert: AlertType? = nil
-    @State private var showingShareActionSheet = false
     @State private var messageToSend: MSMessage? = nil
     @State private var messageSent = false
 
@@ -41,21 +40,11 @@ struct AsciiView: View {
         .navigationBarHidden(false)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    if ascii != nil {
-                        showingShareActionSheet = true
-                    } else {
-                        alert = .noAscii
-                    }
-                }, label: {
-                    Image(systemName: "square.and.arrow.up")
-                        .foregroundColor(.white)
-                })
+                shareButton
             }
         }
         .onAppear(perform: generateAscii)
         .alert(item: $alert, content: matchAlert)
-        .actionSheet(isPresented: $showingShareActionSheet, content: makeActionSheet)
         .sheet(item: $messageToSend, onDismiss: {
             if messageSent {
                 alert = .shared
@@ -77,7 +66,6 @@ struct AsciiView: View {
     
     // MARK: - Alerts
     enum AlertType: Identifiable {
-        case noAscii
         case shared
         case shareFailed
         case uploadFailed
@@ -87,11 +75,6 @@ struct AsciiView: View {
     
     func matchAlert(alert: AlertType) -> Alert {
         switch alert {
-        case .noAscii:
-            return Alert(
-                title: Text("Whoah There!"),
-                message: Text("You have to create some ascii art before you can share it.")
-            )
         case .shared:
             return Alert(title: Text("Shared"), dismissButton: .default(Text("Yay!")))
         case .shareFailed:
@@ -108,29 +91,22 @@ struct AsciiView: View {
     }
     
     // MARK: - Sharing
-    func makeActionSheet() -> ActionSheet {
-        var buttons: [ActionSheet.Button] = [
-            .default(Text("Text")) {
-                showShareSheet(content: ascii)
-            },
-            .default(Text("Image")) {
-                showShareSheet(content: ascii!.toImage(withFont: asciiFont))
-            },
-        ]
-        
-        if MFMessageComposeViewController.canSendText() {
-            buttons += [
-                .default(Text("iMessage")) {
-                    sendMessageExtension()
-                },
-                .cancel()
-            ]
-        } else {
-            print("SMS services are not available")
-            buttons.append(.cancel())
+    var shareButton: some View {
+        Menu {
+            if let ascii = ascii {
+                Button("Text") { showShareSheet(content: ascii) }
+                Button("Image") { showShareSheet(content: ascii.toImage(withFont: asciiFont)) }
+                
+                if MFMessageComposeViewController.canSendText() {
+                    Button("iMessage", action: sendMessageExtension)
+                }
+            }
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+                .font(Font.title3)
+                .foregroundColor(.white)
+                .accessibility(value: Text("Share"))
         }
-        
-        return ActionSheet(title: Text("Share as"), buttons: buttons)
     }
     
     func sendMessageExtension() {

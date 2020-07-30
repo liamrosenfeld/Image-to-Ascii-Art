@@ -102,19 +102,6 @@ struct SendView: View {
                     }
                 }
             }
-        }.onChange(of: image) { (image) in
-            ascii = nil
-            
-            guard let image = image else {
-                return
-            }
-            
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                let asciiArt = AsciiArtist.createAsciiArt(image: image, font: asciiFont)
-                DispatchQueue.main.async {
-                    ascii = asciiArt
-                }
-            }
         }.sheet(isPresented: $showingImageGetter) {
             switch mode {
             case .pick:
@@ -124,18 +111,37 @@ struct SendView: View {
             case .none: // on just swipe up, default to pick
                 PhotoPickerView(image: $image)
             }
-        }.alert(item: $alert) { alert in
-            switch alert {
-            case .noAscii:
-                return Alert(
-                    title: Text("Whoah There!"),
-                    message: Text("The ASCII Art must download before it can be shared.")
-                )
-            case .uploadError:
-                return Alert(
-                    title: Text("ASCII Art Could Not Be Uploaded"),
-                    message: Text("Please check your internet connection.")
-                )
+        }
+        .alert(item: $alert, content: matchAlert)
+        .onChange(of: image, perform: convertImage)
+    }
+    
+    func matchAlert(alert: AlertType) -> Alert {
+        switch alert {
+        case .noAscii:
+            return Alert(
+                title: Text("Whoah There!"),
+                message: Text("The ASCII Art must download before it can be shared.")
+            )
+        case .uploadError:
+            return Alert(
+                title: Text("ASCII Art Could Not Be Uploaded"),
+                message: Text("Please check your internet connection.")
+            )
+        }
+    }
+    
+    func convertImage(image: UIImage?) {
+        ascii = nil
+        
+        guard let image = image else {
+            return
+        }
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            let asciiArt = AsciiArtist.createAsciiArt(image: image, font: asciiFont)
+            DispatchQueue.main.async {
+                ascii = asciiArt
             }
         }
     }

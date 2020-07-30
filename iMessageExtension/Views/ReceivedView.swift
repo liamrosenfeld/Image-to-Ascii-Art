@@ -28,7 +28,6 @@ struct ReceivedView: View {
     
     // Showing UI State
     @State private var alert: AlertType? = nil
-    @State private var showingShareActionSheet = false
     
     var body: some View {
         ZStack {
@@ -50,31 +49,8 @@ struct ReceivedView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        if ascii != nil {
-                            showingShareActionSheet = true
-                        } else {
-                            alert = .notDownloadedYet
-                        }
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(Font.title3.bold())
-                            .foregroundColor(.white)
-                            .padding(5)
-                    })
-                    .accessibility(value: Text("Share"))
-                    .padding(.trailing, 10)
-                    .actionSheet(isPresented: $showingShareActionSheet) {
-                        ActionSheet(title: Text("Share as"), buttons: [
-                            .default(Text("Text")) {
-                                showShareSheet(content: ascii)
-                            },
-                            .default(Text("Image")) {
-                                showShareSheet(content: ascii!.toImage(withFont: asciiFont))
-                            },
-                            .cancel()
-                        ])
-                    }
+                    shareButton
+
                 }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
                 
@@ -93,6 +69,21 @@ struct ReceivedView: View {
         }
         .alert(item: $alert, content: matchAlert)
         .onAppear(perform: fetchAscii)
+    }
+    
+    var shareButton: some View {
+        Menu {
+            if let ascii = ascii {
+                Button("Text") { showShareSheet(content: ascii) }
+                Button("Image") { showShareSheet(content: ascii.toImage(withFont: asciiFont)) }
+            }
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+                .font(Font.title3)
+                .foregroundColor(.white)
+                .padding(.trailing, 10)
+                .accessibility(value: Text("Share"))
+        }
     }
     
     enum AlertType: Identifiable {
