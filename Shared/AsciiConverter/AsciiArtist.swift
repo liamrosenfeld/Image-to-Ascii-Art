@@ -22,25 +22,35 @@ struct AsciiArtist {
 
     static private func prepImage(image: UIImage, font: UIFont) -> CGImage {
         // Put the image right way up
-        // Must be first because resizing makes the UIImage lose it's orientation
         let rotatedImage = image.fixedOrientation()
+        
+        // Get RGBA buffer for resizing operations
+        // also normalizes image format to RGBA8888
+        var rgbaBuffer = rotatedImage.cgImage!.toRGBABuffer()
         
         // Squash the image vertically so the added height of the non square characters doesn't stretch it vertically
         let squashRatio    = font.monoRatio()
-        let squashedHeight = rotatedImage.size.height * squashRatio
+        let squashedHeight = (rotatedImage.size.height * squashRatio).rounded()
         let squashedSize   = CGSize(width: rotatedImage.size.width, height: squashedHeight)
-        let squashedImage  = rotatedImage.resize(to: squashedSize)
+        var squashedBuffer = rgbaBuffer.resize(to: squashedSize)
+        rgbaBuffer.free()
 
         // Constrain the image down
         let maxImageSize = CGSize(width: 310, height: 310)
-        let constrainedImage = squashedImage.imageConstrainedToMaxSize(maxImageSize)
+        var constrainedBuffer = squashedBuffer.imageConstrained(to: maxImageSize, current: squashedSize)
+        squashedBuffer.free()
         
-        // Increase contrast and brightness of image to make ascii art more defined
-        let imageBuffer = constrainedImage.cgImage!.toRGBBuffer()
-        imageBuffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
-        imageBuffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
-        let editedImage = imageBuffer.toImage()!
-
+        // Convert to RGB888 Buffer
+        let rgbBuffer = constrainedBuffer.rgbaToRGB()
+        constrainedBuffer.free()
+        
+        // Apply gamma function to make ascii art more defined
+        rgbBuffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
+        rgbBuffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
+        
+        // Convert back to CGImage
+        let editedImage = rgbBuffer.rgbToImage()!
+        rgbBuffer.free()
         return editedImage
     }
 
