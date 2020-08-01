@@ -121,7 +121,7 @@ struct SendView: View {
         case .noAscii:
             return Alert(
                 title: Text("Whoah There!"),
-                message: Text("The ASCII Art must download before it can be shared.")
+                message: Text("ASCII Art must generate before it can be sent.")
             )
         case .uploadError:
             return Alert(
