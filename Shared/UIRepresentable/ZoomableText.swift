@@ -41,11 +41,17 @@ struct ZoomableText: UIViewRepresentable {
     private func setMinZoom(scrollView: UIScrollView) {
         let scrollSize  = frame.size
         let contentSize = scrollView.contentSize
-        let scaleWidth  = scrollSize.width / contentSize.width
-        let scaleHeight = scrollSize.height / contentSize.height
-        let scale       = max(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = scale
-        scrollView.setZoomScale(scale, animated: false)
+        if scrollSize.width.isZero || scrollSize.height.isZero {
+            // keep the scroll view rendering when a bad frame is passed
+            scrollView.minimumZoomScale = 0.5
+            scrollView.setZoomScale(0.5, animated: false)
+        } else {
+            let scaleWidth  = scrollSize.width / contentSize.width
+            let scaleHeight = scrollSize.height / contentSize.height
+            let scale       = max(scaleWidth, scaleHeight)
+            scrollView.minimumZoomScale = scale
+            scrollView.setZoomScale(scale, animated: false)
+        }
     }
 
     func updateUIView(_ uiView: UIScrollView, context: Context) { }
