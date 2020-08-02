@@ -6,8 +6,8 @@
 //  Copyright © 2020 liamrosenfeld. All rights reserved.
 //
 
+import Accelerate.vImage
 import CoreGraphics
-import Accelerate
 
 extension CGImage {
     func toRGBABuffer() -> vImage_Buffer {
@@ -51,26 +51,8 @@ extension CGImage {
 }
 
 extension vImage_Buffer {
-    func rgbToImage() -> CGImage? {
-        // Create a 3-channel `CGImage` instance from the interleaved buffer.
-        return try? self.createCGImage(format: vImage_CGImageFormat.rgb)
-    }
-    
-    func rgbaToImage() -> CGImage? {
-        // Create 4-channel `CGImage` instance from the interleaved buffer.
-        return try? self.createCGImage(format: vImage_CGImageFormat.rgba)
-    }
-    
-    mutating func rgbaToRGB() -> vImage_Buffer {
-        guard var destinationBuffer = try? vImage_Buffer(
-            size: self.size,
-            bitsPerPixel: vImage_CGImageFormat.rgb.bitsPerPixel
-        ) else {
-            fatalError("Unable to create destination buffer.")
-        }
-        
-        vImageConvert_RGBA8888toRGB888(&self, &destinationBuffer, vImage_Flags(kvImageNoFlags))
-        return destinationBuffer
+    func toImage(format: vImage_CGImageFormat) -> CGImage {
+        return try! self.createCGImage(format: format)
     }
 }
 
@@ -88,6 +70,14 @@ extension vImage_CGImageFormat {
         bitsPerPixel: 8 * 4,
         colorSpace: CGColorSpaceCreateDeviceRGB(),
         bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.first.rawValue),
+        renderingIntent: .defaultIntent
+    )!
+    
+    static let planar = vImage_CGImageFormat(
+        bitsPerComponent: 8,
+        bitsPerPixel: 8,
+        colorSpace: CGColorSpaceCreateDeviceGray(),
+        bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue),
         renderingIntent: .defaultIntent
     )!
 }

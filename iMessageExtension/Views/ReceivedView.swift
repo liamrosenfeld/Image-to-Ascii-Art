@@ -23,7 +23,6 @@ struct ReceivedView: View {
     var parent: MessagesViewController
     
     // Internal ascii stuff
-    private let asciiFont = UIFont(name: "Menlo", size: 7)!
     @State private var ascii: String?
     
     // Showing UI State
@@ -75,7 +74,7 @@ struct ReceivedView: View {
         Menu {
             if let ascii = ascii {
                 Button("Text") { showShareSheet(content: ascii) }
-                Button("Image") { showShareSheet(content: ascii.toImage(withFont: asciiFont)) }
+                Button("Image") { showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font)) }
             }
         } label: {
             Image(systemName: "square.and.arrow.up")

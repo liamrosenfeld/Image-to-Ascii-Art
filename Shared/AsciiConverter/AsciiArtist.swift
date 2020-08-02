@@ -8,83 +8,94 @@
 
 import Foundation
 import UIKit
+import Accelerate.vImage
 
 // Transforms an image to ASCII art.
 struct AsciiArtist {
+    
+    static let font = UIFont(name: "Menlo", size: 7)!
+    static let palette = AsciiPalette.generate(for: AsciiArtist.font)
 
-    static func createAsciiArt(image: UIImage, font: UIFont) -> String {
-        let palette      = AsciiPalette(font: font)
-        let preppedImage = prepImage(image: image, font: font) // RBGA UIImage -> Shrunk RBG CGImage
-        let intensities  = getIntensities(of: preppedImage)
-        let symbolMatrix = symbolMatrixFromIntensityMatrix(intensities, palette: palette)
-        return symbolMatrix.joined(separator: "\n")
+    static func createAsciiArt(image: UIImage) -> String {
+        var origBuffer      = makeBuffer(image: image)
+        var resizedBuffer   = resize(buffer: &origBuffer)
+        applyGamma(buffer: &resizedBuffer) // breaks the alpha values
+        let grayscaleBuffer = resizedBuffer.grayscale() // ignores alpha channel
+        resizedBuffer.free()
+        let asciiArt  = grayscaleToSymbols(buffer: grayscaleBuffer)
+        return asciiArt
     }
-
-    static private func prepImage(image: UIImage, font: UIFont) -> CGImage {
+    
+    static private func makeBuffer(image: UIImage) -> vImage_Buffer {
         // Put the image right way up
         let rotatedImage = image.fixedOrientation()
         
         // Get RGBA buffer for resizing operations
         // also normalizes image format to RGBA8888
-        var rgbaBuffer = rotatedImage.cgImage!.toRGBABuffer()
-        
+        return rotatedImage.cgImage!.toRGBABuffer()
+    }
+
+    static private func resize(buffer: inout vImage_Buffer) -> vImage_Buffer {
         // Squash the image vertically so the added height of the non square characters doesn't stretch it vertically
         let squashRatio    = font.monoRatio()
-        let squashedHeight = (rotatedImage.size.height * squashRatio).rounded()
-        let squashedSize   = CGSize(width: rotatedImage.size.width, height: squashedHeight)
-        var squashedBuffer = rgbaBuffer.resize(to: squashedSize)
-        rgbaBuffer.free()
+        let squashedHeight = (buffer.size.height * squashRatio).rounded()
+        let squashedSize   = CGSize(width: buffer.size.width, height: squashedHeight)
+        var squashedBuffer = buffer.resize(to: squashedSize)
+        buffer.free()
 
         // Constrain the image down
         let maxImageSize = CGSize(width: 310, height: 310)
-        var constrainedBuffer = squashedBuffer.imageConstrained(to: maxImageSize, current: squashedSize)
+        let constrainedBuffer = squashedBuffer.imageConstrained(to: maxImageSize, current: squashedSize)
         squashedBuffer.free()
-        
-        // Convert to RGB888 Buffer
-        let rgbBuffer = constrainedBuffer.rgbaToRGB()
-        constrainedBuffer.free()
-        
-        // Apply gamma function to make ascii art more defined
-        rgbBuffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
-        rgbBuffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
-        
-        // Convert back to CGImage
-        let editedImage = rgbBuffer.rgbToImage()!
-        rgbBuffer.free()
-        return editedImage
-    }
 
-    static private func getIntensities(of image: CGImage) -> [[Double]] {
-        let dataProvider = image.dataProvider
-        let pixelData    = dataProvider?.data
-        let pixelPointer = CFDataGetBytePtr(pixelData)
-        return intensityMatrixFromPixelPointer(pixelPointer!, w: image.width, h: image.height)
+        return constrainedBuffer
     }
-
-    static private func intensityMatrixFromPixelPointer(_ pointer: PixelPointer, w width: Int, h height: Int) -> [[Double]] {
-        let matrix = Pixel.createPixelMatrix(width, height)
-        return matrix.map { pixelRow in
-            pixelRow.map { pixel in
-                pixel.intensityFromPixelPointer(pointer)
+    
+    static private func applyGamma(buffer: inout vImage_Buffer) {
+        // Apply gamma functions to make ascii art more defined
+        buffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
+        buffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
+    }
+    
+    static private func grayscaleToSymbols(buffer: vImage_Buffer) -> String {
+        // Int width instead of UInt
+        let width = Int(buffer.width)
+        let height = Int(buffer.height)
+        
+        // Reserve string capacity ahead of time for performance
+        let strLength = height * (width + 1) // the +1 is for the \n at the end of each line
+        var ascii = String()
+        ascii.reserveCapacity(strLength)
+        
+        // Get Data Buffer from vImage Buffer
+        let dataLength = height * buffer.rowBytes
+        let dataPtr = buffer.data.bindMemory(to: UInt8.self, capacity: dataLength)
+        let dataBuffer = UnsafeBufferPointer(start: dataPtr, count: dataLength)
+        
+        // Iterate over data and convert
+        for row in 0..<height {
+            let rowStart = row * buffer.rowBytes
+            for col in 0..<width {
+                let intensity = dataBuffer[rowStart + col]
+                let symbol = symbolFromIntensity(intensity)
+                ascii.append(symbol)
             }
+            ascii.append("\n")
         }
+        ascii.remove(at: ascii.index(before: ascii.endIndex)) // remove last \n
+        
+        // Free buffer and return
+        buffer.free()
+        return ascii
     }
+    
+    static private func symbolFromIntensity(_ intensity: UInt8) -> String {
+        assert(0 <= intensity && intensity <= 255)
 
-    static private func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]], palette: AsciiPalette) -> [String] {
-        return matrix.map { intensityRow in
-            intensityRow.reduce("") {
-                $0 + self.symbolFromIntensity($1, palette: palette)
-            }
-        }
-    }
-
-    static private func symbolFromIntensity(_ intensity: Double, palette: AsciiPalette) -> String {
-        assert(0.0 <= intensity && intensity <= 1.0)
-
-        let factor = palette.symbols.count - 1
-        let value  = round(intensity * Double(factor))
+        let factor = palette.count - 1
+        let value  = round((Double(intensity) / 255) * Double(factor))
         let index  = Int(value)
-        return palette.symbols[index]
+        return palette[index]
     }
 
 }

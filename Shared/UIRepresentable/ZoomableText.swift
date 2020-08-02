@@ -22,7 +22,7 @@ struct ZoomableText: UIViewRepresentable {
         scrollView.backgroundColor = .white
 
         // configure scroll view content
-        zoomLabel.font = UIFont(name: "Menlo", size: 7)!
+        zoomLabel.font = AsciiArtist.font
         zoomLabel.lineBreakMode = NSLineBreakMode.byClipping
         zoomLabel.numberOfLines = 0
         zoomLabel.text = text

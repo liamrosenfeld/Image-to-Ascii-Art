@@ -11,37 +11,31 @@ import UIKit
 
 // Provides a list of ASCII symbols sorted from darkest to brightest.
 class AsciiPalette {
-    private let font: UIFont
-
-    init(font: UIFont) {
-        self.font = font
+ 
+    static func generate(for font: UIFont) -> [String] {
+        // from ' ' to '~'
+        return symbolsSortedByIntensityForAsciiCodes(32...126, font: font)
     }
 
-    lazy var symbols: [String] = self.loadSymbols()
-
-    private func loadSymbols() -> [String] {
-        return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
-    }
-
-    private func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String] {
+    private static func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>, font: UIFont) -> [String] {
         let symbols          = codes.map { self.symbolFromAsciiCode($0) }
-        let symbolImages     = symbols.map { $0.toImage(withFont: self.font) }
+        let symbolImages     = symbols.map { $0.toImage(withFont: font) }
         let whitePixelCounts = symbolImages.map { self.countWhitePixelsInImage($0) }
         let sortedSymbols    = sortByIntensity(symbols, whitePixelCounts)
         return sortedSymbols
     }
 
-    private func symbolFromAsciiCode(_ code: Int) -> String {
+    private static func symbolFromAsciiCode(_ code: Int) -> String {
         return String(Character(UnicodeScalar(code)!))
     }
 
-    private func countWhitePixelsInImage(_ image: UIImage) -> Int {
+    private static func countWhitePixelsInImage(_ image: UIImage) -> Int {
         let
             dataProvider = image.cgImage?.dataProvider,
             pixelData    = dataProvider?.data,
             pixelPointer = CFDataGetBytePtr(pixelData),
             byteCount    = CFDataGetLength(pixelData),
-            pixelOffsets = stride(from: 0, to: byteCount, by: Pixel.bytesPerPixel)
+            pixelOffsets = stride(from: 0, to: byteCount, by: 4)
         return pixelOffsets.reduce(0) { (count, offset) -> Int in
             let
                 r = pixelPointer?[offset + 0],
@@ -52,10 +46,10 @@ class AsciiPalette {
         }
     }
 
-    private func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String] {
+    private static func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String] {
         let mappings = Array(zip(whitePixelCounts, symbols))
         let unique   = mappings.removingDuplicates()
-        let sorted   = unique.sorted { $0.0 < $1.0 }
+        let sorted   = unique.sorted { $0.0 < $1.0 } // the higher the lighter
         let sortedSymbols = sorted.map { $0.1 }
 
         return sortedSymbols

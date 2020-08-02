@@ -6,17 +6,18 @@
 //  Copyright © 2020 liamrosenfeld. All rights reserved.
 //
 
-import Accelerate
+import Accelerate.vImage
 import CoreGraphics
 
 extension vImage_Buffer {
+    /// note: breaks the alpha values
     func applyGamma(preset: ResponseCurvePreset) {
         // Create a planar representation of the interleaved destination buffer.
-        // Because `destinationBuffer` is 3-channel, assign the planar destinationBuffer a width of 3x the interleaved width.
+        // Because `destinationBuffer` is 4-channel, assign the planar destinationBuffer a width of 4x the interleaved width.
         var planarDestination = vImage_Buffer(
             data: self.data,
             height: self.height,
-            width: self.width * 3,
+            width: self.width * 4,
             rowBytes: self.rowBytes
         )
         
