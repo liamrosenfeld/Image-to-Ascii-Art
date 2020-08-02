@@ -44,8 +44,6 @@ struct SendView: View {
     @State private var alert: AlertType? = nil
     @State private var showingImageGetter  = true
     
-    let asciiFont = UIFont(name: "Menlo", size: 7)!
-    
     var body: some View {
         ZStack {
             Color.background
@@ -139,7 +137,7 @@ struct SendView: View {
         }
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            let asciiArt = AsciiArtist.createAsciiArt(image: image, font: asciiFont)
+            let asciiArt = AsciiArtist.createAsciiArt(image: image)
             DispatchQueue.main.async {
                 ascii = asciiArt
             }
@@ -147,7 +145,7 @@ struct SendView: View {
     }
     
     func sendMessage(asciiArt: String) {
-        MSMessage.messageFromAscii(asciiArt, font: asciiFont) { result in
+        MSMessage.messageFromAscii(asciiArt, font: AsciiArtist.font) { result in
             switch result {
             case .success(let message):
                 delegate.message = message

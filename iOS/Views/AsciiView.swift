@@ -20,8 +20,6 @@ struct AsciiView: View {
     @State private var messageToSend: MSMessage? = nil
     @State private var messageSent = false
 
-    let asciiFont = UIFont(name: "Menlo", size: 7)!
-
     var body: some View {
         ZStack {
             Color.background
@@ -57,7 +55,7 @@ struct AsciiView: View {
     
     func generateAscii() {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            let asciiArt = AsciiArtist.createAsciiArt(image: image!, font: asciiFont)
+            let asciiArt = AsciiArtist.createAsciiArt(image: image!)
             DispatchQueue.main.async {
                 ascii = asciiArt
             }
@@ -95,7 +93,7 @@ struct AsciiView: View {
         Menu {
             if let ascii = ascii {
                 Button("Text") { showShareSheet(content: ascii) }
-                Button("Image") { showShareSheet(content: ascii.toImage(withFont: asciiFont)) }
+                Button("Image") { showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font)) }
                 
                 if MFMessageComposeViewController.canSendText() {
                     Button("iMessage", action: sendMessageExtension)
@@ -110,7 +108,7 @@ struct AsciiView: View {
     }
     
     func sendMessageExtension() {
-        MSMessage.messageFromAscii(ascii!, font: asciiFont) { result in
+        MSMessage.messageFromAscii(ascii!, font: AsciiArtist.font) { result in
             switch result {
             case .success(let message):
                 messageToSend = message
