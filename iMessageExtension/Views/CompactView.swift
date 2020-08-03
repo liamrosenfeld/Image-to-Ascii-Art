@@ -54,22 +54,22 @@ struct CompactView: View {
                     Button(action: {
                         delegate.mode = .pick
                     }, label: {
-                        HStack {
-                            Image(systemName: "photo")
-                            Text("Pick Image")
-                        }
-                    }).buttonStyle(RoundStyle())
+                        Text(Image(systemName: "photo")) +
+                        Text(" Pick Image")
+                    })
+                    .accessibility(label: Text("Pick Image"))
+                    .buttonStyle(RoundStyle())
                     
                     Spacer()
                     
                     Button(action: {
                         delegate.mode = .take
                     }, label: {
-                        HStack {
-                            Image(systemName: "camera")
-                            Text("Take Picture")
-                        }
-                    }).buttonStyle(RoundStyle())
+                        Text(Image(systemName: "camera")) +
+                        Text(" Take Picture")
+                    })
+                    .accessibility(label: Text("Take Picture"))
+                    .buttonStyle(RoundStyle())
                     
                     Spacer()
                 }

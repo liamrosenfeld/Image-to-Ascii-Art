@@ -103,8 +103,7 @@ struct AsciiView: View {
             Image(systemName: "square.and.arrow.up")
                 .font(Font.title3)
                 .foregroundColor(.white)
-                .accessibility(value: Text("Share"))
-        }
+        }.accessibility(label: Text("Share"))
     }
     
     func sendMessageExtension() {
@@ -136,7 +135,8 @@ struct AsciiView: View {
 
 struct AsciiView_Previews: PreviewProvider {
     static var previews: some View {
-        AsciiView(image: Binding.constant(UIImage(named: "example-image")!))
-            .previewDevice("iPhone 11")
+        NavigationView {
+            AsciiView(image: Binding.constant(UIImage(named: "example-image")!))
+        }.previewDevice("iPhone 11")
     }
 }

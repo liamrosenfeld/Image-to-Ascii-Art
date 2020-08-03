@@ -53,15 +53,18 @@ struct InfoView: View {
 
                 Spacer()
                 
-                HStack {
-                    Image(systemName: "chevron.left.slash.chevron.right")
-                    Text("with")
-                    Image(systemName: "heart")
-                    Text("by Liam")
-                }.foregroundColor(.white).padding()
+                (Text(Image(systemName: "chevron.left.slash.chevron.right"))
+                    + Text(" with ")
+                    + Text(Image(systemName: "heart"))
+                    + Text(" by Liam")
+                )
+                .accessibility(label: Text("Made with love by Liam"))
+                .foregroundColor(.white)
+                .padding()
             }
         }
     }
+        
 }
 
 struct InfoView_Previews: PreviewProvider {

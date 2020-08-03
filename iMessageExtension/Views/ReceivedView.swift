@@ -43,7 +43,7 @@ struct ReceivedView: View {
                             .foregroundColor(.white)
                             .padding(5)
                     })
-                    .accessibility(value: Text("Reply with ASCII Art"))
+                    .accessibility(label: Text("Reply with ASCII Art"))
                     .padding(.leading, 10)
                     
                     Spacer()
@@ -81,7 +81,7 @@ struct ReceivedView: View {
                 .font(Font.title3)
                 .foregroundColor(.white)
                 .padding(.trailing, 10)
-                .accessibility(value: Text("Share"))
+                .accessibility(label: Text("Share"))
         }
     }
     

@@ -59,7 +59,7 @@ struct SendView: View {
                             .foregroundColor(.white)
                             .padding(5)
                     })
-                    .accessibility(value: Text("New Image"))
+                    .accessibility(label: Text("New Image"))
                     .padding(.leading, 10)
                     
                     Spacer()
@@ -76,7 +76,7 @@ struct SendView: View {
                             .foregroundColor(.white)
                             .padding(5)
                     })
-                    .accessibility(value: Text("Send"))
+                    .accessibility(label: Text("Send"))
                     .padding(.trailing, 10)
                 }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
