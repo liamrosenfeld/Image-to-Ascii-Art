@@ -32,12 +32,9 @@ struct HomeView: View {
                 Color.background
                     .edgesIgnoringSafeArea(.all)
                 VStack {
-                    Image("Logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.all, 10)
-                        .padding(.top, 15)
-
+                    
+                    Logo()
+                        
                     Spacer()
 
                     PickerButton(image: $inputImage)
@@ -64,6 +61,25 @@ struct HomeView: View {
             guard image != nil else { return }
             pushed = true
         }.navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+struct Logo: View {
+    var body: some View {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(minHeight: 0, maxHeight: 300)
+                .padding(.all, 10)
+                .padding(.top, 20)
+        } else {
+            Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.all, 10)
+                .padding(.top, 15)
+        }
     }
 }
 

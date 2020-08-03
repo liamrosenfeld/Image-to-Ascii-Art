@@ -39,16 +39,12 @@ struct CompactView: View {
                 
                 Spacer()
                 
-                Image("Logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.all, 10)
-                    .padding(.leading, 30)
-                    .padding(.trailing, 30)
+                Logo()
                 
                 Spacer()
                 
                 HStack {
+                    Spacer()
                     Spacer()
                     
                     Button(action: {
@@ -72,12 +68,31 @@ struct CompactView: View {
                     .buttonStyle(RoundStyle())
                     
                     Spacer()
+                    Spacer()
                 }
                 
                 Spacer()
                 Spacer()
                 Spacer()
             }
+        }
+    }
+}
+
+struct Logo: View {
+    var body: some View {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(minHeight: 0, maxHeight: 250)
+                .padding(.top, 20)
+        } else {
+            Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 15)
+                .padding(.horizontal, 30)
         }
     }
 }

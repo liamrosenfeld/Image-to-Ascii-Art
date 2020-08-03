@@ -19,6 +19,8 @@ struct AsciiView: View {
     @State private var alert: AlertType? = nil
     @State private var messageToSend: MSMessage? = nil
     @State private var messageSent = false
+    
+    @State private var shareButtonFrame: CGRect = .zero
 
     var body: some View {
         ZStack {
@@ -38,7 +40,13 @@ struct AsciiView: View {
         .navigationBarHidden(false)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                shareButton
+                shareButton.background(
+                    GeometryReader { proxy in
+                        Color.clear.onAppear {
+                            shareButtonFrame = proxy.frame(in: .global)
+                        }
+                    }
+                )
             }
         }
         .onAppear(perform: generateAscii)
@@ -119,6 +127,10 @@ struct AsciiView: View {
 
     func showShareSheet<Content>(content: Content) {
         let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            shareSheet.popoverPresentationController?.sourceView = UIApplication.shared.windows.first?.rootViewController?.view
+            shareSheet.popoverPresentationController?.sourceRect = self.shareButtonFrame
+        }
         shareSheet.completionWithItemsHandler = { (_, completed, _, err) in
             if completed {
                 if let err = err {

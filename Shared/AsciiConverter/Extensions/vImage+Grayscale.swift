@@ -3,6 +3,7 @@
 //  ImageToAsciiArt
 //
 //  Created by Liam Rosenfeld on 8/1/20.
+//  Copyright © 2020 liamrosenfeld. All rights reserved.
 //
 
 import Accelerate.vImage

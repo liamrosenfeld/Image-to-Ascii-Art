@@ -22,11 +22,10 @@ struct ReceivedView: View {
     let delegate: ReceivedDelegate
     var parent: MessagesViewController
     
-    // Internal ascii stuff
+    // State
     @State private var ascii: String?
-    
-    // Showing UI State
     @State private var alert: AlertType? = nil
+    @State private var shareButtonFrame: CGRect = .zero
     
     var body: some View {
         ZStack {
@@ -48,8 +47,15 @@ struct ReceivedView: View {
                     
                     Spacer()
                     
-                    shareButton
-
+                    shareButton.background(
+                        GeometryReader { proxy in
+                            Color.clear.onAppear {
+                                shareButtonFrame = proxy.frame(in: .global)
+                            }
+                        }
+                    )
+                            
+                    
                 }.frame(minWidth: 0, maxWidth: .infinity).padding(10).background(Color.navBar)
                 
                 
@@ -132,6 +138,10 @@ struct ReceivedView: View {
     
     func showShareSheet<Content>(content: Content) {
         let shareSheet = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            shareSheet.popoverPresentationController?.sourceView = parent.view
+            shareSheet.popoverPresentationController?.sourceRect = self.shareButtonFrame
+        }
         shareSheet.completionWithItemsHandler = { (_, completed, _, err) in
             if completed {
                 if let err = err {

@@ -43,6 +43,7 @@ struct ZoomableText: UIViewRepresentable {
         let contentSize = scrollView.contentSize
         if scrollSize.width.isZero || scrollSize.height.isZero {
             // keep the scroll view rendering when a bad frame is passed
+            print("invalid frame passed")
             scrollView.minimumZoomScale = 0.5
             scrollView.setZoomScale(0.5, animated: false)
         } else {
