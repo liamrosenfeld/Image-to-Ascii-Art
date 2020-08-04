@@ -45,7 +45,9 @@ extension CGImage {
         
         // Convert into destination buffer
         try! converter.convert(source: sourceBuffer, destination: &destBuffer)
-    
+        
+        // Free source buffer and return dest buffer
+        sourceBuffer.free()
         return destBuffer
     }
 }

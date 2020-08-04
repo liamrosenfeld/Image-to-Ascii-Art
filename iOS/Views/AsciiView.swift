@@ -62,7 +62,7 @@ struct AsciiView: View {
     }
     
     func generateAscii() {
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
             let asciiArt = AsciiArtist.createAsciiArt(image: image!)
             DispatchQueue.main.async {
                 ascii = asciiArt
