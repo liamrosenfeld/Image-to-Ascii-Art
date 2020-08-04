@@ -31,18 +31,16 @@ struct HomeView: View {
             ZStack {
                 Color.background
                     .edgesIgnoringSafeArea(.all)
+                
                 VStack {
+                    Spacer()
                     
                     Logo()
                         
                     Spacer()
-
-                    PickerButton(image: $inputImage)
-
-                    Spacer()
-
-                    CameraButton(image: $inputImage)
-
+                    
+                    HomeButtons(inputImage: $inputImage)
+                    
                     Spacer()
                     Spacer()
                     Spacer()
@@ -72,13 +70,58 @@ struct Logo: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(minHeight: 0, maxHeight: 300)
                 .padding(.all, 10)
-                .padding(.top, 20)
         } else {
             Image("Logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.all, 10)
-                .padding(.top, 15)
+        }
+    }
+}
+
+struct HomeButtons: View {
+    @Binding var inputImage: UIImage?
+    
+    @State private var orientation = UIApplication.shared.windows[0].windowScene!.interfaceOrientation
+    
+    let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+    
+    var body: some View {
+        Group {
+            if UIDevice.current.userInterfaceIdiom != .pad && orientation.isLandscape {
+                HStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    PickerButton(image: $inputImage)
+                        .padding()
+                        .buttonStyle(RoundStyle())
+                    
+                    Spacer()
+                    
+                    CameraButton(image: $inputImage)
+                        .buttonStyle(RoundStyle())
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                }
+            } else {
+                PickerButton(image: $inputImage)
+                    .buttonStyle(FullWidthStyle())
+                
+                Spacer()
+                
+                CameraButton(image: $inputImage)
+                    .buttonStyle(FullWidthStyle())
+            }
+        }.onReceive(orientationChanged) { _ in
+            if UIDevice.current.userInterfaceIdiom != .pad {
+                self.orientation = UIApplication.shared.windows[0].windowScene!.interfaceOrientation
+            }
         }
     }
 }
@@ -91,9 +134,8 @@ struct PickerButton: View {
         Button(action: {
             showingPickerSheet = true
         }, label: {
-            Text(Image(systemName: "photo")) + Text(" Pick Image")
+            Label("Pick Image", systemImage: "photo")
         })
-        .buttonStyle(FullWidthStyle())
         .accessibility(label: Text("Pick Image"))
         .sheet(isPresented: $showingPickerSheet) {
             PhotoPickerView(image: $image)
@@ -115,10 +157,8 @@ struct CameraButton: View {
                 showingCameraAlert = true
             }
         }, label: {
-            Text(Image(systemName: "camera")) + Text(" Take Picture")
-            
+            Label("Take Picture", systemImage: "camera")
         })
-        .buttonStyle(FullWidthStyle())
         .accessibility(label: Text("Take Picture"))
         .sheet(isPresented: $showingCameraSheet) {
             CameraView(image: $image)

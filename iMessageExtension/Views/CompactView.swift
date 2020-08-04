@@ -50,8 +50,7 @@ struct CompactView: View {
                     Button(action: {
                         delegate.mode = .pick
                     }, label: {
-                        Text(Image(systemName: "photo")) +
-                        Text(" Pick Image")
+                        Label("Pick Image", systemImage: "photo")
                     })
                     .accessibility(label: Text("Pick Image"))
                     .buttonStyle(RoundStyle())
@@ -61,8 +60,7 @@ struct CompactView: View {
                     Button(action: {
                         delegate.mode = .take
                     }, label: {
-                        Text(Image(systemName: "camera")) +
-                        Text(" Take Picture")
+                        Label("Take Picture", systemImage: "camera")
                     })
                     .accessibility(label: Text("Take Picture"))
                     .buttonStyle(RoundStyle())
