@@ -25,12 +25,12 @@ struct AsciiView: View {
     var body: some View {
         ZStack {
             Color.background
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
 
             if let ascii = ascii {
                 GeometryReader { proxy in
                     ZoomableText(text: ascii, frame: proxy.frame(in: .local))
-                        .edgesIgnoringSafeArea(.horizontal)
+                        .ignoresSafeArea(.all, edges: .horizontal)
                 }
             } else {
                 ProgressView("Converting")

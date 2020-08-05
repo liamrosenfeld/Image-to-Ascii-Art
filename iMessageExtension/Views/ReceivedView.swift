@@ -30,7 +30,7 @@ struct ReceivedView: View {
     var body: some View {
         ZStack {
             Color.background
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
             
             VStack(spacing: 0) {
                 HStack {

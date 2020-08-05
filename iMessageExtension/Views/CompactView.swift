@@ -34,7 +34,7 @@ struct CompactView: View {
     var body: some View {
         ZStack {
             Color.background
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
             VStack {
                 
                 Spacer()

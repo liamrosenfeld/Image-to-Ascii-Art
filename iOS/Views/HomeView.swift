@@ -30,7 +30,7 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 Color.background
-                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea()
                 
                 VStack {
                     Spacer()
@@ -162,7 +162,7 @@ struct CameraButton: View {
         .accessibility(label: Text("Take Picture"))
         .sheet(isPresented: $showingCameraSheet) {
             CameraView(image: $image)
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
         }.alert(isPresented: $showingCameraAlert) {
             Alert(title: Text("No Camera Available"))
         }
