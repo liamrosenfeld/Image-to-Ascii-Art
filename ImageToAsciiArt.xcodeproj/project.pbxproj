@@ -53,6 +53,7 @@
 		0C703C4A24AC6763005AE478 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703C4924AC6763005AE478 /* Preview Assets.xcassets */; };
 		0C703C4C24AC6CB6005AE478 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4B24AC6CB6005AE478 /* CameraView.swift */; };
 		0C703C4F24ACFBB6005AE478 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4E24ACFBB6005AE478 /* InfoView.swift */; };
+		0CA92EB3251177B8009E8FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA92EB2251177B8009E8FC7 /* LaunchScreen.storyboard */; };
 		0CB7B88C24D3E19000185FCB /* vImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */; };
 		0CB7B88D24D3E19000185FCB /* vImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */; };
 		0CF96EDF24D48A6F006C4DCB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */; };
@@ -119,6 +120,7 @@
 		0C703C4924AC6763005AE478 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C703C4B24AC6CB6005AE478 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0C703C4E24ACFBB6005AE478 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		0CA92EB2251177B8009E8FC7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "vImage+Resize.swift"; sourceTree = "<group>"; };
 		0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				0C703BEB24ABA74F005AE478 /* App.swift */,
 				0C703BF524ABA750005AE478 /* Info.plist */,
 				0C1D375124BFCEEB00D8635F /* Image To Ascii Art.entitlements */,
+				0CA92EB2251177B8009E8FC7 /* LaunchScreen.storyboard */,
 				0C14DF4324BB618300E66116 /* Assets.xcassets */,
 			);
 			path = iOS;
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C703C4A24AC6763005AE478 /* Preview Assets.xcassets in Resources */,
+				0CA92EB3251177B8009E8FC7 /* LaunchScreen.storyboard in Resources */,
 				0C14DF4424BB618300E66116 /* Assets.xcassets in Resources */,
 				0C703C0224ABA750005AE478 /* Assets.xcassets in Resources */,
 			);
