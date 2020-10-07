@@ -37,17 +37,15 @@ struct AsciiView: View {
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(false)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                shareButton.background(
-                    GeometryReader { proxy in
-                        Color.clear.onAppear {
-                            shareButtonFrame = proxy.frame(in: .global)
-                        }
+        .navigationBarItems(trailing:
+            shareButton.background(
+                GeometryReader { proxy in
+                    Color.clear.onAppear {
+                        shareButtonFrame = proxy.frame(in: .global)
                     }
-                )
-            }
-        }
+                }
+            )
+        )
         .onAppear(perform: generateAscii)
         .alert(item: $alert, content: matchAlert)
         .sheet(item: $messageToSend, onDismiss: {
@@ -61,7 +59,7 @@ struct AsciiView: View {
     }
     
     func generateAscii() {
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             let asciiArt = AsciiArtist.createAsciiArt(image: image!)
             DispatchQueue.main.async {
                 ascii = asciiArt
@@ -74,6 +72,7 @@ struct AsciiView: View {
         case shared
         case shareFailed
         case uploadFailed
+        case prematureShare
         
         var id: AlertType { self }
     }
@@ -92,19 +91,21 @@ struct AsciiView: View {
                 title: Text("ASCII Art Could Not Be Uploaded"),
                 message: Text("Please check your internet connection.")
             )
+        case .prematureShare:
+            return Alert(
+                title: Text("Whoah there!"),
+                message: Text("You need to wait for the image to convert before sharing.")
+            )
         }
     }
     
     // MARK: - Sharing
     var shareButton: some View {
         Menu {
-            if let ascii = ascii {
-                Button("Text") { showShareSheet(content: ascii) }
-                Button("Image") { showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font)) }
-                
-                if MFMessageComposeViewController.canSendText() {
-                    Button("iMessage", action: sendMessageExtension)
-                }
+            Button("Text", action: shareText)
+            Button("Image", action: shareImage)
+            if MFMessageComposeViewController.canSendText() {
+                Button("iMessage", action: sendMessageExtension)
             }
         } label: {
             Image(systemName: "square.and.arrow.up")
@@ -113,8 +114,29 @@ struct AsciiView: View {
         }.accessibility(label: Text("Share"))
     }
     
+    func shareText() {
+        if let ascii = ascii {
+            showShareSheet(content: ascii)
+        } else {
+            alert = .prematureShare
+        }
+    }
+    
+    func shareImage() {
+        if let ascii = ascii {
+            showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font))
+        } else {
+            alert = .prematureShare
+        }
+    }
+    
     func sendMessageExtension() {
-        MSMessage.messageFromAscii(ascii!, font: AsciiArtist.font) { result in
+        guard let ascii = ascii else {
+            alert = .prematureShare
+            return
+        }
+        
+        MSMessage.messageFromAscii(ascii, font: AsciiArtist.font) { result in
             switch result {
             case .success(let message):
                 messageToSend = message

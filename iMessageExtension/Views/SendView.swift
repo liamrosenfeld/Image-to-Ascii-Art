@@ -136,7 +136,7 @@ struct SendView: View {
             return
         }
         
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             let asciiArt = AsciiArtist.createAsciiArt(image: image)
             DispatchQueue.main.async {
                 ascii = asciiArt
