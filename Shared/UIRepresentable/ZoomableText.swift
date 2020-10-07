@@ -10,53 +10,81 @@ import SwiftUI
 import UIKit
 
 struct ZoomableText: UIViewRepresentable {
+    // MARK: - Properties
     var text: String
-    var frame: CGRect
+    var size: CGSize
+    private let scrollView = UIScrollView()
     private let zoomLabel = UILabel()
-
+    
+    // MARK: - Lifecycle
     func makeUIView(context: Context) -> UIScrollView {
-        // configure scroll view
-        let scrollView = UIScrollView()
-        scrollView.maximumZoomScale = 5
-        scrollView.delegate = context.coordinator
-        scrollView.backgroundColor = .white
-
-        // configure scroll view content
-        zoomLabel.font = AsciiArtist.font
-        zoomLabel.lineBreakMode = NSLineBreakMode.byClipping
-        zoomLabel.numberOfLines = 0
-        zoomLabel.text = text
-        zoomLabel.textColor = .black
-        zoomLabel.sizeToFit()
-        zoomLabel.accessibilityLabel = "ASCII Art"
-
-        // add content to scroll view
+        // configure views with basic settings
+        configScroll(coordinator: context.coordinator)
+        configLabel()
+        
+        // put label inside scroll
         scrollView.addSubview(zoomLabel)
-        scrollView.contentSize = zoomLabel.frame.size
-        setMinZoom(scrollView: scrollView) // must be after so it knows content size
+        
+        // add content to scroll view
+        update(scrollView)
 
         return scrollView
     }
+    
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        update(uiView)
+    }
+    
+    // MARK: - UIView Actions
+    private func configScroll(coordinator: Coordinator) {
+        scrollView.maximumZoomScale = 5
+        scrollView.delegate = coordinator
+        scrollView.backgroundColor = .white
+    }
+    
+    private func configLabel() {
+        zoomLabel.font = AsciiArtist.font
+        zoomLabel.lineBreakMode = .byClipping
+        zoomLabel.numberOfLines = 0
+        zoomLabel.textColor = .black
+        zoomLabel.accessibilityLabel = "ASCII Art"
+    }
+    
+    private func update(_ scrollView: UIScrollView) {
+        zoomLabel.text = text
+        zoomLabel.sizeToFit()
+        scrollView.contentSize = contentSize
+        setMinZoom(for: scrollView) // must be after everything so it knows content size
+    }
+    
+    private var contentSize: CGSize {
+        // `zoomLabel.frame.size` returns
+        // the size without any line breaks
+        // so this workaround is necessary
+        let attributedText = NSAttributedString(string: text, attributes: [.font: AsciiArtist.font])
+        let constraintBox = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+        let rect = attributedText.boundingRect(
+            with: constraintBox,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil
+        )
+        return rect.size
+    }
 
-    private func setMinZoom(scrollView: UIScrollView) {
-        let scrollSize  = frame.size
-        let contentSize = scrollView.contentSize
-        if scrollSize.width.isZero || scrollSize.height.isZero {
-            // keep the scroll view rendering when a bad frame is passed
-            print("invalid frame passed")
-            scrollView.minimumZoomScale = 0.5
-            scrollView.setZoomScale(0.5, animated: false)
-        } else {
-            let scaleWidth  = scrollSize.width / contentSize.width
-            let scaleHeight = scrollSize.height / contentSize.height
-            let scale       = max(scaleWidth, scaleHeight)
-            scrollView.minimumZoomScale = scale
-            scrollView.setZoomScale(scale, animated: false)
+    private func setMinZoom(for scrollView: UIScrollView) {
+        // on the initial view load the geometry reader passes frame of zero
+        if !size.width.isZero && !size.height.isZero {
+            let contentSize = scrollView.contentSize
+            let scaleWidth  = size.width / contentSize.width
+            let scaleHeight = size.height / contentSize.height
+            let fillScale   = max(scaleWidth, scaleHeight)
+            let fitScale    = min(scaleWidth, scaleHeight)
+            scrollView.minimumZoomScale = fitScale
+            scrollView.zoomScale = fillScale
         }
     }
 
-    func updateUIView(_ uiView: UIScrollView, context: Context) { }
-
+    // MARK: - Coordinator
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }

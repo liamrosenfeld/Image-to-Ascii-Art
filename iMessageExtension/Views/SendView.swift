@@ -83,7 +83,7 @@ struct SendView: View {
                 
                 if let ascii = ascii {
                     GeometryReader { proxy in
-                        ZoomableText(text: ascii, frame: proxy.frame(in: .local))
+                        ZoomableText(text: ascii, size: proxy.frame(in: .local).size)
                     }
                 } else {
                     if image != nil {

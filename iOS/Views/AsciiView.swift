@@ -10,7 +10,6 @@ import SwiftUI
 import UIKit
 import Messages
 import MessageUI
-import Combine
 
 struct AsciiView: View {
     @Binding var image: UIImage?
@@ -29,7 +28,7 @@ struct AsciiView: View {
 
             if let ascii = ascii {
                 GeometryReader { proxy in
-                    ZoomableText(text: ascii, frame: proxy.frame(in: .local))
+                    ZoomableText(text: ascii, size: proxy.frame(in: .local).size)
                         .ignoresSafeArea(.all, edges: .horizontal)
                 }
             } else {
