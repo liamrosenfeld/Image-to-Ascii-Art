@@ -25,11 +25,11 @@ class SendDelegate: ObservableObject {
 
 struct SendView: View {
     
-    enum AlertType: Identifiable {
+    enum AlertType: Int8, Identifiable {
         case noAscii
         case uploadError
         
-        var id: AlertType { self }
+        var id: Int8 { self.rawValue }
     }
     
     // Connection to the outside

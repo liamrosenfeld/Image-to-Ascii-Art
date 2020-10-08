@@ -68,13 +68,13 @@ struct AsciiView: View {
     }
     
     // MARK: - Alerts
-    enum AlertType: Identifiable {
+    enum AlertType: Int8, Identifiable {
         case shared
         case shareFailed
         case uploadFailed
         case prematureShare
         
-        var id: AlertType { self }
+        var id: Int8 { self.rawValue }
     }
     
     func matchAlert(alert: AlertType) -> Alert {

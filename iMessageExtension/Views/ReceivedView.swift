@@ -91,13 +91,13 @@ struct ReceivedView: View {
         }
     }
     
-    enum AlertType: Identifiable {
+    enum AlertType: Int8, Identifiable {
         case downloadFailed
         case notDownloadedYet
         case shared
         case shareFailed
         
-        var id: AlertType { self }
+        var id: Int8 { self.rawValue }
     }
     
     func matchAlert(alert: AlertType) -> Alert {
