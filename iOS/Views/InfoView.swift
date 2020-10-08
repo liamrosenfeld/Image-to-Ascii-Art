@@ -7,72 +7,68 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct InfoView: View {
+    
+    @Binding var isPresented: Bool
+    
+    init(_ isPresented: Binding<Bool>) {
+        // Set Binding
+        self._isPresented = isPresented
+        
+        // Set Appearance
+        UITableView.appearance().backgroundColor = UIColor(Color.background)
+        UINavigationBar.appearance().backgroundColor = UIColor(Color.background)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
-        ZStack {
-            Color.background
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                Spacer()
-                Spacer()
-                
-                VStack(alignment: .center) {
-                    Text("This app is open source, so you can find the complete source code here:")
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                    
-                    Button("Source Code") {
+        NavigationView {
+            List {
+                Section(footer: footer) {
+                    Button("View Source Code") {
                         UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art")!)
-                    }.buttonStyle(RoundStyle()).padding()
-                    
-                }.padding(20)
-                
-                Spacer()
-                
-                VStack(alignment: .center) {
-                    Text("If you have any issues to report or suggestions, submit them here:")
-                    
-                    Button("Issue Tracker") {
+                    }
+                    Button("Submit Suggestions") {
                         UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!)
-                    }.buttonStyle(RoundStyle()).padding()
-                    
-                    Text("I use GitHub issues as my issue tracker, which requires a GitHub account to file an issue")
-                        .font(.callout)
-                }.foregroundColor(.white).multilineTextAlignment(.center).padding(20)
-                
-                
-                Spacer()
-                
-                VStack(alignment: .center) {
-                    Text("The font used to display the ASCII art is Menlo 7pt.")
-                    Text("For best results, it should be used to display the ascii in external applications.")
-                        
-                }.foregroundColor(.white).multilineTextAlignment(.center).padding(20)
-
-                Spacer()
-                
-                (Text(Image(systemName: "chevron.left.slash.chevron.right"))
-                    + Text(" with ")
-                    + Text(Image(systemName: "heart"))
-                    + Text(" by Liam")
-                )
-                .accessibility(label: Text("Made with love by Liam"))
-                .foregroundColor(.white)
-                .padding()
+                    }
+                    Button("Report Issue") {
+                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!)
+                    }
+                    Button("Rate App") {
+                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
+                            SKStoreReviewController.requestReview(in: windowScene)
+                        }
+                    }
+                }
             }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarTitle("Info")
+            .navigationBarItems(leading: Button("Close", action: { isPresented = false }))
         }
     }
-        
+    
+    var footer: some View = VStack(alignment: .leading, spacing: 8) {
+        Text("Font used to display ASCII is Menlo 7pt")
+            .font(.callout)
+        (Text(Image(systemName: "chevron.left.slash.chevron.right"))
+            + Text(" with ")
+            + Text(Image(systemName: "heart"))
+            + Text(" by Liam")
+        )
+            .accessibility(label: Text("Made with love by Liam"))
+        .font(Font.body.bold())
+    }.foregroundColor(.white)
 }
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            InfoView()
+            InfoView(Binding.constant(true))
                 .previewDevice("iPhone 11")
-            InfoView()
+            InfoView(Binding.constant(true))
                 .previewDevice("iPhone 8")
         }
     }

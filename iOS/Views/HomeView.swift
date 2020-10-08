@@ -181,7 +181,7 @@ struct InfoButton: View {
                 .font(.system(size: 30))
                 .padding(.all, 20)
         }).sheet(isPresented: $showingInfoSheet) {
-            InfoView()
+            InfoView($showingInfoSheet)
         }.accessibility(label: Text("Info"))
     }
 }
