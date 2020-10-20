@@ -57,7 +57,7 @@ extension MSMessage {
         let message = MSMessage(session: session)
         let layout = MSMessageTemplateLayout()
         layout.image = image
-        layout.caption = "Ascii Art"
+        layout.caption = "ASCII Art"
         message.layout = layout
         return message
     }

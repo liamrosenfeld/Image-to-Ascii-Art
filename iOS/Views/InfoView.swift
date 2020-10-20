@@ -42,6 +42,9 @@ struct InfoView: View {
                             SKStoreReviewController.requestReview(in: windowScene)
                         }
                     }
+                    Button("My Website") {
+                        UIApplication.shared.open(URL(string: "https://liamrosenfeld.com")!)
+                    }
                 }
             }
             .listStyle(InsetGroupedListStyle())
