@@ -24,26 +24,33 @@ struct InfoView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
+    let github = URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art")!
+    let issues = URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!
+    let mySite = URL(string: "https://liamrosenfeld.com")!
+    let rate   = {
+        if let windowScene = UIApplication.shared.windows.first?.windowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
                 Section(footer: footer) {
-                    Button("View Source Code") {
-                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art")!)
+                    Link(destination: github) {
+                        Label("View Source Code", systemImage: "chevron.left.slash.chevron.right")
                     }
-                    Button("Submit Suggestions") {
-                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!)
+                    Link(destination: issues) {
+                        Label("Submit Suggestions", systemImage: "envelope")
                     }
-                    Button("Report Issue") {
-                        UIApplication.shared.open(URL(string: "https://github.com/liamrosenfeld/Image-to-Ascii-Art/issues")!)
+                    Link(destination: issues) {
+                        Label("Report Issue", systemImage: "ant")
                     }
-                    Button("Rate App") {
-                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
-                            SKStoreReviewController.requestReview(in: windowScene)
-                        }
+                    Button(action: rate) {
+                        Label("Rate App", systemImage: "star")
                     }
-                    Button("My Website") {
-                        UIApplication.shared.open(URL(string: "https://liamrosenfeld.com")!)
+                    Link(destination: mySite) {
+                        Label("My Website", systemImage: "person")
                     }
                 }
             }
