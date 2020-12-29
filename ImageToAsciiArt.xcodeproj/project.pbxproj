@@ -53,8 +53,13 @@
 		0C703C4A24AC6763005AE478 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703C4924AC6763005AE478 /* Preview Assets.xcassets */; };
 		0C703C4C24AC6CB6005AE478 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4B24AC6CB6005AE478 /* CameraView.swift */; };
 		0C703C4F24ACFBB6005AE478 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C703C4E24ACFBB6005AE478 /* InfoView.swift */; };
+		0C789EE6259ABC0900F306F0 /* AsciiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C789EE5259ABC0900F306F0 /* AsciiView.swift */; };
 		0CB7B88C24D3E19000185FCB /* vImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */; };
 		0CB7B88D24D3E19000185FCB /* vImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */; };
+		0CC6B7DC2598F7DD008BD257 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6B7DB2598F7DD008BD257 /* MacApp.swift */; };
+		0CC6B7DE2598F7DD008BD257 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6B7DD2598F7DD008BD257 /* DragView.swift */; };
+		0CC6B7E02598F7DE008BD257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */; };
+		0CC6B816259907F8008BD257 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703C4924AC6763005AE478 /* Preview Assets.xcassets */; };
 		0CF96EDF24D48A6F006C4DCB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */; };
 		0CF96EE024D48A6F006C4DCB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
@@ -98,7 +103,7 @@
 		0C1D374624BCF6D400D8635F /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		0C1D374824BCF74200D8635F /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 		0C1D374E24BF9ABA00D8635F /* MSMessage+Ascii.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSMessage+Ascii.swift"; sourceTree = "<group>"; };
-		0C1D375124BFCEEB00D8635F /* Image To Ascii Art.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Image To Ascii Art.entitlements"; sourceTree = "<group>"; };
+		0C1D375124BFCEEB00D8635F /* ImageToAsciiArt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageToAsciiArt.entitlements; sourceTree = "<group>"; };
 		0C1D375324C00DA200D8635F /* MessageComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposeView.swift; sourceTree = "<group>"; };
 		0C2E44BA24D63BA4001C6D28 /* vImage+Grayscale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "vImage+Grayscale.swift"; sourceTree = "<group>"; };
 		0C32B73C24B272500089F218 /* UIImage+Fix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Fix.swift"; sourceTree = "<group>"; };
@@ -119,7 +124,14 @@
 		0C703C4924AC6763005AE478 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C703C4B24AC6CB6005AE478 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0C703C4E24ACFBB6005AE478 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		0C789EE5259ABC0900F306F0 /* AsciiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiView.swift; sourceTree = "<group>"; };
 		0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "vImage+Resize.swift"; sourceTree = "<group>"; };
+		0CC6B7D92598F7DD008BD257 /* Image To Ascii Art.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image To Ascii Art.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CC6B7DB2598F7DD008BD257 /* MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacApp.swift; sourceTree = "<group>"; };
+		0CC6B7DD2598F7DD008BD257 /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
+		0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CC6B7E42598F7DE008BD257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CC6B7E52598F7DE008BD257 /* ImaageToAsciiArt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImaageToAsciiArt.entitlements; sourceTree = "<group>"; };
 		0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +150,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C1D375224BFCEF300D8635F /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CC6B7D62598F7DD008BD257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +211,6 @@
 			children = (
 				0C1D374824BCF74200D8635F /* Color+Custom.swift */,
 				0C703BED24ABA750005AE478 /* Assets.xcassets */,
-				0C703C4924AC6763005AE478 /* Preview Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -221,6 +239,7 @@
 				0C703BEA24ABA74F005AE478 /* Shared */,
 				0C703BF424ABA750005AE478 /* iOS */,
 				0C14DF2A24BAC70B00E66116 /* iMessageExtension */,
+				0CC6B7DA2598F7DD008BD257 /* Mac */,
 				0C703C1124ABA78E005AE478 /* Frameworks */,
 				0C703BF324ABA750005AE478 /* Products */,
 			);
@@ -230,10 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				0C703C2A24AC4AF2005AE478 /* AsciiConverter */,
-				0C703C3D24AC65F0005AE478 /* UIRepresentable */,
-				0C67CD4B24D48D5200FBE65A /* Sharing */,
-				0C1D374524BCF6C100D8635F /* Styles */,
-				0C1D374D24BF9A7900D8635F /* Assets */,
+				0CC6B7F825990136008BD257 /* Mobile */,
+				0CC6B811259907E0008BD257 /* PreviewContent */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -243,6 +260,7 @@
 			children = (
 				0C703BF224ABA750005AE478 /* Image To Ascii Art.app */,
 				0C14DF2824BAC70B00E66116 /* iMessageExtension.appex */,
+				0CC6B7D92598F7DD008BD257 /* Image To Ascii Art.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,7 +272,7 @@
 				0C1D375524C025CD00D8635F /* UIRepresentable */,
 				0C703BEB24ABA74F005AE478 /* App.swift */,
 				0C703BF524ABA750005AE478 /* Info.plist */,
-				0C1D375124BFCEEB00D8635F /* Image To Ascii Art.entitlements */,
+				0C1D375124BFCEEB00D8635F /* ImageToAsciiArt.entitlements */,
 				0C14DF4324BB618300E66116 /* Assets.xcassets */,
 			);
 			path = iOS;
@@ -299,6 +317,38 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0CC6B7DA2598F7DD008BD257 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				0CC6B7DB2598F7DD008BD257 /* MacApp.swift */,
+				0CC6B7DD2598F7DD008BD257 /* DragView.swift */,
+				0C789EE5259ABC0900F306F0 /* AsciiView.swift */,
+				0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */,
+				0CC6B7E42598F7DE008BD257 /* Info.plist */,
+				0CC6B7E52598F7DE008BD257 /* ImaageToAsciiArt.entitlements */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		0CC6B7F825990136008BD257 /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				0C1D374D24BF9A7900D8635F /* Assets */,
+				0C703C3D24AC65F0005AE478 /* UIRepresentable */,
+				0C67CD4B24D48D5200FBE65A /* Sharing */,
+				0C1D374524BCF6C100D8635F /* Styles */,
+			);
+			path = Mobile;
+			sourceTree = "<group>";
+		};
+		0CC6B811259907E0008BD257 /* PreviewContent */ = {
+			isa = PBXGroup;
+			children = (
+				0C703C4924AC6763005AE478 /* Preview Assets.xcassets */,
+			);
+			path = PreviewContent;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -338,20 +388,40 @@
 			productReference = 0C703BF224ABA750005AE478 /* Image To Ascii Art.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0CC6B7D82598F7DD008BD257 /* Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CC6B7E82598F7DE008BD257 /* Build configuration list for PBXNativeTarget "Mac" */;
+			buildPhases = (
+				0CC6B7D52598F7DD008BD257 /* Sources */,
+				0CC6B7D62598F7DD008BD257 /* Frameworks */,
+				0CC6B7D72598F7DD008BD257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mac;
+			productName = ImaageToAsciiArt;
+			productReference = 0CC6B7D92598F7DD008BD257 /* Image To Ascii Art.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0C703BE624ABA74F005AE478 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					0C14DF2724BAC70B00E66116 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 					0C703BF124ABA750005AE478 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					0CC6B7D82598F7DD008BD257 = {
+						CreatedOnToolsVersion = 12.3;
 					};
 				};
 			};
@@ -370,6 +440,7 @@
 			targets = (
 				0C703BF124ABA750005AE478 /* iOS */,
 				0C14DF2724BAC70B00E66116 /* iMessageExtension */,
+				0CC6B7D82598F7DD008BD257 /* Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -391,6 +462,15 @@
 				0C703C4A24AC6763005AE478 /* Preview Assets.xcassets in Resources */,
 				0C14DF4424BB618300E66116 /* Assets.xcassets in Resources */,
 				0C703C0224ABA750005AE478 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CC6B7D72598F7DD008BD257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CC6B816259907F8008BD257 /* Preview Assets.xcassets in Resources */,
+				0CC6B7E02598F7DE008BD257 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +529,16 @@
 				0C32B74324B273040089F218 /* AsciiArtist.swift in Sources */,
 				0C703C2824ABAFFD005AE478 /* PhotoPickerView.swift in Sources */,
 				0C1640F424AE64F400279F8F /* String+UIImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CC6B7D52598F7DD008BD257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C789EE6259ABC0900F306F0 /* AsciiView.swift in Sources */,
+				0CC6B7DE2598F7DD008BD257 /* DragView.swift in Sources */,
+				0CC6B7DC2598F7DD008BD257 /* MacApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,10 +721,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/Image To Ascii Art.entitlements";
+				CODE_SIGN_ENTITLEMENTS = iOS/ImageToAsciiArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "Shared/Assets/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = Shared/PreviewContent;
 				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -658,10 +748,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/Image To Ascii Art.entitlements";
+				CODE_SIGN_ENTITLEMENTS = iOS/ImageToAsciiArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "Shared/Assets/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = Shared/PreviewContent;
 				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -677,6 +767,58 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0CC6B7E62598F7DE008BD257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mac/ImaageToAsciiArt.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = Shared/PreviewContent;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImaageToAsciiArt;
+				PRODUCT_NAME = "Image To Ascii Art";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0CC6B7E72598F7DE008BD257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mac/ImaageToAsciiArt.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = Shared/PreviewContent;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.ImaageToAsciiArt;
+				PRODUCT_NAME = "Image To Ascii Art";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -706,6 +848,15 @@
 			buildConfigurations = (
 				0C703C0724ABA750005AE478 /* Debug */,
 				0C703C0824ABA750005AE478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CC6B7E82598F7DE008BD257 /* Build configuration list for PBXNativeTarget "Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CC6B7E62598F7DE008BD257 /* Debug */,
+				0CC6B7E72598F7DE008BD257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

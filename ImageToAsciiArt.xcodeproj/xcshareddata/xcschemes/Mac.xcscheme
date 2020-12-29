@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0C703BF124ABA750005AE478"
+               BlueprintIdentifier = "0CC6B7D82598F7DD008BD257"
                BuildableName = "Image To Ascii Art.app"
-               BlueprintName = "iOS"
+               BlueprintName = "Mac"
                ReferencedContainer = "container:ImageToAsciiArt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0C703BF124ABA750005AE478"
+            BlueprintIdentifier = "0CC6B7D82598F7DD008BD257"
             BuildableName = "Image To Ascii Art.app"
-            BlueprintName = "iOS"
+            BlueprintName = "Mac"
             ReferencedContainer = "container:ImageToAsciiArt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0C703BF124ABA750005AE478"
+            BlueprintIdentifier = "0CC6B7D82598F7DD008BD257"
             BuildableName = "Image To Ascii Art.app"
-            BlueprintName = "iOS"
+            BlueprintName = "Mac"
             ReferencedContainer = "container:ImageToAsciiArt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
