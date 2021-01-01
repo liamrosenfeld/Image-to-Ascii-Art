@@ -7,32 +7,22 @@
 //
 
 import Foundation
-import UIKit
 import Accelerate.vImage
 
-// Transforms an image to ASCII art.
+/// Transforms an image to ASCII art.
 struct AsciiArtist {
     
-    static let font = UIFont(name: "Menlo", size: 7)!
+    static let font = SysFont(name: "Menlo", size: 7)!
     static let palette = AsciiPalette.generate(for: AsciiArtist.font)
 
-    static func createAsciiArt(image: UIImage) -> String {
-        var origBuffer      = makeBuffer(image: image)
+    static func createAsciiArt(image: SysImage) -> String {
+        var origBuffer      = image.makeBuffer()
         var resizedBuffer   = resize(buffer: &origBuffer)
         applyGamma(buffer: &resizedBuffer) // breaks the alpha values
         let grayscaleBuffer = resizedBuffer.grayscale() // ignores alpha channel
         resizedBuffer.free()
         let asciiArt  = grayscaleToSymbols(buffer: grayscaleBuffer)
         return asciiArt
-    }
-    
-    static private func makeBuffer(image: UIImage) -> vImage_Buffer {
-        // Put the image right way up
-        let rotatedImage = image.fixedOrientation()
-        
-        // Get RGBA buffer for resizing operations
-        // also normalizes image format to RGBA8888
-        return rotatedImage.cgImage!.toRGBABuffer()
     }
 
     static private func resize(buffer: inout vImage_Buffer) -> vImage_Buffer {

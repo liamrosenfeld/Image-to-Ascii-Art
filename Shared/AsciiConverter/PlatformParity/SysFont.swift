@@ -1,14 +1,22 @@
 //
-//  UIFont+Size.swift
+//  SysFont.swift
 //  ImageToAsciiArt
 //
-//  Created by Liam Rosenfeld on 7/3/20.
-//  Copyright © 2020 liamrosenfeld. All rights reserved.
+//  Created by Liam Rosenfeld on 1/1/21.
+//  Copyright © 2021 liamrosenfeld. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-extension UIFont {
+#if os(iOS)
+import UIKit
+typealias SysFont  = UIFont
+#elseif os(macOS)
+import AppKit
+typealias SysFont  = NSFont
+#endif
+
+extension SysFont {
     func monoRatio() -> CGFloat {
         let attributes = [
             NSAttributedString.Key.font: self

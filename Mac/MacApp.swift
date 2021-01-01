@@ -16,9 +16,10 @@ struct MacApp: App {
         WindowGroup {
             if imageURL != nil {
                 AsciiView(imageUrl: $imageURL)
-                    .frame(minWidth: 350, maxWidth: 600, minHeight: 350, maxHeight: 600)
+                    .frame(minWidth: 550, maxWidth: 1100, minHeight: 500, maxHeight: 1100)
             } else {
                 DragView(imageUrl: $imageURL)
+                    .frame(minWidth: 350, maxWidth: 600, minHeight: 350, maxHeight: 600)
             }
         }
     }

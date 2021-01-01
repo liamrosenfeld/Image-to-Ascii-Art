@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import UIKit
 import Accelerate.vImage
 
-// Provides a list of ASCII symbols sorted from darkest to brightest.
+/// Provides a list of ASCII symbols sorted from darkest to brightest.
 class AsciiPalette {
  
-    static func generate(for font: UIFont) -> [String] {
+    static func generate(for font: SysFont) -> [String] {
         // from ' ' to '~'
         return symbolsSortedByIntensityForAsciiCodes(32...126, font: font)
     }
 
-    private static func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>, font: UIFont) -> [String] {
+    private static func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>, font: SysFont) -> [String] {
         let symbols          = codes.map { self.symbolFromAsciiCode($0) }
         let symbolImages     = symbols.map { $0.toImage(withFont: font) }
         let whitePixelCounts = symbolImages.map { self.countWhitePixelsInImage($0) }
@@ -30,7 +29,7 @@ class AsciiPalette {
         return String(Character(UnicodeScalar(code)!))
     }
 
-    private static func countWhitePixelsInImage(_ image: UIImage) -> UInt {
+    private static func countWhitePixelsInImage(_ image: SysImage) -> UInt {
         // Tet buffer from image
         let img = image.cgImage!
         var imgBuffer = try! vImage_Buffer(cgImage: img, format: .rgba)

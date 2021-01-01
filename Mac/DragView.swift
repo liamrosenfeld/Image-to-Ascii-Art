@@ -47,7 +47,6 @@ struct DragView: View {
             
         }
         .padding(35)
-        .frame(minWidth: 350, maxWidth: 600, minHeight: 350, maxHeight: 600)
     }
     
     func selectImage() {
