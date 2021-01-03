@@ -88,7 +88,8 @@ struct AsciiView: View {
     let fileSaver = FileSaver()
     
     func newImage() {
-        print("new image")
+        guard let url = NSOpenPanel.selectImage() else { return }
+        self.imageUrl = url
     }
     
     func copyAsciiText() {

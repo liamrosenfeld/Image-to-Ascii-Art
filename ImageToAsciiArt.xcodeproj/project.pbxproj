@@ -74,6 +74,8 @@
 		0CC6B7DE2598F7DD008BD257 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6B7DD2598F7DD008BD257 /* DragView.swift */; };
 		0CC6B7E02598F7DE008BD257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */; };
 		0CC6B816259907F8008BD257 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C703C4924AC6763005AE478 /* Preview Assets.xcassets */; };
+		0CEA688025A263E600DB8EA7 /* NSOpenPanel+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA687F25A263E600DB8EA7 /* NSOpenPanel+Image.swift */; };
+		0CEA688B25A264A200DB8EA7 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA688A25A264A200DB8EA7 /* NSImage+PNG.swift */; };
 		0CF96EDF24D48A6F006C4DCB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */; };
 		0CF96EE024D48A6F006C4DCB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +152,8 @@
 		0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC6B7E42598F7DE008BD257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CC6B7E52598F7DE008BD257 /* ImaageToAsciiArt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImaageToAsciiArt.entitlements; sourceTree = "<group>"; };
+		0CEA687F25A263E600DB8EA7 /* NSOpenPanel+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOpenPanel+Image.swift"; sourceTree = "<group>"; };
+		0CEA688A25A264A200DB8EA7 /* NSImage+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
 		0CF96EDE24D48A6F006C4DCB /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +361,7 @@
 				0C789EE5259ABC0900F306F0 /* AsciiView.swift */,
 				0C894B9025A0EEDE005A4334 /* ZoomControl.swift */,
 				0C894B8825A0EEA5005A4334 /* FileSaver.swift */,
+				0CA4EC9C259BCA3D005E9FDE /* ZoomableText.swift */,
 			);
 			path = AsciiView;
 			sourceTree = "<group>";
@@ -375,8 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				0C894B8525A0EE55005A4334 /* Views */,
+				0CEA687E25A263D300DB8EA7 /* Extensions */,
 				0CC6B7DB2598F7DD008BD257 /* MacApp.swift */,
-				0CA4EC9C259BCA3D005E9FDE /* ZoomableText.swift */,
 				0CC6B7DF2598F7DE008BD257 /* Assets.xcassets */,
 				0CC6B7E42598F7DE008BD257 /* Info.plist */,
 				0CC6B7E52598F7DE008BD257 /* ImaageToAsciiArt.entitlements */,
@@ -401,6 +406,15 @@
 				0C703C4924AC6763005AE478 /* Preview Assets.xcassets */,
 			);
 			path = PreviewContent;
+			sourceTree = "<group>";
+		};
+		0CEA687E25A263D300DB8EA7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0CEA687F25A263E600DB8EA7 /* NSOpenPanel+Image.swift */,
+				0CEA688A25A264A200DB8EA7 /* NSImage+PNG.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,9 +606,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEA688025A263E600DB8EA7 /* NSOpenPanel+Image.swift in Sources */,
 				0CA5EF7F259BB650007BF74A /* vImage+Grayscale.swift in Sources */,
 				0CA5EF7E259BB650007BF74A /* vImage+Gamma.swift in Sources */,
 				0C333972259FB0CA00D02171 /* SysFont.swift in Sources */,
+				0CEA688B25A264A200DB8EA7 /* NSImage+PNG.swift in Sources */,
 				0CA5EF7D259BB650007BF74A /* vImage+Resize.swift in Sources */,
 				0C33396B259FB0A000D02171 /* SysImage.swift in Sources */,
 				0CA5EF80259BB650007BF74A /* AsciiArtist.swift in Sources */,

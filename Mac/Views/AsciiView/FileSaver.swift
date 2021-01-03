@@ -75,22 +75,3 @@ struct FileSaver {
         }
     }
 }
-
-extension NSImage {
-    var PNGRepresentation: Data? {
-        guard let tiff = self.tiffRepresentation else { return nil }
-        guard let tiffData = NSBitmapImageRep(data: tiff) else { return nil }
-        return tiffData.representation(using: .png, properties: [:])
-    }
-    
-    func savePng(to url: URL) throws {
-        guard let png = self.PNGRepresentation else {
-            throw NSImageError.getDataFailed
-        }
-        try png.write(to: url, options: .atomicWrite)
-    }
-    
-    enum NSImageError: Error {
-        case getDataFailed
-    }
-}

@@ -50,18 +50,8 @@ struct DragView: View {
     }
     
     func selectImage() {
-        let selectPanel = NSOpenPanel()
-        selectPanel.title = "Select an Image to Convert"
-        selectPanel.showsResizeIndicator = true
-        selectPanel.canChooseDirectories = false
-        selectPanel.canChooseFiles = true
-        selectPanel.allowsMultipleSelection = false
-        selectPanel.canCreateDirectories = true
-        selectPanel.allowedFileTypes = NSImage.imageTypes
-        
-        selectPanel.runModal()
-        
-        self.imageUrl = selectPanel.url
+        guard let url = NSOpenPanel.selectImage() else { return }
+        self.imageUrl = url
     }
 }
 
