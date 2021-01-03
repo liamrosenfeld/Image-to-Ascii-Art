@@ -12,7 +12,7 @@ struct AsciiView: View {
     @Binding var imageUrl: URL?
     @State private var ascii: String?
     @State private var zoom: CGFloat = 0
-    
+    @State private var alert: AlertType? = nil
     
     var body: some View {
         Group {
@@ -33,29 +33,91 @@ struct AsciiView: View {
                 }
             }
         }
+        .alert(item: $alert, content: matchAlert)
         .onAppear(perform: onAppear)
         .onChange(of: imageUrl, perform: generateAscii)
         .toolbar {
             ToolbarItem(placement: .automatic) {
-                Button(action: {
-                    print("new image")
-                }, label: {
+                Button(action: newImage) {
                     Label("New Image", systemImage: "plus.square.on.square")
-                })
+                }
             }
             ToolbarItem(placement: .automatic) {
-                Button(action: {
-                    guard let asciiArt = ascii else { return }
-                    let pasteboard = NSPasteboard.general
-                    pasteboard.declareTypes([.string], owner: nil)
-                    pasteboard.setString(asciiArt, forType: .string)
-                }, label: {
+                Button(action: copyAsciiText) {
                     Label("Copy Text", systemImage: "doc.on.clipboard")
-                })
+                }
+            }
+            ToolbarItem(placement: .automatic) {
+                Button(action: saveFile) {
+                    Label("Save File", systemImage: "doc")
+                }
             }
         }
     }
     
+    // MARK: - Alerts
+    enum AlertType: Int8, Identifiable {
+        case shared
+        case shareFailed
+        case prematureShare
+        
+        var id: Int8 { self.rawValue }
+    }
+    
+    func matchAlert(alert: AlertType) -> Alert {
+        switch alert {
+        case .shared:
+            return Alert(
+                title: Text("Shared"),
+                dismissButton: .default(Text("Yay!"))
+            )
+        case .shareFailed:
+            return Alert(
+                title: Text("Share Failed"),
+                message: Text("An error occurred.")
+            )
+        case .prematureShare:
+            return Alert(
+                title: Text("Whoah there!"),
+                message: Text("You need to wait for the image to convert before sharing.")
+            )
+        }
+    }
+    
+    // MARK: - Toolbar
+    let fileSaver = FileSaver()
+    
+    func newImage() {
+        print("new image")
+    }
+    
+    func copyAsciiText() {
+        guard let asciiArt = ascii else {
+            alert = .prematureShare
+            return
+        }
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([.string], owner: nil)
+        pasteboard.setString(asciiArt, forType: .string)
+        alert = .shared
+    }
+    
+    func saveFile() {
+        guard let ascii = ascii else {
+            alert = .prematureShare
+            return
+        }
+        
+        do {
+            let shared = try fileSaver.saveFile(ascii: ascii)
+            if shared { alert = .shared }
+        } catch {
+            alert = .shareFailed
+        }
+    }
+    
+    
+    // MARK: - Generating ASCII
     func onAppear() {
         if ascii == nil {
             generateAscii(imageURL: imageUrl)
@@ -79,35 +141,6 @@ struct AsciiView: View {
         }
     }
     
-}
-
-struct ZoomControl: View {
-    
-    @Binding var zoom: CGFloat
-    @State private var hovering = false
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "plus.magnifyingglass")
-                .font(Font.title3.bold())
-            
-            if hovering {
-                Slider(value: $zoom, in: 0...ZoomableText.maxZoom)
-                    .frame(width: 150)
-                    .transition(.scale)
-            }
-        }
-        .frame(height: 25)
-        .padding(8)
-        .background(Color.gray)
-        .cornerRadius(7)
-        .padding()
-        .onHover { isHovered in
-            withAnimation {
-                self.hovering = isHovered
-            }
-        }
-    }
 }
 
 struct AsciiView_Previews: PreviewProvider {

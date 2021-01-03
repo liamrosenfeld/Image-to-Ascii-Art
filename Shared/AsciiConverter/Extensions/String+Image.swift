@@ -15,7 +15,7 @@ extension String {
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: font
         ]
-        let textSize = self.size(withAttributes: attributes)
+        let textSize = self.size(withAttributes: attributes).roundedUp
 
         UIGraphicsBeginImageContextWithOptions(textSize, true, 0)
         let context = UIGraphicsGetCurrentContext()!
@@ -41,11 +41,22 @@ extension String {
             NSAttributedString.Key.foregroundColor: NSColor.black,
             NSAttributedString.Key.font: font
         ]
-        let textSize = self.size(withAttributes: attributes)
+        let textSize = self.size(withAttributes: attributes).roundedUp
         
         // Get context
         NSGraphicsContext.saveGraphicsState()
-        let rep = makeRep(at: textSize)
+        let rep = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: Int(textSize.width),
+            pixelsHigh: Int(textSize.height),
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .calibratedRGB,
+            bytesPerRow: 0,
+            bitsPerPixel: 0
+        )!
         NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
         
         // Color background white
@@ -64,20 +75,6 @@ extension String {
         image.addRepresentation(rep)
         image.size = textSize
         return image
-    }
-    
-    fileprivate func makeRep(at size: NSSize) -> NSBitmapImageRep {
-        let rep = NSBitmapImageRep(bitmapDataPlanes: nil,
-                                   pixelsWide: Int(size.width),
-                                   pixelsHigh: Int(size.height),
-                                   bitsPerSample: 8,
-                                   samplesPerPixel: 4,
-                                   hasAlpha: true,
-                                   isPlanar: false,
-                                   colorSpaceName: .calibratedRGB,
-                                   bytesPerRow: 0,
-                                   bitsPerPixel: 0)
-        return rep!
     }
 }
 #endif

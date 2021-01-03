@@ -12,7 +12,11 @@ import Accelerate.vImage
 /// Transforms an image to ASCII art.
 struct AsciiArtist {
     
+    #if os(iOS)
     static let font = SysFont(name: "Menlo", size: 7)!
+    #elseif os(macOS)
+    static let font = SysFont(name: "Menlo", size: 20)!
+    #endif
     static let palette = AsciiPalette.generate(for: AsciiArtist.font)
 
     static func createAsciiArt(image: SysImage) -> String {

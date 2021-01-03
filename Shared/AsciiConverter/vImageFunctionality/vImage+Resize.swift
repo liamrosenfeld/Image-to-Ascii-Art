@@ -38,13 +38,17 @@ extension vImage_Buffer {
         // resize
         let maxRect    = CGRect(origin: CGPoint.zero, size: maxSize)
         let scaledRect = AVMakeRect(aspectRatio: self.size, insideRect: maxRect)
-        let scaledSize = scaledRect.size.rounded()
+        let scaledSize = scaledRect.size.rounded
         return self.resize(to: scaledSize)
     }
 }
 
 extension CGSize {
-    func rounded() -> CGSize {
+    var rounded: CGSize {
         return CGSize(width: self.width.rounded(), height: self.height.rounded())
+    }
+    
+    var roundedUp: CGSize {
+        CGSize(width: ceil(width), height: ceil(height))
     }
 }
