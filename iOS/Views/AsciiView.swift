@@ -124,7 +124,13 @@ struct AsciiView: View {
     
     func shareImage() {
         if let ascii = ascii {
-            showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font))
+            guard let data = ascii.toImage(withFont: AsciiArtist.font).pngData(),
+                  let image = UIImage(data: data)
+            else {
+                alert = .shareFailed
+                return
+            }
+            showShareSheet(content: image)
         } else {
             alert = .prematureShare
         }

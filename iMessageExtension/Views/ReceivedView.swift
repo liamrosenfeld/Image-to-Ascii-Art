@@ -78,16 +78,36 @@ struct ReceivedView: View {
     
     var shareButton: some View {
         Menu {
-            if let ascii = ascii {
-                Button("Text") { showShareSheet(content: ascii) }
-                Button("Image") { showShareSheet(content: ascii.toImage(withFont: AsciiArtist.font)) }
-            }
+            Button("Text", action: shareText)
+            Button("Image", action: shareImage)
         } label: {
             Image(systemName: "square.and.arrow.up")
                 .font(Font.title3)
                 .foregroundColor(.white)
                 .padding(.trailing, 10)
                 .accessibility(label: Text("Share"))
+        }
+    }
+    
+    func shareText() {
+        if let ascii = ascii {
+            showShareSheet(content: ascii)
+        } else {
+            alert = .notDownloadedYet
+        }
+    }
+    
+    func shareImage() {
+        if let ascii = ascii {
+            guard let data = ascii.toImage(withFont: AsciiArtist.font).pngData(),
+                  let image = UIImage(data: data)
+            else {
+                alert = .shareFailed
+                return
+            }
+            showShareSheet(content: image)
+        } else {
+            alert = .notDownloadedYet
         }
     }
     
