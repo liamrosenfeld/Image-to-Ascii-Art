@@ -32,7 +32,7 @@ extension vImage_Buffer {
             self.width  > Int(maxSize.width) ||
             self.height > Int(maxSize.height)
         if !isTooBig {
-            return self
+            return self.copy() // must copy because it is implied that the returned buffer will be different
         }
         
         // resize
@@ -40,6 +40,13 @@ extension vImage_Buffer {
         let scaledRect = AVMakeRect(aspectRatio: self.size, insideRect: maxRect)
         let scaledSize = scaledRect.size.rounded
         return self.resize(to: scaledSize)
+    }
+    
+    func copy() -> vImage_Buffer {
+        let format = vImage_CGImageFormat.rgba
+        var destinationBuffer = try! vImage_Buffer(size: size, bitsPerPixel: format.bitsPerPixel)
+        try! self.copy(destinationBuffer: &destinationBuffer, pixelSize: Int(format.bitsPerPixel))
+        return destinationBuffer
     }
 }
 
