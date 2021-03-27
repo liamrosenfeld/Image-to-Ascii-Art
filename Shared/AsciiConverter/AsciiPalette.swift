@@ -32,7 +32,7 @@ class AsciiPalette {
     private static func countWhitePixelsInImage(_ image: SysImage) -> UInt {
         // Tet buffer from image
         let img = image.cgImage!
-        var imgBuffer = try! vImage_Buffer(cgImage: img, format: .rgba)
+        var imgBuffer = try! vImage_Buffer(cgImage: img, format: .argb)
         
         // Combine channels into blue channel
         let readableMatrix: [[Int16]] = [

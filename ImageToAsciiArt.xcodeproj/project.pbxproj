@@ -60,6 +60,9 @@
 		0C789EE6259ABC0900F306F0 /* AsciiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C789EE5259ABC0900F306F0 /* AsciiView.swift */; };
 		0C894B8925A0EEA5005A4334 /* FileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C894B8825A0EEA5005A4334 /* FileSaver.swift */; };
 		0C894B9125A0EEDE005A4334 /* ZoomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C894B9025A0EEDE005A4334 /* ZoomControl.swift */; };
+		0C99B6BF260EEF3D007E5FEF /* CGSize+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C99B6BE260EEF3D007E5FEF /* CGSize+Util.swift */; };
+		0C99B6C0260EEF3D007E5FEF /* CGSize+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C99B6BE260EEF3D007E5FEF /* CGSize+Util.swift */; };
+		0C99B6C1260EEF3D007E5FEF /* CGSize+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C99B6BE260EEF3D007E5FEF /* CGSize+Util.swift */; };
 		0CA4EC9D259BCA3D005E9FDE /* ZoomableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA4EC9C259BCA3D005E9FDE /* ZoomableText.swift */; };
 		0CA5EF7B259BB650007BF74A /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B73E24B272B00089F218 /* AsciiPalette.swift */; };
 		0CA5EF7C259BB650007BF74A /* CGImage+vImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32B74624B2E5FA0089F218 /* CGImage+vImage.swift */; };
@@ -144,6 +147,7 @@
 		0C789EE5259ABC0900F306F0 /* AsciiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiView.swift; sourceTree = "<group>"; };
 		0C894B8825A0EEA5005A4334 /* FileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSaver.swift; sourceTree = "<group>"; };
 		0C894B9025A0EEDE005A4334 /* ZoomControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomControl.swift; sourceTree = "<group>"; };
+		0C99B6BE260EEF3D007E5FEF /* CGSize+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Util.swift"; sourceTree = "<group>"; };
 		0CA4EC9C259BCA3D005E9FDE /* ZoomableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableText.swift; sourceTree = "<group>"; };
 		0CB7B88B24D3E19000185FCB /* vImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "vImage+Resize.swift"; sourceTree = "<group>"; };
 		0CC6B7D92598F7DD008BD257 /* Image To Ascii Art.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image To Ascii Art.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,7 @@
 				0C1640F324AE64F400279F8F /* String+Image.swift */,
 				0C32B73C24B272500089F218 /* UIImage+Fix.swift */,
 				0C32B74624B2E5FA0089F218 /* CGImage+vImage.swift */,
+				0C99B6BE260EEF3D007E5FEF /* CGSize+Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 			files = (
 				0C14DF4D24BB61CE00E66116 /* CGImage+vImage.swift in Sources */,
 				0CB7B88D24D3E19000185FCB /* vImage+Resize.swift in Sources */,
+				0C99B6C0260EEF3D007E5FEF /* CGSize+Util.swift in Sources */,
 				0C2E44BC24D63BA4001C6D28 /* vImage+Grayscale.swift in Sources */,
 				0C14DF4C24BB61CE00E66116 /* vImage+Gamma.swift in Sources */,
 				0C14DF4B24BB61CE00E66116 /* UIImage+Fix.swift in Sources */,
@@ -592,6 +598,7 @@
 				0C703BFE24ABA750005AE478 /* App.swift in Sources */,
 				0C1D374C24BD6AD500D8635F /* ButtonStyles.swift in Sources */,
 				0C32B73D24B272500089F218 /* UIImage+Fix.swift in Sources */,
+				0C99B6BF260EEF3D007E5FEF /* CGSize+Util.swift in Sources */,
 				0CF96EDF24D48A6F006C4DCB /* UIImage+Resize.swift in Sources */,
 				0C32B73F24B272B00089F218 /* AsciiPalette.swift in Sources */,
 				0CB7B88C24D3E19000185FCB /* vImage+Resize.swift in Sources */,
@@ -618,6 +625,7 @@
 				0CA5EF8A259BBFFF007BF74A /* String+Image.swift in Sources */,
 				0C789EE6259ABC0900F306F0 /* AsciiView.swift in Sources */,
 				0C894B9125A0EEDE005A4334 /* ZoomControl.swift in Sources */,
+				0C99B6C1260EEF3D007E5FEF /* CGSize+Util.swift in Sources */,
 				0CA5EF7B259BB650007BF74A /* AsciiPalette.swift in Sources */,
 				0CC6B7DE2598F7DD008BD257 /* DragView.swift in Sources */,
 				0CA5EF7C259BB650007BF74A /* CGImage+vImage.swift in Sources */,

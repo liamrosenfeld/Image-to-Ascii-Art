@@ -19,7 +19,7 @@ extension UIImage {
         
         // Get RGBA buffer for resizing operations
         // also normalizes image format to RGBA8888
-        return rotatedImage.cgImage!.toRGBABuffer()
+        return rotatedImage.cgImage!.toARGBBuffer()
     }
 }
 
@@ -31,7 +31,7 @@ extension NSImage {
     func makeBuffer() -> vImage_Buffer {
         // Get RGBA buffer for resizing operations
         // also normalizes image format to RGBA8888
-        return self.cgImage!.toRGBABuffer()
+        return self.cgImage!.toARGBBuffer()
     }
     
     var cgImage: CGImage? {

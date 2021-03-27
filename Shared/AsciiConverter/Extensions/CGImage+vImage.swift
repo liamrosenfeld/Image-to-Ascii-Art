@@ -10,14 +10,14 @@ import Accelerate.vImage
 import CoreGraphics
 
 extension CGImage {
-    func toRGBABuffer() -> vImage_Buffer {
+    func toARGBBuffer() -> vImage_Buffer {
         // The format of the source asset
         guard var sourceFormat = vImage_CGImageFormat(cgImage: self) else {
             fatalError("Unable to create format.")
         }
         
         // The desired format
-        var destFormat = vImage_CGImageFormat.rgba
+        var destFormat = vImage_CGImageFormat.argb
         
         // Don't do anything if it's already in the desired format
         // TODO: make it actually work because bitmapInfo messes it up
@@ -67,7 +67,7 @@ extension vImage_CGImageFormat {
         renderingIntent: .defaultIntent
     )!
     
-    static let rgba = vImage_CGImageFormat(
+    static let argb = vImage_CGImageFormat(
         bitsPerComponent: 8,
         bitsPerPixel: 8 * 4,
         colorSpace: CGColorSpaceCreateDeviceRGB(),

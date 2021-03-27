@@ -22,33 +22,45 @@ struct AsciiArtist {
     static func createAsciiArt(image: SysImage) -> String {
         var origBuffer      = image.makeBuffer()
         var resizedBuffer   = resize(buffer: &origBuffer)
-        applyGamma(buffer: &resizedBuffer) // breaks the alpha values
-        let grayscaleBuffer = resizedBuffer.grayscale() // ignores alpha channel
-        resizedBuffer.free()
+        let grayscaleBuffer = convertToGrayscale(buffer: &resizedBuffer)
         let asciiArt  = grayscaleToSymbols(buffer: grayscaleBuffer)
         return asciiArt
     }
 
     static private func resize(buffer: inout vImage_Buffer) -> vImage_Buffer {
-        // Squash the image vertically so the added height of the non square characters doesn't stretch it vertically
+        // Squash the size vertically
+        // So the added height of the non square characters doesn't stretch it vertically
         let squashRatio    = font.monoRatio()
         let squashedHeight = (buffer.size.height * squashRatio).rounded()
         let squashedSize   = CGSize(width: buffer.size.width, height: squashedHeight)
-        var squashedBuffer = buffer.resize(to: squashedSize)
-        buffer.free()
-
+        
         // Constrain the image down
+        // So the conversion doesn't take too long
+        // Also makes the ascii more visible
         let maxImageSize = CGSize(width: 310, height: 310)
-        let constrainedBuffer = squashedBuffer.imageConstrained(to: maxImageSize, current: squashedSize)
-        squashedBuffer.free()
+        let constrainedSize = squashedSize.fitIn(maxImageSize)
 
-        return constrainedBuffer
+        // Resize image
+        let resizedBuffer = buffer.resize(to: constrainedSize)
+        
+        // Free input buffer and return
+        buffer.free()
+        return resizedBuffer
     }
     
-    static private func applyGamma(buffer: inout vImage_Buffer) {
+    static private func convertToGrayscale(buffer: inout vImage_Buffer) -> vImage_Buffer {
         // Apply gamma functions to make ascii art more defined
-        buffer.applyGamma(preset: ResponseCurvePreset.increaseContrast)
-        buffer.applyGamma(preset: ResponseCurvePreset.increaseBrightness)
+        // breaks the alpha values
+        buffer.applyGamma(preset: .increaseContrast)
+        buffer.applyGamma(preset: .increaseBrightness)
+        
+        // Convert image to grayscale
+        // ignores alpha channel
+        let grayscaleBuffer = buffer.grayscale()
+        
+        // Free buffer and return
+        buffer.free()
+        return grayscaleBuffer
     }
     
     static private func grayscaleToSymbols(buffer: vImage_Buffer) -> String {

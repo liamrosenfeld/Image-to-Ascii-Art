@@ -11,7 +11,7 @@ import AVFoundation
 
 extension vImage_Buffer {
     mutating func resize(to destSize: CGSize) -> vImage_Buffer {
-        let format = vImage_CGImageFormat.rgba
+        let format = vImage_CGImageFormat.argb
         
         var destinationBuffer = try! vImage_Buffer(size: destSize, bitsPerPixel: format.bitsPerPixel)
         
@@ -24,38 +24,5 @@ extension vImage_Buffer {
         guard error == kvImageNoError else { fatalError("\(error)") }
         
         return destinationBuffer
-    }
-    
-    mutating func imageConstrained(to maxSize: CGSize, current: CGSize) -> vImage_Buffer {
-        // don't resize if already small enough
-        let isTooBig =
-            self.width  > Int(maxSize.width) ||
-            self.height > Int(maxSize.height)
-        if !isTooBig {
-            return self.copy() // must copy because it is implied that the returned buffer will be different
-        }
-        
-        // resize
-        let maxRect    = CGRect(origin: CGPoint.zero, size: maxSize)
-        let scaledRect = AVMakeRect(aspectRatio: self.size, insideRect: maxRect)
-        let scaledSize = scaledRect.size.rounded
-        return self.resize(to: scaledSize)
-    }
-    
-    func copy() -> vImage_Buffer {
-        let format = vImage_CGImageFormat.rgba
-        var destinationBuffer = try! vImage_Buffer(size: size, bitsPerPixel: format.bitsPerPixel)
-        try! self.copy(destinationBuffer: &destinationBuffer, pixelSize: Int(format.bitsPerPixel))
-        return destinationBuffer
-    }
-}
-
-extension CGSize {
-    var rounded: CGSize {
-        return CGSize(width: self.width.rounded(), height: self.height.rounded())
-    }
-    
-    var roundedUp: CGSize {
-        CGSize(width: ceil(width), height: ceil(height))
     }
 }
