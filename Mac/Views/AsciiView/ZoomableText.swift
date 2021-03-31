@@ -87,6 +87,7 @@ struct ZoomableText: NSViewRepresentable {
         textView.string = text
         scrollView.minMagnification = minMag // must be after everything so it knows content size
         scrollView.magnification = zoomToMag(zoom)
+        scrollView.frame = NSRect(origin: .zero, size: size)
     }
     
     private var minMag: CGFloat {
