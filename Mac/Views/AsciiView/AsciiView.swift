@@ -43,6 +43,11 @@ struct AsciiView: View {
                 }
             }
             ToolbarItem(placement: .automatic) {
+                HStack {
+                    Divider()
+                }
+            }
+            ToolbarItem(placement: .automatic) {
                 Button(action: copyAsciiText) {
                     Label("Copy Text", systemImage: "doc.on.clipboard")
                 }

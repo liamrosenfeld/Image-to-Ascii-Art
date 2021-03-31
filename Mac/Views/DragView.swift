@@ -22,9 +22,7 @@ struct DragView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 300, minHeight: 60)
                 .padding(.horizontal, 50)
-            Line()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
-                .frame(height: 1)
+            Divider()
                 .padding(.vertical, 10)
             VStack {
                 Spacer()
