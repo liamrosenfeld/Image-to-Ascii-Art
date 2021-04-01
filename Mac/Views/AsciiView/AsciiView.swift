@@ -62,7 +62,8 @@ struct AsciiView: View {
     
     // MARK: - Alerts
     enum AlertType: Int8, Identifiable {
-        case shared
+        case copied
+        case saved
         case shareFailed
         case prematureShare
         
@@ -71,9 +72,14 @@ struct AsciiView: View {
     
     func matchAlert(alert: AlertType) -> Alert {
         switch alert {
-        case .shared:
+        case .copied:
             return Alert(
-                title: Text("Shared"),
+                title: Text("Copied"),
+                dismissButton: .default(Text("Yay!"))
+            )
+        case .saved:
+            return Alert(
+                title: Text("Saved"),
                 dismissButton: .default(Text("Yay!"))
             )
         case .shareFailed:
@@ -105,7 +111,7 @@ struct AsciiView: View {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([.string], owner: nil)
         pasteboard.setString(asciiArt, forType: .string)
-        alert = .shared
+        alert = .copied
     }
     
     func saveFile() {
@@ -116,7 +122,7 @@ struct AsciiView: View {
         
         do {
             let shared = try fileSaver.saveFile(ascii: ascii)
-            if shared { alert = .shared }
+            if shared { alert = .saved }
         } catch {
             alert = .shareFailed
         }
